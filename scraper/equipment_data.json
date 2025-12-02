@@ -1,0 +1,2443 @@
+{
+  "augments": [
+    {
+      "name": "Quick Use",
+      "url": "https://arcraiders.wiki/wiki/Quick_Use",
+      "category": "augments",
+      "rarity": null,
+      "description": null,
+      "stats": {},
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Free Loadout Augment",
+      "url": "https://arcraiders.wiki/wiki/Free_Loadout_Augment",
+      "category": "augments",
+      "rarity": "Common",
+      "description": "Basic augment for rookie Raiders, offering slightly more backpack space and carry capacity.",
+      "stats": {
+        "Backpack Slots": "14",
+        "Safe Pocket Slots": "0",
+        "Quick Use Slots": "4",
+        "Weapon Slots": "2",
+        "Weight Limit": "35.0",
+        "Shield Compatibility": "Light",
+        "Weight": "1.0",
+        "Sell Price": "100"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Looting Mk. 1",
+      "url": "https://arcraiders.wiki/wiki/Looting_Mk._1",
+      "category": "augments",
+      "rarity": "Uncommon",
+      "description": "Basic looting augment. More backpack slots and weight capacity, but low defensive and tactical capability.",
+      "stats": {
+        "Backpack Slots": "18",
+        "Safe Pocket Slots": "1",
+        "Quick Use Slots": "4",
+        "Weapon Slots": "2",
+        "Weight Limit": "50.0",
+        "Shield Compatibility": "Light",
+        "Weight": "1.0",
+        "Sell Price": "640"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Rubber Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Workbench 1OrGear Bench 1",
+        "output": "1x Looting Mk. 1"
+      }
+    },
+    {
+      "name": "Combat Mk. 1",
+      "url": "https://arcraiders.wiki/wiki/Combat_Mk._1",
+      "category": "augments",
+      "rarity": "Uncommon",
+      "description": "Basic combat augment. Supports stronger shields, but with limited backpack capacity and Quick Use slots.",
+      "stats": {
+        "Backpack Slots": "16",
+        "Safe Pocket Slots": "1",
+        "Quick Use Slots": "4",
+        "Weapon Slots": "2",
+        "Weight Limit": "45.0",
+        "Shield Compatibility": "Light, Medium",
+        "Weight": "2.0",
+        "Sell Price": "640"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Rubber Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gear Bench 1",
+        "output": "1x Combat Mk. 1"
+      }
+    },
+    {
+      "name": "Tactical Mk. 1",
+      "url": "https://arcraiders.wiki/wiki/Tactical_Mk._1",
+      "category": "augments",
+      "rarity": "Uncommon",
+      "description": "Basic tactical augment. More Quick Use slots for more tactical choice, but limited survivability and slightly lower looting potential.",
+      "stats": {
+        "Backpack Slots": "15",
+        "Safe Pocket Slots": "1",
+        "Quick Use Slots": "5",
+        "Weapon Slots": "2",
+        "Weight Limit": "40.0",
+        "Shield Compatibility": "Light, Medium",
+        "Weight": "2.0",
+        "Sell Price": "640"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Rubber Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gear Bench 1",
+        "output": "1x Tactical Mk. 1"
+      }
+    },
+    {
+      "name": "Looting Mk. 2",
+      "url": "https://arcraiders.wiki/wiki/Looting_Mk._2",
+      "category": "augments",
+      "rarity": "Rare",
+      "description": "Significantly increases looting potential; adds slots for trinkets.",
+      "stats": {
+        "Backpack Slots": "22",
+        "Safe Pocket Slots": "2",
+        "Quick Use Slots": "4",
+        "Weapon Slots": "2",
+        "Trinket Slots": "3",
+        "Weight Limit": "60.0",
+        "Shield Compatibility": "Light",
+        "Weight": "2.0",
+        "Sell Price": "2,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Magnet",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 2",
+        "output": "1x Looting Mk. 2"
+      }
+    },
+    {
+      "name": "Combat Mk. 2",
+      "url": "https://arcraiders.wiki/wiki/Combat_Mk._2",
+      "category": "augments",
+      "rarity": "Rare",
+      "description": "A combat augment more focused on maneuverability than absorbing damage.",
+      "stats": {
+        "Backpack Slots": "18",
+        "Safe Pocket Slots": "1",
+        "Quick Use Slots": "4",
+        "Weapon Slots": "2",
+        "Grenade Use Slots": "1",
+        "Weight Limit": "55.0",
+        "Shield Compatibility": "Light, Medium, Heavy",
+        "Weight": "3.0",
+        "Sell Price": "2,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Magnet",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 2",
+        "output": "1x Combat Mk. 2"
+      }
+    },
+    {
+      "name": "Tactical Mk. 2",
+      "url": "https://arcraiders.wiki/wiki/Tactical_Mk._2",
+      "category": "augments",
+      "rarity": "Rare",
+      "description": "Adds more backpack space and an extra utility item slot.",
+      "stats": {
+        "Backpack Slots": "17",
+        "Safe Pocket Slots": "1",
+        "Quick Use Slots": "5",
+        "Weapon Slots": "2",
+        "Deployable Utility Slots": "1",
+        "Weight Limit": "45.0",
+        "Shield Compatibility": "Light, Medium",
+        "Weight": "2.0",
+        "Sell Price": "2,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Magnet",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 2",
+        "output": "1x Tactical Mk. 2"
+      }
+    },
+    {
+      "name": "Looting Mk. 3 (Cautious)",
+      "url": "https://arcraiders.wiki/wiki/Looting_Mk._3_(Cautious)",
+      "category": "augments",
+      "rarity": "Epic",
+      "description": "A looting augment that swaps some carry capacity to increase survivability.",
+      "stats": {
+        "Backpack Slots": "24",
+        "Safe Pocket Slots": "2",
+        "Quick Use Slots": "5",
+        "Weapon Slots": "2",
+        "Weight Limit": "70.0",
+        "Shield Compatibility": "Light",
+        "Weight": "3",
+        "Sell Price": "5000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Processor",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 3",
+        "output": "1x Looting Mk. 3 (Cautious)"
+      }
+    },
+    {
+      "name": "Integrated Binoculars",
+      "url": "https://arcraiders.wiki/wiki/Integrated_Binoculars",
+      "category": "augments",
+      "rarity": "Common",
+      "description": "Can be equipped and used like regular binoculars, but cannot be dropped or removed from their slot.",
+      "stats": {
+        "Weight": "0.5"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Looting Mk. 3 (Survivor)",
+      "url": "https://arcraiders.wiki/wiki/Looting_Mk._3_(Survivor)",
+      "category": "augments",
+      "rarity": "Epic",
+      "description": "A heavy-duty pack mule augment. Large weight capacity and large backpack space.",
+      "stats": {
+        "Backpack Slots": "20",
+        "Safe Pocket Slots": "3",
+        "Quick Use Slots": "5",
+        "Weapon Slots": "2",
+        "Deployable Utility Slots": "1",
+        "Weight Limit": "80.0",
+        "Shield Compatibility": "Light, Medium",
+        "Weight": "4.0",
+        "Sell Price": "5,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Processor",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Combat Mk. 3 (Aggressive)",
+      "url": "https://arcraiders.wiki/wiki/Combat_Mk._3_(Aggressive)",
+      "category": "augments",
+      "rarity": "Epic",
+      "description": "An improved version of the Combat II augment. Supports more shield types, and comes with extra space for grenades.",
+      "stats": {
+        "Backpack Slots": "18",
+        "Safe Pocket Slots": "1",
+        "Quick Use Slots": "4",
+        "Weapon Slots": "2",
+        "Grenade Use Slots": "2",
+        "Weight Limit": "65.0",
+        "Shield Compatibility": "Light, Medium, Heavy",
+        "Weight": "5.0",
+        "Sell Price": "5,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Processor",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Combat Mk. 3 (Flanking)",
+      "url": "https://arcraiders.wiki/wiki/Combat_Mk._3_(Flanking)",
+      "category": "augments",
+      "rarity": "Epic",
+      "description": "A combat augment more focused on manueverability than absorbing damage.",
+      "stats": {
+        "Backpack Slots": "20",
+        "Safe Pocket Slots": "2",
+        "Quick Use Slots": "5",
+        "Weapon Slots": "2",
+        "Deployable Utility Slots": "3",
+        "Weight Limit": "60.0",
+        "Shield Compatibility": "Light Shield",
+        "Weight": "3",
+        "Sell Price": "3,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Processor",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Tactical Mk. 3 (Defensive)",
+      "url": "https://arcraiders.wiki/wiki/Tactical_Mk._3_(Defensive)",
+      "category": "augments",
+      "rarity": "Epic",
+      "description": "A defensive-focused augment for keeping Shields topped up.",
+      "stats": {
+        "Backpack Slots": "20",
+        "Safe Pocket Slots": "1",
+        "Quick Use Slots": "5",
+        "Weapon Slots": "2",
+        "Weight Limit": "60.0",
+        "Shield Compatibility": "Light,Medium,Heavy",
+        "Weight": "5.0",
+        "Sell Price": "5,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Processor",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gear Bench 3",
+        "output": "1x Tactical Mk. 3 (Defensive)"
+      }
+    },
+    {
+      "name": "Integrated Shield Recharger",
+      "url": "https://arcraiders.wiki/wiki/Integrated_Shield_Recharger",
+      "category": "augments",
+      "rarity": "Common",
+      "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "1",
+        "Use Time": "5s",
+        "Recharge": "50"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    }
+  ],
+  "shields": [
+    {
+      "name": "Light Shield",
+      "url": "https://arcraiders.wiki/wiki/Light_Shield",
+      "category": "shields",
+      "rarity": "Uncommon",
+      "description": "A lightweight shield that offers limited protection without severely impacting mobility.",
+      "stats": {
+        "Shield Charge": "40",
+        "Damage Mitigation": "40%",
+        "Weight": "5.0",
+        "Sell Price": "640"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "ARC Alloy",
+            "quantity": 2
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Workbench I",
+        "output": "1x Light Shield"
+      }
+    },
+    {
+      "name": "Medium Shield",
+      "url": "https://arcraiders.wiki/wiki/Medium_Shield",
+      "category": "shields",
+      "rarity": "Rare",
+      "description": "A standard shield that offers fair protection at a moderate cost to mobility.",
+      "stats": {
+        "Shield Charge": "70",
+        "Damage Mitigation": "42.5%",
+        "Movement Penalty": "5%",
+        "Weight": "7.0",
+        "Sell Price": "2,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Battery",
+            "quantity": 4
+          },
+          {
+            "material": "ARC Circuitry",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gear Bench 2",
+        "output": "1x Medium Shield"
+      }
+    },
+    {
+      "name": "Heavy Shield",
+      "url": "https://arcraiders.wiki/wiki/Heavy_Shield",
+      "category": "shields",
+      "rarity": "Epic",
+      "description": "A heavy shield that blocks a large portion of incoming damage, but carries a significant cost to mobility.",
+      "stats": {
+        "Shield Charge": "80",
+        "Damage Mitigation": "52.5%",
+        "Movement Penalty": "15%",
+        "Weight": "9.0",
+        "Sell Price": "5,500"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Power Rod",
+            "quantity": 1
+          },
+          {
+            "material": "Voltage Converter",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gear Bench 2",
+        "output": "1x Heavy Shield"
+      }
+    },
+    {
+      "name": "Skills",
+      "url": "https://arcraiders.wiki/wiki/Skills",
+      "category": "shields",
+      "rarity": null,
+      "description": null,
+      "stats": {},
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    }
+  ],
+  "healing": [
+    {
+      "name": "Agave",
+      "url": "https://arcraiders.wiki/wiki/Agave",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "A piece of an agave leaf. Can be used to regain a small amount of health.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.2",
+        "Stack Size": "10",
+        "Sell Price": "1,000",
+        "Healing": "1/s",
+        "Use Time": "1s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Agave",
+            "quantity": 1
+          },
+          {
+            "material": "Empty Wine Bottle",
+            "quantity": 1
+          }
+        ],
+        "workshop": null,
+        "output": "Agave"
+      }
+    },
+    {
+      "name": "Bandage",
+      "url": "https://arcraiders.wiki/wiki/Bandage",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "A medical item that gradually restores health over time.",
+      "stats": {
+        "Weight": "0.1",
+        "Stack Size": "5",
+        "Sell Price": "250",
+        "Healing": "2/s",
+        "Use Time": "1.5s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Fabric",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Medical Lab 1OrWorkbench 1",
+        "output": "1x Bandage"
+      }
+    },
+    {
+      "name": "Defibrillator",
+      "url": "https://arcraiders.wiki/wiki/Defibrillator",
+      "category": "healing",
+      "rarity": "Rare",
+      "description": "An injection that quickly revived downed raiders and restores some health.",
+      "stats": {
+        "Weight": "0.75",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Healing": "50",
+        "Use Time": "1.5s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Plastic Parts",
+            "quantity": 9
+          },
+          {
+            "material": "Moss",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Medical Lab 2",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Expired Pasta",
+      "url": "https://arcraiders.wiki/wiki/Expired_Pasta",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "Way pasta its prime.",
+      "stats": {
+        "Can Be Found In": "CommercialResidential",
+        "Weight": "0.1",
+        "Stack Size": "15",
+        "Sell Price": "1,000",
+        "Healing": "15",
+        "Use Time": "1s"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Fabric",
+      "url": "https://arcraiders.wiki/wiki/Fabric",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "Used to craft medical supplies and shields.",
+      "stats": {
+        "Can Be Found In": "CommercialResidentialMedical",
+        "Weight": "0.1",
+        "Stack Size": "50",
+        "Sell Price": "50",
+        "Healing": "0.4/s",
+        "Use Time": "1s",
+        "Duration": "25s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Fabric",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Medical Lab 1orWorkbench",
+        "output": "Fabric"
+      }
+    },
+    {
+      "name": "Fruit Mix",
+      "url": "https://arcraiders.wiki/wiki/Fruit_Mix",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "A food item that moderately increases both health and stamina.",
+      "stats": {
+        "Weight": "0.3",
+        "Stack Size": "5",
+        "Sell Price": "1800",
+        "Healing": "25",
+        "Stamina": "50",
+        "Use Time": "2s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Lemon",
+            "quantity": 1
+          },
+          {
+            "material": "Apricot",
+            "quantity": 1
+          },
+          {
+            "material": "Prickly Pear",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Inventory",
+        "output": "In-Round Crafting"
+      }
+    },
+    {
+      "name": "Herbal Bandage",
+      "url": "https://arcraiders.wiki/wiki/Herbal_Bandage",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "An improvised medical item that gradually restores health over time.",
+      "stats": {
+        "Weight": "0.15",
+        "Stack Size": "5",
+        "Sell Price": "640",
+        "Healing": "3.5/s",
+        "Use Time": "1.5s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Durable Cloth",
+            "quantity": 1
+          },
+          {
+            "material": "Great Mullein",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Medical Lab 2",
+        "output": "1x Herbal Bandage"
+      }
+    },
+    {
+      "name": "Moss",
+      "url": "https://arcraiders.wiki/wiki/Moss",
+      "category": "healing",
+      "rarity": "Rare",
+      "description": "Can be used to regain a small amount of health.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.3",
+        "Stack Size": "10",
+        "Sell Price": "500",
+        "Healing": "1/s",
+        "Use Time": "1s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Plastic Parts",
+            "quantity": 9
+          },
+          {
+            "material": "Moss",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Medical Lab 2",
+        "output": "Moss"
+      }
+    },
+    {
+      "name": "Mushroom",
+      "url": "https://arcraiders.wiki/wiki/Mushroom",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "Can be consumed to regain a small amount of health.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.2",
+        "Stack Size": "10",
+        "Sell Price": "1000",
+        "Healing": "15",
+        "Use Time": "1s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Mushroom",
+            "quantity": 12
+          },
+          {
+            "material": "Apricot",
+            "quantity": 12
+          },
+          {
+            "material": "Very Comfortable Pillow",
+            "quantity": 3
+          }
+        ],
+        "workshop": null,
+        "output": "Mushroom"
+      }
+    },
+    {
+      "name": "Resin",
+      "url": "https://arcraiders.wiki/wiki/Resin",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "Can be used to gradually restore a small amount of health over time.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.4",
+        "Stack Size": "10",
+        "Sell Price": "1,000",
+        "Healing": "1/s",
+        "Use Time": "1s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Sterilized Bandage",
+      "url": "https://arcraiders.wiki/wiki/Sterilized_Bandage",
+      "category": "healing",
+      "rarity": "Rare",
+      "description": "A medical item that gradually restores a large amount of health over time.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "3",
+        "Sell Price": "2000",
+        "Healing": "5/s",
+        "Use Time": "1.5s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Durable Cloth",
+            "quantity": 2
+          },
+          {
+            "material": "Antiseptic",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Medical Lab 2",
+        "output": "1x Sterilized Bandage"
+      }
+    },
+    {
+      "name": "Vita Shot",
+      "url": "https://arcraiders.wiki/wiki/Vita_Shot",
+      "category": "healing",
+      "rarity": "Rare",
+      "description": "A medical item that restores a large amount of health.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "3",
+        "Sell Price": "2,200",
+        "Healing": "50",
+        "Use Time": "4s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Antiseptic",
+            "quantity": 1
+          },
+          {
+            "material": "Syringe",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Medical Lab 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Vita Spray",
+      "url": "https://arcraiders.wiki/wiki/Vita_Spray",
+      "category": "healing",
+      "rarity": "Epic",
+      "description": "A medical item that continuously restores health during use. Can be used on yourself or your allies.",
+      "stats": {
+        "Weight": "1.0",
+        "Stack Size": "1",
+        "Sell Price": "3,000",
+        "Healing": "10/s",
+        "Heal Capacity": "150"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Antiseptic",
+            "quantity": 3
+          },
+          {
+            "material": "Canister",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Medical Lab 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "ARC Powercell",
+      "url": "https://arcraiders.wiki/wiki/ARC_Powercell",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "Valuable resource that drops from all ARC enemies.",
+      "stats": {
+        "Can Be Found In": "ARC",
+        "Weight": "0.5",
+        "Stack Size": "5",
+        "Sell Price": "270",
+        "Shield": "20",
+        "Use Time": "3s",
+        "Duration": "10s",
+        "Recharge": "2/s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "ARC Powercell",
+            "quantity": 1
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 5
+          }
+        ],
+        "workshop": null,
+        "output": "ARC Powercell"
+      }
+    },
+    {
+      "name": "Integrated Shield Recharger",
+      "url": "https://arcraiders.wiki/wiki/Integrated_Shield_Recharger",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "1",
+        "Use Time": "5s",
+        "Recharge": "50"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Shield Recharger",
+      "url": "https://arcraiders.wiki/wiki/Shield_Recharger",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "A handheld repair kit that recharges a shield over time.",
+      "stats": {
+        "Weight": "0.15",
+        "Stack Size": "5",
+        "Sell Price": "520",
+        "Shield": "50",
+        "Use Time": "2s",
+        "Duration": "10s",
+        "Recharge": "4/s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Rubber Parts",
+            "quantity": 5
+          },
+          {
+            "material": "ARC Powercell",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Workbench I",
+        "output": "1x Shield Recharger"
+      }
+    },
+    {
+      "name": "Surge Shield Recharger",
+      "url": "https://arcraiders.wiki/wiki/Surge_Shield_Recharger",
+      "category": "healing",
+      "rarity": "Rare",
+      "description": "A handheld kit that recharges a shield on use.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "5",
+        "Sell Price": "1200",
+        "Use Time": "5s",
+        "Recharge": "50"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Electrical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Advanced ARC Powercell",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Medical Lab 2",
+        "output": "1x Surge Shield Recharger"
+      }
+    },
+    {
+      "name": "Adrenaline Shot",
+      "url": "https://arcraiders.wiki/wiki/Adrenaline_Shot",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "A serum that fully restores stamina and temporarily increases stamina regeneration.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "5",
+        "Sell Price": "300",
+        "Stamina": "5/s",
+        "Use Time": "1s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 3
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Medical Lab 1",
+        "output": "1x Adrenaline Shot"
+      }
+    },
+    {
+      "name": "Agave Juice",
+      "url": "https://arcraiders.wiki/wiki/Agave_Juice",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "A concoction that temporarily increases stamina regeneration, at a small initial cost to health.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "5",
+        "Sell Price": "1,800",
+        "Stamina": "5/s",
+        "Damage": "5",
+        "Use Time": "1s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Agave",
+            "quantity": 1
+          },
+          {
+            "material": "Empty Wine Bottle",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Inventory",
+        "output": "In-Round Crafting"
+      }
+    },
+    {
+      "name": "Apricot",
+      "url": "https://arcraiders.wiki/wiki/Apricot",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "A sun ripe apricot. Can be consumed for a small amount of stamina.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.2",
+        "Stack Size": "10",
+        "Sell Price": "640",
+        "Stamina": "20",
+        "Use Time": "1s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Lemon",
+            "quantity": 1
+          },
+          {
+            "material": "Apricot",
+            "quantity": 1
+          },
+          {
+            "material": "Prickly Pear",
+            "quantity": 1
+          }
+        ],
+        "workshop": null,
+        "output": "Apricot"
+      }
+    },
+    {
+      "name": "Bloated Tuna Can",
+      "url": "https://arcraiders.wiki/wiki/Bloated_Tuna_Can",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "Something tells you that you don't want to open this...",
+      "stats": {
+        "Can Be Found In": "CommercialResidential",
+        "Weight": "0.2",
+        "Stack Size": "15",
+        "Sell Price": "1,000",
+        "Stamina": "25",
+        "Use Time": "1s"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Lemon",
+      "url": "https://arcraiders.wiki/wiki/Lemon",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "Can be consumed for a small amount of stamina.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.2",
+        "Stack Size": "10",
+        "Sell Price": "640",
+        "Stamina": "20",
+        "Use Time": "1s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Lemon",
+            "quantity": 1
+          },
+          {
+            "material": "Apricot",
+            "quantity": 1
+          },
+          {
+            "material": "Prickly Pear",
+            "quantity": 1
+          }
+        ],
+        "workshop": null,
+        "output": "Lemon"
+      }
+    },
+    {
+      "name": "Olives",
+      "url": "https://arcraiders.wiki/wiki/Olives",
+      "category": "healing",
+      "rarity": "Uncommon",
+      "description": "Can be consumed for a small amount of stamina.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.2",
+        "Stack Size": "10",
+        "Sell Price": "640",
+        "Stamina": "20",
+        "Use Time": "1s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Prickly Pear",
+            "quantity": 6
+          },
+          {
+            "material": "Olives",
+            "quantity": 6
+          },
+          {
+            "material": "Cat Bed",
+            "quantity": 1
+          }
+        ],
+        "workshop": null,
+        "output": "Olives"
+      }
+    },
+    {
+      "name": "Prickly Pear",
+      "url": "https://arcraiders.wiki/wiki/Prickly_Pear",
+      "category": "healing",
+      "rarity": "Common",
+      "description": "Can be consumed for a small amount of stamina.",
+      "stats": {
+        "Can Be Found In": "Nature",
+        "Weight": "0.2",
+        "Stack Size": "10",
+        "Sell Price": "640",
+        "Stamina": "20",
+        "Use Time": "1s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Lemon",
+            "quantity": 1
+          },
+          {
+            "material": "Apricot",
+            "quantity": 1
+          },
+          {
+            "material": "Prickly Pear",
+            "quantity": 1
+          }
+        ],
+        "workshop": null,
+        "output": "Prickly Pear"
+      }
+    }
+  ],
+  "quick_use": [
+    {
+      "name": "ARC",
+      "url": "https://arcraiders.wiki/wiki/ARC",
+      "category": "quick_use",
+      "rarity": null,
+      "description": null,
+      "stats": {},
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Barricade Kit",
+      "url": "https://arcraiders.wiki/wiki/Barricade_Kit",
+      "category": "quick_use",
+      "rarity": "Uncommon",
+      "description": "A deployable cover that can block incoming damage until it breaks.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "3",
+        "Sell Price": "640",
+        "Duration": "500 Health"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Utility Station 1",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Door Blocker",
+      "url": "https://arcraiders.wiki/wiki/Door_Blocker",
+      "category": "quick_use",
+      "rarity": "Common",
+      "description": "A locking mechanism that can be placed on large metal doors to limit access.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "3",
+        "Sell Price": "270"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Utility Station 1",
+        "output": "1x Door Blocker"
+      }
+    },
+    {
+      "name": "Remote Raider Flare",
+      "url": "https://arcraiders.wiki/wiki/Remote_Raider_Flare",
+      "category": "quick_use",
+      "rarity": "Common",
+      "description": "A deployable device that, when manually triggered, launches a Raider Distress Flare.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "3",
+        "Sell Price": "270"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 2
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Utility Station 1",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Zipline",
+      "url": "https://arcraiders.wiki/wiki/Zipline",
+      "category": "quick_use",
+      "rarity": "Rare",
+      "description": "A deployable zipline that allows you to quickly move between two locations.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Range": "60m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Rope",
+            "quantity": 1
+          },
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Utility Station 2",
+        "output": "1x Zipline"
+      }
+    },
+    {
+      "name": "Binoculars",
+      "url": "https://arcraiders.wiki/wiki/Binoculars",
+      "category": "quick_use",
+      "rarity": "Common",
+      "description": "A basic pair of binoculars with two levels of magnification.",
+      "stats": {
+        "Weight": "0.5",
+        "Stack Size": "1",
+        "Sell Price": "640"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Plastic Parts",
+            "quantity": 8
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Utility Station 1",
+        "output": "1x Binoculars"
+      }
+    },
+    {
+      "name": "Flame Spray",
+      "url": "https://arcraiders.wiki/wiki/Flame_Spray",
+      "category": "quick_use",
+      "rarity": "Uncommon",
+      "description": "A classic makeshift weapon, sure to leave scorch marks.",
+      "stats": {
+        "Weight": "1",
+        "Stack Size": "1",
+        "Sell Price": "2000",
+        "Damage": "10/s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Air Freshener",
+            "quantity": 1
+          },
+          {
+            "material": "Fireball Burner",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Inventory",
+        "output": "In-Round Crafting"
+      }
+    },
+    {
+      "name": "Integrated Binoculars",
+      "url": "https://arcraiders.wiki/wiki/Integrated_Binoculars",
+      "category": "quick_use",
+      "rarity": "Common",
+      "description": "Can be equipped and used like regular binoculars, but cannot be dropped or removed from their slot.",
+      "stats": {
+        "Weight": "0.5"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Noisemaker",
+      "url": "https://arcraiders.wiki/wiki/Noisemaker",
+      "category": "quick_use",
+      "rarity": "Common",
+      "description": "A deployable proximity sensor that sounds an alarm when enemy raiders are detected.",
+      "stats": {
+        "Weight": "0.3",
+        "Stack Size": "3",
+        "Sell Price": "640",
+        "Duration": "4s",
+        "Radius": "8m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Speaker Component",
+            "quantity": 1
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Inventory",
+        "output": "Travelling Tinkerer"
+      }
+    },
+    {
+      "name": "Photoelectric Cloak",
+      "url": "https://arcraiders.wiki/wiki/Photoelectric_Cloak",
+      "category": "quick_use",
+      "rarity": "Epic",
+      "description": "A gadget that allows the user to conceal themselves from ARC.",
+      "stats": {
+        "Weight": "1.0",
+        "Stack Size": "1",
+        "Sell Price": "5,000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Speaker Component",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Utility Station 3",
+        "output": "1x Photoelectric Cloak"
+      }
+    },
+    {
+      "name": "Recorder",
+      "url": "https://arcraiders.wiki/wiki/Recorder",
+      "category": "quick_use",
+      "rarity": "Uncommon",
+      "description": "A playable recorder used to attract ARC's attention, and impress other Raiders.",
+      "stats": {
+        "Can Be Found In": "Residential",
+        "Weight": "0.2",
+        "Stack Size": "1",
+        "Sell Price": "1,000"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Snap Hook",
+      "url": "https://arcraiders.wiki/wiki/Snap_Hook",
+      "category": "quick_use",
+      "rarity": "Legendary",
+      "description": "A gadget that allows the user to scale structures and cover large distances.",
+      "stats": {
+        "Weight": "5.0",
+        "Stack Size": "1",
+        "Sell Price": "14000",
+        "Range": "20m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Power Rod",
+            "quantity": 2
+          },
+          {
+            "material": "Rope",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Utility Station 3",
+        "output": "Yes"
+      }
+    }
+  ],
+  "grenades": [
+    {
+      "name": "Raider",
+      "url": "https://arcraiders.wiki/wiki/Raider",
+      "category": "grenades",
+      "rarity": null,
+      "description": null,
+      "stats": {},
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "ARC",
+      "url": "https://arcraiders.wiki/wiki/ARC",
+      "category": "grenades",
+      "rarity": null,
+      "description": null,
+      "stats": {},
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Smoke Grenade",
+      "url": "https://arcraiders.wiki/wiki/Smoke_Grenade",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "A grenade that creates a lingering smoke cloud on impact, blocking visibility from other Raiders.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "5",
+        "Sell Price": "1,000",
+        "Duration": "20s",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 7
+          },
+          {
+            "material": "Canister",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Utility Station 1orWorkbench",
+        "output": "1x Smoke Grenade"
+      }
+    },
+    {
+      "name": "Lure Grenade",
+      "url": "https://arcraiders.wiki/wiki/Lure_Grenade",
+      "category": "grenades",
+      "rarity": "Uncommon",
+      "description": "A noise device that sticks to surfaces, distracting nearby ARC machines and drawing their fire.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Duration": "15s",
+        "Radius": "50m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Speaker Component",
+            "quantity": 1
+          },
+          {
+            "material": "Electrical Components",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Utility Station 2",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Light Stick",
+      "url": "https://arcraiders.wiki/wiki/Light_Stick",
+      "category": "grenades",
+      "rarity": "Common",
+      "description": "A throwable chemical light that illuminates the area around it.",
+      "stats": {
+        "Weight": "0.15",
+        "Stack Size": "5",
+        "Sell Price": "150",
+        "Duration": "40s",
+        "Radius": "7m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Utility Station 2",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Light Impact Grenade",
+      "url": "https://arcraiders.wiki/wiki/Light_Impact_Grenade",
+      "category": "grenades",
+      "rarity": "Common",
+      "description": "A grenade that detonates on impact, dealing explosive damage in a small radius.",
+      "stats": {
+        "Weight": "0.1",
+        "Stack Size": "5",
+        "Sell Price": "270",
+        "Damage": "30",
+        "Radius": "2.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Plastic Parts",
+            "quantity": 1
+          },
+          {
+            "material": "Chemicals",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Explosives Station 1OrWorkbench",
+        "output": "1x Light Impact Grenade"
+      }
+    },
+    {
+      "name": "Heavy Fuze Grenade",
+      "url": "https://arcraiders.wiki/wiki/Heavy_Fuze_Grenade",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "A grenade that detonates after a delay, dealing explosive damage in its radius.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "3",
+        "Sell Price": "1600",
+        "Damage": "80",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Explosive Compound",
+            "quantity": 1
+          },
+          {
+            "material": "Canister",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Explosives Station 3",
+        "output": "1x Heavy Fuze Grenade"
+      }
+    },
+    {
+      "name": "Blaze Grenade",
+      "url": "https://arcraiders.wiki/wiki/Blaze_Grenade",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "A grenade that detonates on impact, covering an area in fire that deals damage over time.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "5",
+        "Sell Price": "1,600",
+        "Damage": "5/s",
+        "Duration": "10s",
+        "Radius": "10m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Explosive Compound",
+            "quantity": 1
+          },
+          {
+            "material": "Oil",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Explosives Station 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Gas Grenade",
+      "url": "https://arcraiders.wiki/wiki/Gas_Grenade",
+      "category": "grenades",
+      "rarity": "Common",
+      "description": "A grenade that creates a lingering toxic cloud on impact, draining the stamina of any Raiders within its area of effect.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "3",
+        "Sell Price": "270",
+        "Stamina": "-25/s",
+        "Duration": "20s",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 4
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Explosives Station 1",
+        "output": "1x Gas Grenade"
+      }
+    },
+    {
+      "name": "Showstopper",
+      "url": "https://arcraiders.wiki/wiki/Showstopper",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "A grenade that detonates after a delay, stunning enemies within its radius.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "5",
+        "Sell Price": "2,200",
+        "ARC Stun": "10s",
+        "Raider Stun": "2s",
+        "Radius": "6m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Voltage Converter",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Explosives Station 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Snap Blast Grenade",
+      "url": "https://arcraiders.wiki/wiki/Snap_Blast_Grenade",
+      "category": "grenades",
+      "rarity": "Uncommon",
+      "description": "A grenade that sticks to surfaces, dealing explosive damage after a short delay.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "3",
+        "Sell Price": "800",
+        "Damage": "70",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Crude Explosives",
+            "quantity": 2
+          },
+          {
+            "material": "Magnet",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Explosives Station 2",
+        "output": "1x Snap Blast Grenade"
+      }
+    },
+    {
+      "name": "Seeker Grenade",
+      "url": "https://arcraiders.wiki/wiki/Seeker_Grenade",
+      "category": "grenades",
+      "rarity": "Uncommon",
+      "description": "A homing grenade that targets a single nearby ARC dealing explosive damage on impact.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "5",
+        "Sell Price": "640",
+        "Damage": "50",
+        "Homing Range": "20m"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Shrapnel Grenade",
+      "url": "https://arcraiders.wiki/wiki/Shrapnel_Grenade",
+      "category": "grenades",
+      "rarity": "Uncommon",
+      "description": "A makeshift fuze grenade that bursts into razor-sharp fragments upon detonation.",
+      "stats": {
+        "Weight": "0.15",
+        "Stack Size": "5",
+        "Sell Price": "800",
+        "Damage": "60",
+        "Radius": "6m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Crude Explosives",
+            "quantity": 1
+          },
+          {
+            "material": "Steel Spring",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Explosive Station 2",
+        "output": "1x Shrapnel Grenade"
+      }
+    },
+    {
+      "name": "Trigger %27Nade",
+      "url": "https://arcraiders.wiki/wiki/Trigger_%27Nade",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "A remote-detonated grenade that can stick to surfaces and ARC, dealing explosive damage when triggered.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Damage": "90",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Crude Explosives",
+            "quantity": 2
+          },
+          {
+            "material": "Processor",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Explosives Station 2",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Trailblazer",
+      "url": "https://arcraiders.wiki/wiki/Trailblazer",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "A grenade that emits a trail of flammable gas along its path, causing an explosive chain reaction when it ignites.",
+      "stats": {
+        "Weight": "1.0",
+        "Stack Size": "3",
+        "Sell Price": "1,600",
+        "Damage": "20",
+        "Radius": "2m"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Wolfpack",
+      "url": "https://arcraiders.wiki/wiki/Wolfpack",
+      "category": "grenades",
+      "rarity": "Epic",
+      "description": "A grenade that scatters into multiple homing missiles, each one targeting ARC and dealing explosive damage on impact.",
+      "stats": {
+        "Weight": "1.0",
+        "Stack Size": "1",
+        "Sell Price": "5,000",
+        "Damage": "166x12",
+        "Radius": "100m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Explosive Compound",
+            "quantity": 3
+          },
+          {
+            "material": "ARC Motion Core",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Explosives Station 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Li%27l Smoke Grenade",
+      "url": "https://arcraiders.wiki/wiki/Li%27l_Smoke_Grenade",
+      "category": "grenades",
+      "rarity": "Common",
+      "description": "A Grenade that pops into a thick but small smoke cloud on impact, blocking visibility from ARC and other Raiders.",
+      "stats": {
+        "Weight": "0.15",
+        "Stack Size": "5",
+        "Sell Price": "300",
+        "Duration": "6s",
+        "Radius": "2.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 5
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Utility Station 1",
+        "output": "1x Li'l Smoke Grenade"
+      }
+    },
+    {
+      "name": "Tagging Grenade",
+      "url": "https://arcraiders.wiki/wiki/Tagging_Grenade",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "A grenade that detonates after a delay, tagging Raiders and ARC enemies in an area, allowing you to briefly track their location.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Duration": "30s",
+        "Radius": "6m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Electrical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Sensors",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Utility Station 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Wasp Driver",
+      "url": "https://arcraiders.wiki/wiki/Wasp_Driver",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "Can be recycled into ARC Alloy.",
+      "stats": {
+        "Can Be Found In": "ARC",
+        "Weight": "0.6",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Damage": "80",
+        "Radius": "5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Rusted Tools",
+            "quantity": 3
+          },
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Wasp Driver",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "output": "Wasp Driver"
+      }
+    },
+    {
+      "name": "Hornet Driver",
+      "url": "https://arcraiders.wiki/wiki/Hornet_Driver",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "Can be recycled into ARC Alloy.",
+      "stats": {
+        "Can Be Found In": "ARC",
+        "Weight": "0.75",
+        "Stack Size": "3",
+        "Sell Price": "2000",
+        "ARC Stun": "10s",
+        "Raider Stun": "0.5s",
+        "Radius": "6m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Power Cable",
+            "quantity": 3
+          },
+          {
+            "material": "Electrical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Hornet Driver",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gear Bench 1",
+        "output": "Hornet Driver"
+      }
+    },
+    {
+      "name": "Snitch Scanner",
+      "url": "https://arcraiders.wiki/wiki/Snitch_Scanner",
+      "category": "grenades",
+      "rarity": "Uncommon",
+      "description": "Can be recycled into ARC Alloy.",
+      "stats": {
+        "Can Be Found In": "ARC",
+        "Weight": "0.75",
+        "Stack Size": "3",
+        "Sell Price": "2000"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Damaged Heat Sink",
+            "quantity": 2
+          },
+          {
+            "material": "Electrical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Snitch Scanner",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Utility Station 1",
+        "output": "Snitch Scanner"
+      }
+    },
+    {
+      "name": "Leaper Pulse Unit",
+      "url": "https://arcraiders.wiki/wiki/Leaper_Pulse_Unit",
+      "category": "grenades",
+      "rarity": "Epic",
+      "description": "Can be recycled into crafting materials.",
+      "stats": {
+        "Can Be Found In": "ARC",
+        "Weight": "1.0",
+        "Stack Size": "3",
+        "Sell Price": "5,000",
+        "Damage": "100",
+        "Radius": "10m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Fried Motherboard",
+            "quantity": 3
+          },
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Leaper Pulse Unit",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Utility Station 2",
+        "output": "Leaper Pulse Unit"
+      }
+    },
+    {
+      "name": "Fireball Burner",
+      "url": "https://arcraiders.wiki/wiki/Fireball_Burner",
+      "category": "grenades",
+      "rarity": "Uncommon",
+      "description": "Can be recycled into ARC Alloy.",
+      "stats": {
+        "Can Be Found In": "ARC",
+        "Weight": "0.5",
+        "Stack Size": "3",
+        "Sell Price": "640",
+        "Damage": "5/s",
+        "Duration": "10s",
+        "Radius": "2m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Air Freshener",
+            "quantity": 1
+          },
+          {
+            "material": "Fireball Burner",
+            "quantity": 1
+          }
+        ],
+        "workshop": null,
+        "output": "Fireball Burner"
+      }
+    },
+    {
+      "name": "Crude Explosives",
+      "url": "https://arcraiders.wiki/wiki/Crude_Explosives",
+      "category": "grenades",
+      "rarity": "Uncommon",
+      "description": "Used to craft explosives. Can be recycled into crafting materials",
+      "stats": {
+        "Can Be Found In": "IndustrialSecurity",
+        "Weight": "2",
+        "Stack Size": "10",
+        "Sell Price": "270",
+        "Damage": "15",
+        "Radius": "1.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Refiner 1",
+        "output": "Crude Explosives"
+      }
+    },
+    {
+      "name": "Rubber Duck",
+      "url": "https://arcraiders.wiki/wiki/Rubber_Duck",
+      "category": "grenades",
+      "rarity": "Common",
+      "description": "Always there to lend an ear, should you need it.",
+      "stats": {
+        "Weight": "0.3",
+        "Stack Size": "15",
+        "Sell Price": "1,000"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Synthesized Fuel",
+      "url": "https://arcraiders.wiki/wiki/Synthesized_Fuel",
+      "category": "grenades",
+      "rarity": "Rare",
+      "description": "Used to craft utility items and explosives. Can be recycled into chemicals.",
+      "stats": {
+        "Can Be Found In": "Exodus",
+        "Weight": "0.5",
+        "Stack Size": "5",
+        "Sell Price": "700",
+        "Damage": "80",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Synthesized Fuel",
+            "quantity": 3
+          },
+          {
+            "material": "Crude Explosives",
+            "quantity": 5
+          },
+          {
+            "material": "Pop Trigger",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Explosives Station 1",
+        "output": "Synthesized Fuel"
+      }
+    }
+  ],
+  "traps": [
+    {
+      "name": "ARC",
+      "url": "https://arcraiders.wiki/wiki/ARC",
+      "category": "traps",
+      "rarity": null,
+      "description": null,
+      "stats": {},
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Skills",
+      "url": "https://arcraiders.wiki/wiki/Skills",
+      "category": "traps",
+      "rarity": null,
+      "description": null,
+      "stats": {},
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Blaze Grenade Trap",
+      "url": "https://arcraiders.wiki/wiki/Blaze_Grenade_Trap",
+      "category": "traps",
+      "rarity": "Rare",
+      "description": "laser trip wire that detonates a Blaze Grenade.",
+      "stats": {
+        "Weight": "0.3",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Damage": "5/s",
+        "Duration": "10s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Blaze Grenade",
+            "quantity": 1
+          },
+          {
+            "material": "Wires",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Workbench 1orInventory",
+        "output": "Travelling Tinkerer"
+      }
+    },
+    {
+      "name": "Gas Grenade Trap",
+      "url": "https://arcraiders.wiki/wiki/Gas_Grenade_Trap",
+      "category": "traps",
+      "rarity": "Common",
+      "description": "A laser trip write that detonates a Gas Grenade.",
+      "stats": {
+        "Weight": "0.25",
+        "Stack Size": "3",
+        "Sell Price": "300",
+        "Stamina": "-25/s",
+        "Duration": "20s",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Gas Grenade",
+            "quantity": 1
+          },
+          {
+            "material": "Wires",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Workbench 1orInventory",
+        "output": "Travelling Tinkerer"
+      }
+    },
+    {
+      "name": "Lure Grenade Trap",
+      "url": "https://arcraiders.wiki/wiki/Lure_Grenade_Trap",
+      "category": "traps",
+      "rarity": "Uncommon",
+      "description": "A laser trip wire that detonates a Lure Grenade",
+      "stats": {
+        "Weight": "0.25",
+        "Stack Size": "3",
+        "Sell Price": "1,000",
+        "Duration": "15s",
+        "Radius": "50m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Lure Grenade",
+            "quantity": 1
+          },
+          {
+            "material": "Wires",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Workbench 1orInventory",
+        "output": "Travelling Tinkerer"
+      }
+    },
+    {
+      "name": "Smoke Grenade Trap",
+      "url": "https://arcraiders.wiki/wiki/Smoke_Grenade_Trap",
+      "category": "traps",
+      "rarity": "Rare",
+      "description": "A laser trip write that detonates a Smoke Grenade.",
+      "stats": {
+        "Weight": "0.3",
+        "Stack Size": "3",
+        "Sell Price": "640",
+        "Duration": "20s",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Smoke Grenade",
+            "quantity": 1
+          },
+          {
+            "material": "Wires",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Workbench 1orInventory",
+        "output": "Travelling Tinkerer"
+      }
+    },
+    {
+      "name": "Explosive Mine",
+      "url": "https://arcraiders.wiki/wiki/Explosive_Mine",
+      "category": "traps",
+      "rarity": "Rare",
+      "description": "A proximity triggered mine that pops up and explodes, dealing damage to anything within its radius.",
+      "stats": {
+        "Weight": "0.4",
+        "Stack Size": "3",
+        "Sell Price": "1,500",
+        "Damage": "40",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Explosive Compound",
+            "quantity": 1
+          },
+          {
+            "material": "Sensors",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Explosives Station 3",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Gas Mine",
+      "url": "https://arcraiders.wiki/wiki/Gas_Mine",
+      "category": "traps",
+      "rarity": "Common",
+      "description": "A proximity-triggered mine that pops up and deploys a gas cloud that rapidly drains stamina.",
+      "stats": {
+        "Weight": "0.25",
+        "Stack Size": "3",
+        "Sell Price": "270",
+        "Duration": "20s",
+        "Radius": "7.5m",
+        "Stamina Drain": "25/s"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Jolt Mine",
+      "url": "https://arcraiders.wiki/wiki/Jolt_Mine",
+      "category": "traps",
+      "rarity": "Rare",
+      "description": "A proximity trigger mine that pops up and stuns anything within its radius.",
+      "stats": {
+        "Weight": "0.2",
+        "Stack Size": "3",
+        "Sell Price": "850",
+        "ARC Stun": "10s",
+        "Raider Stun": "4s",
+        "Radius": "5m"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Electrical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Battery",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Explosives Station 2",
+        "output": "Yes"
+      }
+    },
+    {
+      "name": "Pulse Mine",
+      "url": "https://arcraiders.wiki/wiki/Pulse_Mine",
+      "category": "traps",
+      "rarity": "Uncommon",
+      "description": "A proximity-triggered mine that pops up and knocks back anything within its radius.",
+      "stats": {
+        "Weight": "0.25",
+        "Stack Size": "3",
+        "Sell Price": "470",
+        "Radius": "7.5m"
+      },
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output": null
+      }
+    },
+    {
+      "name": "Deadline",
+      "url": "https://arcraiders.wiki/wiki/Deadline",
+      "category": "traps",
+      "rarity": "Epic",
+      "description": "A mine that deals damage to anything within its radius once the timer runs out.",
+      "stats": {
+        "Weight": "1.0",
+        "Stack Size": "1",
+        "Sell Price": "5,000",
+        "Damage": "1,000",
+        "Radius": "10m",
+        "Timer Duration": "6s"
+      },
+      "crafting": {
+        "materials": [
+          {
+            "material": "Explosive Compound",
+            "quantity": 3
+          },
+          {
+            "material": "ARC Circuitry",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Explosives Station 3",
+        "output": "Deadline"
+      }
+    }
+  ]
+}
