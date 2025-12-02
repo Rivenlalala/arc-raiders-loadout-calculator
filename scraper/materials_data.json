@@ -1,0 +1,676 @@
+{
+  "materials": [
+    {
+      "id": "Metal_Parts",
+      "name": "Metal Parts",
+      "url": "https://arcraiders.wiki/wiki/Metal_Parts",
+      "rarity": "Common",
+      "weight": "0.1",
+      "stack_size": "50",
+      "description": "Used to craft a wide range of items.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Plastic_Parts",
+      "name": "Plastic Parts",
+      "url": "https://arcraiders.wiki/wiki/Plastic_Parts",
+      "rarity": "Common",
+      "weight": "0.1",
+      "stack_size": "50",
+      "description": "Used to craft a wide range of items.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Rubber_Parts",
+      "name": "Rubber Parts",
+      "url": "https://arcraiders.wiki/wiki/Rubber_Parts",
+      "rarity": "Common",
+      "weight": "0.1",
+      "stack_size": "50",
+      "description": "Used to craft a wide range of items.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Wires",
+      "name": "Wires",
+      "url": "https://arcraiders.wiki/wiki/Wires",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Duct_Tape",
+      "name": "Duct Tape",
+      "url": "https://arcraiders.wiki/wiki/Duct_Tape",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Used to craft weapons and weapon mods. Can be recycled into plastic.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Chemicals",
+      "name": "Chemicals",
+      "url": "https://arcraiders.wiki/wiki/Chemicals",
+      "rarity": "Common",
+      "weight": "0.1",
+      "stack_size": "50",
+      "description": "Used to craft medical supplies, explosives, and utility items.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Oil",
+      "name": "Oil",
+      "url": "https://arcraiders.wiki/wiki/Oil",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Used to craft weapons and explosives. Can be recycled into chemicals.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Fabric",
+      "name": "Fabric",
+      "url": "https://arcraiders.wiki/wiki/Fabric",
+      "rarity": "Common",
+      "weight": "0.1",
+      "stack_size": "50",
+      "description": "Used to craft medical supplies and shields.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Rope",
+      "name": "Rope",
+      "url": "https://arcraiders.wiki/wiki/Rope",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Used in crafting.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Battery",
+      "name": "Battery",
+      "url": "https://arcraiders.wiki/wiki/Battery",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Mechanical_Components",
+      "name": "Mechanical Components",
+      "url": "https://arcraiders.wiki/wiki/Mechanical_Components",
+      "rarity": "Uncommon",
+      "weight": "0.8",
+      "stack_size": "10",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Advanced_Mechanical_Components",
+      "name": "Advanced Mechanical Components",
+      "url": "https://arcraiders.wiki/wiki/Advanced_Mechanical_Components",
+      "rarity": "Rare",
+      "weight": "1",
+      "stack_size": "5",
+      "description": "Mostly used to craft advanced weapons. Can be recycled into crafting materials.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Mod_Components",
+      "name": "Mod Components",
+      "url": "https://arcraiders.wiki/wiki/Mod_Components",
+      "rarity": "Rare",
+      "weight": "1",
+      "stack_size": "5",
+      "description": "Used to craft weapons mods. Can be recycled into crafting materials.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Explosive_Compound",
+      "name": "Explosive Compound",
+      "url": "https://arcraiders.wiki/wiki/Explosive_Compound",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Used to craft explosives.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Crude_Explosives",
+      "name": "Crude Explosives",
+      "url": "https://arcraiders.wiki/wiki/Crude_Explosives",
+      "rarity": "Uncommon",
+      "weight": "2",
+      "stack_size": "10",
+      "description": "Used to craft explosives. Can be recycled into crafting materials",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Simple_Gun_Parts",
+      "name": "Simple Gun Parts",
+      "url": "https://arcraiders.wiki/wiki/Simple_Gun_Parts",
+      "rarity": "Uncommon",
+      "weight": "0.3",
+      "stack_size": "10",
+      "description": "Used to craft weapons. Can be recycled into scrap metal.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Light_Gun_Parts",
+      "name": "Light Gun Parts",
+      "url": "https://arcraiders.wiki/wiki/Light_Gun_Parts",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": null,
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Medium_Gun_Parts",
+      "name": "Medium Gun Parts",
+      "url": "https://arcraiders.wiki/wiki/Medium_Gun_Parts",
+      "rarity": "Rare",
+      "weight": "0.4",
+      "stack_size": "5",
+      "description": "Assorted spare parts used for rifles.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Heavy_Gun_Parts",
+      "name": "Heavy Gun Parts",
+      "url": "https://arcraiders.wiki/wiki/Heavy_Gun_Parts",
+      "rarity": "Rare",
+      "weight": "0.5",
+      "stack_size": "5",
+      "description": "Used directly in crafting items of all tiers.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Complex_Gun_Parts",
+      "name": "Complex Gun Parts",
+      "url": "https://arcraiders.wiki/wiki/Complex_Gun_Parts",
+      "rarity": "Epic",
+      "weight": "1",
+      "stack_size": "3",
+      "description": "Used to craft advanced weapons.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "ARC_Alloy",
+      "name": "ARC Alloy",
+      "url": "https://arcraiders.wiki/wiki/ARC_Alloy",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Obtained from ARC enemies or activites, or by recycling certain ARC parts. Used to craft components.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "ARC_Circuitry",
+      "name": "ARC Circuitry",
+      "url": "https://arcraiders.wiki/wiki/ARC_Circuitry",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Obtained from ARC enemies or activities. Used to craft components. Can be recycled into ARC Alloy.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "ARC_Motion_Core",
+      "name": "ARC Motion Core",
+      "url": "https://arcraiders.wiki/wiki/ARC_Motion_Core",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Obtained from ARC enemies or activities. Used to craft components. Can be recycled into ARC Alloy.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "ARC_Powercell",
+      "name": "ARC Powercell",
+      "url": "https://arcraiders.wiki/wiki/ARC_Powercell",
+      "rarity": "Common",
+      "weight": "0.5",
+      "stack_size": "5",
+      "description": "Valuable resource that drops from all ARC enemies.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Advanced_ARC_Powercell",
+      "name": "Advanced ARC Powercell",
+      "url": "https://arcraiders.wiki/wiki/Advanced_ARC_Powercell",
+      "rarity": "Rare",
+      "weight": "0.5",
+      "stack_size": "5",
+      "description": "Very valuable resource that drops from certain ARC enemies.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Magnetic_Accelerator",
+      "name": "Magnetic Accelerator",
+      "url": "https://arcraiders.wiki/wiki/Magnetic_Accelerator",
+      "rarity": "Epic",
+      "weight": "1.0",
+      "stack_size": "3",
+      "description": "Used to craft advanced weapons.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Steel_Spring",
+      "name": "Steel Spring",
+      "url": "https://arcraiders.wiki/wiki/Steel_Spring",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Magnet",
+      "name": "Magnet",
+      "url": "https://arcraiders.wiki/wiki/Magnet",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": null,
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Canister",
+      "name": "Canister",
+      "url": "https://arcraiders.wiki/wiki/Canister",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Used to craft a wide range of items. Can be recycled into plastic.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Voltage_Converter",
+      "name": "Voltage Converter",
+      "url": "https://arcraiders.wiki/wiki/Voltage_Converter",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Used in crafting.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Power_Rod",
+      "name": "Power Rod",
+      "url": "https://arcraiders.wiki/wiki/Power_Rod",
+      "rarity": "Epic",
+      "weight": "1",
+      "stack_size": "3",
+      "description": "Used in crafting.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Exodus_Modules",
+      "name": "Exodus Modules",
+      "url": "https://arcraiders.wiki/wiki/Exodus_Modules",
+      "rarity": "Epic",
+      "weight": "1",
+      "stack_size": "3",
+      "description": "Used to craft a wide range of items.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Queen_Reactor",
+      "name": "Queen Reactor",
+      "url": "https://arcraiders.wiki/wiki/Queen_Reactor",
+      "rarity": "Legendary",
+      "weight": "10.0",
+      "stack_size": "1",
+      "description": "Can be recycled into crafting materials.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    },
+    {
+      "id": "Matriarch_Reactor",
+      "name": "Matriarch Reactor",
+      "url": "https://arcraiders.wiki/wiki/Matriarch_Reactor",
+      "rarity": "Legendary",
+      "weight": "10.0",
+      "stack_size": "1",
+      "description": "Can be recycled into crafting materials.",
+      "obtained_by": [],
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      },
+      "used_in": []
+    }
+  ],
+  "ammo": [
+    {
+      "id": "Light_Ammo",
+      "name": "Light Ammo",
+      "url": "https://arcraiders.wiki/wiki/Light_Ammo",
+      "weight": "0.01",
+      "stack_size": "100",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Chemicals",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Workbench 1",
+        "output_quantity": 25
+      }
+    },
+    {
+      "id": "Medium_Ammo",
+      "name": "Medium Ammo",
+      "url": "https://arcraiders.wiki/wiki/Medium_Ammo",
+      "weight": "0.025",
+      "stack_size": "80",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Chemicals",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Workbench 1",
+        "output_quantity": 20
+      }
+    },
+    {
+      "id": "Heavy_Ammo",
+      "name": "Heavy Ammo",
+      "url": "https://arcraiders.wiki/wiki/Heavy_Ammo",
+      "weight": "0.05",
+      "stack_size": "40",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Chemicals",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Workbench 1",
+        "output_quantity": 10
+      }
+    },
+    {
+      "id": "Shotgun_Ammo",
+      "name": "Shotgun Ammo",
+      "url": "https://arcraiders.wiki/wiki/Shotgun_Ammo",
+      "weight": "0.085",
+      "stack_size": "20",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Chemicals",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Workbench 1",
+        "output_quantity": 5
+      }
+    },
+    {
+      "id": "Energy_Clip",
+      "name": "Energy Clip",
+      "url": "https://arcraiders.wiki/wiki/Energy_Clip",
+      "weight": "0.3",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Advanced ARC Powercell",
+            "quantity": 1
+          },
+          {
+            "material": "Battery",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Workbench 1",
+        "output_quantity": 5
+      }
+    },
+    {
+      "id": "Launcher_Ammo",
+      "name": "Launcher Ammo",
+      "url": "https://arcraiders.wiki/wiki/Launcher_Ammo",
+      "weight": "0.1",
+      "stack_size": "24",
+      "crafting": {
+        "materials": [
+          {
+            "material": "ARC Motion Core",
+            "quantity": 1
+          },
+          {
+            "material": "Crude Explosives",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Workbench 1",
+        "output_quantity": 6
+      }
+    }
+  ]
+}

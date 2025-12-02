@@ -1,0 +1,2536 @@
+[
+  {
+    "name": "Kettle",
+    "url": "https://arcraiders.wiki/wiki/Kettle",
+    "category": "",
+    "rarity": "Common",
+    "ammo_type": "Light Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Light-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Rubber Parts",
+          "quantity": 8
+        }
+      ],
+      "workshop": "Gunsmith 1orWorkbench 1",
+      "output": "Kettle I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Kettle II",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 8
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 10
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "25% Increased Bullet Velocity13% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Kettle III",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 10
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "50% Increased Bullet Velocity26% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Kettle IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "75% Increased Bullet Velocity40% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 6
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 12
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Rattler",
+    "url": "https://arcraiders.wiki/wiki/Rattler",
+    "category": "",
+    "rarity": "Common",
+    "ammo_type": "Medium Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 16
+        },
+        {
+          "material": "Rubber Parts",
+          "quantity": 12
+        }
+      ],
+      "workshop": "Gunsmith 1",
+      "output": "Rattler I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Rattler II",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "+4 Magazine Size+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Rattler III",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "+8 Magazine Size+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Rattler IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "+12 Magazine Size+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Arpeggio",
+    "url": "https://arcraiders.wiki/wiki/Arpeggio",
+    "category": "",
+    "rarity": "Uncommon",
+    "ammo_type": "Medium Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Medium-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 6
+        },
+        {
+          "material": "Simple Gun Parts",
+          "quantity": 6
+        }
+      ],
+      "workshop": "Gunsmith 2",
+      "output": "Arpeggio I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Arpeggio II",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "20% Increased Fire Rate12.5% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Arpeggio III",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "40% Increased Fire Rate25% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Arpeggio IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "60% Increased Fire Rate50% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 5
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Tempest",
+    "url": "https://arcraiders.wiki/wiki/Tempest",
+    "category": "",
+    "rarity": "Epic",
+    "ammo_type": "Medium Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Medium-Mag"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Magnetic Accelerator",
+          "quantity": 1
+        },
+        {
+          "material": "Medium Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Exodus Modules",
+          "quantity": 2
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Tempest I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Tempest II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "16.6% Reduced Horizontal Recoil13% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Tempest III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "33.3% Reduced Horizontal Recoil26% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Tempest IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "50% Reduced Horizontal Recoil40% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Bettina",
+    "url": "https://arcraiders.wiki/wiki/Bettina",
+    "category": "",
+    "rarity": "Epic",
+    "ammo_type": "Heavy Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Advanced Mechanical Components",
+          "quantity": 3
+        },
+        {
+          "material": "Heavy Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Canister",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Bettina I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Bettina II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 3",
+        "perks": "5% Increased Fire Rate11.1% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Bettina III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 3",
+        "perks": "10% Increased Fire Rate22.2% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Bettina IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 3",
+        "perks": "15% Increased Fire Rate33.3% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Ferro",
+    "url": "https://arcraiders.wiki/wiki/Ferro",
+    "category": "",
+    "rarity": "Common",
+    "ammo_type": "Heavy Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 5
+        },
+        {
+          "material": "Rubber Parts",
+          "quantity": 2
+        }
+      ],
+      "workshop": "Gunsmith 1",
+      "output": "Ferro I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Ferro II",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 7
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "13% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Ferro III",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 9
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "26% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Ferro IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "39% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 4
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Renegade",
+    "url": "https://arcraiders.wiki/wiki/Renegade",
+    "category": "",
+    "rarity": "Rare",
+    "ammo_type": "Medium Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Medium-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Advanced Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Medium Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Oil",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Renegade I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Renegade II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "16.6% Reduced Dispersion Recovery Time25% Increased Fire Rate+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Renegade III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "33.3% Reduced Dispersion Recovery Time50% Increased Fire Rate+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Renegade IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "50% Reduced Dispersion Recovery Time75% Increased Fire Rate+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Aphelion",
+    "url": "https://arcraiders.wiki/wiki/Aphelion",
+    "category": "",
+    "rarity": "Legendary",
+    "ammo_type": "Energy Clip",
+    "modification_slots": [
+      "Underbarrel",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Magnetic Accelerator",
+          "quantity": 3
+        },
+        {
+          "material": "Complex Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Matriarch Reactor",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Aphelion"
+    },
+    "upgrades": [],
+    "repair": []
+  },
+  {
+    "name": "Stitcher",
+    "url": "https://arcraiders.wiki/wiki/Stitcher",
+    "category": "",
+    "rarity": "Common",
+    "ammo_type": "Light Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Light-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 8
+        },
+        {
+          "material": "Rubber Parts",
+          "quantity": 4
+        }
+      ],
+      "workshop": "Gunsmith 1orWorkbench 1",
+      "output": "Stitcher I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Stitcher II",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 8
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 12
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "16.6% Reduced Horizontal Recoil13% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Stitcher III",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 10
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "33.3% Reduced Horizontal Recoil26% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Stitcher IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "50% Reduced Horizontal Recoil40% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 6
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 12
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Bobcat",
+    "url": "https://arcraiders.wiki/wiki/Bobcat",
+    "category": "",
+    "rarity": "Epic",
+    "ammo_type": "Light Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Light-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Magnetic Accelerator",
+          "quantity": 1
+        },
+        {
+          "material": "Light Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Exodus Modules",
+          "quantity": 2
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Bobcat I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Bobcat II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "15% Reduced Max Shot Dispersion15% Reduced Horizontal Recoil13% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Bobcat III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "30% Reduced Max Shot Dispersion30% Reduced Horizontal Recoil26% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Bobcat IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "50% Reduced Max Shot Dispersion45% Reduced Horizontal Recoil40% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Il Toro",
+    "url": "https://arcraiders.wiki/wiki/Il_Toro",
+    "category": "",
+    "rarity": "Uncommon",
+    "ammo_type": "Shotgun Ammo",
+    "modification_slots": [
+      "Shotgun-Muzzle",
+      "Underbarrel",
+      "Shotgun-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 5
+        },
+        {
+          "material": "Simple Gun Parts",
+          "quantity": 6
+        }
+      ],
+      "workshop": "Gunsmith 1",
+      "output": "Il Toro I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Il Toro II",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "17.5% Increased Fire Rate+1 Magazine Size+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Il Toro III",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "35% Increased Fire Rate+2 Magazine Size+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Il Toro IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "50% Increased Fire Rate+3 Magazine Size+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 5
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Vulcano",
+    "url": "https://arcraiders.wiki/wiki/Vulcano",
+    "category": "",
+    "rarity": "Epic",
+    "ammo_type": "Shotgun Ammo",
+    "modification_slots": [
+      "Shotgun-Muzzle",
+      "Underbarrel",
+      "Shotgun-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Magnetic Accelerator",
+          "quantity": 1
+        },
+        {
+          "material": "Heavy Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Exodus Modules",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Vulcano I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Vulcano II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "10% Increased Fire Rate13% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Vulcano III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "20% Increased Fire Rate26% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Vulcano IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "30% Increased Fire Rate40% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Hairpin",
+    "url": "https://arcraiders.wiki/wiki/Hairpin",
+    "category": "",
+    "rarity": "Common",
+    "ammo_type": "Light Ammo",
+    "modification_slots": [
+      "Light-Mag"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 2
+        },
+        {
+          "material": "Plastic Parts",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 1orWorkbench 1",
+      "output": "Hairpin I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Hairpin II",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Gunmsith 1",
+        "perks": "10% Increased Fire Rate13% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Hairpin III",
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "20% Increased Fire Rate26% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Hairpin IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "30% Increased Fire Rate40% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 4
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Metal Parts",
+            "quantity": 6
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Burletta",
+    "url": "https://arcraiders.wiki/wiki/Burletta",
+    "category": "",
+    "rarity": "Uncommon",
+    "ammo_type": "Light Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Light-Mag"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 3
+        },
+        {
+          "material": "Simple Gun Parts",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 1",
+      "output": "Burletta I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Burletta II",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "16.6% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Burletta III",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "33.3% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Burletta IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "50% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Anvil",
+    "url": "https://arcraiders.wiki/wiki/Anvil",
+    "category": "",
+    "rarity": "Uncommon",
+    "ammo_type": "Heavy Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Tech-Mod"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 5
+        },
+        {
+          "material": "Simple Gun Parts",
+          "quantity": 6
+        }
+      ],
+      "workshop": "Gunsmith 1",
+      "output": "Anvil I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Anvil II",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "6.5% Reduced Dispersion Recovery Time25% Increased Fire Rate+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Anvil III",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "12.5% Reduced Dispersion Recovery Time50% Increased Fire Rate+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Anvil IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "18.75% Reduced Dispersion Recovery Time75% Increased Fire Rate+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 5
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Venator",
+    "url": "https://arcraiders.wiki/wiki/Venator",
+    "category": "",
+    "rarity": "Rare",
+    "ammo_type": "Medium Ammo",
+    "modification_slots": [
+      "Underbarrel",
+      "Medium-Mag"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Advanced Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Medium Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Magnet",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 2",
+      "output": "Venator I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Venator II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "13% Increased Fire Rate16% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Venator III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "26% Increased Fire Rate33% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Venator IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "40% Increased Fire Rate50% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Torrente",
+    "url": "https://arcraiders.wiki/wiki/Torrente",
+    "category": "",
+    "rarity": "Rare",
+    "ammo_type": "Medium Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Medium-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Advanced Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Medium Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 6
+        }
+      ],
+      "workshop": "Gunsmith 2",
+      "output": "Torrente I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Torrente II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "+10 Magazine Size15% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Torrente III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "+20 Magazine Size30% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Torrente IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "+30 Magazine Size45% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Osprey",
+    "url": "https://arcraiders.wiki/wiki/Osprey",
+    "category": "",
+    "rarity": "Rare",
+    "ammo_type": "Medium Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Underbarrel",
+      "Medium-Mag",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Advanced Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Medium Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Wires",
+          "quantity": 7
+        }
+      ],
+      "workshop": "Gunsmith 2",
+      "output": "Osprey I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Osprey II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "20% Reduced Bolt Action Time12.5% Reduced Reload Time+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Osprey III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "40% Reduced Bolt Action Time25% Reduced Reload Time+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Osprey IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "60% Reduced Bolt Action Time37.5% Reduced Reload Time+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Jupiter",
+    "url": "https://arcraiders.wiki/wiki/Jupiter",
+    "category": "",
+    "rarity": "Legendary",
+    "ammo_type": "Energy Clip",
+    "modification_slots": [],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Magnetic Accelerator",
+          "quantity": 3
+        },
+        {
+          "material": "Complex Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Queen Reactor",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Jupiter"
+    },
+    "upgrades": [],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 2
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      }
+    ]
+  },
+  {
+    "name": "Hullcracker",
+    "url": "https://arcraiders.wiki/wiki/Hullcracker",
+    "category": "",
+    "rarity": "Epic",
+    "ammo_type": null,
+    "modification_slots": [
+      "Underbarrel",
+      "Stock"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Magnetic Accelerator",
+          "quantity": 1
+        },
+        {
+          "material": "Heavy Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Exodus Modules",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Hullcracker I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Hullcracker II",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 2",
+        "perks": "18% Increased Fire Rate+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Hullcracker III",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 2",
+        "perks": "35% Increased Fire Rate+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Hullcracker IV",
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 2",
+        "perks": "53% Increased Fire Rate+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
+    "name": "Equalizer",
+    "url": "https://arcraiders.wiki/wiki/Equalizer",
+    "category": "",
+    "rarity": "Legendary",
+    "ammo_type": "Energy Clip",
+    "modification_slots": [],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Magnetic Accelerator",
+          "quantity": 3
+        },
+        {
+          "material": "Complex Gun Parts",
+          "quantity": 3
+        },
+        {
+          "material": "Queen Reactor",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 3",
+      "output": "Equalizer"
+    },
+    "upgrades": [],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 2
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "durability_restored": "+50"
+      }
+    ]
+  }
+]

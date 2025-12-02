@@ -1,0 +1,920 @@
+[
+  {
+    "name": "Compensator I",
+    "url": "https://arcraiders.wiki/wiki/Compensator_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly reduces per-shot dispersion."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Wires",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Metal Parts",
+    "url": "https://arcraiders.wiki/wiki/Metal_Parts",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Used to craft a wide range of items."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Wires",
+    "url": "https://arcraiders.wiki/wiki/Wires",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Used to craft a wide range of items. Can be recycled into scrap metal."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Muzzle Brake I",
+    "url": "https://arcraiders.wiki/wiki/Muzzle_Brake_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly reduces both vertical recoil & horizontal recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Wires",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Shotgun Choke I",
+    "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly reduces base dispersion."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Metal Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Wires",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Angled Grip I",
+    "url": "https://arcraiders.wiki/wiki/Angled_Grip_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly reduces horizontal recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Plastic Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Plastic Parts",
+    "url": "https://arcraiders.wiki/wiki/Plastic_Parts",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Used to craft a wide range of items."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Duct Tape",
+    "url": "https://arcraiders.wiki/wiki/Duct_Tape",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Used to craft weapons and weapon mods. Can be recycled into plastic."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Vertical Grip I",
+    "url": "https://arcraiders.wiki/wiki/Vertical_Grip_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly reduces vertical recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Plastic Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Extended Light Mag I",
+    "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly extends the ammo capacity of compatible weapons that use light ammo."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Plastic Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Steel Spring",
+    "url": "https://arcraiders.wiki/wiki/Steel_Spring",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Used to craft a wide range of items. Can be recycled into scrap metal."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Extended Medium Mag I",
+    "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly extends the ammo capacity of compatible weapons that use medium ammo."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Plastic Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Extended Shotgun Mag I",
+    "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly extends the ammo capacity of shotguns."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Plastic Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Stable Stock I",
+    "url": "https://arcraiders.wiki/wiki/Stable_Stock_I",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Slightly improves dispersion & recoil recovery time."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Rubber Parts",
+          "quantity": 6
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 1
+        }
+      ],
+      "workshop": "Gunsmith 1"
+    }
+  },
+  {
+    "name": "Rubber Parts",
+    "url": "https://arcraiders.wiki/wiki/Rubber_Parts",
+    "slot_type": null,
+    "rarity": "Common",
+    "effects": [
+      "Used to craft a wide range of items."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Compensator II",
+    "url": "https://arcraiders.wiki/wiki/Compensator_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately reduces per-shot dispersion."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 4
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Mechanical Components",
+    "url": "https://arcraiders.wiki/wiki/Mechanical_Components",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Used to craft a wide range of items. Can be recycled into crafting materials."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Muzzle Brake II",
+    "url": "https://arcraiders.wiki/wiki/Muzzle_Brake_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately reduces both vertical recoil & horizontal recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 4
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Shotgun Choke II",
+    "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately reduces base dispersion."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Silencer I",
+    "url": "https://arcraiders.wiki/wiki/Silencer_I",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Slightly reduces the amount of noise produced when firing."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Angled Grip II",
+    "url": "https://arcraiders.wiki/wiki/Angled_Grip_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately reduces horizontal recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Vertical Grip II",
+    "url": "https://arcraiders.wiki/wiki/Vertical_Grip_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately reduces vertical recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Extended Light Mag II",
+    "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately extends the ammo capacity of the compatible weapons that use light ammo."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Extended Medium Mag II",
+    "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately extends the ammo capacity of compatible weapons that use medium ammo."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Extended Shotgun Mag II",
+    "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Moderately extends the ammo capacity of compatible weapons that use shotgun ammo."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Stable Stock II",
+    "url": "https://arcraiders.wiki/wiki/Stable_Stock_II",
+    "slot_type": null,
+    "rarity": "Uncommon",
+    "effects": [
+      "Slightly improves dispersion & recoil recovery time."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 3
+        }
+      ],
+      "workshop": "Gunsmith 2"
+    }
+  },
+  {
+    "name": "Compensator III",
+    "url": "https://arcraiders.wiki/wiki/Compensator_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly reduces per-shot dispersion."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 8
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Mod Components",
+    "url": "https://arcraiders.wiki/wiki/Mod_Components",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Used to craft weapons mods. Can be recycled into crafting materials."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Muzzle Brake III",
+    "url": "https://arcraiders.wiki/wiki/Muzzle_Brake_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Signifcantly reduces both vertical recoil & horizontal recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 8
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Shotgun Choke III",
+    "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly reduces base dispersion."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 8
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Silencer II",
+    "url": "https://arcraiders.wiki/wiki/Silencer_II",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Moderately reduces the amount of noise produced when firing."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 8
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Silencer III",
+    "url": "https://arcraiders.wiki/wiki/Silencer_III",
+    "slot_type": null,
+    "rarity": "Epic",
+    "effects": [
+      "Significantly reduces the amount of noise produced when firing."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Shotgun Silencer",
+    "url": "https://arcraiders.wiki/wiki/Shotgun_Silencer",
+    "slot_type": null,
+    "rarity": "Epic",
+    "effects": [
+      "Moderately reduces the amount of noise produced when firing."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 8
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Extended Barrel",
+    "url": "https://arcraiders.wiki/wiki/Extended_Barrel",
+    "slot_type": null,
+    "rarity": "Epic",
+    "effects": [
+      "Moderately increases bullet velocity."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 8
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Angled Grip III",
+    "url": "https://arcraiders.wiki/wiki/Angled_Grip_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly reduces horizontal recoil"
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Vertical Grip III",
+    "url": "https://arcraiders.wiki/wiki/Vertical_Grip_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly reduces vertical recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Horizontal Grip",
+    "url": "https://arcraiders.wiki/wiki/Horizontal_Grip",
+    "slot_type": null,
+    "rarity": "Epic",
+    "effects": [
+      "Moderately reduces both vertical and horizontal recoil."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Extended Light Mag III",
+    "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly extends the ammo capacity of the compatible weapons that use light ammo."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Extended Medium Mag III",
+    "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly extends the ammo capacity of compatible weapons that use medium ammo."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Extended Shotgun Mag III",
+    "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly extends the ammo capacity of shotguns."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Steel Spring",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Stable Stock III",
+    "url": "https://arcraiders.wiki/wiki/Stable_Stock_III",
+    "slot_type": null,
+    "rarity": "Rare",
+    "effects": [
+      "Significantly improves dispersion & recoil recovery time"
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Lightweight Stock",
+    "url": "https://arcraiders.wiki/wiki/Lightweight_Stock",
+    "slot_type": null,
+    "rarity": "Epic",
+    "effects": [
+      "Moderately improves ADS & draw speed."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Padded Stock",
+    "url": "https://arcraiders.wiki/wiki/Padded_Stock",
+    "slot_type": null,
+    "rarity": "Epic",
+    "effects": [
+      "Significantly improves stability."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [
+        {
+          "material": "Mod Components",
+          "quantity": 2
+        },
+        {
+          "material": "Duct Tape",
+          "quantity": 5
+        }
+      ],
+      "workshop": "Gunsmith 3"
+    }
+  },
+  {
+    "name": "Kinetic Converter",
+    "url": "https://arcraiders.wiki/wiki/Kinetic_Converter",
+    "slot_type": null,
+    "rarity": "Legendary",
+    "effects": [
+      "Moderately increases fire rate."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  },
+  {
+    "name": "Anvil Splitter",
+    "url": "https://arcraiders.wiki/wiki/Anvil_Splitter",
+    "slot_type": null,
+    "rarity": "Legendary",
+    "effects": [
+      "Tech mod for the Anvil that replaces its bullets with ones that split into 4 weaker projectiles."
+    ],
+    "compatible_weapons": [],
+    "crafting": {
+      "materials": [],
+      "workshop": null
+    }
+  }
+]
