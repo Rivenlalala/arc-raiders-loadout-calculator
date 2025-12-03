@@ -358,7 +358,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center">
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
                   <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
@@ -445,7 +445,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center">
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
                   <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
@@ -532,7 +532,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center">
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
                   <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
@@ -619,7 +619,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center">
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
                   <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
