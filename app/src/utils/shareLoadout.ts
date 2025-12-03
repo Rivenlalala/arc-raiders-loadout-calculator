@@ -1,3 +1,4 @@
+import LZString from 'lz-string';
 import type { Loadout, LoadoutWeapon, LoadoutItem } from '../types';
 
 // Compact format for URL encoding
@@ -55,23 +56,20 @@ export function encodeLoadout(loadout: Loadout): string {
   if (loadout.traps.length > 0) compact.t = compactItems(loadout.traps);
   if (loadout.ammo.length > 0) compact.am = compactAmmo(loadout.ammo);
 
-  // Convert to JSON and encode as URL-safe base64
+  // Convert to JSON and compress with LZ-string (URL-safe)
   const json = JSON.stringify(compact);
-  const base64 = btoa(json);
-  // Make URL-safe: replace + with -, / with _, remove padding =
-  return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  return LZString.compressToEncodedURIComponent(json);
 }
 
 export function decodeLoadout(encoded: string): Loadout | null {
   try {
-    // Restore standard base64: replace - with +, _ with /
-    let base64 = encoded.replace(/-/g, '+').replace(/_/g, '/');
-    // Add padding if needed
-    while (base64.length % 4) {
-      base64 += '=';
+    // Decompress with LZ-string
+    const json = LZString.decompressFromEncodedURIComponent(encoded);
+    if (!json) {
+      // Fallback: try legacy base64 decoding for old URLs
+      return decodeLegacyLoadout(encoded);
     }
 
-    const json = atob(base64);
     const compact: CompactLoadout = JSON.parse(json);
 
     return {
@@ -87,6 +85,32 @@ export function decodeLoadout(encoded: string): Loadout | null {
     };
   } catch (e) {
     console.error('Failed to decode loadout:', e);
+    return null;
+  }
+}
+
+// Legacy decoder for old base64 URLs (backwards compatibility)
+function decodeLegacyLoadout(encoded: string): Loadout | null {
+  try {
+    let base64 = encoded.replace(/-/g, '+').replace(/_/g, '/');
+    while (base64.length % 4) {
+      base64 += '=';
+    }
+    const json = atob(base64);
+    const compact: CompactLoadout = JSON.parse(json);
+
+    return {
+      weapon1: expandWeapon(compact.w1),
+      weapon2: expandWeapon(compact.w2),
+      augment: compact.a || null,
+      shield: compact.s || null,
+      healing: expandItems(compact.h),
+      utilities: expandItems(compact.u),
+      grenades: expandItems(compact.g),
+      traps: expandItems(compact.t),
+      ammo: expandAmmo(compact.am),
+    };
+  } catch {
     return null;
   }
 }
