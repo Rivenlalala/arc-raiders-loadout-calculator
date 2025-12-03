@@ -1,31 +1,83 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { WeaponSelector } from './WeaponSelector';
 import { ItemCard } from '../ui/ItemCard';
 import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
+import { useIsMobile } from '../../hooks/useIsMobile';
 import type { Loadout, EquipmentItem } from '../../types';
+
+// Simple hover-only tooltip (desktop only, no mobile interaction)
+function HoverTooltip({
+  item,
+  isHovered,
+  triggerRect,
+  children,
+}: {
+  item: EquipmentItem;
+  isHovered: boolean;
+  triggerRect: DOMRect | null;
+  children: React.ReactNode;
+}) {
+  const isMobile = useIsMobile();
+
+  if (!isHovered || !triggerRect || isMobile) return null;
+
+  // Calculate position
+  const tooltipWidth = 280;
+  const viewport = { width: window.innerWidth, height: window.innerHeight };
+  let left = triggerRect.right + 8;
+  let top = triggerRect.top;
+
+  // If tooltip would go off right edge, position to the left
+  if (left + tooltipWidth > viewport.width - 16) {
+    left = triggerRect.left - tooltipWidth - 8;
+  }
+
+  // If still off screen, position below
+  if (left < 16) {
+    left = Math.max(16, triggerRect.left);
+    top = triggerRect.bottom + 8;
+  }
+
+  // Adjust vertical if needed
+  if (top + 200 > viewport.height - 16) {
+    top = Math.max(16, viewport.height - 200 - 16);
+  }
+
+  return createPortal(
+    <div
+      className="fixed z-[100] w-70 p-3 rounded-lg border bg-card shadow-xl pointer-events-none"
+      style={{
+        top,
+        left,
+        borderColor: getRarityColor(item.rarity),
+      }}
+    >
+      <p className="font-semibold mb-1" style={{ color: getRarityColor(item.rarity) }}>
+        {item.name}
+      </p>
+      {children}
+    </div>,
+    document.body
+  );
+}
 
 interface LoadoutBuilderProps {
   loadout: Loadout;
   onChange: (loadout: Loadout) => void;
 }
 
-// Tooltip component for augments
-function AugmentTooltip({ augment }: { augment: EquipmentItem }) {
+// Tooltip content for augments
+function AugmentTooltipContent({ augment }: { augment: EquipmentItem }) {
   return (
-    <div
-      className="absolute z-50 left-full top-0 ml-2 w-72 p-3 rounded-lg border bg-card shadow-xl"
-      style={{ borderColor: getRarityColor(augment.rarity) }}
-    >
-      <p className="font-semibold" style={{ color: getRarityColor(augment.rarity) }}>
-        {augment.name}
-      </p>
+    <>
       <p className="text-xs text-muted-foreground mb-2">{augment.rarity} Augment</p>
 
       {augment.special_effect && (
-        <p className="text-sm text-green-400 mb-2 p-2 bg-green-400/10 rounded">{augment.special_effect}</p>
+        <p className="text-sm text-green-400 mb-3 p-2 bg-green-400/10 rounded">{augment.special_effect}</p>
       )}
 
-      <div className="grid grid-cols-2 gap-1 text-xs">
+      <div className="grid grid-cols-2 gap-2 text-sm">
         {augment.stats['Backpack Slots'] && (
           <div>Backpack: <span className="text-primary">{augment.stats['Backpack Slots']}</span></div>
         )}
@@ -45,23 +97,17 @@ function AugmentTooltip({ augment }: { augment: EquipmentItem }) {
           <div className="col-span-2">Shield: <span className="text-primary">{augment.stats['Shield Compatibility']}</span></div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
-// Tooltip component for shields
-function ShieldTooltip({ shield }: { shield: EquipmentItem }) {
+// Tooltip content for shields
+function ShieldTooltipContent({ shield }: { shield: EquipmentItem }) {
   return (
-    <div
-      className="absolute z-50 left-full top-0 ml-2 w-56 p-3 rounded-lg border bg-card shadow-xl"
-      style={{ borderColor: getRarityColor(shield.rarity) }}
-    >
-      <p className="font-semibold" style={{ color: getRarityColor(shield.rarity) }}>
-        {shield.name}
-      </p>
+    <>
       <p className="text-xs text-muted-foreground mb-2">{shield.rarity} Shield</p>
 
-      <div className="space-y-1 text-sm">
+      <div className="space-y-2 text-sm">
         {shield.stats['Shield Charge'] && (
           <div className="flex justify-between">
             <span className="text-muted-foreground">Shield Charge</span>
@@ -81,13 +127,12 @@ function ShieldTooltip({ shield }: { shield: EquipmentItem }) {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
-// Tooltip component for consumables (healing, grenades, utilities)
-function ConsumableTooltip({ item }: { item: EquipmentItem }) {
-  // Define which stats to display based on category
+// Tooltip content for consumables (healing, grenades, utilities)
+function ConsumableTooltipContent({ item }: { item: EquipmentItem }) {
   const healingStats = ['Healing', 'Use Time', 'Duration'];
   const grenadeStats = ['Damage', 'Radius', 'Duration', 'Effect'];
   const utilityStats = ['Duration', 'Effect', 'Radius'];
@@ -96,27 +141,21 @@ function ConsumableTooltip({ item }: { item: EquipmentItem }) {
     item.category === 'grenades' ? grenadeStats : utilityStats;
 
   return (
-    <div
-      className="absolute z-[100] bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 p-3 rounded-lg border bg-card shadow-xl pointer-events-none"
-      style={{ borderColor: getRarityColor(item.rarity) }}
-    >
-      <div className="flex items-center gap-2 mb-2">
+    <>
+      <div className="flex items-center gap-3 mb-3">
         {item.image && (
-          <img src={`/${item.image}`} alt={item.name} className="w-10 h-10 object-contain" />
+          <img src={`/${item.image}`} alt={item.name} className="w-12 h-12 object-contain" />
         )}
         <div>
-          <p className="font-semibold text-sm" style={{ color: getRarityColor(item.rarity) }}>
-            {item.name}
-          </p>
           <p className="text-xs text-muted-foreground">{item.rarity} {item.category}</p>
         </div>
       </div>
 
       {item.description && (
-        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{item.description}</p>
+        <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{item.description}</p>
       )}
 
-      <div className="space-y-1 text-xs border-t border-border pt-2">
+      <div className="space-y-2 text-sm border-t border-border pt-3">
         {statsToShow.map(stat => {
           const value = item.stats[stat];
           if (!value) return null;
@@ -140,20 +179,27 @@ function ConsumableTooltip({ item }: { item: EquipmentItem }) {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
 export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
-  const [hoveredAugment, setHoveredAugment] = useState<EquipmentItem | null>(null);
-  const [hoveredShield, setHoveredShield] = useState<EquipmentItem | null>(null);
-  const [hoveredConsumable, setHoveredConsumable] = useState<EquipmentItem | null>(null);
+  const [hoveredItem, setHoveredItem] = useState<{ id: string; rect: DOMRect } | null>(null);
 
   const augments = getAugments();
   const compatibleShields = getShieldsForAugment(loadout.augment);
   const healing = getHealing().filter(h => h.crafting.materials.length > 0);
   const grenades = getGrenades().filter(g => g.crafting.materials.length > 0);
   const utilities = getQuickUse().filter(u => u.crafting.materials.length > 0);
+
+  const handleMouseEnter = (id: string, e: React.MouseEvent) => {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    setHoveredItem({ id, rect });
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredItem(null);
+  };
 
   const handleAugmentChange = (augmentId: string | null) => {
     // When augment changes, check if current shield is still compatible
@@ -203,9 +249,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
             {augments.map((augment) => (
               <div
                 key={augment.id}
-                className="relative"
-                onMouseEnter={() => setHoveredAugment(augment)}
-                onMouseLeave={() => setHoveredAugment(null)}
+                onMouseEnter={(e) => handleMouseEnter(augment.id, e)}
+                onMouseLeave={handleMouseLeave}
               >
                 <ItemCard
                   name={augment.name}
@@ -215,7 +260,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                   onClick={() => handleAugmentChange(loadout.augment === augment.id ? null : augment.id)}
                   size="sm"
                 />
-                {hoveredAugment?.id === augment.id && <AugmentTooltip augment={augment} />}
+                <HoverTooltip
+                  item={augment}
+                  isHovered={hoveredItem?.id === augment.id}
+                  triggerRect={hoveredItem?.id === augment.id ? hoveredItem.rect : null}
+                >
+                  <AugmentTooltipContent augment={augment} />
+                </HoverTooltip>
               </div>
             ))}
           </div>
@@ -241,9 +292,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
             {compatibleShields.map((shield) => (
               <div
                 key={shield.id}
-                className="relative"
-                onMouseEnter={() => setHoveredShield(shield)}
-                onMouseLeave={() => setHoveredShield(null)}
+                onMouseEnter={(e) => handleMouseEnter(shield.id, e)}
+                onMouseLeave={handleMouseLeave}
               >
                 <ItemCard
                   name={shield.name}
@@ -253,7 +303,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                   onClick={() => onChange({ ...loadout, shield: loadout.shield === shield.id ? null : shield.id })}
                   size="sm"
                 />
-                {hoveredShield?.id === shield.id && <ShieldTooltip shield={shield} />}
+                <HoverTooltip
+                  item={shield}
+                  isHovered={hoveredItem?.id === shield.id}
+                  triggerRect={hoveredItem?.id === shield.id ? hoveredItem.rect : null}
+                >
+                  <ShieldTooltipContent shield={shield} />
+                </HoverTooltip>
               </div>
             ))}
           </div>
@@ -283,12 +339,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center gap-1"
-                  onMouseEnter={() => setHoveredConsumable(item)}
-                  onMouseLeave={() => setHoveredConsumable(null)}
-                >
+                <div key={item.id} className="flex flex-col items-center gap-1">
                   <div
                     className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
                     onClick={() => {
@@ -298,6 +349,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       }
                       onChange({ ...loadout, healing: newHealing });
                     }}
+                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                    onMouseLeave={handleMouseLeave}
                   >
                     <img
                       src={`/${item.image}`}
@@ -309,7 +362,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         {qty}
                       </span>
                     )}
-                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
+                    <HoverTooltip
+                      item={item}
+                      isHovered={hoveredItem?.id === item.id}
+                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                    >
+                      <ConsumableTooltipContent item={item} />
+                    </HoverTooltip>
                   </div>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
@@ -359,12 +418,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center gap-1"
-                  onMouseEnter={() => setHoveredConsumable(item)}
-                  onMouseLeave={() => setHoveredConsumable(null)}
-                >
+                <div key={item.id} className="flex flex-col items-center gap-1">
                   <div
                     className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
                     onClick={() => {
@@ -374,6 +428,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       }
                       onChange({ ...loadout, grenades: newGrenades });
                     }}
+                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                    onMouseLeave={handleMouseLeave}
                   >
                     <img
                       src={`/${item.image}`}
@@ -385,7 +441,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         {qty}
                       </span>
                     )}
-                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
+                    <HoverTooltip
+                      item={item}
+                      isHovered={hoveredItem?.id === item.id}
+                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                    >
+                      <ConsumableTooltipContent item={item} />
+                    </HoverTooltip>
                   </div>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
@@ -435,12 +497,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center gap-1"
-                  onMouseEnter={() => setHoveredConsumable(item)}
-                  onMouseLeave={() => setHoveredConsumable(null)}
-                >
+                <div key={item.id} className="flex flex-col items-center gap-1">
                   <div
                     className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
                     onClick={() => {
@@ -450,6 +507,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       }
                       onChange({ ...loadout, utilities: newUtilities });
                     }}
+                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                    onMouseLeave={handleMouseLeave}
                   >
                     <img
                       src={`/${item.image}`}
@@ -461,7 +520,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         {qty}
                       </span>
                     )}
-                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
+                    <HoverTooltip
+                      item={item}
+                      isHovered={hoveredItem?.id === item.id}
+                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                    >
+                      <ConsumableTooltipContent item={item} />
+                    </HoverTooltip>
                   </div>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
