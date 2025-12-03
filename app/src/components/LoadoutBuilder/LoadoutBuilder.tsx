@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { WeaponSelector } from './WeaponSelector';
 import { ItemCard } from '../ui/ItemCard';
+import { MobileTooltip } from '../ui/MobileTooltip';
 import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
 import type { Loadout, EquipmentItem } from '../../types';
 
@@ -9,23 +9,17 @@ interface LoadoutBuilderProps {
   onChange: (loadout: Loadout) => void;
 }
 
-// Tooltip component for augments
-function AugmentTooltip({ augment }: { augment: EquipmentItem }) {
+// Tooltip content for augments
+function AugmentTooltipContent({ augment }: { augment: EquipmentItem }) {
   return (
-    <div
-      className="absolute z-50 left-full top-0 ml-2 w-72 p-3 rounded-lg border bg-card shadow-xl"
-      style={{ borderColor: getRarityColor(augment.rarity) }}
-    >
-      <p className="font-semibold" style={{ color: getRarityColor(augment.rarity) }}>
-        {augment.name}
-      </p>
+    <>
       <p className="text-xs text-muted-foreground mb-2">{augment.rarity} Augment</p>
 
       {augment.special_effect && (
-        <p className="text-sm text-green-400 mb-2 p-2 bg-green-400/10 rounded">{augment.special_effect}</p>
+        <p className="text-sm text-green-400 mb-3 p-2 bg-green-400/10 rounded">{augment.special_effect}</p>
       )}
 
-      <div className="grid grid-cols-2 gap-1 text-xs">
+      <div className="grid grid-cols-2 gap-2 text-sm">
         {augment.stats['Backpack Slots'] && (
           <div>Backpack: <span className="text-primary">{augment.stats['Backpack Slots']}</span></div>
         )}
@@ -45,23 +39,17 @@ function AugmentTooltip({ augment }: { augment: EquipmentItem }) {
           <div className="col-span-2">Shield: <span className="text-primary">{augment.stats['Shield Compatibility']}</span></div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
-// Tooltip component for shields
-function ShieldTooltip({ shield }: { shield: EquipmentItem }) {
+// Tooltip content for shields
+function ShieldTooltipContent({ shield }: { shield: EquipmentItem }) {
   return (
-    <div
-      className="absolute z-50 left-full top-0 ml-2 w-56 p-3 rounded-lg border bg-card shadow-xl"
-      style={{ borderColor: getRarityColor(shield.rarity) }}
-    >
-      <p className="font-semibold" style={{ color: getRarityColor(shield.rarity) }}>
-        {shield.name}
-      </p>
+    <>
       <p className="text-xs text-muted-foreground mb-2">{shield.rarity} Shield</p>
 
-      <div className="space-y-1 text-sm">
+      <div className="space-y-2 text-sm">
         {shield.stats['Shield Charge'] && (
           <div className="flex justify-between">
             <span className="text-muted-foreground">Shield Charge</span>
@@ -81,13 +69,12 @@ function ShieldTooltip({ shield }: { shield: EquipmentItem }) {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
-// Tooltip component for consumables (healing, grenades, utilities)
-function ConsumableTooltip({ item }: { item: EquipmentItem }) {
-  // Define which stats to display based on category
+// Tooltip content for consumables (healing, grenades, utilities)
+function ConsumableTooltipContent({ item }: { item: EquipmentItem }) {
   const healingStats = ['Healing', 'Use Time', 'Duration'];
   const grenadeStats = ['Damage', 'Radius', 'Duration', 'Effect'];
   const utilityStats = ['Duration', 'Effect', 'Radius'];
@@ -96,27 +83,21 @@ function ConsumableTooltip({ item }: { item: EquipmentItem }) {
     item.category === 'grenades' ? grenadeStats : utilityStats;
 
   return (
-    <div
-      className="absolute z-[100] bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 p-3 rounded-lg border bg-card shadow-xl pointer-events-none"
-      style={{ borderColor: getRarityColor(item.rarity) }}
-    >
-      <div className="flex items-center gap-2 mb-2">
+    <>
+      <div className="flex items-center gap-3 mb-3">
         {item.image && (
-          <img src={`/${item.image}`} alt={item.name} className="w-10 h-10 object-contain" />
+          <img src={`/${item.image}`} alt={item.name} className="w-12 h-12 object-contain" />
         )}
         <div>
-          <p className="font-semibold text-sm" style={{ color: getRarityColor(item.rarity) }}>
-            {item.name}
-          </p>
           <p className="text-xs text-muted-foreground">{item.rarity} {item.category}</p>
         </div>
       </div>
 
       {item.description && (
-        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{item.description}</p>
+        <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{item.description}</p>
       )}
 
-      <div className="space-y-1 text-xs border-t border-border pt-2">
+      <div className="space-y-2 text-sm border-t border-border pt-3">
         {statsToShow.map(stat => {
           const value = item.stats[stat];
           if (!value) return null;
@@ -140,15 +121,11 @@ function ConsumableTooltip({ item }: { item: EquipmentItem }) {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
 export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
-  const [hoveredAugment, setHoveredAugment] = useState<EquipmentItem | null>(null);
-  const [hoveredShield, setHoveredShield] = useState<EquipmentItem | null>(null);
-  const [hoveredConsumable, setHoveredConsumable] = useState<EquipmentItem | null>(null);
-
   const augments = getAugments();
   const compatibleShields = getShieldsForAugment(loadout.augment);
   const healing = getHealing().filter(h => h.crafting.materials.length > 0);
@@ -201,11 +178,11 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
           <label className="block text-sm font-medium text-muted-foreground">Augment</label>
           <div className="flex flex-wrap gap-2">
             {augments.map((augment) => (
-              <div
+              <MobileTooltip
                 key={augment.id}
-                className="relative"
-                onMouseEnter={() => setHoveredAugment(augment)}
-                onMouseLeave={() => setHoveredAugment(null)}
+                title={augment.name}
+                borderColor={getRarityColor(augment.rarity)}
+                content={<AugmentTooltipContent augment={augment} />}
               >
                 <ItemCard
                   name={augment.name}
@@ -215,8 +192,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                   onClick={() => handleAugmentChange(loadout.augment === augment.id ? null : augment.id)}
                   size="sm"
                 />
-                {hoveredAugment?.id === augment.id && <AugmentTooltip augment={augment} />}
-              </div>
+              </MobileTooltip>
             ))}
           </div>
           {selectedAugment && (
@@ -239,11 +215,11 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               <p className="text-sm text-muted-foreground">No compatible shields</p>
             )}
             {compatibleShields.map((shield) => (
-              <div
+              <MobileTooltip
                 key={shield.id}
-                className="relative"
-                onMouseEnter={() => setHoveredShield(shield)}
-                onMouseLeave={() => setHoveredShield(null)}
+                title={shield.name}
+                borderColor={getRarityColor(shield.rarity)}
+                content={<ShieldTooltipContent shield={shield} />}
               >
                 <ItemCard
                   name={shield.name}
@@ -253,8 +229,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                   onClick={() => onChange({ ...loadout, shield: loadout.shield === shield.id ? null : shield.id })}
                   size="sm"
                 />
-                {hoveredShield?.id === shield.id && <ShieldTooltip shield={shield} />}
-              </div>
+              </MobileTooltip>
             ))}
           </div>
           {selectedShield && (
@@ -283,34 +258,34 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center gap-1"
-                  onMouseEnter={() => setHoveredConsumable(item)}
-                  onMouseLeave={() => setHoveredConsumable(null)}
-                >
-                  <div
-                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                    onClick={() => {
-                      const newHealing = loadout.healing.filter(h => h.id !== item.id);
-                      if (qty === 0) {
-                        newHealing.push({ id: item.id, quantity: 1 });
-                      }
-                      onChange({ ...loadout, healing: newHealing });
-                    }}
+                <div key={item.id} className="flex flex-col items-center gap-1">
+                  <MobileTooltip
+                    title={item.name}
+                    borderColor={getRarityColor(item.rarity)}
+                    content={<ConsumableTooltipContent item={item} />}
                   >
-                    <img
-                      src={`/${item.image}`}
-                      alt={item.name}
-                      className="w-12 h-12 object-contain"
-                    />
-                    {qty > 0 && (
-                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
-                        {qty}
-                      </span>
-                    )}
-                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
-                  </div>
+                    <div
+                      className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
+                      onClick={() => {
+                        const newHealing = loadout.healing.filter(h => h.id !== item.id);
+                        if (qty === 0) {
+                          newHealing.push({ id: item.id, quantity: 1 });
+                        }
+                        onChange({ ...loadout, healing: newHealing });
+                      }}
+                    >
+                      <img
+                        src={`/${item.image}`}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain"
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                    </div>
+                  </MobileTooltip>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
                       <button
@@ -359,34 +334,34 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center gap-1"
-                  onMouseEnter={() => setHoveredConsumable(item)}
-                  onMouseLeave={() => setHoveredConsumable(null)}
-                >
-                  <div
-                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                    onClick={() => {
-                      const newGrenades = loadout.grenades.filter(g => g.id !== item.id);
-                      if (qty === 0) {
-                        newGrenades.push({ id: item.id, quantity: 1 });
-                      }
-                      onChange({ ...loadout, grenades: newGrenades });
-                    }}
+                <div key={item.id} className="flex flex-col items-center gap-1">
+                  <MobileTooltip
+                    title={item.name}
+                    borderColor={getRarityColor(item.rarity)}
+                    content={<ConsumableTooltipContent item={item} />}
                   >
-                    <img
-                      src={`/${item.image}`}
-                      alt={item.name}
-                      className="w-12 h-12 object-contain"
-                    />
-                    {qty > 0 && (
-                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
-                        {qty}
-                      </span>
-                    )}
-                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
-                  </div>
+                    <div
+                      className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
+                      onClick={() => {
+                        const newGrenades = loadout.grenades.filter(g => g.id !== item.id);
+                        if (qty === 0) {
+                          newGrenades.push({ id: item.id, quantity: 1 });
+                        }
+                        onChange({ ...loadout, grenades: newGrenades });
+                      }}
+                    >
+                      <img
+                        src={`/${item.image}`}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain"
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                    </div>
+                  </MobileTooltip>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
                       <button
@@ -435,34 +410,34 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center gap-1"
-                  onMouseEnter={() => setHoveredConsumable(item)}
-                  onMouseLeave={() => setHoveredConsumable(null)}
-                >
-                  <div
-                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                    onClick={() => {
-                      const newUtilities = loadout.utilities.filter(u => u.id !== item.id);
-                      if (qty === 0) {
-                        newUtilities.push({ id: item.id, quantity: 1 });
-                      }
-                      onChange({ ...loadout, utilities: newUtilities });
-                    }}
+                <div key={item.id} className="flex flex-col items-center gap-1">
+                  <MobileTooltip
+                    title={item.name}
+                    borderColor={getRarityColor(item.rarity)}
+                    content={<ConsumableTooltipContent item={item} />}
                   >
-                    <img
-                      src={`/${item.image}`}
-                      alt={item.name}
-                      className="w-12 h-12 object-contain"
-                    />
-                    {qty > 0 && (
-                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
-                        {qty}
-                      </span>
-                    )}
-                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
-                  </div>
+                    <div
+                      className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
+                      onClick={() => {
+                        const newUtilities = loadout.utilities.filter(u => u.id !== item.id);
+                        if (qty === 0) {
+                          newUtilities.push({ id: item.id, quantity: 1 });
+                        }
+                        onChange({ ...loadout, utilities: newUtilities });
+                      }}
+                    >
+                      <img
+                        src={`/${item.image}`}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain"
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                    </div>
+                  </MobileTooltip>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
                       <button

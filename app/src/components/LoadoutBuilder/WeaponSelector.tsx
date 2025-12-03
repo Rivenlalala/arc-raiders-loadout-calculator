@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { ChevronDown, X, Search } from 'lucide-react';
+import { ChevronDown, X, Search, Info } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { getWeapons, getWeaponById, getModificationById, getRarityColor } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
 import { ModSelector } from './ModSelector';
+import { MobileTooltip } from '../ui/MobileTooltip';
+import { useIsMobile } from '../../hooks/useIsMobile';
 import type { LoadoutWeapon, Weapon, Modification } from '../../types';
 
 interface WeaponSelectorProps {
@@ -12,17 +14,12 @@ interface WeaponSelectorProps {
   onChange: (weapon: LoadoutWeapon | null) => void;
 }
 
-// Weapon tooltip component
-function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
+// Weapon tooltip content component
+function WeaponTooltipContent({ weapon, tier, mods }: {
   weapon: Weapon;
   tier?: number;
   mods?: string[];
-  position?: 'right' | 'bottom';
 }) {
-  const positionClasses = position === 'right'
-    ? 'left-full top-0 ml-2'
-    : 'top-full left-1/2 -translate-x-1/2 mt-2';
-
   const currentTier = tier || 1;
   const selectedMods: Modification[] = (mods || [])
     .filter(id => id)
@@ -30,41 +27,37 @@ function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
     .filter((m): m is Modification => m !== undefined);
 
   return (
-    <div
-      className={cn(
-        'absolute z-[100] w-72 p-3 rounded-lg border bg-card shadow-xl pointer-events-none',
-        positionClasses
-      )}
-      style={{ borderColor: getRarityColor(weapon.rarity) }}
-    >
-      <div className="flex items-center gap-2 mb-2">
+    <>
+      <div className="flex items-center gap-3 mb-3">
         {weapon.image && (
-          <img src={`/${weapon.image}`} alt={weapon.name} className="w-12 h-12 object-contain" />
+          <img src={`/${weapon.image}`} alt={weapon.name} className="w-14 h-14 object-contain" />
         )}
         <div>
-          <p className="font-semibold" style={{ color: getRarityColor(weapon.rarity) }}>
-            {weapon.name} {currentTier > 1 && <span className="text-primary">Tier {currentTier}</span>}
+          <p className="text-sm text-muted-foreground">
+            {weapon.rarity} {weapon.category}
           </p>
-          <p className="text-xs text-muted-foreground">{weapon.rarity} {weapon.category}</p>
+          {currentTier > 1 && (
+            <p className="text-primary font-medium">Tier {currentTier}</p>
+          )}
         </div>
       </div>
 
       {/* Basic stats */}
-      <div className="grid grid-cols-2 gap-1 text-xs mb-2">
+      <div className="grid grid-cols-2 gap-2 text-sm mb-3">
         <div>Ammo: <span className="text-primary">{weapon.ammo_type}</span></div>
         <div>Mod Slots: <span className="text-primary">{weapon.modification_slots.length}</span></div>
       </div>
 
       {/* Upgrade tiers info */}
       {weapon.crafting.upgrades.length > 0 && (
-        <div className="border-t border-border pt-2 mb-2">
-          <p className="text-xs font-semibold text-muted-foreground mb-1">Upgrade Tiers</p>
+        <div className="border-t border-border pt-3 mb-3">
+          <p className="text-sm font-semibold text-muted-foreground mb-2">Upgrade Tiers</p>
           <div className="flex gap-1 mb-2">
             {Array.from({ length: weapon.crafting.upgrades.length + 1 }, (_, i) => i + 1).map((t) => (
               <span
                 key={t}
                 className={cn(
-                  'w-6 h-6 flex items-center justify-center rounded text-xs',
+                  'w-8 h-8 flex items-center justify-center rounded text-sm',
                   currentTier === t ? 'bg-primary text-primary-foreground' : 'bg-secondary'
                 )}
               >
@@ -75,9 +68,9 @@ function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
           {/* Show current tier perks */}
           {currentTier > 1 && weapon.crafting.upgrades[currentTier - 2]?.perks && (
             <div className="bg-green-500/10 border border-green-500/30 rounded p-2">
-              <p className="text-xs font-semibold text-green-400 mb-1">Tier {currentTier} Bonuses</p>
+              <p className="text-sm font-semibold text-green-400 mb-1">Tier {currentTier} Bonuses</p>
               {weapon.crafting.upgrades[currentTier - 2].perks.map((perk, i) => (
-                <p key={i} className="text-xs text-green-400">{perk}</p>
+                <p key={i} className="text-sm text-green-400">{perk}</p>
               ))}
             </div>
           )}
@@ -86,19 +79,19 @@ function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
 
       {/* Selected mods effects */}
       {selectedMods.length > 0 && (
-        <div className="border-t border-border pt-2">
-          <p className="text-xs font-semibold text-muted-foreground mb-1">Equipped Mods</p>
-          <div className="space-y-1">
+        <div className="border-t border-border pt-3">
+          <p className="text-sm font-semibold text-muted-foreground mb-2">Equipped Mods</p>
+          <div className="space-y-2">
             {selectedMods.map((mod, i) => (
-              <div key={i} className="text-xs">
+              <div key={i} className="text-sm">
                 <span className="font-medium" style={{ color: getRarityColor(mod.rarity) }}>
                   {mod.name}
                 </span>
                 {mod.stats.effects?.map((effect, j) => (
-                  <span key={j} className="text-green-400 ml-1">• {effect}</span>
+                  <p key={j} className="text-green-400 ml-2">• {effect}</p>
                 ))}
                 {!mod.stats.effects && mod.stats.effect && (
-                  <span className="text-green-400 ml-1">• {mod.stats.effect}</span>
+                  <p className="text-green-400 ml-2">• {mod.stats.effect}</p>
                 )}
               </div>
             ))}
@@ -108,12 +101,41 @@ function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
 
       {/* Available mod slots */}
       {weapon.modification_slots.length > 0 && selectedMods.length === 0 && (
-        <div className="border-t border-border pt-2">
-          <p className="text-xs text-muted-foreground">
-            Slots: {weapon.modification_slots.join(', ')}
+        <div className="border-t border-border pt-3">
+          <p className="text-sm text-muted-foreground">
+            Available Slots: {weapon.modification_slots.join(', ')}
           </p>
         </div>
       )}
+    </>
+  );
+}
+
+// Desktop-only hover tooltip for dropdown
+function DesktopWeaponTooltip({ weapon }: { weapon: Weapon }) {
+  return (
+    <div
+      className="absolute z-[100] w-64 p-3 rounded-lg border bg-card shadow-xl pointer-events-none left-full top-0 ml-2"
+      style={{ borderColor: getRarityColor(weapon.rarity) }}
+    >
+      <div className="flex items-center gap-2 mb-2">
+        {weapon.image && (
+          <img src={`/${weapon.image}`} alt={weapon.name} className="w-10 h-10 object-contain" />
+        )}
+        <div>
+          <p className="font-semibold text-sm" style={{ color: getRarityColor(weapon.rarity) }}>
+            {weapon.name}
+          </p>
+          <p className="text-xs text-muted-foreground">{weapon.rarity} {weapon.category}</p>
+        </div>
+      </div>
+      <div className="text-xs space-y-1">
+        <div>Ammo: <span className="text-primary">{weapon.ammo_type}</span></div>
+        <div>Mod Slots: <span className="text-primary">{weapon.modification_slots.length}</span></div>
+        {weapon.crafting.upgrades.length > 0 && (
+          <div>Upgrades: <span className="text-primary">{weapon.crafting.upgrades.length} tiers</span></div>
+        )}
+      </div>
     </div>
   );
 }
@@ -122,7 +144,7 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [hoveredWeaponId, setHoveredWeaponId] = useState<string | null>(null);
-  const [showSelectedTooltip, setShowSelectedTooltip] = useState(false);
+  const isMobile = useIsMobile();
 
   const weapons = getWeapons();
   const selectedWeapon = value ? getWeaponById(value.id) : null;
@@ -186,8 +208,6 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
           isOpen && 'ring-2 ring-primary'
         )}
         onClick={() => setIsOpen(!isOpen)}
-        onMouseEnter={() => selectedWeapon && setShowSelectedTooltip(true)}
-        onMouseLeave={() => setShowSelectedTooltip(false)}
       >
         {selectedWeapon ? (
           <div className="flex items-start gap-3">
@@ -200,15 +220,36 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
                 <h4 className="font-semibold">{selectedWeapon.name}</h4>
-                <button
-                  className="p-1 hover:bg-secondary rounded"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onChange(null);
-                  }}
-                >
-                  <X className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-1">
+                  {/* Info button for mobile tooltip */}
+                  <MobileTooltip
+                    title={selectedWeapon.name}
+                    borderColor={getRarityColor(selectedWeapon.rarity)}
+                    content={
+                      <WeaponTooltipContent
+                        weapon={selectedWeapon}
+                        tier={value?.tier}
+                        mods={value?.mods}
+                      />
+                    }
+                  >
+                    <button
+                      className="p-1 hover:bg-secondary rounded"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Info className="w-4 h-4 text-muted-foreground" />
+                    </button>
+                  </MobileTooltip>
+                  <button
+                    className="p-1 hover:bg-secondary rounded"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onChange(null);
+                    }}
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
               <p className="text-sm text-muted-foreground">{selectedWeapon.category}</p>
               <p className="text-sm text-muted-foreground">
@@ -245,18 +286,6 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
         )}
       </div>
 
-      {/* Tooltip for selected weapon */}
-      {selectedWeapon && showSelectedTooltip && !isOpen && (
-        <div className="relative">
-          <WeaponTooltip
-            weapon={selectedWeapon}
-            tier={value?.tier}
-            mods={value?.mods}
-            position="bottom"
-          />
-        </div>
-      )}
-
       {/* Mod slots */}
       {selectedWeapon && selectedWeapon.modification_slots.length > 0 && (
         <div className="mt-3 space-y-2">
@@ -281,7 +310,12 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
       {isOpen && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => { setIsOpen(false); setHoveredWeaponId(null); }} />
-          <div className="absolute z-50 mt-1 w-full max-h-96 overflow-hidden rounded-lg border border-border bg-card shadow-xl">
+          <div className={cn(
+            'z-50 overflow-hidden rounded-lg border border-border bg-card shadow-xl',
+            isMobile
+              ? 'fixed inset-x-4 top-20 bottom-20'
+              : 'absolute mt-1 w-full max-h-96'
+          )}>
             {/* Search */}
             <div className="p-2 border-b border-border">
               <div className="relative">
@@ -299,19 +333,25 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
             </div>
 
             {/* Weapon list by category */}
-            <div className="overflow-y-auto max-h-80 p-2">
+            <div className={cn(
+              'overflow-y-auto p-2',
+              isMobile ? 'max-h-[calc(100%-60px)]' : 'max-h-80'
+            )}>
               {Object.entries(groupedWeapons).map(([category, categoryWeapons]) => (
                 <div key={category} className="mb-4">
                   <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
                     {category}
                   </h5>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className={cn(
+                    'grid gap-2',
+                    isMobile ? 'grid-cols-4' : 'grid-cols-3'
+                  )}>
                     {categoryWeapons.map((weapon) => (
                       <div
                         key={weapon.id}
                         className="relative"
-                        onMouseEnter={() => setHoveredWeaponId(weapon.id)}
-                        onMouseLeave={() => setHoveredWeaponId(null)}
+                        onMouseEnter={() => !isMobile && setHoveredWeaponId(weapon.id)}
+                        onMouseLeave={() => !isMobile && setHoveredWeaponId(null)}
                       >
                         <ItemCard
                           name={weapon.name}
@@ -332,10 +372,10 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
               )}
             </div>
 
-            {/* Tooltip for hovered weapon in dropdown */}
-            {hoveredWeapon && (
-              <div className="absolute right-0 top-0 -mr-72">
-                <WeaponTooltip weapon={hoveredWeapon} position="right" />
+            {/* Tooltip for hovered weapon in dropdown (desktop only) */}
+            {!isMobile && hoveredWeapon && (
+              <div className="absolute right-0 top-0 -mr-72 hidden md:block">
+                <DesktopWeaponTooltip weapon={hoveredWeapon} />
               </div>
             )}
           </div>

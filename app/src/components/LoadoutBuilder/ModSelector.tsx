@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { ChevronDown, X } from 'lucide-react';
+import { ChevronDown, X, Info } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { getModificationsForWeaponSlot, getModificationById, getRarityColor } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
+import { MobileTooltip } from '../ui/MobileTooltip';
+import { useIsMobile } from '../../hooks/useIsMobile';
 import type { Modification } from '../../types';
 
 interface ModSelectorProps {
@@ -12,35 +14,22 @@ interface ModSelectorProps {
   onSelect: (modId: string | null) => void;
 }
 
-// Tooltip component for mods
-function ModTooltip({ mod, position = 'right' }: { mod: Modification; position?: 'right' | 'bottom' }) {
-  const positionClasses = position === 'right'
-    ? 'left-full top-0 ml-2'
-    : 'top-full left-0 mt-2';
-
+// Tooltip content for mods
+function ModTooltipContent({ mod }: { mod: Modification }) {
   return (
-    <div
-      className={cn(
-        'absolute z-[100] w-64 p-3 rounded-lg border bg-card shadow-xl pointer-events-none',
-        positionClasses
-      )}
-      style={{ borderColor: getRarityColor(mod.rarity) }}
-    >
-      <div className="flex items-center gap-2 mb-2">
+    <>
+      <div className="flex items-center gap-3 mb-3">
         {mod.image && (
-          <img src={`/${mod.image}`} alt={mod.name} className="w-10 h-10 object-contain" />
+          <img src={`/${mod.image}`} alt={mod.name} className="w-12 h-12 object-contain" />
         )}
         <div>
-          <p className="font-semibold" style={{ color: getRarityColor(mod.rarity) }}>
-            {mod.name}
-          </p>
-          <p className="text-xs text-muted-foreground">{mod.rarity} • {mod.slot_type}</p>
+          <p className="text-sm text-muted-foreground">{mod.rarity} • {mod.slot_type}</p>
         </div>
       </div>
 
       {/* Exact stats - show all effects */}
       {(mod.stats.effects?.length || mod.stats.effect) && (
-        <div className="bg-green-500/10 border border-green-500/30 rounded p-2 mb-2">
+        <div className="bg-green-500/10 border border-green-500/30 rounded p-2 mb-3">
           {mod.stats.effects?.map((effect, i) => (
             <p key={i} className="text-sm text-green-400 font-medium">{effect}</p>
           ))}
@@ -52,7 +41,7 @@ function ModTooltip({ mod, position = 'right' }: { mod: Modification; position?:
 
       {/* Effects description */}
       {mod.effects.length > 0 && (
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm text-muted-foreground mb-3">
           {mod.effects.map((effect, i) => (
             <p key={i}>{effect}</p>
           ))}
@@ -61,9 +50,32 @@ function ModTooltip({ mod, position = 'right' }: { mod: Modification; position?:
 
       {/* Compatible weapons hint */}
       {mod.compatible_weapons.length > 0 && (
-        <p className="text-xs text-muted-foreground mt-2 border-t border-border pt-2">
+        <p className="text-sm text-muted-foreground border-t border-border pt-3">
           Compatible: {mod.compatible_weapons.join(', ')}
         </p>
+      )}
+    </>
+  );
+}
+
+// Desktop-only hover tooltip for dropdown
+function DesktopModTooltip({ mod }: { mod: Modification }) {
+  return (
+    <div
+      className="absolute z-[100] w-56 p-3 rounded-lg border bg-card shadow-xl pointer-events-none left-full top-0 ml-2"
+      style={{ borderColor: getRarityColor(mod.rarity) }}
+    >
+      <p className="font-semibold text-sm mb-1" style={{ color: getRarityColor(mod.rarity) }}>
+        {mod.name}
+      </p>
+      <p className="text-xs text-muted-foreground mb-2">{mod.rarity} • {mod.slot_type}</p>
+      {(mod.stats.effects?.length || mod.stats.effect) && (
+        <div className="text-xs text-green-400 space-y-1">
+          {mod.stats.effects?.map((effect, i) => (
+            <p key={i}>{effect}</p>
+          ))}
+          {!mod.stats.effects && mod.stats.effect && <p>{mod.stats.effect}</p>}
+        </div>
       )}
     </div>
   );
@@ -72,7 +84,7 @@ function ModTooltip({ mod, position = 'right' }: { mod: Modification; position?:
 export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredModId, setHoveredModId] = useState<string | null>(null);
-  const [showSelectedTooltip, setShowSelectedTooltip] = useState(false);
+  const isMobile = useIsMobile();
 
   const availableMods = getModificationsForWeaponSlot(weaponName, slot);
   const selectedMod = selectedModId ? getModificationById(selectedModId) : null;
@@ -106,8 +118,6 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
           isOpen && 'ring-2 ring-primary'
         )}
         onClick={() => setIsOpen(!isOpen)}
-        onMouseEnter={() => selectedMod && setShowSelectedTooltip(true)}
-        onMouseLeave={() => setShowSelectedTooltip(false)}
       >
         {selectedMod ? (
           <>
@@ -121,6 +131,18 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
               <p className="text-sm font-medium truncate">{selectedMod.name}</p>
               <p className="text-xs text-green-400 truncate">{getModStat(selectedMod)}</p>
             </div>
+            <MobileTooltip
+              title={selectedMod.name}
+              borderColor={getRarityColor(selectedMod.rarity)}
+              content={<ModTooltipContent mod={selectedMod} />}
+            >
+              <button
+                className="p-1 hover:bg-secondary rounded"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Info className="w-3 h-3 text-muted-foreground" />
+              </button>
+            </MobileTooltip>
             <button
               className="p-1 hover:bg-secondary rounded"
               onClick={handleClear}
@@ -141,16 +163,16 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
         )}
       </div>
 
-      {/* Tooltip for selected mod */}
-      {selectedMod && showSelectedTooltip && !isOpen && (
-        <ModTooltip mod={selectedMod} position="bottom" />
-      )}
-
       {/* Dropdown */}
       {isOpen && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => { setIsOpen(false); setHoveredModId(null); }} />
-          <div className="absolute z-50 mt-1 left-0 right-0 max-h-64 overflow-y-auto rounded-lg border border-border bg-card shadow-xl">
+          <div className={cn(
+            'z-50 overflow-y-auto rounded-lg border border-border bg-card shadow-xl',
+            isMobile
+              ? 'fixed inset-x-4 top-32 bottom-32'
+              : 'absolute mt-1 left-0 right-0 max-h-64'
+          )}>
             <div className="p-2">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
                 {slot} Mods ({availableMods.length})
@@ -169,8 +191,8 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
                           : 'hover:bg-secondary/50'
                       )}
                       onClick={() => handleModSelect(mod)}
-                      onMouseEnter={() => setHoveredModId(mod.id)}
-                      onMouseLeave={() => setHoveredModId(null)}
+                      onMouseEnter={() => !isMobile && setHoveredModId(mod.id)}
+                      onMouseLeave={() => !isMobile && setHoveredModId(null)}
                     >
                       <ItemCard
                         name={mod.name}
@@ -184,15 +206,30 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
                           {getModStat(mod)}
                         </p>
                       </div>
+                      {/* Info button for mobile */}
+                      {isMobile && (
+                        <MobileTooltip
+                          title={mod.name}
+                          borderColor={getRarityColor(mod.rarity)}
+                          content={<ModTooltipContent mod={mod} />}
+                        >
+                          <button
+                            className="p-1.5 hover:bg-secondary rounded"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Info className="w-4 h-4 text-muted-foreground" />
+                          </button>
+                        </MobileTooltip>
+                      )}
                     </div>
                   ))}
                 </div>
               )}
             </div>
 
-            {/* Tooltip for hovered mod in dropdown */}
-            {hoveredMod && (
-              <ModTooltip mod={hoveredMod} position="right" />
+            {/* Tooltip for hovered mod in dropdown (desktop only) */}
+            {!isMobile && hoveredMod && (
+              <DesktopModTooltip mod={hoveredMod} />
             )}
           </div>
         </>
