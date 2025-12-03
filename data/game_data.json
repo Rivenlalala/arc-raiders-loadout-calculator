@@ -362,7 +362,7 @@
       "id": "ferro",
       "name": "Ferro",
       "image": "images/weapons/ferro.webp",
-      "category": "Unknown",
+      "category": "Battle Rifle",
       "rarity": "Common",
       "ammo_type": "Heavy Ammo",
       "modification_slots": [
@@ -428,7 +428,7 @@
       "id": "renegade",
       "name": "Renegade",
       "image": "images/weapons/renegade.webp",
-      "category": "Unknown",
+      "category": "Battle Rifle",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
       "modification_slots": [
@@ -502,7 +502,7 @@
       "id": "aphelion",
       "name": "Aphelion",
       "image": "images/weapons/aphelion.webp",
-      "category": "Unknown",
+      "category": "Battle Rifle",
       "rarity": "Legendary",
       "ammo_type": "Energy Clip",
       "modification_slots": [
@@ -1099,7 +1099,7 @@
       "id": "torrente",
       "name": "Torrente",
       "image": "images/weapons/torrente.webp",
-      "category": "Unknown",
+      "category": "LMG",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
       "modification_slots": [
@@ -1275,7 +1275,7 @@
       "id": "hullcracker",
       "name": "Hullcracker",
       "image": "images/weapons/hullcracker.webp",
-      "category": "Unknown",
+      "category": "Special",
       "rarity": "Epic",
       "ammo_type": null,
       "modification_slots": [
@@ -1348,7 +1348,7 @@
       "id": "equalizer",
       "name": "Equalizer",
       "image": "images/weapons/equalizer.webp",
-      "category": "Unknown",
+      "category": "Special",
       "rarity": "Legendary",
       "ammo_type": "Energy Clip",
       "modification_slots": [],

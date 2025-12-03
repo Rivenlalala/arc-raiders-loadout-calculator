@@ -85,9 +85,69 @@ function ShieldTooltip({ shield }: { shield: EquipmentItem }) {
   );
 }
 
+// Tooltip component for consumables (healing, grenades, utilities)
+function ConsumableTooltip({ item }: { item: EquipmentItem }) {
+  // Define which stats to display based on category
+  const healingStats = ['Healing', 'Use Time', 'Duration'];
+  const grenadeStats = ['Damage', 'Radius', 'Duration', 'Effect'];
+  const utilityStats = ['Duration', 'Effect', 'Radius'];
+
+  const statsToShow = item.category === 'healing' ? healingStats :
+    item.category === 'grenades' ? grenadeStats : utilityStats;
+
+  return (
+    <div
+      className="absolute z-[100] bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 p-3 rounded-lg border bg-card shadow-xl pointer-events-none"
+      style={{ borderColor: getRarityColor(item.rarity) }}
+    >
+      <div className="flex items-center gap-2 mb-2">
+        {item.image && (
+          <img src={`/${item.image}`} alt={item.name} className="w-10 h-10 object-contain" />
+        )}
+        <div>
+          <p className="font-semibold text-sm" style={{ color: getRarityColor(item.rarity) }}>
+            {item.name}
+          </p>
+          <p className="text-xs text-muted-foreground">{item.rarity} {item.category}</p>
+        </div>
+      </div>
+
+      {item.description && (
+        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{item.description}</p>
+      )}
+
+      <div className="space-y-1 text-xs border-t border-border pt-2">
+        {statsToShow.map(stat => {
+          const value = item.stats[stat];
+          if (!value) return null;
+          return (
+            <div key={stat} className="flex justify-between">
+              <span className="text-muted-foreground">{stat}</span>
+              <span className="text-primary">{value}</span>
+            </div>
+          );
+        })}
+        {item.stats['Weight'] && (
+          <div className="flex justify-between">
+            <span className="text-muted-foreground">Weight</span>
+            <span className="text-muted-foreground">{item.stats['Weight']}</span>
+          </div>
+        )}
+        {item.stats['Stack Size'] && (
+          <div className="flex justify-between">
+            <span className="text-muted-foreground">Stack Size</span>
+            <span className="text-muted-foreground">{item.stats['Stack Size']}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
   const [hoveredAugment, setHoveredAugment] = useState<EquipmentItem | null>(null);
   const [hoveredShield, setHoveredShield] = useState<EquipmentItem | null>(null);
+  const [hoveredConsumable, setHoveredConsumable] = useState<EquipmentItem | null>(null);
 
   const augments = getAugments();
   const compatibleShields = getShieldsForAugment(loadout.augment);
@@ -217,7 +277,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
           <label className="block text-sm font-medium text-muted-foreground mb-2">
             Healing Items
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {healing.map((item) => {
               const current = loadout.healing.find(h => h.id === item.id);
               const qty = current?.quantity ?? 0;
@@ -226,6 +286,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 <div
                   key={item.id}
                   className="flex flex-col items-center gap-1"
+                  onMouseEnter={() => setHoveredConsumable(item)}
+                  onMouseLeave={() => setHoveredConsumable(null)}
                 >
                   <div
                     className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
@@ -247,6 +309,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         {qty}
                       </span>
                     )}
+                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
                   </div>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
@@ -290,7 +353,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
           <label className="block text-sm font-medium text-muted-foreground mb-2">
             Grenades
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {grenades.map((item) => {
               const current = loadout.grenades.find(g => g.id === item.id);
               const qty = current?.quantity ?? 0;
@@ -299,6 +362,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 <div
                   key={item.id}
                   className="flex flex-col items-center gap-1"
+                  onMouseEnter={() => setHoveredConsumable(item)}
+                  onMouseLeave={() => setHoveredConsumable(null)}
                 >
                   <div
                     className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
@@ -320,6 +385,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         {qty}
                       </span>
                     )}
+                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
                   </div>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
@@ -363,7 +429,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
           <label className="block text-sm font-medium text-muted-foreground mb-2">
             Utilities
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {utilities.map((item) => {
               const current = loadout.utilities.find(u => u.id === item.id);
               const qty = current?.quantity ?? 0;
@@ -372,6 +438,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 <div
                   key={item.id}
                   className="flex flex-col items-center gap-1"
+                  onMouseEnter={() => setHoveredConsumable(item)}
+                  onMouseLeave={() => setHoveredConsumable(null)}
                 >
                   <div
                     className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
@@ -393,6 +461,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         {qty}
                       </span>
                     )}
+                    {hoveredConsumable?.id === item.id && <ConsumableTooltip item={item} />}
                   </div>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
