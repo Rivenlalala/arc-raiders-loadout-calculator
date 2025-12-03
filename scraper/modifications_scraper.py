@@ -150,23 +150,24 @@ def extract_mod_data(url, mod_name):
                         mod_data['compatible_weapons'].append(weapon_name)
 
     # Get slot type from the opening paragraph (e.g., "Common Shotgun Muzzle Weapon Modification")
+    # Note: Normalization to hyphenated format (e.g., "Shotgun Muzzle" -> "Shotgun-Muzzle")
+    # is handled by consolidate_data.py's normalize_slot_type() function
     first_p = content.find('p')
     if first_p:
         p_text = first_p.get_text(strip=True)
-        # Extract slot type from patterns - map wiki text to slot names used in weapon data
-        slot_mapping = [
-            ('Shotgun Muzzle', 'Shotgun-Muzzle'),
-            ('Shotgun Magazine', 'Shotgun-Mag'),
-            ('Light Magazine', 'Light-Mag'),
-            ('Medium Magazine', 'Medium-Mag'),
-            ('Tech Mod', 'Tech-Mod'),
-            ('Muzzle', 'Muzzle'),
-            ('Underbarrel', 'Underbarrel'),
-            ('Stock', 'Stock'),
+        slot_types = [
+            'Shotgun Muzzle',
+            'Shotgun Magazine',
+            'Light Magazine',
+            'Medium Magazine',
+            'Tech Mod',
+            'Muzzle',
+            'Underbarrel',
+            'Stock',
         ]
-        for wiki_text, slot_name in slot_mapping:
-            if wiki_text in p_text:
-                mod_data['slot_type'] = slot_name
+        for slot_type in slot_types:
+            if slot_type in p_text:
+                mod_data['slot_type'] = slot_type
                 break
 
     # Look for compatible weapons section
