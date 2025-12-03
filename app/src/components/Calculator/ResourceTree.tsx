@@ -354,14 +354,14 @@ function TreeNode({
         {node.canCraft && (
           <div
             className={cn(
-              'flex items-center justify-center w-7 h-7 rounded-md',
+              'flex items-center justify-center w-8 h-8 rounded-lg transition-all',
               isExpanded
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-amber-500/20 text-amber-500 hover:bg-amber-500/30'
+                ? 'bg-primary text-primary-foreground shadow-md'
+                : 'border-2 border-dashed border-primary/50 text-primary hover:border-primary hover:bg-primary/10'
             )}
-            title="Click to break down into components"
+            title={isExpanded ? "Click to collapse" : "Click to break down into components"}
           >
-            <Hammer className="w-5 h-5" />
+            <Hammer className={cn('w-5 h-5', !isExpanded && 'animate-pulse')} />
           </div>
         )}
       </div>
