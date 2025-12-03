@@ -47,13 +47,13 @@ export function ItemCard({
         'bg-gradient-to-br from-card to-secondary/50',
         'border-2',
         onClick && 'cursor-pointer hover:scale-105 hover:shadow-lg',
-        selected && 'ring-2 ring-primary ring-offset-2 ring-offset-background',
+        selected && 'scale-110',
         sizeClasses[size],
         className
       )}
       style={{
         borderColor: rarityColor,
-        boxShadow: selected ? `0 0 12px ${rarityColor}` : undefined
+        boxShadow: selected ? `0 0 16px 4px rgba(59, 130, 246, 0.6), 0 0 8px ${rarityColor}` : undefined
       }}
       onClick={onClick}
     >
