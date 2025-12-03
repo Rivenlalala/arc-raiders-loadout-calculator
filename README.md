@@ -1,47 +1,68 @@
 # Arc Raiders Loadout Calculator
 
-A web-based tool to calculate the resources needed for your custom loadout in Arc Raiders.
+A web-based tool to plan your loadout and calculate the resources needed in Arc Raiders.
 
 ## Features
 
-- **Loadout Configuration**: Select augments, shields, weapons (with tier selection), ammo, utilities, grenades, and healing items
-- **Weapon Modifications**: Choose mods for each weapon slot
-- **Real-time Calculation**: Resources update automatically as you configure your loadout
-- **Resource Breakdown**: Materials grouped by category (Base, Refined, Gun Parts, ARC Materials, Special)
+- **Loadout Builder**: Select weapons, augments, shields, and consumables
+- **Weapon Modifications**: Choose mods for each weapon slot with tier selection
+- **Consumables**: Healing items, grenades, utilities, and traps with quantity controls
+- **Real-time Calculation**: Resource tree updates automatically as you configure
+- **Material Breakdown**: Shows crafting hierarchy from final items down to base materials
+- **Rarity Sorting**: Items sorted by rarity (Common to Legendary) with colored borders
+- **Shareable Loadouts**: Generate compressed URLs to share your builds
+- **Responsive Design**: Works on desktop and mobile
 
 ## Live Demo
 
-Visit: `https://YOUR_USERNAME.github.io/arc-raiders-loadout-calculator/`
+Deployed on Cloudflare Pages.
 
-## Hosting on GitHub Pages
+## Tech Stack
 
-1. Push this repository to GitHub
-2. Go to repository Settings > Pages
-3. Set Source to "Deploy from a branch"
-4. Select `main` branch and `/docs` folder
-5. Save and wait for deployment
+- **Frontend**: React 18 + TypeScript + Vite
+- **Styling**: Tailwind CSS
+- **Hosting**: Cloudflare Pages
+- **URL Compression**: lz-string for compact share URLs
 
 ## Project Structure
 
 ```
 arc-raiders-loadout-calculator/
-├── docs/                    # GitHub Pages site
-│   ├── index.html
-│   ├── css/
-│   │   └── styles.css
-│   └── js/
-│       ├── data.js          # Game data (auto-generated)
-│       ├── gameData.js      # Data access layer
-│       ├── calculator.js    # Resource calculation logic
-│       └── app.js           # Main application
+├── app/                        # React application
+│   ├── src/
+│   │   ├── components/         # React components
+│   │   │   ├── LoadoutBuilder/ # Main loadout configuration
+│   │   │   ├── Calculator/     # Resource calculation display
+│   │   │   └── ui/             # Reusable UI components
+│   │   ├── data/               # Game data JSON
+│   │   ├── utils/              # Utilities (share, etc.)
+│   │   └── types/              # TypeScript types
+│   ├── public/                 # Static assets (images)
+│   └── wrangler.jsonc          # Cloudflare Pages config
 ├── data/
-│   └── game_data.json       # Consolidated game data
-└── scraper/                 # Data scraping tools
+│   └── game_data.json          # Consolidated game data
+└── scraper/                    # Data scraping tools
     ├── weapon_scraper.py
     ├── equipment_scraper.py
     ├── modifications_scraper.py
     ├── materials_scraper.py
     └── consolidate_data.py
+```
+
+## Development
+
+```bash
+cd app
+npm install
+npm run dev
+```
+
+## Building & Deployment
+
+```bash
+cd app
+npm run build
+npx wrangler pages deploy dist
 ```
 
 ## Updating Game Data
@@ -58,10 +79,11 @@ python equipment_scraper.py
 python modifications_scraper.py
 python materials_scraper.py
 
-# Consolidate and generate JS
+# Consolidate into game_data.json
 python consolidate_data.py
-cd ..
-cat data/game_data.json | python3 -c "import sys, json; data = json.load(sys.stdin); print('const GAME_DATA = ' + json.dumps(data, indent=2) + ';')" > docs/js/data.js
+
+# Copy to app
+cp ../data/game_data.json ../app/src/data/
 ```
 
 ## Data Sources
