@@ -2243,40 +2243,6 @@
         }
       },
       {
-        "id": "fruit_mix",
-        "name": "Fruit Mix",
-        "image": "images/healing/fruit_mix.webp",
-        "category": "healing",
-        "rarity": "Uncommon",
-        "description": "A food item that moderately increases both health and stamina.",
-        "special_effect": null,
-        "stats": {
-          "Weight": "0.3",
-          "Stack Size": "5",
-          "Sell Price": "1800",
-          "Healing": "25",
-          "Stamina": "50",
-          "Use Time": "2s"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Lemon",
-              "quantity": 1
-            },
-            {
-              "material": "Apricot",
-              "quantity": 1
-            },
-            {
-              "material": "Prickly Pear",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Inventory"
-        }
-      },
-      {
         "id": "herbal_bandage",
         "name": "Herbal Bandage",
         "image": "images/healing/herbal_bandage.webp",
@@ -2573,37 +2539,6 @@
         }
       },
       {
-        "id": "agave_juice",
-        "name": "Agave Juice",
-        "image": "images/healing/agave_juice.webp",
-        "category": "healing",
-        "rarity": "Common",
-        "description": "A concoction that temporarily increases stamina regeneration, at a small initial cost to health.",
-        "special_effect": null,
-        "stats": {
-          "Weight": "0.2",
-          "Stack Size": "5",
-          "Sell Price": "1,800",
-          "Stamina": "5/s",
-          "Damage": "5",
-          "Use Time": "1s",
-          "Duration": "10s"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Agave",
-              "quantity": 1
-            },
-            {
-              "material": "Empty Wine Bottle",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Inventory"
-        }
-      },
-      {
         "id": "apricot",
         "name": "Apricot",
         "image": "images/healing/apricot.webp",
@@ -2844,34 +2779,6 @@
         }
       },
       {
-        "id": "flame_spray",
-        "name": "Flame Spray",
-        "image": "images/quick_use/flame_spray.webp",
-        "category": "quick_use",
-        "rarity": "Uncommon",
-        "description": "A classic makeshift weapon, sure to leave scorch marks.",
-        "special_effect": null,
-        "stats": {
-          "Weight": "1",
-          "Stack Size": "1",
-          "Sell Price": "2000",
-          "Damage": "10/s"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Air Freshener",
-              "quantity": 1
-            },
-            {
-              "material": "Fireball Burner",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Inventory"
-        }
-      },
-      {
         "id": "integrated_binoculars",
         "name": "Integrated Binoculars",
         "image": "images/quick_use/integrated_binoculars.webp",
@@ -2885,35 +2792,6 @@
         "crafting": {
           "materials": [],
           "workshop": null
-        }
-      },
-      {
-        "id": "noisemaker",
-        "name": "Noisemaker",
-        "image": "images/quick_use/noisemaker.webp",
-        "category": "quick_use",
-        "rarity": "Common",
-        "description": "A deployable proximity sensor that sounds an alarm when enemy raiders are detected.",
-        "special_effect": null,
-        "stats": {
-          "Weight": "0.3",
-          "Stack Size": "3",
-          "Sell Price": "640",
-          "Duration": "4s",
-          "Radius": "8m"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Speaker Component",
-              "quantity": 1
-            },
-            {
-              "material": "Plastic Parts",
-              "quantity": 2
-            }
-          ],
-          "workshop": "Inventory"
         }
       },
       {
@@ -3608,123 +3486,6 @@
       }
     ],
     "traps": [
-      {
-        "id": "blaze_grenade_trap",
-        "name": "Blaze Grenade Trap",
-        "image": "images/traps/blaze_grenade_trap.webp",
-        "category": "traps",
-        "rarity": "Rare",
-        "description": "laser trip wire that detonates a Blaze Grenade.",
-        "special_effect": null,
-        "stats": {
-          "Weight": "0.3",
-          "Stack Size": "3",
-          "Sell Price": "1,000",
-          "Damage": "5/s",
-          "Duration": "10s"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Blaze Grenade",
-              "quantity": 1
-            },
-            {
-              "material": "Wires",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Workbench 1orInventory"
-        }
-      },
-      {
-        "id": "gas_grenade_trap",
-        "name": "Gas Grenade Trap",
-        "image": "images/traps/gas_grenade_trap.webp",
-        "category": "traps",
-        "rarity": "Common",
-        "description": "A laser trip write that detonates a Gas Grenade.",
-        "special_effect": null,
-        "stats": {
-          "Weight": "0.25",
-          "Stack Size": "3",
-          "Sell Price": "300",
-          "Stamina": "-25/s",
-          "Duration": "20s",
-          "Radius": "7.5m"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Gas Grenade",
-              "quantity": 1
-            },
-            {
-              "material": "Wires",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Workbench 1orInventory"
-        }
-      },
-      {
-        "id": "lure_grenade_trap",
-        "name": "Lure Grenade Trap",
-        "image": "images/traps/lure_grenade_trap.webp",
-        "category": "traps",
-        "rarity": "Uncommon",
-        "description": "A laser trip wire that detonates a Lure Grenade",
-        "special_effect": null,
-        "stats": {
-          "Weight": "0.25",
-          "Stack Size": "3",
-          "Sell Price": "1,000",
-          "Duration": "15s",
-          "Radius": "50m"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Lure Grenade",
-              "quantity": 1
-            },
-            {
-              "material": "Wires",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Workbench 1orInventory"
-        }
-      },
-      {
-        "id": "smoke_grenade_trap",
-        "name": "Smoke Grenade Trap",
-        "image": "images/traps/smoke_grenade_trap.webp",
-        "category": "traps",
-        "rarity": "Rare",
-        "description": "A laser trip write that detonates a Smoke Grenade.",
-        "special_effect": null,
-        "stats": {
-          "Weight": "0.3",
-          "Stack Size": "3",
-          "Sell Price": "640",
-          "Duration": "20s",
-          "Radius": "7.5m"
-        },
-        "crafting": {
-          "materials": [
-            {
-              "material": "Smoke Grenade",
-              "quantity": 1
-            },
-            {
-              "material": "Wires",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Workbench 1orInventory"
-        }
-      },
       {
         "id": "explosive_mine",
         "name": "Explosive Mine",

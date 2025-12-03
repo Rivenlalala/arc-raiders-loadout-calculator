@@ -146,6 +146,11 @@ def process_equipment(equipment_data, image_paths):
             if item['name'] in ['Quick Use', 'ARC', 'Raider', 'Skills', 'Integrated Shield Recharger']:
                 continue
 
+            # Skip in-round crafting only items (workshop = "Inventory")
+            workshop = item.get('crafting', {}).get('workshop', '')
+            if workshop and 'Inventory' in workshop:
+                continue
+
             item_id = item['name'].lower().replace(' ', '_').replace('%27', "'")
             item_name = clean_string(item['name'].replace('%27', "'"))
             raw_materials = item.get('crafting', {}).get('materials', [])
