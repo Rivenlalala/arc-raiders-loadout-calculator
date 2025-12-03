@@ -169,6 +169,11 @@
     "fabric": "images/materials/fabric.webp",
     "rope": "images/materials/rope.webp",
     "battery": "images/materials/battery.webp",
+    "electrical_components": "images/materials/electrical_components.webp",
+    "advanced_electrical_components": "images/materials/advanced_electrical_components.webp",
+    "processor": "images/materials/processor.webp",
+    "sensors": "images/materials/sensors.webp",
+    "speaker_component": "images/materials/speaker_component.webp",
     "mechanical_components": "images/materials/mechanical_components.webp",
     "advanced_mechanical_components": "images/materials/advanced_mechanical_components.webp",
     "mod_components": "images/materials/mod_components.webp",
@@ -192,7 +197,13 @@
     "power_rod": "images/materials/power_rod.webp",
     "exodus_modules": "images/materials/exodus_modules.webp",
     "queen_reactor": "images/materials/queen_reactor.webp",
-    "matriarch_reactor": "images/materials/matriarch_reactor.webp"
+    "matriarch_reactor": "images/materials/matriarch_reactor.webp",
+    "antiseptic": "images/materials/antiseptic.webp",
+    "syringe": "images/materials/syringe.webp",
+    "durable_cloth": "images/materials/durable_cloth.webp",
+    "great_mullein": "images/materials/great_mullein.webp",
+    "empty_wine_bottle": "images/materials/empty_wine_bottle.webp",
+    "air_freshener": "images/materials/air_freshener.webp"
   },
   "ammo": {
     "light_ammo": "images/ammo/light_ammo.webp",

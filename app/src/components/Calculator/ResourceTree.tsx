@@ -4,6 +4,7 @@ import { cn } from '../../lib/utils';
 import {
   getWeaponById,
   getEquipmentById,
+  getModificationById,
   getMaterialByName,
   getRarityColor,
   isCraftable,
@@ -48,6 +49,15 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
         for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
           addMaterials(weapon.crafting.upgrades[i].materials);
         }
+        // Add mod materials
+        for (const modId of loadout.weapon1.mods) {
+          if (modId) {
+            const mod = getModificationById(modId);
+            if (mod) {
+              addMaterials(mod.crafting.materials);
+            }
+          }
+        }
       }
     }
 
@@ -59,6 +69,15 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
         const targetTier = loadout.weapon2.tier || 1;
         for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
           addMaterials(weapon.crafting.upgrades[i].materials);
+        }
+        // Add mod materials
+        for (const modId of loadout.weapon2.mods) {
+          if (modId) {
+            const mod = getModificationById(modId);
+            if (mod) {
+              addMaterials(mod.crafting.materials);
+            }
+          }
         }
       }
     }

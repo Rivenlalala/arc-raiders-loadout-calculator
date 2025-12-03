@@ -4516,6 +4516,89 @@
       }
     },
     {
+      "id": "electrical_components",
+      "name": "Electrical Components",
+      "image": "images/materials/electrical_components.webp",
+      "rarity": "Uncommon",
+      "weight": "0.5",
+      "stack_size": "10",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Plastic Parts",
+            "quantity": 8
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 1",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "advanced_electrical_components",
+      "name": "Advanced Electrical Components",
+      "image": "images/materials/advanced_electrical_components.webp",
+      "rarity": "Rare",
+      "weight": "1",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Wires",
+            "quantity": 3
+          },
+          {
+            "material": "Electrical Components",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "processor",
+      "name": "Processor",
+      "image": "images/materials/processor.webp",
+      "rarity": "Rare",
+      "weight": "0.2",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "sensors",
+      "name": "Sensors",
+      "image": "images/materials/sensors.webp",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "speaker_component",
+      "name": "Speaker Component",
+      "image": "images/materials/speaker_component.webp",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
       "id": "mechanical_components",
       "name": "Mechanical Components",
       "image": "images/materials/mechanical_components.webp",
@@ -4918,6 +5001,98 @@
       "rarity": "Legendary",
       "weight": "10.0",
       "stack_size": "1",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "antiseptic",
+      "name": "Antiseptic",
+      "image": "images/materials/antiseptic.webp",
+      "rarity": "Rare",
+      "weight": "1.0",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 10
+          },
+          {
+            "material": "Great Mullein",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "syringe",
+      "name": "Syringe",
+      "image": "images/materials/syringe.webp",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "durable_cloth",
+      "name": "Durable Cloth",
+      "image": "images/materials/durable_cloth.webp",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "10",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Fabric",
+            "quantity": 14
+          }
+        ],
+        "workshop": "Refiner 1",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "great_mullein",
+      "name": "Great Mullein",
+      "image": "images/materials/great_mullein.webp",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "empty_wine_bottle",
+      "name": "Empty Wine Bottle",
+      "image": "images/materials/empty_wine_bottle.webp",
+      "rarity": "Common",
+      "weight": "0.2",
+      "stack_size": "5",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "air_freshener",
+      "name": "Air Freshener",
+      "image": "images/materials/air_freshener.webp",
+      "rarity": "Uncommon",
+      "weight": "0.3",
+      "stack_size": "5",
       "crafting": {
         "materials": [],
         "workshop": null,

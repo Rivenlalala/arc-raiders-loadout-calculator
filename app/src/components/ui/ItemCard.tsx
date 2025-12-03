@@ -9,7 +9,7 @@ interface ItemCardProps {
   onClick?: () => void;
   subtitle?: string;
   quantity?: number;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;
 }
 
@@ -27,12 +27,14 @@ export function ItemCard({
   const rarityColor = getRarityColor(rarity ?? null);
 
   const sizeClasses = {
+    xs: 'w-8 h-8',
     sm: 'w-16 h-16',
     md: 'w-24 h-24',
     lg: 'w-32 h-32',
   };
 
   const imageSizeClasses = {
+    xs: 'w-6 h-6',
     sm: 'w-10 h-10',
     md: 'w-16 h-16',
     lg: 'w-24 h-24',
@@ -74,7 +76,7 @@ export function ItemCard({
         </span>
       )}
 
-      {size !== 'sm' && (
+      {size !== 'xs' && size !== 'sm' && (
         <div className="mt-1 text-center">
           <p className="text-xs font-medium truncate w-full" title={name}>
             {name}

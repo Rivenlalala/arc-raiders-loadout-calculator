@@ -3,6 +3,7 @@ import { ChevronDown, X, Search } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { getWeapons, getWeaponById } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
+import { ModSelector } from './ModSelector';
 import type { LoadoutWeapon, Weapon } from '../../types';
 
 interface WeaponSelectorProps {
@@ -47,6 +48,18 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
   const handleTierChange = (tier: number) => {
     if (value) {
       onChange({ ...value, tier });
+    }
+  };
+
+  const handleModChange = (slotIndex: number, modId: string | null) => {
+    if (value && selectedWeapon) {
+      const newMods = [...value.mods];
+      // Ensure mods array is long enough
+      while (newMods.length < selectedWeapon.modification_slots.length) {
+        newMods.push('');
+      }
+      newMods[slotIndex] = modId || '';
+      onChange({ ...value, mods: newMods });
     }
   };
 
@@ -120,6 +133,25 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
           </div>
         )}
       </div>
+
+      {/* Mod slots */}
+      {selectedWeapon && selectedWeapon.modification_slots.length > 0 && (
+        <div className="mt-3 space-y-2">
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+            Modifications
+          </p>
+          <div className="grid grid-cols-2 gap-2">
+            {selectedWeapon.modification_slots.map((slot, index) => (
+              <ModSelector
+                key={`${selectedWeapon.id}-${slot}-${index}`}
+                slot={slot}
+                selectedModId={value?.mods[index] || null}
+                onSelect={(modId) => handleModChange(index, modId)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Dropdown */}
       {isOpen && (

@@ -73,7 +73,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
             Healing Items
           </label>
           <div className="flex flex-wrap gap-2">
-            {healing.slice(0, 8).map((item) => {
+            {healing.map((item) => {
               const current = loadout.healing.find(h => h.id === item.id);
               const qty = current?.quantity ?? 0;
 
@@ -146,7 +146,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
             Grenades
           </label>
           <div className="flex flex-wrap gap-2">
-            {grenades.slice(0, 8).map((item) => {
+            {grenades.map((item) => {
               const current = loadout.grenades.find(g => g.id === item.id);
               const qty = current?.quantity ?? 0;
 
