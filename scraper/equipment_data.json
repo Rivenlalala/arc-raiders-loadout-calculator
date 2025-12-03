@@ -531,18 +531,9 @@
         "Duration": "10s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Agave",
-            "quantity": 1
-          },
-          {
-            "material": "Empty Wine Bottle",
-            "quantity": 1
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "Agave"
+        "output": null
       }
     },
     {
@@ -634,14 +625,9 @@
         "Duration": "25s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Fabric",
-            "quantity": 5
-          }
-        ],
-        "workshop": "Medical Lab 1orWorkbench",
-        "output": "Fabric"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     },
     {
@@ -722,18 +708,9 @@
         "Duration": "10s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Plastic Parts",
-            "quantity": 9
-          },
-          {
-            "material": "Moss",
-            "quantity": 1
-          }
-        ],
-        "workshop": "Medical Lab 2",
-        "output": "Moss"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     },
     {
@@ -751,22 +728,9 @@
         "Use Time": "1s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Mushroom",
-            "quantity": 12
-          },
-          {
-            "material": "Apricot",
-            "quantity": 12
-          },
-          {
-            "material": "Very Comfortable Pillow",
-            "quantity": 3
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "Mushroom"
+        "output": null
       }
     },
     {
@@ -892,18 +856,9 @@
         "Recharge": "2/s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "ARC Powercell",
-            "quantity": 1
-          },
-          {
-            "material": "Rubber Parts",
-            "quantity": 5
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "ARC Powercell"
+        "output": null
       }
     },
     {
@@ -1056,22 +1011,9 @@
         "Use Time": "1s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Lemon",
-            "quantity": 1
-          },
-          {
-            "material": "Apricot",
-            "quantity": 1
-          },
-          {
-            "material": "Prickly Pear",
-            "quantity": 1
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "Apricot"
+        "output": null
       }
     },
     {
@@ -1109,22 +1051,9 @@
         "Use Time": "1s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Lemon",
-            "quantity": 1
-          },
-          {
-            "material": "Apricot",
-            "quantity": 1
-          },
-          {
-            "material": "Prickly Pear",
-            "quantity": 1
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "Lemon"
+        "output": null
       }
     },
     {
@@ -1142,22 +1071,9 @@
         "Use Time": "1s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Prickly Pear",
-            "quantity": 6
-          },
-          {
-            "material": "Olives",
-            "quantity": 6
-          },
-          {
-            "material": "Cat Bed",
-            "quantity": 1
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "Olives"
+        "output": null
       }
     },
     {
@@ -1175,22 +1091,9 @@
         "Use Time": "1s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Lemon",
-            "quantity": 1
-          },
-          {
-            "material": "Apricot",
-            "quantity": 1
-          },
-          {
-            "material": "Prickly Pear",
-            "quantity": 1
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "Prickly Pear"
+        "output": null
       }
     }
   ],
@@ -1953,22 +1856,9 @@
         "Radius": "5m"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Rusted Tools",
-            "quantity": 3
-          },
-          {
-            "material": "Mechanical Components",
-            "quantity": 5
-          },
-          {
-            "material": "Wasp Driver",
-            "quantity": 8
-          }
-        ],
-        "workshop": "Gunsmith 1",
-        "output": "Wasp Driver"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     },
     {
@@ -1987,22 +1877,9 @@
         "Radius": "6m"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Power Cable",
-            "quantity": 3
-          },
-          {
-            "material": "Electrical Components",
-            "quantity": 5
-          },
-          {
-            "material": "Hornet Driver",
-            "quantity": 6
-          }
-        ],
-        "workshop": "Gear Bench 1",
-        "output": "Hornet Driver"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     },
     {
@@ -2018,22 +1895,9 @@
         "Sell Price": "2000"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Damaged Heat Sink",
-            "quantity": 2
-          },
-          {
-            "material": "Electrical Components",
-            "quantity": 5
-          },
-          {
-            "material": "Snitch Scanner",
-            "quantity": 6
-          }
-        ],
-        "workshop": "Utility Station 1",
-        "output": "Snitch Scanner"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     },
     {
@@ -2051,22 +1915,9 @@
         "Radius": "10m"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Fried Motherboard",
-            "quantity": 3
-          },
-          {
-            "material": "Advanced Electrical Components",
-            "quantity": 5
-          },
-          {
-            "material": "Leaper Pulse Unit",
-            "quantity": 4
-          }
-        ],
-        "workshop": "Utility Station 2",
-        "output": "Leaper Pulse Unit"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     },
     {
@@ -2085,18 +1936,9 @@
         "Radius": "2m"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Air Freshener",
-            "quantity": 1
-          },
-          {
-            "material": "Fireball Burner",
-            "quantity": 1
-          }
-        ],
+        "materials": [],
         "workshop": null,
-        "output": "Fireball Burner"
+        "output": null
       }
     },
     {
@@ -2114,14 +1956,9 @@
         "Radius": "1.5m"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Chemicals",
-            "quantity": 6
-          }
-        ],
-        "workshop": "Refiner 1",
-        "output": "Crude Explosives"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     },
     {
@@ -2156,22 +1993,9 @@
         "Radius": "7.5m"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Synthesized Fuel",
-            "quantity": 3
-          },
-          {
-            "material": "Crude Explosives",
-            "quantity": 5
-          },
-          {
-            "material": "Pop Trigger",
-            "quantity": 5
-          }
-        ],
-        "workshop": "Explosives Station 1",
-        "output": "Synthesized Fuel"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     }
   ],
@@ -2425,18 +2249,9 @@
         "Timer Duration": "6s"
       },
       "crafting": {
-        "materials": [
-          {
-            "material": "Explosive Compound",
-            "quantity": 3
-          },
-          {
-            "material": "ARC Circuitry",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Explosives Station 3",
-        "output": "Deadline"
+        "materials": [],
+        "workshop": null,
+        "output": null
       }
     }
   ]

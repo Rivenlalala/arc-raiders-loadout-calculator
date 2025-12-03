@@ -3266,13 +3266,8 @@
           "Radius": "1.5m"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Chemicals",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Refiner 1"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -3538,17 +3533,8 @@
           "Timer Duration": "6s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Explosive Compound",
-              "quantity": 3
-            },
-            {
-              "material": "ARC Circuitry",
-              "quantity": 2
-            }
-          ],
-          "workshop": "Explosives Station 3"
+          "materials": [],
+          "workshop": null
         }
       }
     ]
