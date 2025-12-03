@@ -265,6 +265,33 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Breakdown Toggle */
+.breakdown-toggle {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: var(--bg-tertiary);
+    border-radius: 5px;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.toggle-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-blue);
+    cursor: pointer;
+}
+
+.toggle-label:hover {
+    color: var(--text-primary);
+}
+
 .results-container {
     margin-bottom: 20px;
 }

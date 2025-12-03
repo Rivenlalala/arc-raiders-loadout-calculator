@@ -8,13 +8,11 @@
       "weight": "0.1",
       "stack_size": "50",
       "description": "Used to craft a wide range of items.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Plastic_Parts",
@@ -24,13 +22,11 @@
       "weight": "0.1",
       "stack_size": "50",
       "description": "Used to craft a wide range of items.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Rubber_Parts",
@@ -40,13 +36,11 @@
       "weight": "0.1",
       "stack_size": "50",
       "description": "Used to craft a wide range of items.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Wires",
@@ -56,13 +50,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Duct_Tape",
@@ -72,13 +64,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": "Used to craft weapons and weapon mods. Can be recycled into plastic.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Chemicals",
@@ -88,13 +78,11 @@
       "weight": "0.1",
       "stack_size": "50",
       "description": "Used to craft medical supplies, explosives, and utility items.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Oil",
@@ -104,13 +92,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": "Used to craft weapons and explosives. Can be recycled into chemicals.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Fabric",
@@ -120,13 +106,11 @@
       "weight": "0.1",
       "stack_size": "50",
       "description": "Used to craft medical supplies and shields.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Rope",
@@ -136,13 +120,11 @@
       "weight": "0.3",
       "stack_size": "5",
       "description": "Used in crafting.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Battery",
@@ -152,13 +134,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Mechanical_Components",
@@ -168,13 +148,20 @@
       "weight": "0.8",
       "stack_size": "10",
       "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 7
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Refiner 1",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Advanced_Mechanical_Components",
@@ -184,13 +171,20 @@
       "weight": "1",
       "stack_size": "5",
       "description": "Mostly used to craft advanced weapons. Can be recycled into crafting materials.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Steel Spring",
+            "quantity": 2
+          },
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Mod_Components",
@@ -200,13 +194,20 @@
       "weight": "1",
       "stack_size": "5",
       "description": "Used to craft weapons mods. Can be recycled into crafting materials.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Steel Spring",
+            "quantity": 2
+          },
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Explosive_Compound",
@@ -216,13 +217,20 @@
       "weight": "0.3",
       "stack_size": "5",
       "description": "Used to craft explosives.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Crude Explosives",
+            "quantity": 2
+          },
+          {
+            "material": "Oil",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Crude_Explosives",
@@ -232,13 +240,16 @@
       "weight": "2",
       "stack_size": "10",
       "description": "Used to craft explosives. Can be recycled into crafting materials",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Refiner 1",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Simple_Gun_Parts",
@@ -248,13 +259,11 @@
       "weight": "0.3",
       "stack_size": "10",
       "description": "Used to craft weapons. Can be recycled into scrap metal.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Light_Gun_Parts",
@@ -264,13 +273,16 @@
       "weight": "0.3",
       "stack_size": "5",
       "description": null,
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Medium_Gun_Parts",
@@ -280,13 +292,16 @@
       "weight": "0.4",
       "stack_size": "5",
       "description": "Assorted spare parts used for rifles.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Heavy_Gun_Parts",
@@ -296,13 +311,16 @@
       "weight": "0.5",
       "stack_size": "5",
       "description": "Used directly in crafting items of all tiers.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Complex_Gun_Parts",
@@ -312,13 +330,24 @@
       "weight": "1",
       "stack_size": "3",
       "description": "Used to craft advanced weapons.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Light Gun Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 3",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "ARC_Alloy",
@@ -328,13 +357,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": "Obtained from ARC enemies or activites, or by recycling certain ARC parts. Used to craft components.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "ARC_Circuitry",
@@ -344,13 +371,16 @@
       "weight": "0.3",
       "stack_size": "5",
       "description": "Obtained from ARC enemies or activities. Used to craft components. Can be recycled into ARC Alloy.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "ARC Alloy",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "ARC_Motion_Core",
@@ -360,13 +390,16 @@
       "weight": "0.3",
       "stack_size": "5",
       "description": "Obtained from ARC enemies or activities. Used to craft components. Can be recycled into ARC Alloy.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "ARC Alloy",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "ARC_Powercell",
@@ -376,13 +409,11 @@
       "weight": "0.5",
       "stack_size": "5",
       "description": "Valuable resource that drops from all ARC enemies.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Advanced_ARC_Powercell",
@@ -392,13 +423,11 @@
       "weight": "0.5",
       "stack_size": "5",
       "description": "Very valuable resource that drops from certain ARC enemies.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Magnetic_Accelerator",
@@ -408,13 +437,20 @@
       "weight": "1.0",
       "stack_size": "3",
       "description": "Used to craft advanced weapons.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "ARC Motion Core",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 3",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Steel_Spring",
@@ -424,13 +460,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Magnet",
@@ -440,13 +474,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": null,
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Canister",
@@ -456,13 +488,11 @@
       "weight": "0.25",
       "stack_size": "15",
       "description": "Used to craft a wide range of items. Can be recycled into plastic.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Voltage_Converter",
@@ -472,13 +502,11 @@
       "weight": "0.3",
       "stack_size": "5",
       "description": "Used in crafting.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Power_Rod",
@@ -488,13 +516,20 @@
       "weight": "1",
       "stack_size": "3",
       "description": "Used in crafting.",
-      "obtained_by": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "ARC Circuitry",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 3",
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Exodus_Modules",
@@ -504,13 +539,11 @@
       "weight": "1",
       "stack_size": "3",
       "description": "Used to craft a wide range of items.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Queen_Reactor",
@@ -520,13 +553,11 @@
       "weight": "10.0",
       "stack_size": "1",
       "description": "Can be recycled into crafting materials.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     },
     {
       "id": "Matriarch_Reactor",
@@ -536,13 +567,11 @@
       "weight": "10.0",
       "stack_size": "1",
       "description": "Can be recycled into crafting materials.",
-      "obtained_by": [],
       "crafting": {
         "materials": [],
         "workshop": null,
         "output_quantity": 1
-      },
-      "used_in": []
+      }
     }
   ],
   "ammo": [

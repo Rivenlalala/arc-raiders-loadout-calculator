@@ -4596,8 +4596,17 @@ const GAME_DATA = {
       "weight": "0.8",
       "stack_size": "10",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 7
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Refiner 1",
         "output_quantity": 1
       }
     },
@@ -4608,8 +4617,17 @@ const GAME_DATA = {
       "weight": "1",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Steel Spring",
+            "quantity": 2
+          },
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4620,8 +4638,17 @@ const GAME_DATA = {
       "weight": "1",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Steel Spring",
+            "quantity": 2
+          },
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4632,8 +4659,17 @@ const GAME_DATA = {
       "weight": "0.3",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Crude Explosives",
+            "quantity": 2
+          },
+          {
+            "material": "Oil",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4644,8 +4680,13 @@ const GAME_DATA = {
       "weight": "2",
       "stack_size": "10",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Refiner 1",
         "output_quantity": 1
       }
     },
@@ -4668,8 +4709,13 @@ const GAME_DATA = {
       "weight": "0.3",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4680,8 +4726,13 @@ const GAME_DATA = {
       "weight": "0.4",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4692,8 +4743,13 @@ const GAME_DATA = {
       "weight": "0.5",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4704,8 +4760,21 @@ const GAME_DATA = {
       "weight": "1",
       "stack_size": "3",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Light Gun Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 3",
         "output_quantity": 1
       }
     },
@@ -4728,8 +4797,13 @@ const GAME_DATA = {
       "weight": "0.3",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "ARC Alloy",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4740,8 +4814,13 @@ const GAME_DATA = {
       "weight": "0.3",
       "stack_size": "5",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "ARC Alloy",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Refiner 2",
         "output_quantity": 1
       }
     },
@@ -4776,8 +4855,17 @@ const GAME_DATA = {
       "weight": "1.0",
       "stack_size": "3",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "ARC Motion Core",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 3",
         "output_quantity": 1
       }
     },
@@ -4836,8 +4924,17 @@ const GAME_DATA = {
       "weight": "1",
       "stack_size": "3",
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Advanced Electrical Components",
+            "quantity": 2
+          },
+          {
+            "material": "ARC Circuitry",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 3",
         "output_quantity": 1
       }
     },
