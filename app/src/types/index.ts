@@ -18,6 +18,7 @@ export interface WeaponUpgrade {
   tier: number;
   materials: CraftingMaterial[];
   workshop: string | null;
+  perks: string[];  // Upgrade benefits like "25% Increased Bullet Velocity"
 }
 
 // Weapon crafting with upgrades
@@ -45,8 +46,16 @@ export interface EquipmentItem {
   category: string;
   rarity: Rarity | null;
   description: string | null;
+  special_effect: string | null;  // Passive abilities for augments
   stats: Record<string, string>;
   crafting: CraftingInfo;
+}
+
+// Modification stats
+export interface ModificationStats {
+  effects?: string[];  // List of exact stat effects like ["15% Increased Fire Rate", "20% Increased Recoil"]
+  effect?: string;     // Legacy single effect (for backwards compatibility)
+  [key: string]: string | string[] | undefined;
 }
 
 // Modification
@@ -56,7 +65,8 @@ export interface Modification {
   image: string | null;
   slot_type: string;
   rarity: Rarity | null;
-  effects: string[];
+  effects: string[];  // Descriptive effects like "Moderately increases fire rate"
+  stats: ModificationStats;  // Exact stat percentages
   compatible_weapons: string[];
   crafting: CraftingInfo;
 }

@@ -673,7 +673,7 @@
   {
     "name": "Ferro",
     "url": "https://arcraiders.wiki/wiki/Ferro",
-    "category": null,
+    "category": "Battle Rifle",
     "rarity": "Common",
     "ammo_type": "Heavy Ammo",
     "modification_slots": [
@@ -802,7 +802,7 @@
   {
     "name": "Renegade",
     "url": "https://arcraiders.wiki/wiki/Renegade",
-    "category": null,
+    "category": "Battle Rifle",
     "rarity": "Rare",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -939,7 +939,7 @@
   {
     "name": "Aphelion",
     "url": "https://arcraiders.wiki/wiki/Aphelion",
-    "category": null,
+    "category": "Battle Rifle",
     "rarity": "Legendary",
     "ammo_type": "Energy Clip",
     "modification_slots": [
@@ -2041,7 +2041,7 @@
   {
     "name": "Torrente",
     "url": "https://arcraiders.wiki/wiki/Torrente",
-    "category": null,
+    "category": "LMG",
     "rarity": "Rare",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -2358,7 +2358,7 @@
   {
     "name": "Hullcracker",
     "url": "https://arcraiders.wiki/wiki/Hullcracker",
-    "category": null,
+    "category": "Special",
     "rarity": "Epic",
     "ammo_type": null,
     "modification_slots": [
@@ -2494,7 +2494,7 @@
   {
     "name": "Equalizer",
     "url": "https://arcraiders.wiki/wiki/Equalizer",
-    "category": null,
+    "category": "Special",
     "rarity": "Legendary",
     "ammo_type": "Energy Clip",
     "modification_slots": [],

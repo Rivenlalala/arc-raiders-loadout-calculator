@@ -112,6 +112,7 @@ def extract_item_data(url, item_name, category):
         'category': category,
         'rarity': None,
         'description': None,
+        'special_effect': None,  # New: data-warning text for augments
         'stats': {},
         'crafting': {
             'materials': [],
@@ -137,6 +138,11 @@ def extract_item_data(url, item_name, category):
         quote_row = infobox.find('tr', {'class': lambda x: x and 'quote' in x})
         if quote_row:
             item_data['description'] = quote_row.get_text(strip=True)
+
+        # Get special effect from data-warning rows (used for augment passive abilities)
+        warning_row = infobox.find('tr', {'class': lambda x: x and 'data-warning' in x})
+        if warning_row:
+            item_data['special_effect'] = warning_row.get_text(strip=True)
 
         # Get stats from infobox rows
         for row in infobox.find_all('tr', {'class': 'infobox-data'}):

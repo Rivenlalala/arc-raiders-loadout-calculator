@@ -119,7 +119,8 @@ def extract_weapon_data(url, weapon_name):
 
     # Known weapon categories
     weapon_categories = ['Assault Rifle', 'Pistol', 'Shotgun', 'SMG', 'Sniper Rifle',
-                         'Machine Gun', 'DMR', 'Launcher', 'Energy Weapon']
+                         'Machine Gun', 'DMR', 'Launcher', 'Energy Weapon',
+                         'Battle Rifle', 'Hand Cannon', 'LMG', 'Special', 'Specials']
 
     # Extract from infobox
     infobox = content.find('table', {'class': 'infobox'})
