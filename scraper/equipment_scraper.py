@@ -147,16 +147,11 @@ def extract_item_data(url, item_name, category):
                 stat_value = value.get_text(strip=True)
                 item_data['stats'][stat_name] = stat_value
 
-    # Find crafting section
+    # Find crafting section - ONLY look for specific crafting headings
+    # Do NOT fall back to generic table search as that picks up upgrade recipes
     craft_section = content.find('h3', {'id': 'Required_Materials_to_Craft'})
     if not craft_section:
         craft_section = content.find('h3', {'id': 'Crafting'})
-    if not craft_section:
-        # Try finding by text content
-        for h3 in content.find_all('h3'):
-            if 'craft' in h3.get_text().lower():
-                craft_section = h3
-                break
 
     if craft_section:
         parent = craft_section.find_parent('div')
@@ -180,33 +175,6 @@ def extract_item_data(url, item_name, category):
                                     'output': output
                                 }
                                 break
-
-    # Alternative: look for any wikitable with recipe info
-    if not item_data['crafting']['materials']:
-        for table in content.find_all('table', {'class': 'wikitable'}):
-            table_text = table.get_text().lower()
-            if 'recipe' in table_text or 'workshop' in table_text:
-                rows = table.find_all('tr')
-                for row in rows[1:]:
-                    cells = row.find_all('td')
-                    if cells:
-                        materials = parse_recipe_cell(cells[0])
-                        if materials:
-                            workshop = None
-                            for i, cell in enumerate(cells):
-                                cell_text = cell.get_text()
-                                if any(ws in cell_text for ws in ['Station', 'Bench', 'Gunsmith', 'Lab', 'Refiner']):
-                                    workshop = cell_text.strip()
-                                    break
-
-                            item_data['crafting'] = {
-                                'materials': materials,
-                                'workshop': workshop,
-                                'output': item_name
-                            }
-                            break
-                if item_data['crafting']['materials']:
-                    break
 
     return item_data
 

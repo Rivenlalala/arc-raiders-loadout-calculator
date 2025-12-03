@@ -1880,16 +1880,7 @@ const GAME_DATA = {
           "Duration": "10s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Agave",
-              "quantity": 1
-            },
-            {
-              "material": "Empty Wine Bottle",
-              "quantity": 1
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       },
@@ -1983,13 +1974,8 @@ const GAME_DATA = {
           "Duration": "25s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Fabric",
-              "quantity": 5
-            }
-          ],
-          "workshop": "Medical Lab 1orWorkbench"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -2071,17 +2057,8 @@ const GAME_DATA = {
           "Duration": "10s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Plastic Parts",
-              "quantity": 9
-            },
-            {
-              "material": "Moss",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Medical Lab 2"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -2100,20 +2077,7 @@ const GAME_DATA = {
           "Use Time": "1s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Mushroom",
-              "quantity": 12
-            },
-            {
-              "material": "Apricot",
-              "quantity": 12
-            },
-            {
-              "material": "Very Comfortable Pillow",
-              "quantity": 3
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       },
@@ -2241,16 +2205,7 @@ const GAME_DATA = {
           "Recharge": "2/s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "ARC Powercell",
-              "quantity": 1
-            },
-            {
-              "material": "Rubber Parts",
-              "quantity": 5
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       },
@@ -2405,20 +2360,7 @@ const GAME_DATA = {
           "Use Time": "1s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Lemon",
-              "quantity": 1
-            },
-            {
-              "material": "Apricot",
-              "quantity": 1
-            },
-            {
-              "material": "Prickly Pear",
-              "quantity": 1
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       },
@@ -2458,20 +2400,7 @@ const GAME_DATA = {
           "Use Time": "1s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Lemon",
-              "quantity": 1
-            },
-            {
-              "material": "Apricot",
-              "quantity": 1
-            },
-            {
-              "material": "Prickly Pear",
-              "quantity": 1
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       },
@@ -2491,20 +2420,7 @@ const GAME_DATA = {
           "Use Time": "1s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Prickly Pear",
-              "quantity": 6
-            },
-            {
-              "material": "Olives",
-              "quantity": 6
-            },
-            {
-              "material": "Cat Bed",
-              "quantity": 1
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       },
@@ -2524,20 +2440,7 @@ const GAME_DATA = {
           "Use Time": "1s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Lemon",
-              "quantity": 1
-            },
-            {
-              "material": "Apricot",
-              "quantity": 1
-            },
-            {
-              "material": "Prickly Pear",
-              "quantity": 1
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       }
@@ -3263,21 +3166,8 @@ const GAME_DATA = {
           "Radius": "5m"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Rusted Tools",
-              "quantity": 3
-            },
-            {
-              "material": "Mechanical Components",
-              "quantity": 5
-            },
-            {
-              "material": "Wasp Driver",
-              "quantity": 8
-            }
-          ],
-          "workshop": "Gunsmith 1"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -3297,21 +3187,8 @@ const GAME_DATA = {
           "Radius": "6m"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Power Cable",
-              "quantity": 3
-            },
-            {
-              "material": "Electrical Components",
-              "quantity": 5
-            },
-            {
-              "material": "Hornet Driver",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Gear Bench 1"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -3328,21 +3205,8 @@ const GAME_DATA = {
           "Sell Price": "2000"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Damaged Heat Sink",
-              "quantity": 2
-            },
-            {
-              "material": "Electrical Components",
-              "quantity": 5
-            },
-            {
-              "material": "Snitch Scanner",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Utility Station 1"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -3361,21 +3225,8 @@ const GAME_DATA = {
           "Radius": "10m"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Fried Motherboard",
-              "quantity": 3
-            },
-            {
-              "material": "Advanced Electrical Components",
-              "quantity": 5
-            },
-            {
-              "material": "Leaper Pulse Unit",
-              "quantity": 4
-            }
-          ],
-          "workshop": "Utility Station 2"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -3395,16 +3246,7 @@ const GAME_DATA = {
           "Radius": "2m"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Air Freshener",
-              "quantity": 1
-            },
-            {
-              "material": "Fireball Burner",
-              "quantity": 1
-            }
-          ],
+          "materials": [],
           "workshop": null
         }
       },
@@ -3424,13 +3266,8 @@ const GAME_DATA = {
           "Radius": "1.5m"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Chemicals",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Refiner 1"
+          "materials": [],
+          "workshop": null
         }
       },
       {
@@ -3466,21 +3303,8 @@ const GAME_DATA = {
           "Radius": "7.5m"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Synthesized Fuel",
-              "quantity": 3
-            },
-            {
-              "material": "Crude Explosives",
-              "quantity": 5
-            },
-            {
-              "material": "Pop Trigger",
-              "quantity": 5
-            }
-          ],
-          "workshop": "Explosives Station 1"
+          "materials": [],
+          "workshop": null
         }
       }
     ],
@@ -3709,17 +3533,8 @@ const GAME_DATA = {
           "Timer Duration": "6s"
         },
         "crafting": {
-          "materials": [
-            {
-              "material": "Explosive Compound",
-              "quantity": 3
-            },
-            {
-              "material": "ARC Circuitry",
-              "quantity": 2
-            }
-          ],
-          "workshop": "Explosives Station 3"
+          "materials": [],
+          "workshop": null
         }
       }
     ]
