@@ -2,12 +2,30 @@
   {
     "name": "Compensator I",
     "url": "https://arcraiders.wiki/wiki/Compensator_I",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Common",
     "effects": [
       "Slightly reduces per-shot dispersion."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "10% Reduced Max Shot Dispersion"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -23,42 +41,32 @@
     }
   },
   {
-    "name": "Metal Parts",
-    "url": "https://arcraiders.wiki/wiki/Metal_Parts",
-    "slot_type": null,
-    "rarity": "Common",
-    "effects": [
-      "Used to craft a wide range of items."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
-    "name": "Wires",
-    "url": "https://arcraiders.wiki/wiki/Wires",
-    "slot_type": null,
-    "rarity": "Uncommon",
-    "effects": [
-      "Used to craft a wide range of items. Can be recycled into scrap metal."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
     "name": "Muzzle Brake I",
     "url": "https://arcraiders.wiki/wiki/Muzzle_Brake_I",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Common",
     "effects": [
       "Slightly reduces both vertical recoil & horizontal recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "15% Reduced Vertical Recoil"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -76,12 +84,18 @@
   {
     "name": "Shotgun Choke I",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_I",
-    "slot_type": null,
+    "slot_type": "Shotgun Muzzle",
     "rarity": "Common",
     "effects": [
       "Slightly reduces base dispersion."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "10% Reduced Base Dispersion"
+    },
+    "compatible_weapons": [
+      "Il Toro",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -99,12 +113,27 @@
   {
     "name": "Angled Grip I",
     "url": "https://arcraiders.wiki/wiki/Angled_Grip_I",
-    "slot_type": null,
+    "slot_type": "Underbarrel",
     "rarity": "Common",
     "effects": [
       "Slightly reduces horizontal recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Reduced Horizontal Recoil"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -120,42 +149,29 @@
     }
   },
   {
-    "name": "Plastic Parts",
-    "url": "https://arcraiders.wiki/wiki/Plastic_Parts",
-    "slot_type": null,
-    "rarity": "Common",
-    "effects": [
-      "Used to craft a wide range of items."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
-    "name": "Duct Tape",
-    "url": "https://arcraiders.wiki/wiki/Duct_Tape",
-    "slot_type": null,
-    "rarity": "Uncommon",
-    "effects": [
-      "Used to craft weapons and weapon mods. Can be recycled into plastic."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
     "name": "Vertical Grip I",
     "url": "https://arcraiders.wiki/wiki/Vertical_Grip_I",
-    "slot_type": null,
+    "slot_type": "Underbarrel",
     "rarity": "Common",
     "effects": [
       "Slightly reduces vertical recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Reduced Vertical Recoil Control"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -173,12 +189,19 @@
   {
     "name": "Extended Light Mag I",
     "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_I",
-    "slot_type": null,
+    "slot_type": "Light-Mag",
     "rarity": "Common",
     "effects": [
       "Slightly extends the ammo capacity of compatible weapons that use light ammo."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Hairpin",
+      "Kettle",
+      "Stitcher",
+      "Burletta",
+      "Bobcat"
+    ],
     "crafting": {
       "materials": [
         {
@@ -194,28 +217,22 @@
     }
   },
   {
-    "name": "Steel Spring",
-    "url": "https://arcraiders.wiki/wiki/Steel_Spring",
-    "slot_type": null,
-    "rarity": "Uncommon",
-    "effects": [
-      "Used to craft a wide range of items. Can be recycled into scrap metal."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
     "name": "Extended Medium Mag I",
     "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_I",
-    "slot_type": null,
+    "slot_type": "Medium-Mag",
     "rarity": "Common",
     "effects": [
       "Slightly extends the ammo capacity of compatible weapons that use medium ammo."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Arpeggio",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -233,12 +250,16 @@
   {
     "name": "Extended Shotgun Mag I",
     "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_I",
-    "slot_type": null,
+    "slot_type": "Shotgun-Mag",
     "rarity": "Common",
     "effects": [
       "Slightly extends the ammo capacity of shotguns."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Il Toro",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -256,12 +277,29 @@
   {
     "name": "Stable Stock I",
     "url": "https://arcraiders.wiki/wiki/Stable_Stock_I",
-    "slot_type": null,
+    "slot_type": "Stock",
     "rarity": "Common",
     "effects": [
       "Slightly improves dispersion & recoil recovery time."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Reduced Dispersion Recovery Time"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -277,28 +315,32 @@
     }
   },
   {
-    "name": "Rubber Parts",
-    "url": "https://arcraiders.wiki/wiki/Rubber_Parts",
-    "slot_type": null,
-    "rarity": "Common",
-    "effects": [
-      "Used to craft a wide range of items."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
     "name": "Compensator II",
     "url": "https://arcraiders.wiki/wiki/Compensator_II",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces per-shot dispersion."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Reduced Max Shot Dispersion"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -314,28 +356,32 @@
     }
   },
   {
-    "name": "Mechanical Components",
-    "url": "https://arcraiders.wiki/wiki/Mechanical_Components",
-    "slot_type": null,
-    "rarity": "Uncommon",
-    "effects": [
-      "Used to craft a wide range of items. Can be recycled into crafting materials."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
     "name": "Muzzle Brake II",
     "url": "https://arcraiders.wiki/wiki/Muzzle_Brake_II",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces both vertical recoil & horizontal recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Reduced Vertical Recoil"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -353,12 +399,18 @@
   {
     "name": "Shotgun Choke II",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_II",
-    "slot_type": null,
+    "slot_type": "Shotgun Muzzle",
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces base dispersion."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Reduced Base Dispersion"
+    },
+    "compatible_weapons": [
+      "Il Toro",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [],
       "workshop": null
@@ -367,12 +419,30 @@
   {
     "name": "Silencer I",
     "url": "https://arcraiders.wiki/wiki/Silencer_I",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Uncommon",
     "effects": [
       "Slightly reduces the amount of noise produced when firing."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Reduced Noise"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [],
       "workshop": null
@@ -381,12 +451,27 @@
   {
     "name": "Angled Grip II",
     "url": "https://arcraiders.wiki/wiki/Angled_Grip_II",
-    "slot_type": null,
+    "slot_type": "Underbarrel",
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces horizontal recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "30% Reduced Horizontal Recoil"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -404,12 +489,27 @@
   {
     "name": "Vertical Grip II",
     "url": "https://arcraiders.wiki/wiki/Vertical_Grip_II",
-    "slot_type": null,
+    "slot_type": "Underbarrel",
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces vertical recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "30% Reduced Vertical Recoil"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -427,12 +527,19 @@
   {
     "name": "Extended Light Mag II",
     "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_II",
-    "slot_type": null,
+    "slot_type": "Light-Mag",
     "rarity": "Uncommon",
     "effects": [
       "Moderately extends the ammo capacity of the compatible weapons that use light ammo."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Hairpin",
+      "Kettle",
+      "Stitcher",
+      "Burletta",
+      "Bobcat"
+    ],
     "crafting": {
       "materials": [
         {
@@ -450,12 +557,20 @@
   {
     "name": "Extended Medium Mag II",
     "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_II",
-    "slot_type": null,
+    "slot_type": "Medium-Mag",
     "rarity": "Uncommon",
     "effects": [
       "Moderately extends the ammo capacity of compatible weapons that use medium ammo."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Arpeggio",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Tempest",
+      "Venator"
+    ],
     "crafting": {
       "materials": [
         {
@@ -473,12 +588,16 @@
   {
     "name": "Extended Shotgun Mag II",
     "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_II",
-    "slot_type": null,
+    "slot_type": "Shotgun-Mag",
     "rarity": "Uncommon",
     "effects": [
       "Moderately extends the ammo capacity of compatible weapons that use shotgun ammo."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Il Toro",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -496,12 +615,29 @@
   {
     "name": "Stable Stock II",
     "url": "https://arcraiders.wiki/wiki/Stable_Stock_II",
-    "slot_type": null,
+    "slot_type": "Stock",
     "rarity": "Uncommon",
     "effects": [
       "Slightly improves dispersion & recoil recovery time."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "35% Reduced Dispersion Recovery Time"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -519,12 +655,30 @@
   {
     "name": "Compensator III",
     "url": "https://arcraiders.wiki/wiki/Compensator_III",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Rare",
     "effects": [
       "Significantly reduces per-shot dispersion."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Increased Durability Burn Rate"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -540,28 +694,32 @@
     }
   },
   {
-    "name": "Mod Components",
-    "url": "https://arcraiders.wiki/wiki/Mod_Components",
-    "slot_type": null,
-    "rarity": "Rare",
-    "effects": [
-      "Used to craft weapons mods. Can be recycled into crafting materials."
-    ],
-    "compatible_weapons": [],
-    "crafting": {
-      "materials": [],
-      "workshop": null
-    }
-  },
-  {
     "name": "Muzzle Brake III",
     "url": "https://arcraiders.wiki/wiki/Muzzle_Brake_III",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Rare",
     "effects": [
       "Signifcantly reduces both vertical recoil & horizontal recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Increased Durability Burn Rate"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -579,12 +737,18 @@
   {
     "name": "Shotgun Choke III",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_III",
-    "slot_type": null,
+    "slot_type": "Shotgun Muzzle",
     "rarity": "Rare",
     "effects": [
       "Significantly reduces base dispersion."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Increased Durability Burn Rate"
+    },
+    "compatible_weapons": [
+      "Il Toro",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -602,12 +766,30 @@
   {
     "name": "Silencer II",
     "url": "https://arcraiders.wiki/wiki/Silencer_II",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Rare",
     "effects": [
       "Moderately reduces the amount of noise produced when firing."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "40% Reduced Noise"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -625,12 +807,30 @@
   {
     "name": "Silencer III",
     "url": "https://arcraiders.wiki/wiki/Silencer_III",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Epic",
     "effects": [
       "Significantly reduces the amount of noise produced when firing."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Increased Durability Burn Rate"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [],
       "workshop": null
@@ -639,12 +839,18 @@
   {
     "name": "Shotgun Silencer",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Silencer",
-    "slot_type": null,
+    "slot_type": "Shotgun Muzzle",
     "rarity": "Epic",
     "effects": [
       "Moderately reduces the amount of noise produced when firing."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "50% Reduced Noise"
+    },
+    "compatible_weapons": [
+      "Il Toro",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -662,12 +868,29 @@
   {
     "name": "Extended Barrel",
     "url": "https://arcraiders.wiki/wiki/Extended_Barrel",
-    "slot_type": null,
+    "slot_type": "Muzzle",
     "rarity": "Epic",
     "effects": [
       "Moderately increases bullet velocity."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "15% Increased Vertical Recoil"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Anvil",
+      "Arpeggio",
+      "Burletta",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Bettina",
+      "Bobcat",
+      "Tempest"
+    ],
     "crafting": {
       "materials": [
         {
@@ -685,12 +908,27 @@
   {
     "name": "Angled Grip III",
     "url": "https://arcraiders.wiki/wiki/Angled_Grip_III",
-    "slot_type": null,
+    "slot_type": "Underbarrel",
     "rarity": "Rare",
     "effects": [
       "Significantly reduces horizontal recoil"
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "30% Reduced ADS Speed"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -708,12 +946,27 @@
   {
     "name": "Vertical Grip III",
     "url": "https://arcraiders.wiki/wiki/Vertical_Grip_III",
-    "slot_type": null,
+    "slot_type": "Underbarrel",
     "rarity": "Rare",
     "effects": [
       "Significantly reduces vertical recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "30% Reduced ADS Speed"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -731,12 +984,27 @@
   {
     "name": "Horizontal Grip",
     "url": "https://arcraiders.wiki/wiki/Horizontal_Grip",
-    "slot_type": null,
+    "slot_type": "Underbarrel",
     "rarity": "Epic",
     "effects": [
       "Moderately reduces both vertical and horizontal recoil."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "30% Reduced ADS Speed"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Venator",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -754,12 +1022,19 @@
   {
     "name": "Extended Light Mag III",
     "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_III",
-    "slot_type": null,
+    "slot_type": "Light-Mag",
     "rarity": "Rare",
     "effects": [
       "Significantly extends the ammo capacity of the compatible weapons that use light ammo."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Hairpin",
+      "Kettle",
+      "Stitcher",
+      "Burletta",
+      "Bobcat"
+    ],
     "crafting": {
       "materials": [
         {
@@ -777,12 +1052,20 @@
   {
     "name": "Extended Medium Mag III",
     "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_III",
-    "slot_type": null,
+    "slot_type": "Medium-Mag",
     "rarity": "Rare",
     "effects": [
       "Significantly extends the ammo capacity of compatible weapons that use medium ammo."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Arpeggio",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Tempest",
+      "Venator"
+    ],
     "crafting": {
       "materials": [
         {
@@ -800,12 +1083,16 @@
   {
     "name": "Extended Shotgun Mag III",
     "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_III",
-    "slot_type": null,
+    "slot_type": "Shotgun-Mag",
     "rarity": "Rare",
     "effects": [
       "Significantly extends the ammo capacity of shotguns."
     ],
-    "compatible_weapons": [],
+    "stats": {},
+    "compatible_weapons": [
+      "Il Toro",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -823,12 +1110,29 @@
   {
     "name": "Stable Stock III",
     "url": "https://arcraiders.wiki/wiki/Stable_Stock_III",
-    "slot_type": null,
+    "slot_type": "Stock",
     "rarity": "Rare",
     "effects": [
       "Significantly improves dispersion & recoil recovery time"
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Increased Unequip Time"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -846,12 +1150,30 @@
   {
     "name": "Lightweight Stock",
     "url": "https://arcraiders.wiki/wiki/Lightweight_Stock",
-    "slot_type": null,
+    "slot_type": "Stock",
     "rarity": "Epic",
     "effects": [
       "Moderately improves ADS & draw speed."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "50% Increased Recoil Recovery Time"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Bettina",
+      "Bobcat",
+      "Hullcracker",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -869,12 +1191,29 @@
   {
     "name": "Padded Stock",
     "url": "https://arcraiders.wiki/wiki/Padded_Stock",
-    "slot_type": null,
+    "slot_type": "Stock",
     "rarity": "Epic",
     "effects": [
       "Significantly improves stability."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "30% Reduced ADS Speed"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [
         {
@@ -892,12 +1231,29 @@
   {
     "name": "Kinetic Converter",
     "url": "https://arcraiders.wiki/wiki/Kinetic_Converter",
-    "slot_type": null,
+    "slot_type": "Stock",
     "rarity": "Legendary",
     "effects": [
       "Moderately increases fire rate."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "20% Increased Vertical Recoil"
+    },
+    "compatible_weapons": [
+      "Ferro",
+      "Kettle",
+      "Rattler",
+      "Stitcher",
+      "Arpeggio",
+      "Il Toro",
+      "Osprey",
+      "Renegade",
+      "Torrente",
+      "Bettina",
+      "Bobcat",
+      "Tempest",
+      "Vulcano"
+    ],
     "crafting": {
       "materials": [],
       "workshop": null
@@ -911,7 +1267,12 @@
     "effects": [
       "Tech mod for the Anvil that replaces its bullets with ones that split into 4 weaker projectiles."
     ],
-    "compatible_weapons": [],
+    "stats": {
+      "effect": "70% Reduced Projectile Damage"
+    },
+    "compatible_weapons": [
+      "Anvil"
+    ],
     "crafting": {
       "materials": [],
       "workshop": null

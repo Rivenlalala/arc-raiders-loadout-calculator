@@ -65,6 +65,41 @@ export function getModificationsBySlot(slotType: string): Modification[] {
   return gameData.modifications.filter(m => m.slot_type === slotType);
 }
 
+// Get modifications for a weapon's slot that are compatible with the weapon
+export function getModificationsForWeaponSlot(weaponName: string, slotType: string): Modification[] {
+  return gameData.modifications.filter(m => {
+    // Must match slot type
+    if (m.slot_type !== slotType) return false;
+    // If no compatible weapons listed, assume compatible with all
+    if (m.compatible_weapons.length === 0) return true;
+    // Check if weapon is in compatible list
+    return m.compatible_weapons.includes(weaponName);
+  });
+}
+
+// Get shields compatible with an augment's shield compatibility stat
+export function getShieldsForAugment(augmentId: string | null): EquipmentItem[] {
+  if (!augmentId) return [];
+
+  const augment = gameData.equipment.augments.find(a => a.id === augmentId);
+  if (!augment) return [];
+
+  const shieldCompat = augment.stats['Shield Compatibility'];
+  if (!shieldCompat) return [];
+
+  // Parse compatibility (e.g., "Light, Medium" or "Light, Medium, Heavy")
+  const compatTypes = shieldCompat.split(',').map(s => s.trim().toLowerCase());
+
+  return gameData.equipment.shields.filter(shield => {
+    const shieldType = shield.name.toLowerCase().replace(' shield', '');
+    return compatTypes.includes(shieldType);
+  });
+}
+
+export function getAugmentById(id: string): EquipmentItem | undefined {
+  return gameData.equipment.augments.find(a => a.id === id);
+}
+
 export function getMaterials(): Material[] {
   return gameData.materials;
 }

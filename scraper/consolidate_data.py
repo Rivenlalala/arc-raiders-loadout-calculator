@@ -140,6 +140,7 @@ def process_equipment(equipment_data, image_paths):
                 'category': category,
                 'rarity': item.get('rarity'),
                 'description': clean_string(item.get('description')),
+                'special_effect': clean_string(item.get('special_effect')),  # For augments
                 'stats': item.get('stats', {}),
                 'crafting': crafting_data
             }
@@ -168,6 +169,7 @@ def process_modifications(mods_data, image_paths):
             'slot_type': clean_string(mod.get('slot_type')) or infer_slot_type(mod['name']),
             'rarity': mod.get('rarity'),
             'effects': mod.get('effects', []),
+            'stats': mod.get('stats', {}),  # Exact stat percentages
             'compatible_weapons': mod.get('compatible_weapons', []),
             'crafting': {
                 'materials': clean_materials(mod.get('crafting', {}).get('materials', [])),

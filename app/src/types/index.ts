@@ -45,6 +45,7 @@ export interface EquipmentItem {
   category: string;
   rarity: Rarity | null;
   description: string | null;
+  special_effect: string | null;  // Passive abilities for augments
   stats: Record<string, string>;
   crafting: CraftingInfo;
 }
@@ -57,6 +58,7 @@ export interface Modification {
   slot_type: string;
   rarity: Rarity | null;
   effects: string[];
+  stats: Record<string, string>;  // Exact stat percentages like "10% Reduced Base Dispersion"
   compatible_weapons: string[];
   crafting: CraftingInfo;
 }

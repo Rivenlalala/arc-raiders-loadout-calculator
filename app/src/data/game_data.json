@@ -1381,6 +1381,7 @@
         "category": "augments",
         "rarity": "Common",
         "description": "Basic augment for rookie Raiders, offering slightly more backpack space and carry capacity.",
+        "special_effect": null,
         "stats": {
           "Backpack Slots": "14",
           "Safe Pocket Slots": "0",
@@ -1403,6 +1404,7 @@
         "category": "augments",
         "rarity": "Uncommon",
         "description": "Basic looting augment. More backpack slots and weight capacity, but low defensive and tactical capability.",
+        "special_effect": null,
         "stats": {
           "Backpack Slots": "18",
           "Safe Pocket Slots": "1",
@@ -1434,6 +1436,7 @@
         "category": "augments",
         "rarity": "Uncommon",
         "description": "Basic combat augment. Supports stronger shields, but with limited backpack capacity and Quick Use slots.",
+        "special_effect": null,
         "stats": {
           "Backpack Slots": "16",
           "Safe Pocket Slots": "1",
@@ -1465,6 +1468,7 @@
         "category": "augments",
         "rarity": "Uncommon",
         "description": "Basic tactical augment. More Quick Use slots for more tactical choice, but limited survivability and slightly lower looting potential.",
+        "special_effect": null,
         "stats": {
           "Backpack Slots": "15",
           "Safe Pocket Slots": "1",
@@ -1496,6 +1500,7 @@
         "category": "augments",
         "rarity": "Rare",
         "description": "Significantly increases looting potential; adds slots for trinkets.",
+        "special_effect": "Automatically throws off attached Ticks after 1s.",
         "stats": {
           "Backpack Slots": "22",
           "Safe Pocket Slots": "2",
@@ -1528,6 +1533,7 @@
         "category": "augments",
         "rarity": "Rare",
         "description": "A combat augment more focused on maneuverability than absorbing damage.",
+        "special_effect": "Restores 1 health every 5 seconds. When damage is taken, the effect is paused for 30 seconds.",
         "stats": {
           "Backpack Slots": "18",
           "Safe Pocket Slots": "1",
@@ -1560,6 +1566,7 @@
         "category": "augments",
         "rarity": "Rare",
         "description": "Adds more backpack space and an extra utility item slot.",
+        "special_effect": "Upon Shield break, deploys a small smoke grenade. Has a fixed cooldown.",
         "stats": {
           "Backpack Slots": "17",
           "Safe Pocket Slots": "1",
@@ -1592,6 +1599,7 @@
         "category": "augments",
         "rarity": "Epic",
         "description": "A looting augment that swaps some carry capacity to increase survivability.",
+        "special_effect": "Upon Shield break, automatically administers a weak Adrenaline Shot. Has a fixed cooldown.",
         "stats": {
           "Backpack Slots": "24",
           "Safe Pocket Slots": "2",
@@ -1623,6 +1631,7 @@
         "category": "augments",
         "rarity": "Common",
         "description": "Can be equipped and used like regular binoculars, but cannot be dropped or removed from their slot.",
+        "special_effect": "Locked to equipped augment",
         "stats": {
           "Weight": "0.5"
         },
@@ -1638,6 +1647,7 @@
         "category": "augments",
         "rarity": "Epic",
         "description": "A heavy-duty pack mule augment. Large weight capacity and large backpack space.",
+        "special_effect": "While downed and stationary, health regenerates up to 75% of max downed health.",
         "stats": {
           "Backpack Slots": "20",
           "Safe Pocket Slots": "3",
@@ -1670,6 +1680,7 @@
         "category": "augments",
         "rarity": "Epic",
         "description": "An improved version of the Combat II augment. Supports more shield types, and comes with extra space for grenades.",
+        "special_effect": "Restores 2 health every 5 seconds. When damage is taken the effect is paused for 30 seconds.",
         "stats": {
           "Backpack Slots": "18",
           "Safe Pocket Slots": "1",
@@ -1702,6 +1713,7 @@
         "category": "augments",
         "rarity": "Epic",
         "description": "A combat augment more focused on manueverability than absorbing damage.",
+        "special_effect": "Stowed or unequipped Pistols and Hand Cannons are 33% faster to equip.",
         "stats": {
           "Backpack Slots": "20",
           "Safe Pocket Slots": "2",
@@ -1734,6 +1746,7 @@
         "category": "augments",
         "rarity": "Epic",
         "description": "A defensive-focused augment for keeping Shields topped up.",
+        "special_effect": "Allows Shield Rechargers to be used while running.",
         "stats": {
           "Backpack Slots": "20",
           "Safe Pocket Slots": "1",
@@ -1765,6 +1778,7 @@
         "category": "augments",
         "rarity": "Common",
         "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
+        "special_effect": "Locked to equipped augment",
         "stats": {
           "Weight": "0.2",
           "Stack Size": "1",
@@ -1785,6 +1799,7 @@
         "category": "shields",
         "rarity": "Uncommon",
         "description": "A lightweight shield that offers limited protection without severely impacting mobility.",
+        "special_effect": null,
         "stats": {
           "Shield Charge": "40",
           "Damage Mitigation": "40%",
@@ -1812,6 +1827,7 @@
         "category": "shields",
         "rarity": "Rare",
         "description": "A standard shield that offers fair protection at a moderate cost to mobility.",
+        "special_effect": null,
         "stats": {
           "Shield Charge": "70",
           "Damage Mitigation": "42.5%",
@@ -1840,6 +1856,7 @@
         "category": "shields",
         "rarity": "Epic",
         "description": "A heavy shield that blocks a large portion of incoming damage, but carries a significant cost to mobility.",
+        "special_effect": null,
         "stats": {
           "Shield Charge": "80",
           "Damage Mitigation": "52.5%",
@@ -1870,6 +1887,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A piece of an agave leaf. Can be used to regain a small amount of health.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.2",
@@ -1891,6 +1909,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "A medical item that gradually restores health over time.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.1",
           "Stack Size": "5",
@@ -1916,6 +1935,7 @@
         "category": "healing",
         "rarity": "Rare",
         "description": "An injection that quickly revived downed raiders and restores some health.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.75",
           "Stack Size": "3",
@@ -1944,6 +1964,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "Way pasta its prime.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "CommercialResidential",
           "Weight": "0.1",
@@ -1964,6 +1985,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "Used to craft medical supplies and shields.",
+        "special_effect": "Can be used to slowly restore small amounts of health",
         "stats": {
           "Can Be Found In": "CommercialResidentialMedical",
           "Weight": "0.1",
@@ -1985,6 +2007,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A food item that moderately increases both health and stamina.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.3",
           "Stack Size": "5",
@@ -2018,6 +2041,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "An improvised medical item that gradually restores health over time.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.15",
           "Stack Size": "5",
@@ -2047,6 +2071,7 @@
         "category": "healing",
         "rarity": "Rare",
         "description": "Can be used to regain a small amount of health.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.3",
@@ -2068,6 +2093,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "Can be consumed to regain a small amount of health.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.2",
@@ -2088,6 +2114,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "Can be used to gradually restore a small amount of health over time.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.4",
@@ -2109,6 +2136,7 @@
         "category": "healing",
         "rarity": "Rare",
         "description": "A medical item that gradually restores a large amount of health over time.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "3",
@@ -2138,6 +2166,7 @@
         "category": "healing",
         "rarity": "Rare",
         "description": "A medical item that restores a large amount of health.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "3",
@@ -2166,6 +2195,7 @@
         "category": "healing",
         "rarity": "Epic",
         "description": "A medical item that continuously restores health during use. Can be used on yourself or your allies.",
+        "special_effect": null,
         "stats": {
           "Weight": "1.0",
           "Stack Size": "1",
@@ -2194,6 +2224,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "Valuable resource that drops from all ARC enemies.",
+        "special_effect": "Can be used to repair shields.",
         "stats": {
           "Can Be Found In": "ARC",
           "Weight": "0.5",
@@ -2216,6 +2247,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
+        "special_effect": "Locked to equipped augment",
         "stats": {
           "Weight": "0.2",
           "Stack Size": "1",
@@ -2234,6 +2266,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A handheld repair kit that recharges a shield over time.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.15",
           "Stack Size": "5",
@@ -2264,6 +2297,7 @@
         "category": "healing",
         "rarity": "Rare",
         "description": "A handheld kit that recharges a shield on use.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "5",
@@ -2292,6 +2326,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "A serum that fully restores stamina and temporarily increases stamina regeneration.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "5",
@@ -2321,6 +2356,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "A concoction that temporarily increases stamina regeneration, at a small initial cost to health.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "5",
@@ -2351,6 +2387,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A sun ripe apricot. Can be consumed for a small amount of stamina.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.2",
@@ -2371,6 +2408,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "Something tells you that you don't want to open this...",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "CommercialResidential",
           "Weight": "0.2",
@@ -2391,6 +2429,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "Can be consumed for a small amount of stamina.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.2",
@@ -2411,6 +2450,7 @@
         "category": "healing",
         "rarity": "Uncommon",
         "description": "Can be consumed for a small amount of stamina.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.2",
@@ -2431,6 +2471,7 @@
         "category": "healing",
         "rarity": "Common",
         "description": "Can be consumed for a small amount of stamina.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Nature",
           "Weight": "0.2",
@@ -2453,6 +2494,7 @@
         "category": "quick_use",
         "rarity": "Uncommon",
         "description": "A deployable cover that can block incoming damage until it breaks.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "3",
@@ -2476,6 +2518,7 @@
         "category": "quick_use",
         "rarity": "Common",
         "description": "A locking mechanism that can be placed on large metal doors to limit access.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "3",
@@ -2502,6 +2545,7 @@
         "category": "quick_use",
         "rarity": "Common",
         "description": "A deployable device that, when manually triggered, launches a Raider Distress Flare.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "3",
@@ -2528,6 +2572,7 @@
         "category": "quick_use",
         "rarity": "Rare",
         "description": "A deployable zipline that allows you to quickly move between two locations.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "3",
@@ -2555,6 +2600,7 @@
         "category": "quick_use",
         "rarity": "Common",
         "description": "A basic pair of binoculars with two levels of magnification.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.5",
           "Stack Size": "1",
@@ -2581,6 +2627,7 @@
         "category": "quick_use",
         "rarity": "Uncommon",
         "description": "A classic makeshift weapon, sure to leave scorch marks.",
+        "special_effect": null,
         "stats": {
           "Weight": "1",
           "Stack Size": "1",
@@ -2608,6 +2655,7 @@
         "category": "quick_use",
         "rarity": "Common",
         "description": "Can be equipped and used like regular binoculars, but cannot be dropped or removed from their slot.",
+        "special_effect": "Locked to equipped augment",
         "stats": {
           "Weight": "0.5"
         },
@@ -2623,6 +2671,7 @@
         "category": "quick_use",
         "rarity": "Common",
         "description": "A deployable proximity sensor that sounds an alarm when enemy raiders are detected.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.3",
           "Stack Size": "3",
@@ -2651,6 +2700,7 @@
         "category": "quick_use",
         "rarity": "Epic",
         "description": "A gadget that allows the user to conceal themselves from ARC.",
+        "special_effect": null,
         "stats": {
           "Weight": "1.0",
           "Stack Size": "1",
@@ -2677,6 +2727,7 @@
         "category": "quick_use",
         "rarity": "Uncommon",
         "description": "A playable recorder used to attract ARC's attention, and impress other Raiders.",
+        "special_effect": null,
         "stats": {
           "Can Be Found In": "Residential",
           "Weight": "0.2",
@@ -2695,6 +2746,7 @@
         "category": "quick_use",
         "rarity": "Legendary",
         "description": "A gadget that allows the user to scale structures and cover large distances.",
+        "special_effect": null,
         "stats": {
           "Weight": "5.0",
           "Stack Size": "1",
@@ -2728,6 +2780,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that creates a lingering smoke cloud on impact, blocking visibility from other Raiders.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "5",
@@ -2756,6 +2809,7 @@
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A noise device that sticks to surfaces, distracting nearby ARC machines and drawing their fire.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "3",
@@ -2784,6 +2838,7 @@
         "category": "grenades",
         "rarity": "Common",
         "description": "A throwable chemical light that illuminates the area around it.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.15",
           "Stack Size": "5",
@@ -2808,6 +2863,7 @@
         "category": "grenades",
         "rarity": "Common",
         "description": "A grenade that detonates on impact, dealing explosive damage in a small radius.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.1",
           "Stack Size": "5",
@@ -2836,6 +2892,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates after a delay, dealing explosive damage in its radius.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "3",
@@ -2864,6 +2921,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates on impact, covering an area in fire that deals damage over time.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "5",
@@ -2893,6 +2951,7 @@
         "category": "grenades",
         "rarity": "Common",
         "description": "A grenade that creates a lingering toxic cloud on impact, draining the stamina of any Raiders within its area of effect.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "3",
@@ -2922,6 +2981,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates after a delay, stunning enemies within its radius.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "5",
@@ -2951,6 +3011,7 @@
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A grenade that sticks to surfaces, dealing explosive damage after a short delay.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "3",
@@ -2979,6 +3040,7 @@
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A homing grenade that targets a single nearby ARC dealing explosive damage on impact.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "5",
@@ -2998,6 +3060,7 @@
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A makeshift fuze grenade that bursts into razor-sharp fragments upon detonation.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.15",
           "Stack Size": "5",
@@ -3026,6 +3089,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "A remote-detonated grenade that can stick to surfaces and ARC, dealing explosive damage when triggered.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "3",
@@ -3054,6 +3118,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that emits a trail of flammable gas along its path, causing an explosive chain reaction when it ignites.",
+        "special_effect": null,
         "stats": {
           "Weight": "1.0",
           "Stack Size": "3",
@@ -3073,6 +3138,7 @@
         "category": "grenades",
         "rarity": "Epic",
         "description": "A grenade that scatters into multiple homing missiles, each one targeting ARC and dealing explosive damage on impact.",
+        "special_effect": null,
         "stats": {
           "Weight": "1.0",
           "Stack Size": "1",
@@ -3101,6 +3167,7 @@
         "category": "grenades",
         "rarity": "Common",
         "description": "A Grenade that pops into a thick but small smoke cloud on impact, blocking visibility from ARC and other Raiders.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.15",
           "Stack Size": "5",
@@ -3129,6 +3196,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates after a delay, tagging Raiders and ARC enemies in an area, allowing you to briefly track their location.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "3",
@@ -3157,6 +3225,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "Can be recycled into ARC Alloy.",
+        "special_effect": "Can be thrown, and will explode if shot.",
         "stats": {
           "Can Be Found In": "ARC",
           "Weight": "0.6",
@@ -3177,6 +3246,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "Can be recycled into ARC Alloy.",
+        "special_effect": "Can be thrown and will briefly stun nearby targets",
         "stats": {
           "Can Be Found In": "ARC",
           "Weight": "0.75",
@@ -3198,6 +3268,7 @@
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "Can be recycled into ARC Alloy.",
+        "special_effect": "Can be thrown to call in ARC",
         "stats": {
           "Can Be Found In": "ARC",
           "Weight": "0.75",
@@ -3216,6 +3287,7 @@
         "category": "grenades",
         "rarity": "Epic",
         "description": "Can be recycled into crafting materials.",
+        "special_effect": "Can be thrown to create a violent singularity",
         "stats": {
           "Can Be Found In": "ARC",
           "Weight": "1.0",
@@ -3236,6 +3308,7 @@
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "Can be recycled into ARC Alloy.",
+        "special_effect": "Can be thrown to create small fires",
         "stats": {
           "Can Be Found In": "ARC",
           "Weight": "0.5",
@@ -3257,6 +3330,7 @@
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "Used to craft explosives. Can be recycled into crafting materials",
+        "special_effect": "Can be thrown to create a loud noise.",
         "stats": {
           "Can Be Found In": "IndustrialSecurity",
           "Weight": "2",
@@ -3277,6 +3351,7 @@
         "category": "grenades",
         "rarity": "Common",
         "description": "Always there to lend an ear, should you need it.",
+        "special_effect": "Can be thrown to create noise.",
         "stats": {
           "Weight": "0.3",
           "Stack Size": "15",
@@ -3294,6 +3369,7 @@
         "category": "grenades",
         "rarity": "Rare",
         "description": "Used to craft utility items and explosives. Can be recycled into chemicals.",
+        "special_effect": "Can be thrown, and will explode if shot.",
         "stats": {
           "Can Be Found In": "Exodus",
           "Weight": "0.5",
@@ -3316,6 +3392,7 @@
         "category": "traps",
         "rarity": "Rare",
         "description": "laser trip wire that detonates a Blaze Grenade.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.3",
           "Stack Size": "3",
@@ -3344,6 +3421,7 @@
         "category": "traps",
         "rarity": "Common",
         "description": "A laser trip write that detonates a Gas Grenade.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.25",
           "Stack Size": "3",
@@ -3373,6 +3451,7 @@
         "category": "traps",
         "rarity": "Uncommon",
         "description": "A laser trip wire that detonates a Lure Grenade",
+        "special_effect": null,
         "stats": {
           "Weight": "0.25",
           "Stack Size": "3",
@@ -3401,6 +3480,7 @@
         "category": "traps",
         "rarity": "Rare",
         "description": "A laser trip write that detonates a Smoke Grenade.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.3",
           "Stack Size": "3",
@@ -3429,6 +3509,7 @@
         "category": "traps",
         "rarity": "Rare",
         "description": "A proximity triggered mine that pops up and explodes, dealing damage to anything within its radius.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.4",
           "Stack Size": "3",
@@ -3457,6 +3538,7 @@
         "category": "traps",
         "rarity": "Common",
         "description": "A proximity-triggered mine that pops up and deploys a gas cloud that rapidly drains stamina.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.25",
           "Stack Size": "3",
@@ -3477,6 +3559,7 @@
         "category": "traps",
         "rarity": "Rare",
         "description": "A proximity trigger mine that pops up and stuns anything within its radius.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.2",
           "Stack Size": "3",
@@ -3506,6 +3589,7 @@
         "category": "traps",
         "rarity": "Uncommon",
         "description": "A proximity-triggered mine that pops up and knocks back anything within its radius.",
+        "special_effect": null,
         "stats": {
           "Weight": "0.25",
           "Stack Size": "3",
@@ -3524,6 +3608,7 @@
         "category": "traps",
         "rarity": "Epic",
         "description": "A mine that deals damage to anything within its radius once the timer runs out.",
+        "special_effect": null,
         "stats": {
           "Weight": "1.0",
           "Stack Size": "1",
@@ -3549,7 +3634,25 @@
       "effects": [
         "Slightly reduces per-shot dispersion."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "10% Reduced Max Shot Dispersion"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3573,7 +3676,25 @@
       "effects": [
         "Slightly reduces both vertical recoil & horizontal recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "15% Reduced Vertical Recoil"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3592,12 +3713,18 @@
       "id": "shotgun_choke_i",
       "name": "Shotgun Choke I",
       "image": "images/modifications/shotgun_choke_i.webp",
-      "slot_type": "Muzzle",
+      "slot_type": "Shotgun Muzzle",
       "rarity": "Common",
       "effects": [
         "Slightly reduces base dispersion."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "10% Reduced Base Dispersion"
+      },
+      "compatible_weapons": [
+        "Il Toro",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3621,7 +3748,22 @@
       "effects": [
         "Slightly reduces horizontal recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Reduced Horizontal Recoil"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3645,7 +3787,22 @@
       "effects": [
         "Slightly reduces vertical recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Reduced Vertical Recoil Control"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3669,7 +3826,14 @@
       "effects": [
         "Slightly extends the ammo capacity of compatible weapons that use light ammo."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Hairpin",
+        "Kettle",
+        "Stitcher",
+        "Burletta",
+        "Bobcat"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3693,7 +3857,15 @@
       "effects": [
         "Slightly extends the ammo capacity of compatible weapons that use medium ammo."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Arpeggio",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3717,7 +3889,11 @@
       "effects": [
         "Slightly extends the ammo capacity of shotguns."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Il Toro",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3741,7 +3917,24 @@
       "effects": [
         "Slightly improves dispersion & recoil recovery time."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Reduced Dispersion Recovery Time"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3765,7 +3958,25 @@
       "effects": [
         "Moderately reduces per-shot dispersion."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Reduced Max Shot Dispersion"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3789,7 +4000,25 @@
       "effects": [
         "Moderately reduces both vertical recoil & horizontal recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Reduced Vertical Recoil"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3808,12 +4037,18 @@
       "id": "shotgun_choke_ii",
       "name": "Shotgun Choke II",
       "image": "images/modifications/shotgun_choke_ii.png",
-      "slot_type": "Muzzle",
+      "slot_type": "Shotgun Muzzle",
       "rarity": "Uncommon",
       "effects": [
         "Moderately reduces base dispersion."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Reduced Base Dispersion"
+      },
+      "compatible_weapons": [
+        "Il Toro",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [],
         "workshop": null
@@ -3828,7 +4063,25 @@
       "effects": [
         "Slightly reduces the amount of noise produced when firing."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Reduced Noise"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [],
         "workshop": null
@@ -3843,7 +4096,22 @@
       "effects": [
         "Moderately reduces horizontal recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "30% Reduced Horizontal Recoil"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3867,7 +4135,22 @@
       "effects": [
         "Moderately reduces vertical recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "30% Reduced Vertical Recoil"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3891,7 +4174,14 @@
       "effects": [
         "Moderately extends the ammo capacity of the compatible weapons that use light ammo."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Hairpin",
+        "Kettle",
+        "Stitcher",
+        "Burletta",
+        "Bobcat"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3915,7 +4205,15 @@
       "effects": [
         "Moderately extends the ammo capacity of compatible weapons that use medium ammo."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Arpeggio",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Tempest",
+        "Venator"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3939,7 +4237,11 @@
       "effects": [
         "Moderately extends the ammo capacity of compatible weapons that use shotgun ammo."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Il Toro",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3963,7 +4265,24 @@
       "effects": [
         "Slightly improves dispersion & recoil recovery time."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "35% Reduced Dispersion Recovery Time"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -3987,7 +4306,25 @@
       "effects": [
         "Significantly reduces per-shot dispersion."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Increased Durability Burn Rate"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4011,7 +4348,25 @@
       "effects": [
         "Signifcantly reduces both vertical recoil & horizontal recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Increased Durability Burn Rate"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4030,12 +4385,18 @@
       "id": "shotgun_choke_iii",
       "name": "Shotgun Choke III",
       "image": "images/modifications/shotgun_choke_iii.png",
-      "slot_type": "Muzzle",
+      "slot_type": "Shotgun Muzzle",
       "rarity": "Rare",
       "effects": [
         "Significantly reduces base dispersion."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Increased Durability Burn Rate"
+      },
+      "compatible_weapons": [
+        "Il Toro",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4059,7 +4420,25 @@
       "effects": [
         "Moderately reduces the amount of noise produced when firing."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "40% Reduced Noise"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4083,7 +4462,25 @@
       "effects": [
         "Significantly reduces the amount of noise produced when firing."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Increased Durability Burn Rate"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [],
         "workshop": null
@@ -4093,12 +4490,18 @@
       "id": "shotgun_silencer",
       "name": "Shotgun Silencer",
       "image": "images/modifications/shotgun_silencer.webp",
-      "slot_type": "Muzzle",
+      "slot_type": "Shotgun Muzzle",
       "rarity": "Epic",
       "effects": [
         "Moderately reduces the amount of noise produced when firing."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "50% Reduced Noise"
+      },
+      "compatible_weapons": [
+        "Il Toro",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4122,7 +4525,24 @@
       "effects": [
         "Moderately increases bullet velocity."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "15% Increased Vertical Recoil"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Anvil",
+        "Arpeggio",
+        "Burletta",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Bettina",
+        "Bobcat",
+        "Tempest"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4146,7 +4566,22 @@
       "effects": [
         "Significantly reduces horizontal recoil"
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "30% Reduced ADS Speed"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4170,7 +4605,22 @@
       "effects": [
         "Significantly reduces vertical recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "30% Reduced ADS Speed"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4194,7 +4644,22 @@
       "effects": [
         "Moderately reduces both vertical and horizontal recoil."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "30% Reduced ADS Speed"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Venator",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4218,7 +4683,14 @@
       "effects": [
         "Significantly extends the ammo capacity of the compatible weapons that use light ammo."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Hairpin",
+        "Kettle",
+        "Stitcher",
+        "Burletta",
+        "Bobcat"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4242,7 +4714,15 @@
       "effects": [
         "Significantly extends the ammo capacity of compatible weapons that use medium ammo."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Arpeggio",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Tempest",
+        "Venator"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4266,7 +4746,11 @@
       "effects": [
         "Significantly extends the ammo capacity of shotguns."
       ],
-      "compatible_weapons": [],
+      "stats": {},
+      "compatible_weapons": [
+        "Il Toro",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4290,7 +4774,24 @@
       "effects": [
         "Significantly improves dispersion & recoil recovery time"
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Increased Unequip Time"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4314,7 +4815,25 @@
       "effects": [
         "Moderately improves ADS & draw speed."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "50% Increased Recoil Recovery Time"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Bettina",
+        "Bobcat",
+        "Hullcracker",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4338,7 +4857,24 @@
       "effects": [
         "Significantly improves stability."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "30% Reduced ADS Speed"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [
           {
@@ -4357,12 +4893,29 @@
       "id": "kinetic_converter",
       "name": "Kinetic Converter",
       "image": "images/modifications/kinetic_converter.webp",
-      "slot_type": "Tech-Mod",
+      "slot_type": "Stock",
       "rarity": "Legendary",
       "effects": [
         "Moderately increases fire rate."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "20% Increased Vertical Recoil"
+      },
+      "compatible_weapons": [
+        "Ferro",
+        "Kettle",
+        "Rattler",
+        "Stitcher",
+        "Arpeggio",
+        "Il Toro",
+        "Osprey",
+        "Renegade",
+        "Torrente",
+        "Bettina",
+        "Bobcat",
+        "Tempest",
+        "Vulcano"
+      ],
       "crafting": {
         "materials": [],
         "workshop": null
@@ -4377,7 +4930,12 @@
       "effects": [
         "Tech mod for the Anvil that replaces its bullets with ones that split into 4 weaker projectiles."
       ],
-      "compatible_weapons": [],
+      "stats": {
+        "effect": "70% Reduced Projectile Damage"
+      },
+      "compatible_weapons": [
+        "Anvil"
+      ],
       "crafting": {
         "materials": [],
         "workshop": null

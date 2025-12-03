@@ -1,19 +1,116 @@
+import { useState } from 'react';
 import { WeaponSelector } from './WeaponSelector';
-import { ItemSelector } from '../ui/ItemSelector';
-import { getAugments, getShields, getHealing, getGrenades, getQuickUse } from '../../data/gameData';
-import type { Loadout } from '../../types';
+import { ItemCard } from '../ui/ItemCard';
+import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
+import type { Loadout, EquipmentItem } from '../../types';
 
 interface LoadoutBuilderProps {
   loadout: Loadout;
   onChange: (loadout: Loadout) => void;
 }
 
+// Tooltip component for augments
+function AugmentTooltip({ augment }: { augment: EquipmentItem }) {
+  return (
+    <div
+      className="absolute z-50 left-full top-0 ml-2 w-72 p-3 rounded-lg border bg-card shadow-xl"
+      style={{ borderColor: getRarityColor(augment.rarity) }}
+    >
+      <p className="font-semibold" style={{ color: getRarityColor(augment.rarity) }}>
+        {augment.name}
+      </p>
+      <p className="text-xs text-muted-foreground mb-2">{augment.rarity} Augment</p>
+
+      {augment.special_effect && (
+        <p className="text-sm text-green-400 mb-2 p-2 bg-green-400/10 rounded">{augment.special_effect}</p>
+      )}
+
+      <div className="grid grid-cols-2 gap-1 text-xs">
+        {augment.stats['Backpack Slots'] && (
+          <div>Backpack: <span className="text-primary">{augment.stats['Backpack Slots']}</span></div>
+        )}
+        {augment.stats['Safe Pocket Slots'] && (
+          <div>Safe Pocket: <span className="text-primary">{augment.stats['Safe Pocket Slots']}</span></div>
+        )}
+        {augment.stats['Quick Use Slots'] && (
+          <div>Quick Use: <span className="text-primary">{augment.stats['Quick Use Slots']}</span></div>
+        )}
+        {augment.stats['Weapon Slots'] && (
+          <div>Weapons: <span className="text-primary">{augment.stats['Weapon Slots']}</span></div>
+        )}
+        {augment.stats['Weight Limit'] && (
+          <div>Weight: <span className="text-primary">{augment.stats['Weight Limit']}</span></div>
+        )}
+        {augment.stats['Shield Compatibility'] && (
+          <div className="col-span-2">Shield: <span className="text-primary">{augment.stats['Shield Compatibility']}</span></div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Tooltip component for shields
+function ShieldTooltip({ shield }: { shield: EquipmentItem }) {
+  return (
+    <div
+      className="absolute z-50 left-full top-0 ml-2 w-56 p-3 rounded-lg border bg-card shadow-xl"
+      style={{ borderColor: getRarityColor(shield.rarity) }}
+    >
+      <p className="font-semibold" style={{ color: getRarityColor(shield.rarity) }}>
+        {shield.name}
+      </p>
+      <p className="text-xs text-muted-foreground mb-2">{shield.rarity} Shield</p>
+
+      <div className="space-y-1 text-sm">
+        {shield.stats['Shield Charge'] && (
+          <div className="flex justify-between">
+            <span className="text-muted-foreground">Shield Charge</span>
+            <span className="text-primary">{shield.stats['Shield Charge']}</span>
+          </div>
+        )}
+        {shield.stats['Damage Mitigation'] && (
+          <div className="flex justify-between">
+            <span className="text-muted-foreground">Damage Mitigation</span>
+            <span className="text-green-400">{shield.stats['Damage Mitigation']}</span>
+          </div>
+        )}
+        {shield.stats['Movement Penalty'] && (
+          <div className="flex justify-between">
+            <span className="text-muted-foreground">Movement Penalty</span>
+            <span className="text-red-400">{shield.stats['Movement Penalty']}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
+  const [hoveredAugment, setHoveredAugment] = useState<EquipmentItem | null>(null);
+  const [hoveredShield, setHoveredShield] = useState<EquipmentItem | null>(null);
+
   const augments = getAugments();
-  const shields = getShields();
+  const compatibleShields = getShieldsForAugment(loadout.augment);
   const healing = getHealing().filter(h => h.crafting.materials.length > 0);
   const grenades = getGrenades().filter(g => g.crafting.materials.length > 0);
   const utilities = getQuickUse().filter(u => u.crafting.materials.length > 0);
+
+  const handleAugmentChange = (augmentId: string | null) => {
+    // When augment changes, check if current shield is still compatible
+    let newShield = loadout.shield;
+    if (augmentId) {
+      const newCompatibleShields = getShieldsForAugment(augmentId);
+      if (loadout.shield && !newCompatibleShields.find(s => s.id === loadout.shield)) {
+        newShield = null; // Clear shield if no longer compatible
+      }
+    } else {
+      newShield = null; // No augment = no shield
+    }
+    onChange({ ...loadout, augment: augmentId, shield: newShield });
+  };
+
+  const selectedAugment = loadout.augment ? getAugmentById(loadout.augment) : null;
+  const selectedShield = loadout.shield ? getEquipmentById(loadout.shield) : null;
 
   return (
     <div className="space-y-6">
@@ -39,28 +136,76 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
 
       {/* Augment & Shield */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <ItemSelector
-          title="Augment"
-          items={augments.map(a => ({
-            id: a.id,
-            name: a.name,
-            image: a.image,
-            rarity: a.rarity,
-          }))}
-          selectedId={loadout.augment}
-          onSelect={(id) => onChange({ ...loadout, augment: id })}
-        />
-        <ItemSelector
-          title="Shield"
-          items={shields.map(s => ({
-            id: s.id,
-            name: s.name,
-            image: s.image,
-            rarity: s.rarity,
-          }))}
-          selectedId={loadout.shield}
-          onSelect={(id) => onChange({ ...loadout, shield: id })}
-        />
+        {/* Augment Selector */}
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-muted-foreground">Augment</label>
+          <div className="flex flex-wrap gap-2">
+            {augments.map((augment) => (
+              <div
+                key={augment.id}
+                className="relative"
+                onMouseEnter={() => setHoveredAugment(augment)}
+                onMouseLeave={() => setHoveredAugment(null)}
+              >
+                <ItemCard
+                  name={augment.name}
+                  image={augment.image}
+                  rarity={augment.rarity}
+                  selected={loadout.augment === augment.id}
+                  onClick={() => handleAugmentChange(loadout.augment === augment.id ? null : augment.id)}
+                  size="sm"
+                />
+                {hoveredAugment?.id === augment.id && <AugmentTooltip augment={augment} />}
+              </div>
+            ))}
+          </div>
+          {selectedAugment && (
+            <p className="text-xs text-muted-foreground">
+              Shield: {selectedAugment.stats['Shield Compatibility'] || 'None'}
+              {selectedAugment.special_effect && (
+                <span className="text-green-400 ml-2">• {selectedAugment.special_effect}</span>
+              )}
+            </p>
+          )}
+        </div>
+
+        {/* Shield Selector */}
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-muted-foreground">
+            Shield {!loadout.augment && <span className="text-red-400">(select augment first)</span>}
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {compatibleShields.length === 0 && loadout.augment && (
+              <p className="text-sm text-muted-foreground">No compatible shields</p>
+            )}
+            {compatibleShields.map((shield) => (
+              <div
+                key={shield.id}
+                className="relative"
+                onMouseEnter={() => setHoveredShield(shield)}
+                onMouseLeave={() => setHoveredShield(null)}
+              >
+                <ItemCard
+                  name={shield.name}
+                  image={shield.image}
+                  rarity={shield.rarity}
+                  selected={loadout.shield === shield.id}
+                  onClick={() => onChange({ ...loadout, shield: loadout.shield === shield.id ? null : shield.id })}
+                  size="sm"
+                />
+                {hoveredShield?.id === shield.id && <ShieldTooltip shield={shield} />}
+              </div>
+            ))}
+          </div>
+          {selectedShield && (
+            <p className="text-xs text-muted-foreground">
+              {selectedShield.stats['Shield Charge']} HP • {selectedShield.stats['Damage Mitigation']} mitigation
+              {selectedShield.stats['Movement Penalty'] && selectedShield.stats['Movement Penalty'] !== '0%' && (
+                <span className="text-red-400"> • -{selectedShield.stats['Movement Penalty']} speed</span>
+              )}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Consumables */}

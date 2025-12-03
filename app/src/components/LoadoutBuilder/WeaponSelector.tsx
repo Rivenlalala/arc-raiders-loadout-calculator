@@ -145,6 +145,7 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
               <ModSelector
                 key={`${selectedWeapon.id}-${slot}-${index}`}
                 slot={slot}
+                weaponName={selectedWeapon.name}
                 selectedModId={value?.mods[index] || null}
                 onSelect={(modId) => handleModChange(index, modId)}
               />

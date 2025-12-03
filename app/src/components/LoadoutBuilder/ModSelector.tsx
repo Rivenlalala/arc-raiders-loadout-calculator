@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import { ChevronDown, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { getModificationsBySlot, getModificationById } from '../../data/gameData';
+import { getModificationsForWeaponSlot, getModificationById, getRarityColor } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
 import type { Modification } from '../../types';
 
 interface ModSelectorProps {
   slot: string;
+  weaponName: string;
   selectedModId: string | null;
   onSelect: (modId: string | null) => void;
 }
 
-export function ModSelector({ slot, selectedModId, onSelect }: ModSelectorProps) {
+export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [hoveredMod, setHoveredMod] = useState<Modification | null>(null);
 
-  const availableMods = getModificationsBySlot(slot);
+  const availableMods = getModificationsForWeaponSlot(weaponName, slot);
   const selectedMod = selectedModId ? getModificationById(selectedModId) : null;
 
   const handleModSelect = (mod: Modification) => {
@@ -25,6 +27,13 @@ export function ModSelector({ slot, selectedModId, onSelect }: ModSelectorProps)
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
     onSelect(null);
+  };
+
+  // Get display stat for a mod
+  const getModStat = (mod: Modification): string => {
+    if (mod.stats.effect) return mod.stats.effect;
+    if (mod.effects.length > 0) return mod.effects[0];
+    return '';
   };
 
   return (
@@ -45,9 +54,9 @@ export function ModSelector({ slot, selectedModId, onSelect }: ModSelectorProps)
               rarity={selectedMod.rarity}
               size="xs"
             />
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0" title={`${selectedMod.name}\n${getModStat(selectedMod)}`}>
               <p className="text-sm font-medium truncate">{selectedMod.name}</p>
-              <p className="text-xs text-muted-foreground">{slot}</p>
+              <p className="text-xs text-muted-foreground truncate">{getModStat(selectedMod)}</p>
             </div>
             <button
               className="p-1 hover:bg-secondary rounded"
@@ -92,6 +101,8 @@ export function ModSelector({ slot, selectedModId, onSelect }: ModSelectorProps)
                           : 'hover:bg-secondary/50'
                       )}
                       onClick={() => handleModSelect(mod)}
+                      onMouseEnter={() => setHoveredMod(mod)}
+                      onMouseLeave={() => setHoveredMod(null)}
                     >
                       <ItemCard
                         name={mod.name}
@@ -101,17 +112,34 @@ export function ModSelector({ slot, selectedModId, onSelect }: ModSelectorProps)
                       />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate">{mod.name}</p>
-                        {mod.effects.length > 0 && (
-                          <p className="text-xs text-muted-foreground truncate">
-                            {mod.effects[0]}
-                          </p>
-                        )}
+                        <p className="text-xs text-muted-foreground truncate">
+                          {getModStat(mod)}
+                        </p>
                       </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
+
+            {/* Tooltip for hovered mod */}
+            {hoveredMod && (
+              <div
+                className="absolute left-full top-0 ml-2 w-64 p-3 rounded-lg border border-border bg-card shadow-xl z-60"
+                style={{ borderColor: getRarityColor(hoveredMod.rarity) }}
+              >
+                <p className="font-semibold" style={{ color: getRarityColor(hoveredMod.rarity) }}>
+                  {hoveredMod.name}
+                </p>
+                <p className="text-xs text-muted-foreground mb-2">{hoveredMod.rarity} {hoveredMod.slot_type}</p>
+                {hoveredMod.stats.effect && (
+                  <p className="text-sm text-green-400 mb-2">{hoveredMod.stats.effect}</p>
+                )}
+                {hoveredMod.effects.map((effect, i) => (
+                  <p key={i} className="text-sm text-muted-foreground">{effect}</p>
+                ))}
+              </div>
+            )}
           </div>
         </>
       )}
