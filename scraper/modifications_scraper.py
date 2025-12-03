@@ -155,7 +155,7 @@ def extract_mod_data(url, mod_name):
         p_text = first_p.get_text(strip=True)
         # Extract slot type from patterns - map wiki text to slot names used in weapon data
         slot_mapping = [
-            ('Shotgun Muzzle', 'Shotgun Muzzle'),
+            ('Shotgun Muzzle', 'Shotgun-Muzzle'),
             ('Shotgun Magazine', 'Shotgun-Mag'),
             ('Light Magazine', 'Light-Mag'),
             ('Medium Magazine', 'Medium-Mag'),
