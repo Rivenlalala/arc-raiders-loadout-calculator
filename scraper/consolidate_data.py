@@ -6,6 +6,7 @@ for the Arc Raiders Loadout Calculator web app.
 
 import json
 import os
+import re
 
 def load_json(filename):
     """Load a JSON file."""
@@ -18,6 +19,30 @@ def load_image_paths():
         return load_json('image_paths.json')
     except FileNotFoundError:
         return {}
+
+def roman_to_int(roman):
+    """Convert Roman numeral to integer."""
+    roman_values = {'I': 1, 'V': 5, 'X': 10}
+    result = 0
+    prev = 0
+    for char in reversed(roman.upper()):
+        curr = roman_values.get(char, 0)
+        if curr < prev:
+            result -= curr
+        else:
+            result += curr
+        prev = curr
+    return result
+
+def extract_tier(output_string):
+    """Extract tier number from upgrade output like 'Kettle II' -> 2."""
+    if not output_string:
+        return None
+    # Look for Roman numerals at the end (I, II, III, IV, V, etc.)
+    match = re.search(r'\s+(I{1,3}|IV|V|VI{0,3}|IX|X)$', output_string)
+    if match:
+        return roman_to_int(match.group(1))
+    return None
 
 def clean_string(s):
     """Clean up string values."""
@@ -60,8 +85,10 @@ def process_weapons(weapons_data, image_paths):
 
         # Process upgrades
         for upg in w.get('upgrades', []):
+            output = clean_string(upg.get('output', ''))
+            tier = extract_tier(output)
             weapon['crafting']['upgrades'].append({
-                'to_tier': clean_string(upg.get('output', '')),
+                'tier': tier,
                 'materials': clean_materials(upg.get('materials', [])),
                 'workshop': clean_string(upg.get('workshop'))
             })
