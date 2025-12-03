@@ -358,40 +358,50 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div
-                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                    onClick={() => {
-                      const newHealing = loadout.healing.filter(h => h.id !== item.id);
-                      if (qty === 0) {
-                        newHealing.push({ id: item.id, quantity: 1 });
-                      }
-                      onChange({ ...loadout, healing: newHealing });
-                    }}
-                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <img
-                      src={`/${item.image}`}
-                      alt={item.name}
-                      className="w-12 h-12 object-contain rounded-lg"
-                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
-                    />
-                    {qty > 0 && (
-                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
-                        {qty}
-                      </span>
-                    )}
-                    <HoverTooltip
-                      item={item}
-                      isHovered={hoveredItem?.id === item.id}
-                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
+                  <div className="w-14 h-14 flex items-center justify-center">
+                    <div
+                      className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
+                      onClick={() => {
+                        const newHealing = loadout.healing.filter(h => h.id !== item.id);
+                        if (qty === 0) {
+                          newHealing.push({ id: item.id, quantity: 1 });
+                        }
+                        onChange({ ...loadout, healing: newHealing });
+                      }}
+                      onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <ConsumableTooltipContent item={item} />
-                    </HoverTooltip>
+                      <img
+                        src={`/${item.image}`}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain rounded-lg"
+                        style={{
+                          borderColor: getRarityColor(item.rarity),
+                          borderWidth: '2px',
+                          borderStyle: 'solid',
+                          boxShadow: qty > 0 ? `0 0 16px 4px rgba(59, 130, 246, 0.6), 0 0 8px ${getRarityColor(item.rarity)}` : undefined
+                        }}
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                      <HoverTooltip
+                        item={item}
+                        isHovered={hoveredItem?.id === item.id}
+                        triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                      >
+                        <ConsumableTooltipContent item={item} />
+                      </HoverTooltip>
+                    </div>
                   </div>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
+                    {item.name}
+                  </span>
                   {qty > 0 && (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mt-1">
                       <button
                         className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
                         onClick={(e) => {
@@ -418,9 +428,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </button>
                     </div>
                   )}
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
-                    {item.name}
-                  </span>
                 </div>
               );
             })}
@@ -438,40 +445,50 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div
-                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                    onClick={() => {
-                      const newGrenades = loadout.grenades.filter(g => g.id !== item.id);
-                      if (qty === 0) {
-                        newGrenades.push({ id: item.id, quantity: 1 });
-                      }
-                      onChange({ ...loadout, grenades: newGrenades });
-                    }}
-                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <img
-                      src={`/${item.image}`}
-                      alt={item.name}
-                      className="w-12 h-12 object-contain rounded-lg"
-                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
-                    />
-                    {qty > 0 && (
-                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
-                        {qty}
-                      </span>
-                    )}
-                    <HoverTooltip
-                      item={item}
-                      isHovered={hoveredItem?.id === item.id}
-                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
+                  <div className="w-14 h-14 flex items-center justify-center">
+                    <div
+                      className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
+                      onClick={() => {
+                        const newGrenades = loadout.grenades.filter(g => g.id !== item.id);
+                        if (qty === 0) {
+                          newGrenades.push({ id: item.id, quantity: 1 });
+                        }
+                        onChange({ ...loadout, grenades: newGrenades });
+                      }}
+                      onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <ConsumableTooltipContent item={item} />
-                    </HoverTooltip>
+                      <img
+                        src={`/${item.image}`}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain rounded-lg"
+                        style={{
+                          borderColor: getRarityColor(item.rarity),
+                          borderWidth: '2px',
+                          borderStyle: 'solid',
+                          boxShadow: qty > 0 ? `0 0 16px 4px rgba(59, 130, 246, 0.6), 0 0 8px ${getRarityColor(item.rarity)}` : undefined
+                        }}
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                      <HoverTooltip
+                        item={item}
+                        isHovered={hoveredItem?.id === item.id}
+                        triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                      >
+                        <ConsumableTooltipContent item={item} />
+                      </HoverTooltip>
+                    </div>
                   </div>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
+                    {item.name}
+                  </span>
                   {qty > 0 && (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mt-1">
                       <button
                         className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
                         onClick={(e) => {
@@ -498,9 +515,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </button>
                     </div>
                   )}
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
-                    {item.name}
-                  </span>
                 </div>
               );
             })}
@@ -518,40 +532,50 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div
-                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                    onClick={() => {
-                      const newUtilities = loadout.utilities.filter(u => u.id !== item.id);
-                      if (qty === 0) {
-                        newUtilities.push({ id: item.id, quantity: 1 });
-                      }
-                      onChange({ ...loadout, utilities: newUtilities });
-                    }}
-                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <img
-                      src={`/${item.image}`}
-                      alt={item.name}
-                      className="w-12 h-12 object-contain rounded-lg"
-                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
-                    />
-                    {qty > 0 && (
-                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
-                        {qty}
-                      </span>
-                    )}
-                    <HoverTooltip
-                      item={item}
-                      isHovered={hoveredItem?.id === item.id}
-                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
+                  <div className="w-14 h-14 flex items-center justify-center">
+                    <div
+                      className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
+                      onClick={() => {
+                        const newUtilities = loadout.utilities.filter(u => u.id !== item.id);
+                        if (qty === 0) {
+                          newUtilities.push({ id: item.id, quantity: 1 });
+                        }
+                        onChange({ ...loadout, utilities: newUtilities });
+                      }}
+                      onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <ConsumableTooltipContent item={item} />
-                    </HoverTooltip>
+                      <img
+                        src={`/${item.image}`}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain rounded-lg"
+                        style={{
+                          borderColor: getRarityColor(item.rarity),
+                          borderWidth: '2px',
+                          borderStyle: 'solid',
+                          boxShadow: qty > 0 ? `0 0 16px 4px rgba(59, 130, 246, 0.6), 0 0 8px ${getRarityColor(item.rarity)}` : undefined
+                        }}
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                      <HoverTooltip
+                        item={item}
+                        isHovered={hoveredItem?.id === item.id}
+                        triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                      >
+                        <ConsumableTooltipContent item={item} />
+                      </HoverTooltip>
+                    </div>
                   </div>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
+                    {item.name}
+                  </span>
                   {qty > 0 && (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mt-1">
                       <button
                         className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
                         onClick={(e) => {
@@ -578,9 +602,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </button>
                     </div>
                   )}
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
-                    {item.name}
-                  </span>
                 </div>
               );
             })}
@@ -598,40 +619,50 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div
-                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
-                    onClick={() => {
-                      const newTraps = loadout.traps.filter(t => t.id !== item.id);
-                      if (qty === 0) {
-                        newTraps.push({ id: item.id, quantity: 1 });
-                      }
-                      onChange({ ...loadout, traps: newTraps });
-                    }}
-                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <img
-                      src={`/${item.image}`}
-                      alt={item.name}
-                      className="w-12 h-12 object-contain rounded-lg"
-                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
-                    />
-                    {qty > 0 && (
-                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
-                        {qty}
-                      </span>
-                    )}
-                    <HoverTooltip
-                      item={item}
-                      isHovered={hoveredItem?.id === item.id}
-                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                <div key={item.id} className="flex flex-col items-center h-[100px]">
+                  <div className="w-14 h-14 flex items-center justify-center">
+                    <div
+                      className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
+                      onClick={() => {
+                        const newTraps = loadout.traps.filter(t => t.id !== item.id);
+                        if (qty === 0) {
+                          newTraps.push({ id: item.id, quantity: 1 });
+                        }
+                        onChange({ ...loadout, traps: newTraps });
+                      }}
+                      onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <ConsumableTooltipContent item={item} />
-                    </HoverTooltip>
+                      <img
+                        src={`/${item.image}`}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain rounded-lg"
+                        style={{
+                          borderColor: getRarityColor(item.rarity),
+                          borderWidth: '2px',
+                          borderStyle: 'solid',
+                          boxShadow: qty > 0 ? `0 0 16px 4px rgba(59, 130, 246, 0.6), 0 0 8px ${getRarityColor(item.rarity)}` : undefined
+                        }}
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                      <HoverTooltip
+                        item={item}
+                        isHovered={hoveredItem?.id === item.id}
+                        triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                      >
+                        <ConsumableTooltipContent item={item} />
+                      </HoverTooltip>
+                    </div>
                   </div>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
+                    {item.name}
+                  </span>
                   {qty > 0 && (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mt-1">
                       <button
                         className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
                         onClick={(e) => {
@@ -658,9 +689,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </button>
                     </div>
                   )}
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
-                    {item.name}
-                  </span>
                 </div>
               );
             })}
