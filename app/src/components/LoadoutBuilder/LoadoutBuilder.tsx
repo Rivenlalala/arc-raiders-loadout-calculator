@@ -185,15 +185,31 @@ function ConsumableTooltipContent({ item }: { item: EquipmentItem }) {
   );
 }
 
+// Sort by rarity (Common -> Legendary)
+function sortByRarity<T extends { rarity: string | null }>(items: T[]): T[] {
+  const rarityOrder: Record<string, number> = {
+    'Common': 1,
+    'Uncommon': 2,
+    'Rare': 3,
+    'Epic': 4,
+    'Legendary': 5,
+  };
+  return [...items].sort((a, b) => {
+    const aOrder = rarityOrder[a.rarity || 'Common'] || 0;
+    const bOrder = rarityOrder[b.rarity || 'Common'] || 0;
+    return aOrder - bOrder;
+  });
+}
+
 export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
   const [hoveredItem, setHoveredItem] = useState<{ id: string; rect: DOMRect } | null>(null);
 
   const augments = getAugments();
   const compatibleShields = getShieldsForAugment(loadout.augment);
-  const healing = getHealing().filter(h => h.crafting.materials.length > 0);
-  const grenades = getGrenades().filter(g => g.crafting.materials.length > 0);
-  const utilities = getQuickUse().filter(u => u.crafting.materials.length > 0);
-  const traps = getTraps().filter(t => t.crafting.materials.length > 0);
+  const healing = sortByRarity(getHealing().filter(h => h.crafting.materials.length > 0));
+  const grenades = sortByRarity(getGrenades().filter(g => g.crafting.materials.length > 0));
+  const utilities = sortByRarity(getQuickUse().filter(u => u.crafting.materials.length > 0));
+  const traps = sortByRarity(getTraps().filter(t => t.crafting.materials.length > 0));
 
   const handleMouseEnter = (id: string, e: React.MouseEvent) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -358,7 +374,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <img
                       src={`/${item.image}`}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
                     />
                     {qty > 0 && (
                       <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
@@ -437,7 +454,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <img
                       src={`/${item.image}`}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
                     />
                     {qty > 0 && (
                       <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
@@ -516,7 +534,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <img
                       src={`/${item.image}`}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
                     />
                     {qty > 0 && (
                       <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
@@ -595,7 +614,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <img
                       src={`/${item.image}`}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
                     />
                     {qty > 0 && (
                       <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
