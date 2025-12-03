@@ -112,6 +112,12 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
       if (item) addMaterials(item.crafting.materials, u.quantity);
     }
 
+    // Traps
+    for (const t of loadout.traps) {
+      const item = getEquipmentById(t.id);
+      if (item) addMaterials(item.crafting.materials, t.quantity);
+    }
+
     return resources;
   }, [loadout]);
 

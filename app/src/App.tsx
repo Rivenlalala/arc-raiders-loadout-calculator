@@ -11,6 +11,7 @@ const emptyLoadout: Loadout = {
   healing: [],
   utilities: [],
   grenades: [],
+  traps: [],
   ammo: [],
 };
 
