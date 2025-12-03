@@ -12,6 +12,13 @@ def load_json(filename):
     with open(filename, 'r', encoding='utf-8') as f:
         return json.load(f)
 
+def load_image_paths():
+    """Load image paths if available."""
+    try:
+        return load_json('image_paths.json')
+    except FileNotFoundError:
+        return {}
+
 def clean_string(s):
     """Clean up string values."""
     if not s:
@@ -29,13 +36,17 @@ def clean_materials(materials):
         })
     return cleaned
 
-def process_weapons(weapons_data):
+def process_weapons(weapons_data, image_paths):
     """Process and clean weapons data."""
     weapons = []
+    weapon_images = image_paths.get('weapons', {})
+
     for w in weapons_data:
+        weapon_id = w['name'].lower().replace(' ', '_')
         weapon = {
-            'id': w['name'].lower().replace(' ', '_'),
+            'id': weapon_id,
             'name': clean_string(w['name']),
+            'image': weapon_images.get(weapon_id),
             'category': w.get('category') or 'Unknown',
             'rarity': w.get('rarity') or 'Common',
             'ammo_type': clean_string(w.get('ammo_type')),
@@ -59,20 +70,24 @@ def process_weapons(weapons_data):
 
     return weapons
 
-def process_equipment(equipment_data):
+def process_equipment(equipment_data, image_paths):
     """Process and clean equipment data."""
     processed = {}
 
     for category, items in equipment_data.items():
         processed[category] = []
+        category_images = image_paths.get(category, {})
+
         for item in items:
             # Skip generic pages that got scraped accidentally
             if item['name'] in ['Quick Use', 'ARC', 'Raider', 'Skills']:
                 continue
 
+            item_id = item['name'].lower().replace(' ', '_').replace('%27', "'")
             processed_item = {
-                'id': item['name'].lower().replace(' ', '_').replace('%27', "'"),
+                'id': item_id,
                 'name': clean_string(item['name'].replace('%27', "'")),
+                'image': category_images.get(item_id),
                 'category': category,
                 'rarity': item.get('rarity'),
                 'description': clean_string(item.get('description')),
@@ -86,9 +101,10 @@ def process_equipment(equipment_data):
 
     return processed
 
-def process_modifications(mods_data):
+def process_modifications(mods_data, image_paths):
     """Process and clean modifications data."""
     mods = []
+    mod_images = image_paths.get('modifications', {})
 
     # Filter out materials that got scraped accidentally
     material_names = ['Metal Parts', 'Plastic Parts', 'Rubber Parts', 'Wires', 'Duct Tape',
@@ -98,9 +114,11 @@ def process_modifications(mods_data):
         if mod['name'] in material_names:
             continue
 
+        mod_id = mod['name'].lower().replace(' ', '_')
         processed = {
-            'id': mod['name'].lower().replace(' ', '_'),
+            'id': mod_id,
             'name': clean_string(mod['name']),
+            'image': mod_images.get(mod_id),
             'slot_type': clean_string(mod.get('slot_type')) or infer_slot_type(mod['name']),
             'rarity': mod.get('rarity'),
             'effects': mod.get('effects', []),
@@ -135,13 +153,17 @@ def infer_slot_type(name):
         return 'Tech-Mod'
     return 'Unknown'
 
-def process_materials(materials_data):
+def process_materials(materials_data, image_paths):
     """Process and clean materials data."""
     materials = []
+    mat_images = image_paths.get('materials', {})
+
     for mat in materials_data.get('materials', []):
+        mat_id = mat['id'].lower()
         materials.append({
-            'id': mat['id'].lower(),
+            'id': mat_id,
             'name': clean_string(mat['name']),
+            'image': mat_images.get(mat_id),
             'rarity': mat.get('rarity'),
             'weight': mat.get('weight'),
             'stack_size': mat.get('stack_size'),
@@ -153,10 +175,14 @@ def process_materials(materials_data):
         })
 
     ammo = []
+    ammo_images = image_paths.get('ammo', {})
+
     for a in materials_data.get('ammo', []):
+        ammo_id = a['id'].lower()
         ammo.append({
-            'id': a['id'].lower(),
+            'id': ammo_id,
             'name': clean_string(a['name']),
+            'image': ammo_images.get(ammo_id),
             'weight': a.get('weight'),
             'stack_size': a.get('stack_size'),
             'crafting': {
@@ -180,18 +206,24 @@ def main():
     mods_data = load_json('modifications_data.json')
     materials_data = load_json('materials_data.json')
 
+    # Load image paths if available
+    print("Loading image paths...")
+    image_paths = load_image_paths()
+    has_images = bool(image_paths)
+    print(f"  Images available: {has_images}")
+
     # Process data
     print("Processing weapons...")
-    weapons = process_weapons(weapons_data)
+    weapons = process_weapons(weapons_data, image_paths)
 
     print("Processing equipment...")
-    equipment = process_equipment(equipment_data)
+    equipment = process_equipment(equipment_data, image_paths)
 
     print("Processing modifications...")
-    modifications = process_modifications(mods_data)
+    modifications = process_modifications(mods_data, image_paths)
 
     print("Processing materials...")
-    materials = process_materials(materials_data)
+    materials = process_materials(materials_data, image_paths)
 
     # Create unified data structure
     game_data = {

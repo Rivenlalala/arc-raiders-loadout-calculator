@@ -5,6 +5,7 @@ const GAME_DATA = {
     {
       "id": "kettle",
       "name": "Kettle",
+      "image": "images/weapons/kettle.webp",
       "category": "Assault Rifle",
       "rarity": "Common",
       "ammo_type": "Light Ammo",
@@ -75,6 +76,7 @@ const GAME_DATA = {
     {
       "id": "rattler",
       "name": "Rattler",
+      "image": "images/weapons/rattler.webp",
       "category": "Assault Rifle",
       "rarity": "Common",
       "ammo_type": "Medium Ammo",
@@ -140,6 +142,7 @@ const GAME_DATA = {
     {
       "id": "arpeggio",
       "name": "Arpeggio",
+      "image": "images/weapons/arpeggio.webp",
       "category": "Assault Rifle",
       "rarity": "Uncommon",
       "ammo_type": "Medium Ammo",
@@ -210,6 +213,7 @@ const GAME_DATA = {
     {
       "id": "tempest",
       "name": "Tempest",
+      "image": "images/weapons/tempest.webp",
       "category": "Assault Rifle",
       "rarity": "Epic",
       "ammo_type": "Medium Ammo",
@@ -283,6 +287,7 @@ const GAME_DATA = {
     {
       "id": "bettina",
       "name": "Bettina",
+      "image": "images/weapons/bettina.webp",
       "category": "Assault Rifle",
       "rarity": "Epic",
       "ammo_type": "Heavy Ammo",
@@ -356,6 +361,7 @@ const GAME_DATA = {
     {
       "id": "ferro",
       "name": "Ferro",
+      "image": "images/weapons/ferro.webp",
       "category": "Unknown",
       "rarity": "Common",
       "ammo_type": "Heavy Ammo",
@@ -421,6 +427,7 @@ const GAME_DATA = {
     {
       "id": "renegade",
       "name": "Renegade",
+      "image": "images/weapons/renegade.webp",
       "category": "Unknown",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
@@ -494,6 +501,7 @@ const GAME_DATA = {
     {
       "id": "aphelion",
       "name": "Aphelion",
+      "image": "images/weapons/aphelion.webp",
       "category": "Unknown",
       "rarity": "Legendary",
       "ammo_type": "Energy Clip",
@@ -523,6 +531,7 @@ const GAME_DATA = {
     {
       "id": "stitcher",
       "name": "Stitcher",
+      "image": "images/weapons/stitcher.webp",
       "category": "SMG",
       "rarity": "Common",
       "ammo_type": "Light Ammo",
@@ -593,6 +602,7 @@ const GAME_DATA = {
     {
       "id": "bobcat",
       "name": "Bobcat",
+      "image": "images/weapons/bobcat.webp",
       "category": "SMG",
       "rarity": "Epic",
       "ammo_type": "Light Ammo",
@@ -667,6 +677,7 @@ const GAME_DATA = {
     {
       "id": "il_toro",
       "name": "Il Toro",
+      "image": "images/weapons/il_toro.webp",
       "category": "Shotgun",
       "rarity": "Uncommon",
       "ammo_type": "Shotgun Ammo",
@@ -737,6 +748,7 @@ const GAME_DATA = {
     {
       "id": "vulcano",
       "name": "Vulcano",
+      "image": "images/weapons/vulcano.webp",
       "category": "Shotgun",
       "rarity": "Epic",
       "ammo_type": "Shotgun Ammo",
@@ -811,6 +823,7 @@ const GAME_DATA = {
     {
       "id": "hairpin",
       "name": "Hairpin",
+      "image": "images/weapons/hairpin.webp",
       "category": "Pistol",
       "rarity": "Common",
       "ammo_type": "Light Ammo",
@@ -874,6 +887,7 @@ const GAME_DATA = {
     {
       "id": "burletta",
       "name": "Burletta",
+      "image": "images/weapons/burletta.webp",
       "category": "Pistol",
       "rarity": "Uncommon",
       "ammo_type": "Light Ammo",
@@ -942,6 +956,7 @@ const GAME_DATA = {
     {
       "id": "anvil",
       "name": "Anvil",
+      "image": "images/weapons/anvil.webp",
       "category": "Pistol",
       "rarity": "Uncommon",
       "ammo_type": "Heavy Ammo",
@@ -1010,6 +1025,7 @@ const GAME_DATA = {
     {
       "id": "venator",
       "name": "Venator",
+      "image": "images/weapons/venator.webp",
       "category": "Pistol",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
@@ -1082,6 +1098,7 @@ const GAME_DATA = {
     {
       "id": "torrente",
       "name": "Torrente",
+      "image": "images/weapons/torrente.webp",
       "category": "Unknown",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
@@ -1155,6 +1172,7 @@ const GAME_DATA = {
     {
       "id": "osprey",
       "name": "Osprey",
+      "image": "images/weapons/osprey.webp",
       "category": "Sniper Rifle",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
@@ -1229,6 +1247,7 @@ const GAME_DATA = {
     {
       "id": "jupiter",
       "name": "Jupiter",
+      "image": "images/weapons/jupiter.webp",
       "category": "Sniper Rifle",
       "rarity": "Legendary",
       "ammo_type": "Energy Clip",
@@ -1255,6 +1274,7 @@ const GAME_DATA = {
     {
       "id": "hullcracker",
       "name": "Hullcracker",
+      "image": "images/weapons/hullcracker.webp",
       "category": "Unknown",
       "rarity": "Epic",
       "ammo_type": null,
@@ -1327,6 +1347,7 @@ const GAME_DATA = {
     {
       "id": "equalizer",
       "name": "Equalizer",
+      "image": "images/weapons/equalizer.webp",
       "category": "Unknown",
       "rarity": "Legendary",
       "ammo_type": "Energy Clip",
@@ -1356,6 +1377,7 @@ const GAME_DATA = {
       {
         "id": "free_loadout_augment",
         "name": "Free Loadout Augment",
+        "image": "images/augments/free_loadout_augment.webp",
         "category": "augments",
         "rarity": "Common",
         "description": "Basic augment for rookie Raiders, offering slightly more backpack space and carry capacity.",
@@ -1377,6 +1399,7 @@ const GAME_DATA = {
       {
         "id": "looting_mk._1",
         "name": "Looting Mk. 1",
+        "image": "images/augments/looting_mk._1.webp",
         "category": "augments",
         "rarity": "Uncommon",
         "description": "Basic looting augment. More backpack slots and weight capacity, but low defensive and tactical capability.",
@@ -1407,6 +1430,7 @@ const GAME_DATA = {
       {
         "id": "combat_mk._1",
         "name": "Combat Mk. 1",
+        "image": "images/augments/combat_mk._1.webp",
         "category": "augments",
         "rarity": "Uncommon",
         "description": "Basic combat augment. Supports stronger shields, but with limited backpack capacity and Quick Use slots.",
@@ -1437,6 +1461,7 @@ const GAME_DATA = {
       {
         "id": "tactical_mk._1",
         "name": "Tactical Mk. 1",
+        "image": "images/augments/tactical_mk._1.webp",
         "category": "augments",
         "rarity": "Uncommon",
         "description": "Basic tactical augment. More Quick Use slots for more tactical choice, but limited survivability and slightly lower looting potential.",
@@ -1467,6 +1492,7 @@ const GAME_DATA = {
       {
         "id": "looting_mk._2",
         "name": "Looting Mk. 2",
+        "image": "images/augments/looting_mk._2.webp",
         "category": "augments",
         "rarity": "Rare",
         "description": "Significantly increases looting potential; adds slots for trinkets.",
@@ -1498,6 +1524,7 @@ const GAME_DATA = {
       {
         "id": "combat_mk._2",
         "name": "Combat Mk. 2",
+        "image": "images/augments/combat_mk._2.webp",
         "category": "augments",
         "rarity": "Rare",
         "description": "A combat augment more focused on maneuverability than absorbing damage.",
@@ -1529,6 +1556,7 @@ const GAME_DATA = {
       {
         "id": "tactical_mk._2",
         "name": "Tactical Mk. 2",
+        "image": "images/augments/tactical_mk._2.webp",
         "category": "augments",
         "rarity": "Rare",
         "description": "Adds more backpack space and an extra utility item slot.",
@@ -1560,6 +1588,7 @@ const GAME_DATA = {
       {
         "id": "looting_mk._3_(cautious)",
         "name": "Looting Mk. 3 (Cautious)",
+        "image": "images/augments/looting_mk._3_(cautious).webp",
         "category": "augments",
         "rarity": "Epic",
         "description": "A looting augment that swaps some carry capacity to increase survivability.",
@@ -1590,6 +1619,7 @@ const GAME_DATA = {
       {
         "id": "integrated_binoculars",
         "name": "Integrated Binoculars",
+        "image": "images/augments/integrated_binoculars.webp",
         "category": "augments",
         "rarity": "Common",
         "description": "Can be equipped and used like regular binoculars, but cannot be dropped or removed from their slot.",
@@ -1604,6 +1634,7 @@ const GAME_DATA = {
       {
         "id": "looting_mk._3_(survivor)",
         "name": "Looting Mk. 3 (Survivor)",
+        "image": "images/augments/looting_mk._3_(survivor).webp",
         "category": "augments",
         "rarity": "Epic",
         "description": "A heavy-duty pack mule augment. Large weight capacity and large backpack space.",
@@ -1635,6 +1666,7 @@ const GAME_DATA = {
       {
         "id": "combat_mk._3_(aggressive)",
         "name": "Combat Mk. 3 (Aggressive)",
+        "image": "images/augments/combat_mk._3_(aggressive).webp",
         "category": "augments",
         "rarity": "Epic",
         "description": "An improved version of the Combat II augment. Supports more shield types, and comes with extra space for grenades.",
@@ -1666,6 +1698,7 @@ const GAME_DATA = {
       {
         "id": "combat_mk._3_(flanking)",
         "name": "Combat Mk. 3 (Flanking)",
+        "image": "images/augments/combat_mk._3_(flanking).webp",
         "category": "augments",
         "rarity": "Epic",
         "description": "A combat augment more focused on manueverability than absorbing damage.",
@@ -1697,6 +1730,7 @@ const GAME_DATA = {
       {
         "id": "tactical_mk._3_(defensive)",
         "name": "Tactical Mk. 3 (Defensive)",
+        "image": "images/augments/tactical_mk._3_(defensive).webp",
         "category": "augments",
         "rarity": "Epic",
         "description": "A defensive-focused augment for keeping Shields topped up.",
@@ -1727,6 +1761,7 @@ const GAME_DATA = {
       {
         "id": "integrated_shield_recharger",
         "name": "Integrated Shield Recharger",
+        "image": "images/augments/integrated_shield_recharger.webp",
         "category": "augments",
         "rarity": "Common",
         "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
@@ -1746,6 +1781,7 @@ const GAME_DATA = {
       {
         "id": "light_shield",
         "name": "Light Shield",
+        "image": "images/shields/light_shield.webp",
         "category": "shields",
         "rarity": "Uncommon",
         "description": "A lightweight shield that offers limited protection without severely impacting mobility.",
@@ -1772,6 +1808,7 @@ const GAME_DATA = {
       {
         "id": "medium_shield",
         "name": "Medium Shield",
+        "image": "images/shields/medium_shield.webp",
         "category": "shields",
         "rarity": "Rare",
         "description": "A standard shield that offers fair protection at a moderate cost to mobility.",
@@ -1799,6 +1836,7 @@ const GAME_DATA = {
       {
         "id": "heavy_shield",
         "name": "Heavy Shield",
+        "image": "images/shields/heavy_shield.webp",
         "category": "shields",
         "rarity": "Epic",
         "description": "A heavy shield that blocks a large portion of incoming damage, but carries a significant cost to mobility.",
@@ -1828,6 +1866,7 @@ const GAME_DATA = {
       {
         "id": "agave",
         "name": "Agave",
+        "image": "images/healing/agave.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A piece of an agave leaf. Can be used to regain a small amount of health.",
@@ -1857,6 +1896,7 @@ const GAME_DATA = {
       {
         "id": "bandage",
         "name": "Bandage",
+        "image": "images/healing/bandage.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "A medical item that gradually restores health over time.",
@@ -1881,6 +1921,7 @@ const GAME_DATA = {
       {
         "id": "defibrillator",
         "name": "Defibrillator",
+        "image": "images/healing/defibrillator.webp",
         "category": "healing",
         "rarity": "Rare",
         "description": "An injection that quickly revived downed raiders and restores some health.",
@@ -1908,6 +1949,7 @@ const GAME_DATA = {
       {
         "id": "expired_pasta",
         "name": "Expired Pasta",
+        "image": "images/healing/expired_pasta.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "Way pasta its prime.",
@@ -1927,6 +1969,7 @@ const GAME_DATA = {
       {
         "id": "fabric",
         "name": "Fabric",
+        "image": "images/healing/fabric.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "Used to craft medical supplies and shields.",
@@ -1952,6 +1995,7 @@ const GAME_DATA = {
       {
         "id": "fruit_mix",
         "name": "Fruit Mix",
+        "image": "images/healing/fruit_mix.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A food item that moderately increases both health and stamina.",
@@ -1984,6 +2028,7 @@ const GAME_DATA = {
       {
         "id": "herbal_bandage",
         "name": "Herbal Bandage",
+        "image": "images/healing/herbal_bandage.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "An improvised medical item that gradually restores health over time.",
@@ -2012,6 +2057,7 @@ const GAME_DATA = {
       {
         "id": "moss",
         "name": "Moss",
+        "image": "images/healing/moss.webp",
         "category": "healing",
         "rarity": "Rare",
         "description": "Can be used to regain a small amount of health.",
@@ -2041,6 +2087,7 @@ const GAME_DATA = {
       {
         "id": "mushroom",
         "name": "Mushroom",
+        "image": "images/healing/mushroom.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "Can be consumed to regain a small amount of health.",
@@ -2073,6 +2120,7 @@ const GAME_DATA = {
       {
         "id": "resin",
         "name": "Resin",
+        "image": "images/healing/resin.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "Can be used to gradually restore a small amount of health over time.",
@@ -2093,6 +2141,7 @@ const GAME_DATA = {
       {
         "id": "sterilized_bandage",
         "name": "Sterilized Bandage",
+        "image": "images/healing/sterilized_bandage.webp",
         "category": "healing",
         "rarity": "Rare",
         "description": "A medical item that gradually restores a large amount of health over time.",
@@ -2121,6 +2170,7 @@ const GAME_DATA = {
       {
         "id": "vita_shot",
         "name": "Vita Shot",
+        "image": "images/healing/vita_shot.webp",
         "category": "healing",
         "rarity": "Rare",
         "description": "A medical item that restores a large amount of health.",
@@ -2148,6 +2198,7 @@ const GAME_DATA = {
       {
         "id": "vita_spray",
         "name": "Vita Spray",
+        "image": "images/healing/vita_spray.webp",
         "category": "healing",
         "rarity": "Epic",
         "description": "A medical item that continuously restores health during use. Can be used on yourself or your allies.",
@@ -2175,6 +2226,7 @@ const GAME_DATA = {
       {
         "id": "arc_powercell",
         "name": "ARC Powercell",
+        "image": "images/healing/arc_powercell.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "Valuable resource that drops from all ARC enemies.",
@@ -2205,6 +2257,7 @@ const GAME_DATA = {
       {
         "id": "integrated_shield_recharger",
         "name": "Integrated Shield Recharger",
+        "image": "images/healing/integrated_shield_recharger.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
@@ -2222,6 +2275,7 @@ const GAME_DATA = {
       {
         "id": "shield_recharger",
         "name": "Shield Recharger",
+        "image": "images/healing/shield_recharger.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A handheld repair kit that recharges a shield over time.",
@@ -2251,6 +2305,7 @@ const GAME_DATA = {
       {
         "id": "surge_shield_recharger",
         "name": "Surge Shield Recharger",
+        "image": "images/healing/surge_shield_recharger.webp",
         "category": "healing",
         "rarity": "Rare",
         "description": "A handheld kit that recharges a shield on use.",
@@ -2278,6 +2333,7 @@ const GAME_DATA = {
       {
         "id": "adrenaline_shot",
         "name": "Adrenaline Shot",
+        "image": "images/healing/adrenaline_shot.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "A serum that fully restores stamina and temporarily increases stamina regeneration.",
@@ -2306,6 +2362,7 @@ const GAME_DATA = {
       {
         "id": "agave_juice",
         "name": "Agave Juice",
+        "image": "images/healing/agave_juice.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "A concoction that temporarily increases stamina regeneration, at a small initial cost to health.",
@@ -2335,6 +2392,7 @@ const GAME_DATA = {
       {
         "id": "apricot",
         "name": "Apricot",
+        "image": "images/healing/apricot.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "A sun ripe apricot. Can be consumed for a small amount of stamina.",
@@ -2367,6 +2425,7 @@ const GAME_DATA = {
       {
         "id": "bloated_tuna_can",
         "name": "Bloated Tuna Can",
+        "image": "images/healing/bloated_tuna_can.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "Something tells you that you don't want to open this...",
@@ -2386,6 +2445,7 @@ const GAME_DATA = {
       {
         "id": "lemon",
         "name": "Lemon",
+        "image": "images/healing/lemon.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "Can be consumed for a small amount of stamina.",
@@ -2418,6 +2478,7 @@ const GAME_DATA = {
       {
         "id": "olives",
         "name": "Olives",
+        "image": "images/healing/olives.webp",
         "category": "healing",
         "rarity": "Uncommon",
         "description": "Can be consumed for a small amount of stamina.",
@@ -2450,6 +2511,7 @@ const GAME_DATA = {
       {
         "id": "prickly_pear",
         "name": "Prickly Pear",
+        "image": "images/healing/prickly_pear.webp",
         "category": "healing",
         "rarity": "Common",
         "description": "Can be consumed for a small amount of stamina.",
@@ -2484,6 +2546,7 @@ const GAME_DATA = {
       {
         "id": "barricade_kit",
         "name": "Barricade Kit",
+        "image": "images/quick_use/barricade_kit.webp",
         "category": "quick_use",
         "rarity": "Uncommon",
         "description": "A deployable cover that can block incoming damage until it breaks.",
@@ -2506,6 +2569,7 @@ const GAME_DATA = {
       {
         "id": "door_blocker",
         "name": "Door Blocker",
+        "image": "images/quick_use/door_blocker.webp",
         "category": "quick_use",
         "rarity": "Common",
         "description": "A locking mechanism that can be placed on large metal doors to limit access.",
@@ -2531,6 +2595,7 @@ const GAME_DATA = {
       {
         "id": "remote_raider_flare",
         "name": "Remote Raider Flare",
+        "image": "images/quick_use/remote_raider_flare.webp",
         "category": "quick_use",
         "rarity": "Common",
         "description": "A deployable device that, when manually triggered, launches a Raider Distress Flare.",
@@ -2556,6 +2621,7 @@ const GAME_DATA = {
       {
         "id": "zipline",
         "name": "Zipline",
+        "image": "images/quick_use/zipline.webp",
         "category": "quick_use",
         "rarity": "Rare",
         "description": "A deployable zipline that allows you to quickly move between two locations.",
@@ -2582,6 +2648,7 @@ const GAME_DATA = {
       {
         "id": "binoculars",
         "name": "Binoculars",
+        "image": "images/quick_use/binoculars.webp",
         "category": "quick_use",
         "rarity": "Common",
         "description": "A basic pair of binoculars with two levels of magnification.",
@@ -2607,6 +2674,7 @@ const GAME_DATA = {
       {
         "id": "flame_spray",
         "name": "Flame Spray",
+        "image": "images/quick_use/flame_spray.webp",
         "category": "quick_use",
         "rarity": "Uncommon",
         "description": "A classic makeshift weapon, sure to leave scorch marks.",
@@ -2633,6 +2701,7 @@ const GAME_DATA = {
       {
         "id": "integrated_binoculars",
         "name": "Integrated Binoculars",
+        "image": "images/quick_use/integrated_binoculars.webp",
         "category": "quick_use",
         "rarity": "Common",
         "description": "Can be equipped and used like regular binoculars, but cannot be dropped or removed from their slot.",
@@ -2647,6 +2716,7 @@ const GAME_DATA = {
       {
         "id": "noisemaker",
         "name": "Noisemaker",
+        "image": "images/quick_use/noisemaker.webp",
         "category": "quick_use",
         "rarity": "Common",
         "description": "A deployable proximity sensor that sounds an alarm when enemy raiders are detected.",
@@ -2674,6 +2744,7 @@ const GAME_DATA = {
       {
         "id": "photoelectric_cloak",
         "name": "Photoelectric Cloak",
+        "image": "images/quick_use/photoelectric_cloak.webp",
         "category": "quick_use",
         "rarity": "Epic",
         "description": "A gadget that allows the user to conceal themselves from ARC.",
@@ -2699,6 +2770,7 @@ const GAME_DATA = {
       {
         "id": "recorder",
         "name": "Recorder",
+        "image": "images/quick_use/recorder.webp",
         "category": "quick_use",
         "rarity": "Uncommon",
         "description": "A playable recorder used to attract ARC's attention, and impress other Raiders.",
@@ -2716,6 +2788,7 @@ const GAME_DATA = {
       {
         "id": "snap_hook",
         "name": "Snap Hook",
+        "image": "images/quick_use/snap_hook.png",
         "category": "quick_use",
         "rarity": "Legendary",
         "description": "A gadget that allows the user to scale structures and cover large distances.",
@@ -2748,6 +2821,7 @@ const GAME_DATA = {
       {
         "id": "smoke_grenade",
         "name": "Smoke Grenade",
+        "image": "images/grenades/smoke_grenade.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that creates a lingering smoke cloud on impact, blocking visibility from other Raiders.",
@@ -2775,6 +2849,7 @@ const GAME_DATA = {
       {
         "id": "lure_grenade",
         "name": "Lure Grenade",
+        "image": "images/grenades/lure_grenade.webp",
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A noise device that sticks to surfaces, distracting nearby ARC machines and drawing their fire.",
@@ -2802,6 +2877,7 @@ const GAME_DATA = {
       {
         "id": "light_stick",
         "name": "Light Stick",
+        "image": "images/grenades/light_stick.webp",
         "category": "grenades",
         "rarity": "Common",
         "description": "A throwable chemical light that illuminates the area around it.",
@@ -2825,6 +2901,7 @@ const GAME_DATA = {
       {
         "id": "light_impact_grenade",
         "name": "Light Impact Grenade",
+        "image": "images/grenades/light_impact_grenade.webp",
         "category": "grenades",
         "rarity": "Common",
         "description": "A grenade that detonates on impact, dealing explosive damage in a small radius.",
@@ -2852,6 +2929,7 @@ const GAME_DATA = {
       {
         "id": "heavy_fuze_grenade",
         "name": "Heavy Fuze Grenade",
+        "image": "images/grenades/heavy_fuze_grenade.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates after a delay, dealing explosive damage in its radius.",
@@ -2879,6 +2957,7 @@ const GAME_DATA = {
       {
         "id": "blaze_grenade",
         "name": "Blaze Grenade",
+        "image": "images/grenades/blaze_grenade.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates on impact, covering an area in fire that deals damage over time.",
@@ -2907,6 +2986,7 @@ const GAME_DATA = {
       {
         "id": "gas_grenade",
         "name": "Gas Grenade",
+        "image": "images/grenades/gas_grenade.webp",
         "category": "grenades",
         "rarity": "Common",
         "description": "A grenade that creates a lingering toxic cloud on impact, draining the stamina of any Raiders within its area of effect.",
@@ -2935,6 +3015,7 @@ const GAME_DATA = {
       {
         "id": "showstopper",
         "name": "Showstopper",
+        "image": "images/grenades/showstopper.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates after a delay, stunning enemies within its radius.",
@@ -2963,6 +3044,7 @@ const GAME_DATA = {
       {
         "id": "snap_blast_grenade",
         "name": "Snap Blast Grenade",
+        "image": "images/grenades/snap_blast_grenade.webp",
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A grenade that sticks to surfaces, dealing explosive damage after a short delay.",
@@ -2990,6 +3072,7 @@ const GAME_DATA = {
       {
         "id": "seeker_grenade",
         "name": "Seeker Grenade",
+        "image": "images/grenades/seeker_grenade.webp",
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A homing grenade that targets a single nearby ARC dealing explosive damage on impact.",
@@ -3008,6 +3091,7 @@ const GAME_DATA = {
       {
         "id": "shrapnel_grenade",
         "name": "Shrapnel Grenade",
+        "image": "images/grenades/shrapnel_grenade.webp",
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "A makeshift fuze grenade that bursts into razor-sharp fragments upon detonation.",
@@ -3035,6 +3119,7 @@ const GAME_DATA = {
       {
         "id": "trigger_'nade",
         "name": "Trigger 'Nade",
+        "image": "images/grenades/trigger_'nade.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "A remote-detonated grenade that can stick to surfaces and ARC, dealing explosive damage when triggered.",
@@ -3062,6 +3147,7 @@ const GAME_DATA = {
       {
         "id": "trailblazer",
         "name": "Trailblazer",
+        "image": "images/grenades/trailblazer.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that emits a trail of flammable gas along its path, causing an explosive chain reaction when it ignites.",
@@ -3080,6 +3166,7 @@ const GAME_DATA = {
       {
         "id": "wolfpack",
         "name": "Wolfpack",
+        "image": "images/grenades/wolfpack.webp",
         "category": "grenades",
         "rarity": "Epic",
         "description": "A grenade that scatters into multiple homing missiles, each one targeting ARC and dealing explosive damage on impact.",
@@ -3107,6 +3194,7 @@ const GAME_DATA = {
       {
         "id": "li'l_smoke_grenade",
         "name": "Li'l Smoke Grenade",
+        "image": "images/grenades/li'l_smoke_grenade.webp",
         "category": "grenades",
         "rarity": "Common",
         "description": "A Grenade that pops into a thick but small smoke cloud on impact, blocking visibility from ARC and other Raiders.",
@@ -3134,6 +3222,7 @@ const GAME_DATA = {
       {
         "id": "tagging_grenade",
         "name": "Tagging Grenade",
+        "image": "images/grenades/tagging_grenade.png",
         "category": "grenades",
         "rarity": "Rare",
         "description": "A grenade that detonates after a delay, tagging Raiders and ARC enemies in an area, allowing you to briefly track their location.",
@@ -3161,6 +3250,7 @@ const GAME_DATA = {
       {
         "id": "wasp_driver",
         "name": "Wasp Driver",
+        "image": "images/grenades/wasp_driver.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "Can be recycled into ARC Alloy.",
@@ -3193,6 +3283,7 @@ const GAME_DATA = {
       {
         "id": "hornet_driver",
         "name": "Hornet Driver",
+        "image": "images/grenades/hornet_driver.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "Can be recycled into ARC Alloy.",
@@ -3226,6 +3317,7 @@ const GAME_DATA = {
       {
         "id": "snitch_scanner",
         "name": "Snitch Scanner",
+        "image": "images/grenades/snitch_scanner.webp",
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "Can be recycled into ARC Alloy.",
@@ -3256,6 +3348,7 @@ const GAME_DATA = {
       {
         "id": "leaper_pulse_unit",
         "name": "Leaper Pulse Unit",
+        "image": "images/grenades/leaper_pulse_unit.webp",
         "category": "grenades",
         "rarity": "Epic",
         "description": "Can be recycled into crafting materials.",
@@ -3288,6 +3381,7 @@ const GAME_DATA = {
       {
         "id": "fireball_burner",
         "name": "Fireball Burner",
+        "image": "images/grenades/fireball_burner.webp",
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "Can be recycled into ARC Alloy.",
@@ -3317,6 +3411,7 @@ const GAME_DATA = {
       {
         "id": "crude_explosives",
         "name": "Crude Explosives",
+        "image": "images/grenades/crude_explosives.webp",
         "category": "grenades",
         "rarity": "Uncommon",
         "description": "Used to craft explosives. Can be recycled into crafting materials",
@@ -3341,6 +3436,7 @@ const GAME_DATA = {
       {
         "id": "rubber_duck",
         "name": "Rubber Duck",
+        "image": "images/grenades/rubber_duck.webp",
         "category": "grenades",
         "rarity": "Common",
         "description": "Always there to lend an ear, should you need it.",
@@ -3357,6 +3453,7 @@ const GAME_DATA = {
       {
         "id": "synthesized_fuel",
         "name": "Synthesized Fuel",
+        "image": "images/grenades/synthesized_fuel.webp",
         "category": "grenades",
         "rarity": "Rare",
         "description": "Used to craft utility items and explosives. Can be recycled into chemicals.",
@@ -3391,6 +3488,7 @@ const GAME_DATA = {
       {
         "id": "blaze_grenade_trap",
         "name": "Blaze Grenade Trap",
+        "image": "images/traps/blaze_grenade_trap.webp",
         "category": "traps",
         "rarity": "Rare",
         "description": "laser trip wire that detonates a Blaze Grenade.",
@@ -3418,6 +3516,7 @@ const GAME_DATA = {
       {
         "id": "gas_grenade_trap",
         "name": "Gas Grenade Trap",
+        "image": "images/traps/gas_grenade_trap.webp",
         "category": "traps",
         "rarity": "Common",
         "description": "A laser trip write that detonates a Gas Grenade.",
@@ -3446,6 +3545,7 @@ const GAME_DATA = {
       {
         "id": "lure_grenade_trap",
         "name": "Lure Grenade Trap",
+        "image": "images/traps/lure_grenade_trap.webp",
         "category": "traps",
         "rarity": "Uncommon",
         "description": "A laser trip wire that detonates a Lure Grenade",
@@ -3473,6 +3573,7 @@ const GAME_DATA = {
       {
         "id": "smoke_grenade_trap",
         "name": "Smoke Grenade Trap",
+        "image": "images/traps/smoke_grenade_trap.webp",
         "category": "traps",
         "rarity": "Rare",
         "description": "A laser trip write that detonates a Smoke Grenade.",
@@ -3500,6 +3601,7 @@ const GAME_DATA = {
       {
         "id": "explosive_mine",
         "name": "Explosive Mine",
+        "image": "images/traps/explosive_mine.webp",
         "category": "traps",
         "rarity": "Rare",
         "description": "A proximity triggered mine that pops up and explodes, dealing damage to anything within its radius.",
@@ -3527,6 +3629,7 @@ const GAME_DATA = {
       {
         "id": "gas_mine",
         "name": "Gas Mine",
+        "image": "images/traps/gas_mine.webp",
         "category": "traps",
         "rarity": "Common",
         "description": "A proximity-triggered mine that pops up and deploys a gas cloud that rapidly drains stamina.",
@@ -3546,6 +3649,7 @@ const GAME_DATA = {
       {
         "id": "jolt_mine",
         "name": "Jolt Mine",
+        "image": "images/traps/jolt_mine.webp",
         "category": "traps",
         "rarity": "Rare",
         "description": "A proximity trigger mine that pops up and stuns anything within its radius.",
@@ -3574,6 +3678,7 @@ const GAME_DATA = {
       {
         "id": "pulse_mine",
         "name": "Pulse Mine",
+        "image": "images/traps/pulse_mine.webp",
         "category": "traps",
         "rarity": "Uncommon",
         "description": "A proximity-triggered mine that pops up and knocks back anything within its radius.",
@@ -3591,6 +3696,7 @@ const GAME_DATA = {
       {
         "id": "deadline",
         "name": "Deadline",
+        "image": "images/traps/deadline.webp",
         "category": "traps",
         "rarity": "Epic",
         "description": "A mine that deals damage to anything within its radius once the timer runs out.",
@@ -3622,6 +3728,7 @@ const GAME_DATA = {
     {
       "id": "compensator_i",
       "name": "Compensator I",
+      "image": "images/modifications/compensator_i.webp",
       "slot_type": "Muzzle",
       "rarity": "Common",
       "effects": [
@@ -3645,6 +3752,7 @@ const GAME_DATA = {
     {
       "id": "muzzle_brake_i",
       "name": "Muzzle Brake I",
+      "image": "images/modifications/muzzle_brake_i.webp",
       "slot_type": "Muzzle",
       "rarity": "Common",
       "effects": [
@@ -3668,6 +3776,7 @@ const GAME_DATA = {
     {
       "id": "shotgun_choke_i",
       "name": "Shotgun Choke I",
+      "image": "images/modifications/shotgun_choke_i.webp",
       "slot_type": "Muzzle",
       "rarity": "Common",
       "effects": [
@@ -3691,6 +3800,7 @@ const GAME_DATA = {
     {
       "id": "angled_grip_i",
       "name": "Angled Grip I",
+      "image": "images/modifications/angled_grip_i.webp",
       "slot_type": "Underbarrel",
       "rarity": "Common",
       "effects": [
@@ -3714,6 +3824,7 @@ const GAME_DATA = {
     {
       "id": "vertical_grip_i",
       "name": "Vertical Grip I",
+      "image": "images/modifications/vertical_grip_i.webp",
       "slot_type": "Underbarrel",
       "rarity": "Common",
       "effects": [
@@ -3737,6 +3848,7 @@ const GAME_DATA = {
     {
       "id": "extended_light_mag_i",
       "name": "Extended Light Mag I",
+      "image": "images/modifications/extended_light_mag_i.webp",
       "slot_type": "Light-Mag",
       "rarity": "Common",
       "effects": [
@@ -3760,6 +3872,7 @@ const GAME_DATA = {
     {
       "id": "extended_medium_mag_i",
       "name": "Extended Medium Mag I",
+      "image": "images/modifications/extended_medium_mag_i.webp",
       "slot_type": "Medium-Mag",
       "rarity": "Common",
       "effects": [
@@ -3783,6 +3896,7 @@ const GAME_DATA = {
     {
       "id": "extended_shotgun_mag_i",
       "name": "Extended Shotgun Mag I",
+      "image": "images/modifications/extended_shotgun_mag_i.webp",
       "slot_type": "Shotgun-Mag",
       "rarity": "Common",
       "effects": [
@@ -3806,6 +3920,7 @@ const GAME_DATA = {
     {
       "id": "stable_stock_i",
       "name": "Stable Stock I",
+      "image": "images/modifications/stable_stock_i.webp",
       "slot_type": "Stock",
       "rarity": "Common",
       "effects": [
@@ -3829,6 +3944,7 @@ const GAME_DATA = {
     {
       "id": "compensator_ii",
       "name": "Compensator II",
+      "image": "images/modifications/compensator_ii.png",
       "slot_type": "Muzzle",
       "rarity": "Uncommon",
       "effects": [
@@ -3852,6 +3968,7 @@ const GAME_DATA = {
     {
       "id": "muzzle_brake_ii",
       "name": "Muzzle Brake II",
+      "image": "images/modifications/muzzle_brake_ii.png",
       "slot_type": "Muzzle",
       "rarity": "Uncommon",
       "effects": [
@@ -3875,6 +3992,7 @@ const GAME_DATA = {
     {
       "id": "shotgun_choke_ii",
       "name": "Shotgun Choke II",
+      "image": "images/modifications/shotgun_choke_ii.png",
       "slot_type": "Muzzle",
       "rarity": "Uncommon",
       "effects": [
@@ -3889,6 +4007,7 @@ const GAME_DATA = {
     {
       "id": "silencer_i",
       "name": "Silencer I",
+      "image": "images/modifications/silencer_i.webp",
       "slot_type": "Muzzle",
       "rarity": "Uncommon",
       "effects": [
@@ -3903,6 +4022,7 @@ const GAME_DATA = {
     {
       "id": "angled_grip_ii",
       "name": "Angled Grip II",
+      "image": "images/modifications/angled_grip_ii.png",
       "slot_type": "Underbarrel",
       "rarity": "Uncommon",
       "effects": [
@@ -3926,6 +4046,7 @@ const GAME_DATA = {
     {
       "id": "vertical_grip_ii",
       "name": "Vertical Grip II",
+      "image": "images/modifications/vertical_grip_ii.png",
       "slot_type": "Underbarrel",
       "rarity": "Uncommon",
       "effects": [
@@ -3949,6 +4070,7 @@ const GAME_DATA = {
     {
       "id": "extended_light_mag_ii",
       "name": "Extended Light Mag II",
+      "image": "images/modifications/extended_light_mag_ii.webp",
       "slot_type": "Light-Mag",
       "rarity": "Uncommon",
       "effects": [
@@ -3972,6 +4094,7 @@ const GAME_DATA = {
     {
       "id": "extended_medium_mag_ii",
       "name": "Extended Medium Mag II",
+      "image": "images/modifications/extended_medium_mag_ii.webp",
       "slot_type": "Medium-Mag",
       "rarity": "Uncommon",
       "effects": [
@@ -3995,6 +4118,7 @@ const GAME_DATA = {
     {
       "id": "extended_shotgun_mag_ii",
       "name": "Extended Shotgun Mag II",
+      "image": "images/modifications/extended_shotgun_mag_ii.webp",
       "slot_type": "Shotgun-Mag",
       "rarity": "Uncommon",
       "effects": [
@@ -4018,6 +4142,7 @@ const GAME_DATA = {
     {
       "id": "stable_stock_ii",
       "name": "Stable Stock II",
+      "image": "images/modifications/stable_stock_ii.webp",
       "slot_type": "Stock",
       "rarity": "Uncommon",
       "effects": [
@@ -4041,6 +4166,7 @@ const GAME_DATA = {
     {
       "id": "compensator_iii",
       "name": "Compensator III",
+      "image": "images/modifications/compensator_iii.png",
       "slot_type": "Muzzle",
       "rarity": "Rare",
       "effects": [
@@ -4064,6 +4190,7 @@ const GAME_DATA = {
     {
       "id": "muzzle_brake_iii",
       "name": "Muzzle Brake III",
+      "image": "images/modifications/muzzle_brake_iii.png",
       "slot_type": "Muzzle",
       "rarity": "Rare",
       "effects": [
@@ -4087,6 +4214,7 @@ const GAME_DATA = {
     {
       "id": "shotgun_choke_iii",
       "name": "Shotgun Choke III",
+      "image": "images/modifications/shotgun_choke_iii.png",
       "slot_type": "Muzzle",
       "rarity": "Rare",
       "effects": [
@@ -4110,6 +4238,7 @@ const GAME_DATA = {
     {
       "id": "silencer_ii",
       "name": "Silencer II",
+      "image": "images/modifications/silencer_ii.webp",
       "slot_type": "Muzzle",
       "rarity": "Rare",
       "effects": [
@@ -4133,6 +4262,7 @@ const GAME_DATA = {
     {
       "id": "silencer_iii",
       "name": "Silencer III",
+      "image": "images/modifications/silencer_iii.webp",
       "slot_type": "Muzzle",
       "rarity": "Epic",
       "effects": [
@@ -4147,6 +4277,7 @@ const GAME_DATA = {
     {
       "id": "shotgun_silencer",
       "name": "Shotgun Silencer",
+      "image": "images/modifications/shotgun_silencer.webp",
       "slot_type": "Muzzle",
       "rarity": "Epic",
       "effects": [
@@ -4170,6 +4301,7 @@ const GAME_DATA = {
     {
       "id": "extended_barrel",
       "name": "Extended Barrel",
+      "image": "images/modifications/extended_barrel.webp",
       "slot_type": "Muzzle",
       "rarity": "Epic",
       "effects": [
@@ -4193,6 +4325,7 @@ const GAME_DATA = {
     {
       "id": "angled_grip_iii",
       "name": "Angled Grip III",
+      "image": "images/modifications/angled_grip_iii.png",
       "slot_type": "Underbarrel",
       "rarity": "Rare",
       "effects": [
@@ -4216,6 +4349,7 @@ const GAME_DATA = {
     {
       "id": "vertical_grip_iii",
       "name": "Vertical Grip III",
+      "image": "images/modifications/vertical_grip_iii.webp",
       "slot_type": "Underbarrel",
       "rarity": "Rare",
       "effects": [
@@ -4239,6 +4373,7 @@ const GAME_DATA = {
     {
       "id": "horizontal_grip",
       "name": "Horizontal Grip",
+      "image": "images/modifications/horizontal_grip.webp",
       "slot_type": "Underbarrel",
       "rarity": "Epic",
       "effects": [
@@ -4262,6 +4397,7 @@ const GAME_DATA = {
     {
       "id": "extended_light_mag_iii",
       "name": "Extended Light Mag III",
+      "image": "images/modifications/extended_light_mag_iii.png",
       "slot_type": "Light-Mag",
       "rarity": "Rare",
       "effects": [
@@ -4285,6 +4421,7 @@ const GAME_DATA = {
     {
       "id": "extended_medium_mag_iii",
       "name": "Extended Medium Mag III",
+      "image": "images/modifications/extended_medium_mag_iii.webp",
       "slot_type": "Medium-Mag",
       "rarity": "Rare",
       "effects": [
@@ -4308,6 +4445,7 @@ const GAME_DATA = {
     {
       "id": "extended_shotgun_mag_iii",
       "name": "Extended Shotgun Mag III",
+      "image": "images/modifications/extended_shotgun_mag_iii.webp",
       "slot_type": "Shotgun-Mag",
       "rarity": "Rare",
       "effects": [
@@ -4331,6 +4469,7 @@ const GAME_DATA = {
     {
       "id": "stable_stock_iii",
       "name": "Stable Stock III",
+      "image": "images/modifications/stable_stock_iii.webp",
       "slot_type": "Stock",
       "rarity": "Rare",
       "effects": [
@@ -4354,6 +4493,7 @@ const GAME_DATA = {
     {
       "id": "lightweight_stock",
       "name": "Lightweight Stock",
+      "image": "images/modifications/lightweight_stock.webp",
       "slot_type": "Stock",
       "rarity": "Epic",
       "effects": [
@@ -4377,6 +4517,7 @@ const GAME_DATA = {
     {
       "id": "padded_stock",
       "name": "Padded Stock",
+      "image": "images/modifications/padded_stock.webp",
       "slot_type": "Stock",
       "rarity": "Epic",
       "effects": [
@@ -4400,6 +4541,7 @@ const GAME_DATA = {
     {
       "id": "kinetic_converter",
       "name": "Kinetic Converter",
+      "image": "images/modifications/kinetic_converter.webp",
       "slot_type": "Tech-Mod",
       "rarity": "Legendary",
       "effects": [
@@ -4414,6 +4556,7 @@ const GAME_DATA = {
     {
       "id": "anvil_splitter",
       "name": "Anvil Splitter",
+      "image": "images/modifications/anvil_splitter.webp",
       "slot_type": "Tech-Mod",
       "rarity": "Legendary",
       "effects": [
@@ -4430,6 +4573,7 @@ const GAME_DATA = {
     {
       "id": "metal_parts",
       "name": "Metal Parts",
+      "image": "images/materials/metal_parts.webp",
       "rarity": "Common",
       "weight": "0.1",
       "stack_size": "50",
@@ -4442,6 +4586,7 @@ const GAME_DATA = {
     {
       "id": "plastic_parts",
       "name": "Plastic Parts",
+      "image": "images/materials/plastic_parts.webp",
       "rarity": "Common",
       "weight": "0.1",
       "stack_size": "50",
@@ -4454,6 +4599,7 @@ const GAME_DATA = {
     {
       "id": "rubber_parts",
       "name": "Rubber Parts",
+      "image": "images/materials/rubber_parts.webp",
       "rarity": "Common",
       "weight": "0.1",
       "stack_size": "50",
@@ -4466,6 +4612,7 @@ const GAME_DATA = {
     {
       "id": "wires",
       "name": "Wires",
+      "image": "images/materials/wires.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4478,6 +4625,7 @@ const GAME_DATA = {
     {
       "id": "duct_tape",
       "name": "Duct Tape",
+      "image": "images/materials/duct_tape.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4490,6 +4638,7 @@ const GAME_DATA = {
     {
       "id": "chemicals",
       "name": "Chemicals",
+      "image": "images/materials/chemicals.webp",
       "rarity": "Common",
       "weight": "0.1",
       "stack_size": "50",
@@ -4502,6 +4651,7 @@ const GAME_DATA = {
     {
       "id": "oil",
       "name": "Oil",
+      "image": "images/materials/oil.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4514,6 +4664,7 @@ const GAME_DATA = {
     {
       "id": "fabric",
       "name": "Fabric",
+      "image": "images/materials/fabric.webp",
       "rarity": "Common",
       "weight": "0.1",
       "stack_size": "50",
@@ -4526,6 +4677,7 @@ const GAME_DATA = {
     {
       "id": "rope",
       "name": "Rope",
+      "image": "images/materials/rope.webp",
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
@@ -4538,6 +4690,7 @@ const GAME_DATA = {
     {
       "id": "battery",
       "name": "Battery",
+      "image": "images/materials/battery.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4550,6 +4703,7 @@ const GAME_DATA = {
     {
       "id": "mechanical_components",
       "name": "Mechanical Components",
+      "image": "images/materials/mechanical_components.webp",
       "rarity": "Uncommon",
       "weight": "0.8",
       "stack_size": "10",
@@ -4571,6 +4725,7 @@ const GAME_DATA = {
     {
       "id": "advanced_mechanical_components",
       "name": "Advanced Mechanical Components",
+      "image": "images/materials/advanced_mechanical_components.webp",
       "rarity": "Rare",
       "weight": "1",
       "stack_size": "5",
@@ -4592,6 +4747,7 @@ const GAME_DATA = {
     {
       "id": "mod_components",
       "name": "Mod Components",
+      "image": "images/materials/mod_components.webp",
       "rarity": "Rare",
       "weight": "1",
       "stack_size": "5",
@@ -4613,6 +4769,7 @@ const GAME_DATA = {
     {
       "id": "explosive_compound",
       "name": "Explosive Compound",
+      "image": "images/materials/explosive_compound.webp",
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
@@ -4634,6 +4791,7 @@ const GAME_DATA = {
     {
       "id": "crude_explosives",
       "name": "Crude Explosives",
+      "image": "images/materials/crude_explosives.webp",
       "rarity": "Uncommon",
       "weight": "2",
       "stack_size": "10",
@@ -4651,6 +4809,7 @@ const GAME_DATA = {
     {
       "id": "simple_gun_parts",
       "name": "Simple Gun Parts",
+      "image": "images/materials/simple_gun_parts.webp",
       "rarity": "Uncommon",
       "weight": "0.3",
       "stack_size": "10",
@@ -4663,6 +4822,7 @@ const GAME_DATA = {
     {
       "id": "light_gun_parts",
       "name": "Light Gun Parts",
+      "image": "images/materials/light_gun_parts.webp",
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
@@ -4680,6 +4840,7 @@ const GAME_DATA = {
     {
       "id": "medium_gun_parts",
       "name": "Medium Gun Parts",
+      "image": "images/materials/medium_gun_parts.webp",
       "rarity": "Rare",
       "weight": "0.4",
       "stack_size": "5",
@@ -4697,6 +4858,7 @@ const GAME_DATA = {
     {
       "id": "heavy_gun_parts",
       "name": "Heavy Gun Parts",
+      "image": "images/materials/heavy_gun_parts.webp",
       "rarity": "Rare",
       "weight": "0.5",
       "stack_size": "5",
@@ -4714,6 +4876,7 @@ const GAME_DATA = {
     {
       "id": "complex_gun_parts",
       "name": "Complex Gun Parts",
+      "image": "images/materials/complex_gun_parts.webp",
       "rarity": "Epic",
       "weight": "1",
       "stack_size": "3",
@@ -4739,6 +4902,7 @@ const GAME_DATA = {
     {
       "id": "arc_alloy",
       "name": "ARC Alloy",
+      "image": "images/materials/arc_alloy.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4751,6 +4915,7 @@ const GAME_DATA = {
     {
       "id": "arc_circuitry",
       "name": "ARC Circuitry",
+      "image": "images/materials/arc_circuitry.webp",
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
@@ -4768,6 +4933,7 @@ const GAME_DATA = {
     {
       "id": "arc_motion_core",
       "name": "ARC Motion Core",
+      "image": "images/materials/arc_motion_core.webp",
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
@@ -4785,6 +4951,7 @@ const GAME_DATA = {
     {
       "id": "arc_powercell",
       "name": "ARC Powercell",
+      "image": "images/materials/arc_powercell.webp",
       "rarity": "Common",
       "weight": "0.5",
       "stack_size": "5",
@@ -4797,6 +4964,7 @@ const GAME_DATA = {
     {
       "id": "advanced_arc_powercell",
       "name": "Advanced ARC Powercell",
+      "image": "images/materials/advanced_arc_powercell.webp",
       "rarity": "Rare",
       "weight": "0.5",
       "stack_size": "5",
@@ -4809,6 +4977,7 @@ const GAME_DATA = {
     {
       "id": "magnetic_accelerator",
       "name": "Magnetic Accelerator",
+      "image": "images/materials/magnetic_accelerator.webp",
       "rarity": "Epic",
       "weight": "1.0",
       "stack_size": "3",
@@ -4830,6 +4999,7 @@ const GAME_DATA = {
     {
       "id": "steel_spring",
       "name": "Steel Spring",
+      "image": "images/materials/steel_spring.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4842,6 +5012,7 @@ const GAME_DATA = {
     {
       "id": "magnet",
       "name": "Magnet",
+      "image": "images/materials/magnet.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4854,6 +5025,7 @@ const GAME_DATA = {
     {
       "id": "canister",
       "name": "Canister",
+      "image": "images/materials/canister.webp",
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
@@ -4866,6 +5038,7 @@ const GAME_DATA = {
     {
       "id": "voltage_converter",
       "name": "Voltage Converter",
+      "image": "images/materials/voltage_converter.webp",
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
@@ -4878,6 +5051,7 @@ const GAME_DATA = {
     {
       "id": "power_rod",
       "name": "Power Rod",
+      "image": "images/materials/power_rod.webp",
       "rarity": "Epic",
       "weight": "1",
       "stack_size": "3",
@@ -4899,6 +5073,7 @@ const GAME_DATA = {
     {
       "id": "exodus_modules",
       "name": "Exodus Modules",
+      "image": "images/materials/exodus_modules.webp",
       "rarity": "Epic",
       "weight": "1",
       "stack_size": "3",
@@ -4911,6 +5086,7 @@ const GAME_DATA = {
     {
       "id": "queen_reactor",
       "name": "Queen Reactor",
+      "image": "images/materials/queen_reactor.webp",
       "rarity": "Legendary",
       "weight": "10.0",
       "stack_size": "1",
@@ -4923,6 +5099,7 @@ const GAME_DATA = {
     {
       "id": "matriarch_reactor",
       "name": "Matriarch Reactor",
+      "image": "images/materials/matriarch_reactor.webp",
       "rarity": "Legendary",
       "weight": "10.0",
       "stack_size": "1",
@@ -4937,6 +5114,7 @@ const GAME_DATA = {
     {
       "id": "light_ammo",
       "name": "Light Ammo",
+      "image": "images/ammo/light_ammo.webp",
       "weight": "0.01",
       "stack_size": "100",
       "crafting": {
@@ -4957,6 +5135,7 @@ const GAME_DATA = {
     {
       "id": "medium_ammo",
       "name": "Medium Ammo",
+      "image": "images/ammo/medium_ammo.webp",
       "weight": "0.025",
       "stack_size": "80",
       "crafting": {
@@ -4977,6 +5156,7 @@ const GAME_DATA = {
     {
       "id": "heavy_ammo",
       "name": "Heavy Ammo",
+      "image": "images/ammo/heavy_ammo.webp",
       "weight": "0.05",
       "stack_size": "40",
       "crafting": {
@@ -4997,6 +5177,7 @@ const GAME_DATA = {
     {
       "id": "shotgun_ammo",
       "name": "Shotgun Ammo",
+      "image": "images/ammo/shotgun_ammo.webp",
       "weight": "0.085",
       "stack_size": "20",
       "crafting": {
@@ -5017,6 +5198,7 @@ const GAME_DATA = {
     {
       "id": "energy_clip",
       "name": "Energy Clip",
+      "image": "images/ammo/energy_clip.webp",
       "weight": "0.3",
       "stack_size": "5",
       "crafting": {
@@ -5037,6 +5219,7 @@ const GAME_DATA = {
     {
       "id": "launcher_ammo",
       "name": "Launcher Ammo",
+      "image": "images/ammo/launcher_ammo.webp",
       "weight": "0.1",
       "stack_size": "24",
       "crafting": {
