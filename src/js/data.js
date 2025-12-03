@@ -29,7 +29,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1orWorkbench 1",
         "upgrades": [
           {
-            "to_tier": "Kettle II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -43,7 +43,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Kettle III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -57,7 +57,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Kettle IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -99,7 +99,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1",
         "upgrades": [
           {
-            "to_tier": "Rattler II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -109,7 +109,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Rattler III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -123,7 +123,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Rattler IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -166,7 +166,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 2",
         "upgrades": [
           {
-            "to_tier": "Arpeggio II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -180,7 +180,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Arpeggio III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -194,7 +194,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Arpeggio IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -240,7 +240,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 3",
         "upgrades": [
           {
-            "to_tier": "Tempest II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -254,7 +254,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Tempest III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -268,7 +268,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Tempest IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -314,7 +314,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 3",
         "upgrades": [
           {
-            "to_tier": "Bettina II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -328,7 +328,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 3"
           },
           {
-            "to_tier": "Bettina III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -342,7 +342,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 3"
           },
           {
-            "to_tier": "Bettina IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -384,7 +384,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1",
         "upgrades": [
           {
-            "to_tier": "Ferro II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -394,7 +394,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Ferro III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -408,7 +408,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Ferro IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -454,7 +454,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 3",
         "upgrades": [
           {
-            "to_tier": "Renegade II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -468,7 +468,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Renegade III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -482,7 +482,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Renegade IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -555,7 +555,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1orWorkbench 1",
         "upgrades": [
           {
-            "to_tier": "Stitcher II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -569,7 +569,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Stitcher III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -583,7 +583,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Stitcher IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -630,7 +630,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 3",
         "upgrades": [
           {
-            "to_tier": "Bobcat II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -644,7 +644,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Bobcat III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -658,7 +658,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Bobcat IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -701,7 +701,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1",
         "upgrades": [
           {
-            "to_tier": "Il Toro II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -715,7 +715,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Il Toro III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -729,7 +729,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Il Toro IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -776,7 +776,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 3",
         "upgrades": [
           {
-            "to_tier": "Vulcano II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -790,7 +790,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Vulcano III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -804,7 +804,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Vulcano IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -844,7 +844,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1orWorkbench 1",
         "upgrades": [
           {
-            "to_tier": "Hairpin II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -854,7 +854,7 @@ const GAME_DATA = {
             "workshop": "Gunmsith 1"
           },
           {
-            "to_tier": "Hairpin III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Metal Parts",
@@ -868,7 +868,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Hairpin IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -909,7 +909,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1",
         "upgrades": [
           {
-            "to_tier": "Burletta II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -923,7 +923,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Burletta III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -937,7 +937,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Burletta IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -978,7 +978,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 1",
         "upgrades": [
           {
-            "to_tier": "Anvil II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -992,7 +992,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Anvil III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -1006,7 +1006,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Anvil IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Mechanical Components",
@@ -1051,7 +1051,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 2",
         "upgrades": [
           {
-            "to_tier": "Venator II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1065,7 +1065,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Venator III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1079,7 +1079,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Venator IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1125,7 +1125,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 2",
         "upgrades": [
           {
-            "to_tier": "Torrente II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1139,7 +1139,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Torrente III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1153,7 +1153,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Torrente IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1200,7 +1200,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 2",
         "upgrades": [
           {
-            "to_tier": "Osprey II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1214,7 +1214,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Osprey III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1228,7 +1228,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 1"
           },
           {
-            "to_tier": "Osprey IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1300,7 +1300,7 @@ const GAME_DATA = {
         "workshop": "Gunsmith 3",
         "upgrades": [
           {
-            "to_tier": "Hullcracker II",
+            "tier": 2,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1314,7 +1314,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 2"
           },
           {
-            "to_tier": "Hullcracker III",
+            "tier": 3,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
@@ -1328,7 +1328,7 @@ const GAME_DATA = {
             "workshop": "Gunsmith 2"
           },
           {
-            "to_tier": "Hullcracker IV",
+            "tier": 4,
             "materials": [
               {
                 "material": "Advanced Mechanical Components",
