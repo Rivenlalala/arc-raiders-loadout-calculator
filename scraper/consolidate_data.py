@@ -142,8 +142,8 @@ def process_equipment(equipment_data, image_paths):
         category_images = image_paths.get(category, {})
 
         for item in items:
-            # Skip generic pages that got scraped accidentally
-            if item['name'] in ['Quick Use', 'ARC', 'Raider', 'Skills']:
+            # Skip generic pages and items that got scraped accidentally
+            if item['name'] in ['Quick Use', 'ARC', 'Raider', 'Skills', 'Integrated Shield Recharger']:
                 continue
 
             item_id = item['name'].lower().replace(' ', '_').replace('%27', "'")

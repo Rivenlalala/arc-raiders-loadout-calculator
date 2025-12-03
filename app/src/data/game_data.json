@@ -2031,25 +2031,6 @@
           ],
           "workshop": "Gear Bench 3"
         }
-      },
-      {
-        "id": "integrated_shield_recharger",
-        "name": "Integrated Shield Recharger",
-        "image": "images/augments/integrated_shield_recharger.webp",
-        "category": "augments",
-        "rarity": "Common",
-        "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
-        "special_effect": "Locked to equipped augment",
-        "stats": {
-          "Weight": "0.2",
-          "Stack Size": "1",
-          "Use Time": "5s",
-          "Recharge": "50"
-        },
-        "crafting": {
-          "materials": [],
-          "workshop": null
-        }
       }
     ],
     "shields": [
@@ -2495,25 +2476,6 @@
           "Use Time": "3s",
           "Duration": "10s",
           "Recharge": "2/s"
-        },
-        "crafting": {
-          "materials": [],
-          "workshop": null
-        }
-      },
-      {
-        "id": "integrated_shield_recharger",
-        "name": "Integrated Shield Recharger",
-        "image": "images/healing/integrated_shield_recharger.webp",
-        "category": "healing",
-        "rarity": "Common",
-        "description": "Reusable Shield Recharger on a fixed cooldown. Can be used like a normal Shield Charger, but cannot be dropped or removed from its slot.",
-        "special_effect": "Locked to equipped augment",
-        "stats": {
-          "Weight": "0.2",
-          "Stack Size": "1",
-          "Use Time": "5s",
-          "Recharge": "50"
         },
         "crafting": {
           "materials": [],

@@ -352,12 +352,17 @@ function TreeNode({
         </span>
 
         {node.canCraft && (
-          <Hammer
+          <div
             className={cn(
-              'w-4 h-4',
-              isExpanded ? 'text-primary' : 'text-muted-foreground'
+              'flex items-center justify-center w-7 h-7 rounded-md',
+              isExpanded
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-amber-500/20 text-amber-500 hover:bg-amber-500/30'
             )}
-          />
+            title="Click to break down into components"
+          >
+            <Hammer className="w-5 h-5" />
+          </div>
         )}
       </div>
 
