@@ -3487,6 +3487,123 @@
     ],
     "traps": [
       {
+        "id": "blaze_grenade_trap",
+        "name": "Blaze Grenade Trap",
+        "image": "images/traps/blaze_grenade_trap.webp",
+        "category": "traps",
+        "rarity": "Rare",
+        "description": "laser trip wire that detonates a Blaze Grenade.",
+        "special_effect": null,
+        "stats": {
+          "Weight": "0.3",
+          "Stack Size": "3",
+          "Sell Price": "1,000",
+          "Damage": "5/s",
+          "Duration": "10s"
+        },
+        "crafting": {
+          "materials": [
+            {
+              "material": "Blaze Grenade",
+              "quantity": 1
+            },
+            {
+              "material": "Wires",
+              "quantity": 1
+            }
+          ],
+          "workshop": "Workbench 1"
+        }
+      },
+      {
+        "id": "gas_grenade_trap",
+        "name": "Gas Grenade Trap",
+        "image": "images/traps/gas_grenade_trap.webp",
+        "category": "traps",
+        "rarity": "Common",
+        "description": "A laser trip write that detonates a Gas Grenade.",
+        "special_effect": null,
+        "stats": {
+          "Weight": "0.25",
+          "Stack Size": "3",
+          "Sell Price": "300",
+          "Stamina": "-25/s",
+          "Duration": "20s",
+          "Radius": "7.5m"
+        },
+        "crafting": {
+          "materials": [
+            {
+              "material": "Gas Grenade",
+              "quantity": 1
+            },
+            {
+              "material": "Wires",
+              "quantity": 1
+            }
+          ],
+          "workshop": "Workbench 1"
+        }
+      },
+      {
+        "id": "lure_grenade_trap",
+        "name": "Lure Grenade Trap",
+        "image": "images/traps/lure_grenade_trap.webp",
+        "category": "traps",
+        "rarity": "Uncommon",
+        "description": "A laser trip wire that detonates a Lure Grenade",
+        "special_effect": null,
+        "stats": {
+          "Weight": "0.25",
+          "Stack Size": "3",
+          "Sell Price": "1,000",
+          "Duration": "15s",
+          "Radius": "50m"
+        },
+        "crafting": {
+          "materials": [
+            {
+              "material": "Lure Grenade",
+              "quantity": 1
+            },
+            {
+              "material": "Wires",
+              "quantity": 1
+            }
+          ],
+          "workshop": "Workbench 1"
+        }
+      },
+      {
+        "id": "smoke_grenade_trap",
+        "name": "Smoke Grenade Trap",
+        "image": "images/traps/smoke_grenade_trap.webp",
+        "category": "traps",
+        "rarity": "Rare",
+        "description": "A laser trip write that detonates a Smoke Grenade.",
+        "special_effect": null,
+        "stats": {
+          "Weight": "0.3",
+          "Stack Size": "3",
+          "Sell Price": "640",
+          "Duration": "20s",
+          "Radius": "7.5m"
+        },
+        "crafting": {
+          "materials": [
+            {
+              "material": "Smoke Grenade",
+              "quantity": 1
+            },
+            {
+              "material": "Wires",
+              "quantity": 1
+            }
+          ],
+          "workshop": "Workbench 1"
+        }
+      },
+      {
         "id": "explosive_mine",
         "name": "Explosive Mine",
         "image": "images/traps/explosive_mine.webp",
@@ -3703,7 +3820,7 @@
       "id": "shotgun_choke_i",
       "name": "Shotgun Choke I",
       "image": "images/modifications/shotgun_choke_i.webp",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Common",
       "effects": [
         "Slightly reduces base dispersion."
@@ -4054,7 +4171,7 @@
       "id": "shotgun_choke_ii",
       "name": "Shotgun Choke II",
       "image": "images/modifications/shotgun_choke_ii.png",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Uncommon",
       "effects": [
         "Moderately reduces base dispersion."
@@ -4433,7 +4550,7 @@
       "id": "shotgun_choke_iii",
       "name": "Shotgun Choke III",
       "image": "images/modifications/shotgun_choke_iii.png",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Rare",
       "effects": [
         "Significantly reduces base dispersion."
@@ -4546,7 +4663,7 @@
       "id": "shotgun_silencer",
       "name": "Shotgun Silencer",
       "image": "images/modifications/shotgun_silencer.webp",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Epic",
       "effects": [
         "Moderately reduces the amount of noise produced when firing."

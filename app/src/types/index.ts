@@ -137,6 +137,7 @@ export interface Loadout {
   healing: LoadoutItem[];
   utilities: LoadoutItem[];
   grenades: LoadoutItem[];
+  traps: LoadoutItem[];
   ammo: { type: string; quantity: number }[];
 }
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { WeaponSelector } from './WeaponSelector';
 import { ItemCard } from '../ui/ItemCard';
-import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
+import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getTraps, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import type { Loadout, EquipmentItem } from '../../types';
 
@@ -131,14 +131,16 @@ function ShieldTooltipContent({ shield }: { shield: EquipmentItem }) {
   );
 }
 
-// Tooltip content for consumables (healing, grenades, utilities)
+// Tooltip content for consumables (healing, grenades, utilities, traps)
 function ConsumableTooltipContent({ item }: { item: EquipmentItem }) {
   const healingStats = ['Healing', 'Use Time', 'Duration'];
   const grenadeStats = ['Damage', 'Radius', 'Duration', 'Effect'];
   const utilityStats = ['Duration', 'Effect', 'Radius'];
+  const trapStats = ['Damage', 'Radius', 'Duration', 'Stamina', 'ARC Stun', 'Raider Stun'];
 
   const statsToShow = item.category === 'healing' ? healingStats :
-    item.category === 'grenades' ? grenadeStats : utilityStats;
+    item.category === 'grenades' ? grenadeStats :
+    item.category === 'traps' ? trapStats : utilityStats;
 
   return (
     <>
@@ -183,14 +185,31 @@ function ConsumableTooltipContent({ item }: { item: EquipmentItem }) {
   );
 }
 
+// Sort by rarity (Common -> Legendary)
+function sortByRarity<T extends { rarity: string | null }>(items: T[]): T[] {
+  const rarityOrder: Record<string, number> = {
+    'Common': 1,
+    'Uncommon': 2,
+    'Rare': 3,
+    'Epic': 4,
+    'Legendary': 5,
+  };
+  return [...items].sort((a, b) => {
+    const aOrder = rarityOrder[a.rarity || 'Common'] || 0;
+    const bOrder = rarityOrder[b.rarity || 'Common'] || 0;
+    return aOrder - bOrder;
+  });
+}
+
 export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
   const [hoveredItem, setHoveredItem] = useState<{ id: string; rect: DOMRect } | null>(null);
 
   const augments = getAugments();
   const compatibleShields = getShieldsForAugment(loadout.augment);
-  const healing = getHealing().filter(h => h.crafting.materials.length > 0);
-  const grenades = getGrenades().filter(g => g.crafting.materials.length > 0);
-  const utilities = getQuickUse().filter(u => u.crafting.materials.length > 0);
+  const healing = sortByRarity(getHealing().filter(h => h.crafting.materials.length > 0));
+  const grenades = sortByRarity(getGrenades().filter(g => g.crafting.materials.length > 0));
+  const utilities = sortByRarity(getQuickUse().filter(u => u.crafting.materials.length > 0));
+  const traps = sortByRarity(getTraps().filter(t => t.crafting.materials.length > 0));
 
   const handleMouseEnter = (id: string, e: React.MouseEvent) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -355,7 +374,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <img
                       src={`/${item.image}`}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
                     />
                     {qty > 0 && (
                       <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
@@ -434,7 +454,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <img
                       src={`/${item.image}`}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
                     />
                     {qty > 0 && (
                       <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
@@ -513,7 +534,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <img
                       src={`/${item.image}`}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
                     />
                     {qty > 0 && (
                       <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
@@ -550,6 +572,86 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                             u.id === item.id ? { ...u, quantity: u.quantity + 1 } : u
                           );
                           onChange({ ...loadout, utilities: newUtilities });
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
+                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
+                    {item.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Traps */}
+        <div>
+          <label className="block text-sm font-medium text-muted-foreground mb-2">
+            Traps
+          </label>
+          <div className="flex flex-wrap gap-3">
+            {traps.map((item) => {
+              const current = loadout.traps.find(t => t.id === item.id);
+              const qty = current?.quantity ?? 0;
+
+              return (
+                <div key={item.id} className="flex flex-col items-center gap-1">
+                  <div
+                    className={`relative cursor-pointer ${qty > 0 ? 'ring-2 ring-primary rounded-lg' : ''}`}
+                    onClick={() => {
+                      const newTraps = loadout.traps.filter(t => t.id !== item.id);
+                      if (qty === 0) {
+                        newTraps.push({ id: item.id, quantity: 1 });
+                      }
+                      onChange({ ...loadout, traps: newTraps });
+                    }}
+                    onMouseEnter={(e) => handleMouseEnter(item.id, e)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <img
+                      src={`/${item.image}`}
+                      alt={item.name}
+                      className="w-12 h-12 object-contain rounded-lg"
+                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid' }}
+                    />
+                    {qty > 0 && (
+                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                        {qty}
+                      </span>
+                    )}
+                    <HoverTooltip
+                      item={item}
+                      isHovered={hoveredItem?.id === item.id}
+                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                    >
+                      <ConsumableTooltipContent item={item} />
+                    </HoverTooltip>
+                  </div>
+                  {qty > 0 && (
+                    <div className="flex items-center gap-1">
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newTraps = loadout.traps.map(t =>
+                            t.id === item.id ? { ...t, quantity: Math.max(0, t.quantity - 1) } : t
+                          ).filter(t => t.quantity > 0);
+                          onChange({ ...loadout, traps: newTraps });
+                        }}
+                      >
+                        -
+                      </button>
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newTraps = loadout.traps.map(t =>
+                            t.id === item.id ? { ...t, quantity: t.quantity + 1 } : t
+                          );
+                          onChange({ ...loadout, traps: newTraps });
                         }}
                       >
                         +

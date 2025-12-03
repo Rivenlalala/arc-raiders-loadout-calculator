@@ -148,8 +148,12 @@ def process_equipment(equipment_data, image_paths):
 
             # Skip in-round crafting only items (workshop = "Inventory")
             workshop = item.get('crafting', {}).get('workshop', '')
-            if workshop and 'Inventory' in workshop:
+            if workshop == 'Inventory':
                 continue
+
+            # Clean up workshop strings like "Workbench 1orInventory" -> "Workbench 1"
+            if workshop and 'orInventory' in workshop:
+                workshop = workshop.replace('orInventory', '').strip()
 
             item_id = item['name'].lower().replace(' ', '_').replace('%27', "'")
             item_name = clean_string(item['name'].replace('%27', "'"))
@@ -159,7 +163,7 @@ def process_equipment(equipment_data, image_paths):
             if is_valid_crafting_recipe(item_name, raw_materials):
                 crafting_data = {
                     'materials': clean_materials(raw_materials),
-                    'workshop': clean_string(item.get('crafting', {}).get('workshop'))
+                    'workshop': clean_string(workshop) if workshop else None
                 }
             else:
                 crafting_data = {'materials': [], 'workshop': None}
@@ -179,6 +183,20 @@ def process_equipment(equipment_data, image_paths):
 
     return processed
 
+def normalize_slot_type(slot_type):
+    """Normalize slot type names to match weapon modification_slots format."""
+    if not slot_type:
+        return slot_type
+    # Map wiki-style names to hyphenated format used in weapon data
+    slot_mapping = {
+        'Shotgun Muzzle': 'Shotgun-Muzzle',
+        'Shotgun Magazine': 'Shotgun-Mag',
+        'Light Magazine': 'Light-Mag',
+        'Medium Magazine': 'Medium-Mag',
+        'Tech Mod': 'Tech-Mod',
+    }
+    return slot_mapping.get(slot_type, slot_type)
+
 def process_modifications(mods_data, image_paths):
     """Process and clean modifications data."""
     mods = []
@@ -197,7 +215,7 @@ def process_modifications(mods_data, image_paths):
             'id': mod_id,
             'name': clean_string(mod['name']),
             'image': mod_images.get(mod_id),
-            'slot_type': clean_string(mod.get('slot_type')) or infer_slot_type(mod['name']),
+            'slot_type': normalize_slot_type(clean_string(mod.get('slot_type')) or infer_slot_type(mod['name'])),
             'rarity': mod.get('rarity'),
             'effects': mod.get('effects', []),
             'stats': mod.get('stats', {}),  # Exact stat percentages
