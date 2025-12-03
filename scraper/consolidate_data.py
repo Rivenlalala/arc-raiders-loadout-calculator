@@ -61,6 +61,16 @@ def clean_materials(materials):
         })
     return cleaned
 
+def is_valid_crafting_recipe(item_name, materials):
+    """Check if recipe is valid (item shouldn't be its own ingredient)."""
+    if not materials:
+        return False
+    item_lower = item_name.lower()
+    for mat in materials:
+        if mat.get('material', '').lower() == item_lower:
+            return False
+    return True
+
 def process_weapons(weapons_data, image_paths):
     """Process and clean weapons data."""
     weapons = []
@@ -111,18 +121,27 @@ def process_equipment(equipment_data, image_paths):
                 continue
 
             item_id = item['name'].lower().replace(' ', '_').replace('%27', "'")
+            item_name = clean_string(item['name'].replace('%27', "'"))
+            raw_materials = item.get('crafting', {}).get('materials', [])
+
+            # Only include crafting recipe if it's valid (item not in its own recipe)
+            if is_valid_crafting_recipe(item_name, raw_materials):
+                crafting_data = {
+                    'materials': clean_materials(raw_materials),
+                    'workshop': clean_string(item.get('crafting', {}).get('workshop'))
+                }
+            else:
+                crafting_data = {'materials': [], 'workshop': None}
+
             processed_item = {
                 'id': item_id,
-                'name': clean_string(item['name'].replace('%27', "'")),
+                'name': item_name,
                 'image': category_images.get(item_id),
                 'category': category,
                 'rarity': item.get('rarity'),
                 'description': clean_string(item.get('description')),
                 'stats': item.get('stats', {}),
-                'crafting': {
-                    'materials': clean_materials(item.get('crafting', {}).get('materials', [])),
-                    'workshop': clean_string(item.get('crafting', {}).get('workshop'))
-                }
+                'crafting': crafting_data
             }
             processed[category].append(processed_item)
 
