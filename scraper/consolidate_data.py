@@ -148,8 +148,12 @@ def process_equipment(equipment_data, image_paths):
 
             # Skip in-round crafting only items (workshop = "Inventory")
             workshop = item.get('crafting', {}).get('workshop', '')
-            if workshop and 'Inventory' in workshop:
+            if workshop == 'Inventory':
                 continue
+
+            # Clean up workshop strings like "Workbench 1orInventory" -> "Workbench 1"
+            if workshop and 'orInventory' in workshop:
+                workshop = workshop.replace('orInventory', '').strip()
 
             item_id = item['name'].lower().replace(' ', '_').replace('%27', "'")
             item_name = clean_string(item['name'].replace('%27', "'"))
@@ -159,7 +163,7 @@ def process_equipment(equipment_data, image_paths):
             if is_valid_crafting_recipe(item_name, raw_materials):
                 crafting_data = {
                     'materials': clean_materials(raw_materials),
-                    'workshop': clean_string(item.get('crafting', {}).get('workshop'))
+                    'workshop': clean_string(workshop) if workshop else None
                 }
             else:
                 crafting_data = {'materials': [], 'workshop': None}
