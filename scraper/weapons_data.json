@@ -2,7 +2,7 @@
   {
     "name": "Kettle",
     "url": "https://arcraiders.wiki/wiki/Kettle",
-    "category": "",
+    "category": "Assault Rifle",
     "rarity": "Common",
     "ammo_type": "Light Ammo",
     "modification_slots": [
@@ -136,7 +136,7 @@
   {
     "name": "Rattler",
     "url": "https://arcraiders.wiki/wiki/Rattler",
-    "category": "",
+    "category": "Assault Rifle",
     "rarity": "Common",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -265,7 +265,7 @@
   {
     "name": "Arpeggio",
     "url": "https://arcraiders.wiki/wiki/Arpeggio",
-    "category": "",
+    "category": "Assault Rifle",
     "rarity": "Uncommon",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -399,7 +399,7 @@
   {
     "name": "Tempest",
     "url": "https://arcraiders.wiki/wiki/Tempest",
-    "category": "",
+    "category": "Assault Rifle",
     "rarity": "Epic",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -536,7 +536,7 @@
   {
     "name": "Bettina",
     "url": "https://arcraiders.wiki/wiki/Bettina",
-    "category": "",
+    "category": "Assault Rifle",
     "rarity": "Epic",
     "ammo_type": "Heavy Ammo",
     "modification_slots": [
@@ -673,7 +673,7 @@
   {
     "name": "Ferro",
     "url": "https://arcraiders.wiki/wiki/Ferro",
-    "category": "",
+    "category": null,
     "rarity": "Common",
     "ammo_type": "Heavy Ammo",
     "modification_slots": [
@@ -802,7 +802,7 @@
   {
     "name": "Renegade",
     "url": "https://arcraiders.wiki/wiki/Renegade",
-    "category": "",
+    "category": null,
     "rarity": "Rare",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -939,7 +939,7 @@
   {
     "name": "Aphelion",
     "url": "https://arcraiders.wiki/wiki/Aphelion",
-    "category": "",
+    "category": null,
     "rarity": "Legendary",
     "ammo_type": "Energy Clip",
     "modification_slots": [
@@ -970,7 +970,7 @@
   {
     "name": "Stitcher",
     "url": "https://arcraiders.wiki/wiki/Stitcher",
-    "category": "",
+    "category": "SMG",
     "rarity": "Common",
     "ammo_type": "Light Ammo",
     "modification_slots": [
@@ -1104,7 +1104,7 @@
   {
     "name": "Bobcat",
     "url": "https://arcraiders.wiki/wiki/Bobcat",
-    "category": "",
+    "category": "SMG",
     "rarity": "Epic",
     "ammo_type": "Light Ammo",
     "modification_slots": [
@@ -1242,7 +1242,7 @@
   {
     "name": "Il Toro",
     "url": "https://arcraiders.wiki/wiki/Il_Toro",
-    "category": "",
+    "category": "Shotgun",
     "rarity": "Uncommon",
     "ammo_type": "Shotgun Ammo",
     "modification_slots": [
@@ -1376,7 +1376,7 @@
   {
     "name": "Vulcano",
     "url": "https://arcraiders.wiki/wiki/Vulcano",
-    "category": "",
+    "category": "Shotgun",
     "rarity": "Epic",
     "ammo_type": "Shotgun Ammo",
     "modification_slots": [
@@ -1514,7 +1514,7 @@
   {
     "name": "Hairpin",
     "url": "https://arcraiders.wiki/wiki/Hairpin",
-    "category": "",
+    "category": "Pistol",
     "rarity": "Common",
     "ammo_type": "Light Ammo",
     "modification_slots": [
@@ -1641,7 +1641,7 @@
   {
     "name": "Burletta",
     "url": "https://arcraiders.wiki/wiki/Burletta",
-    "category": "",
+    "category": "Pistol",
     "rarity": "Uncommon",
     "ammo_type": "Light Ammo",
     "modification_slots": [
@@ -1773,7 +1773,7 @@
   {
     "name": "Anvil",
     "url": "https://arcraiders.wiki/wiki/Anvil",
-    "category": "",
+    "category": "Pistol",
     "rarity": "Uncommon",
     "ammo_type": "Heavy Ammo",
     "modification_slots": [
@@ -1905,7 +1905,7 @@
   {
     "name": "Venator",
     "url": "https://arcraiders.wiki/wiki/Venator",
-    "category": "",
+    "category": "Pistol",
     "rarity": "Rare",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -2041,7 +2041,7 @@
   {
     "name": "Torrente",
     "url": "https://arcraiders.wiki/wiki/Torrente",
-    "category": "",
+    "category": null,
     "rarity": "Rare",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -2178,7 +2178,7 @@
   {
     "name": "Osprey",
     "url": "https://arcraiders.wiki/wiki/Osprey",
-    "category": "",
+    "category": "Sniper Rifle",
     "rarity": "Rare",
     "ammo_type": "Medium Ammo",
     "modification_slots": [
@@ -2316,7 +2316,7 @@
   {
     "name": "Jupiter",
     "url": "https://arcraiders.wiki/wiki/Jupiter",
-    "category": "",
+    "category": "Sniper Rifle",
     "rarity": "Legendary",
     "ammo_type": "Energy Clip",
     "modification_slots": [],
@@ -2358,7 +2358,7 @@
   {
     "name": "Hullcracker",
     "url": "https://arcraiders.wiki/wiki/Hullcracker",
-    "category": "",
+    "category": null,
     "rarity": "Epic",
     "ammo_type": null,
     "modification_slots": [
@@ -2494,7 +2494,7 @@
   {
     "name": "Equalizer",
     "url": "https://arcraiders.wiki/wiki/Equalizer",
-    "category": "",
+    "category": null,
     "rarity": "Legendary",
     "ammo_type": "Energy Clip",
     "modification_slots": [],

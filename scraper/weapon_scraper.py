@@ -117,18 +117,21 @@ def extract_weapon_data(url, weapon_name):
     if not content:
         return weapon_data
 
+    # Known weapon categories
+    weapon_categories = ['Assault Rifle', 'Pistol', 'Shotgun', 'SMG', 'Sniper Rifle',
+                         'Machine Gun', 'DMR', 'Launcher', 'Energy Weapon']
+
     # Extract from infobox
     infobox = content.find('table', {'class': 'infobox'})
     if infobox:
-        # Get category (Assault Rifle, Pistol, etc.)
-        category_row = infobox.find('tr', {'class': 'data-tag'})
-        if category_row:
-            weapon_data['category'] = category_row.get_text(strip=True)
-
-        # Get rarity
+        # Get category and rarity from data-tag rows
         for row in infobox.find_all('tr', {'class': 'data-tag'}):
             text = row.get_text(strip=True)
-            if text in ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']:
+            # Check if this is a weapon category
+            if text in weapon_categories:
+                weapon_data['category'] = text
+            # Check if this is a rarity
+            elif text in ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']:
                 weapon_data['rarity'] = text
 
         # Get ammo type

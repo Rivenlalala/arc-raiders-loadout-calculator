@@ -19,7 +19,7 @@ MATERIALS = [
     "Metal_Parts", "Plastic_Parts", "Rubber_Parts", "Wires", "Duct_Tape",
     "Chemicals", "Oil", "Fabric", "Rope", "Battery",
 
-    # Refined materials
+    # Refined materials (craftable)
     "Mechanical_Components", "Advanced_Mechanical_Components", "Mod_Components",
     "Explosive_Compound", "Crude_Explosives",
 
@@ -57,14 +57,17 @@ def parse_recipe_cell(cell):
     """Parse a recipe cell and extract materials with quantities."""
     materials = []
 
-    for br in cell.find_all('br'):
+    # Replace <br> tags with newlines
+    cell_copy = BeautifulSoup(str(cell), 'html.parser')
+    for br in cell_copy.find_all('br'):
         br.replace_with('\n')
 
-    text = cell.get_text()
+    text = cell_copy.get_text()
     lines = text.strip().split('\n')
 
     for line in lines:
         line = line.strip()
+        # Pattern: quantity followed by 'x' and material name
         match = re.match(r'(\d+)x\s*(.+)', line)
         if match:
             quantity = int(match.group(1))
@@ -94,13 +97,11 @@ def extract_material_data(material_name):
         'weight': None,
         'stack_size': None,
         'description': None,
-        'obtained_by': [],  # How to get this material
-        'crafting': {       # How to craft this material (if craftable)
+        'crafting': {
             'materials': [],
             'workshop': None,
             'output_quantity': 1
-        },
-        'used_in': []       # What this material is used to craft
+        }
     }
 
     content = soup.find('div', {'class': 'mw-parser-output'})
@@ -129,54 +130,39 @@ def extract_material_data(material_name):
                     material_data['stack_size'] = value_text
 
         # Get description
-        quote_row = infobox.find('tr', {'class': lambda x: x and 'quote' in x})
+        quote_row = infobox.find('tr', {'class': lambda x: x and 'quote' in str(x)})
         if quote_row:
             material_data['description'] = quote_row.get_text(strip=True)
 
-    # Find how it's obtained
-    obtain_section = None
-    for h3 in content.find_all('h3'):
-        if 'obtain' in h3.get_text().lower() or 'source' in h3.get_text().lower():
-            obtain_section = h3
+    # Find crafting recipe - look for h2 or h3 with "Required Materials to Craft"
+    craft_heading = None
+    for heading in content.find_all(['h2', 'h3']):
+        heading_text = heading.get_text().lower()
+        if 'required materials to craft' in heading_text:
+            craft_heading = heading
             break
 
-    if obtain_section:
-        parent = obtain_section.find_parent('div')
-        if parent:
-            next_el = parent.find_next_sibling()
-            if next_el:
-                for li in next_el.find_all('li'):
-                    material_data['obtained_by'].append(li.get_text(strip=True))
-
-    # Find crafting recipe (if craftable)
-    craft_section = content.find('h3', {'id': 'Required_Materials_to_Craft'})
-    if not craft_section:
-        for h3 in content.find_all('h3'):
-            if 'craft' in h3.get_text().lower() and 'required' in h3.get_text().lower():
-                craft_section = h3
-                break
-
-    if craft_section:
-        parent = craft_section.find_parent('div')
-        if parent:
-            next_element = parent.find_next_sibling()
-            if next_element:
-                craft_table = next_element.find('table', {'class': 'wikitable'})
+    if craft_heading:
+        # Find the next wikitable after this heading
+        # The table might be in the next section element
+        parent_div = craft_heading.find_parent('div', {'class': 'mw-heading'})
+        if parent_div:
+            next_section = parent_div.find_next_sibling('section')
+            if next_section:
+                craft_table = next_section.find('table', {'class': 'wikitable'})
                 if craft_table:
                     rows = craft_table.find_all('tr')
-                    for row in rows[1:]:
+                    for row in rows[1:]:  # Skip header
                         cells = row.find_all('td')
-                        if cells:
+                        if len(cells) >= 3:
                             materials = parse_recipe_cell(cells[0])
-                            workshop = None
-                            output_qty = 1
+                            workshop = cells[2].get_text(strip=True) if len(cells) > 2 else None
 
-                            for cell in cells:
-                                text = cell.get_text(strip=True)
-                                if any(ws in text for ws in ['Refiner', 'Workbench', 'Station']):
-                                    workshop = text
-                                # Check for output quantity
-                                qty_match = re.search(r'(\d+)x\s*' + display_name, text)
+                            # Get output quantity from last cell
+                            output_qty = 1
+                            if len(cells) >= 5:
+                                output_text = cells[4].get_text(strip=True)
+                                qty_match = re.search(r'(\d+)x', output_text)
                                 if qty_match:
                                     output_qty = int(qty_match.group(1))
 
@@ -187,6 +173,40 @@ def extract_material_data(material_name):
                                     'output_quantity': output_qty
                                 }
                                 break
+
+    # Alternative: search all wikitables if heading approach didn't work
+    if not material_data['crafting']['materials']:
+        for table in content.find_all('table', {'class': 'wikitable'}):
+            # Check if this table has Recipe/Workshop headers
+            first_row = table.find('tr')
+            if first_row:
+                row_text = first_row.get_text().lower()
+                if 'recipe' in row_text and 'workshop' in row_text:
+                    rows = table.find_all('tr')
+                    for row in rows[1:]:
+                        cells = row.find_all('td')
+                        if len(cells) >= 3:
+                            materials = parse_recipe_cell(cells[0])
+                            workshop = cells[2].get_text(strip=True)
+
+                            # Check if this is a recipe TO craft this material (not FROM it)
+                            if len(cells) >= 5:
+                                output_text = cells[4].get_text(strip=True).lower()
+                                if display_name.lower() in output_text:
+                                    output_qty = 1
+                                    qty_match = re.search(r'(\d+)x', cells[4].get_text(strip=True))
+                                    if qty_match:
+                                        output_qty = int(qty_match.group(1))
+
+                                    if materials:
+                                        material_data['crafting'] = {
+                                            'materials': materials,
+                                            'workshop': workshop,
+                                            'output_quantity': output_qty
+                                        }
+                                        break
+                    if material_data['crafting']['materials']:
+                        break
 
     return material_data
 
@@ -233,40 +253,34 @@ def extract_ammo_data(ammo_name):
 
     # Find crafting recipe
     for table in content.find_all('table', {'class': 'wikitable'}):
-        table_text = table.get_text().lower()
-        if 'recipe' in table_text or 'workshop' in table_text:
-            rows = table.find_all('tr')
-            for row in rows[1:]:
-                cells = row.find_all('td')
-                if cells:
-                    materials = parse_recipe_cell(cells[0])
-                    workshop = None
-                    output_qty = 1
+        first_row = table.find('tr')
+        if first_row:
+            row_text = first_row.get_text().lower()
+            if 'recipe' in row_text or 'workshop' in row_text:
+                rows = table.find_all('tr')
+                for row in rows[1:]:
+                    cells = row.find_all('td')
+                    if len(cells) >= 3:
+                        materials = parse_recipe_cell(cells[0])
+                        workshop = cells[2].get_text(strip=True) if len(cells) > 2 else None
 
-                    for cell in cells:
-                        text = cell.get_text(strip=True)
-                        if 'Workbench' in text:
-                            workshop = text
-                        # Check for output quantity
-                        qty_match = re.search(r'(\d+)x', text)
-                        if qty_match and display_name.lower() in text.lower():
-                            output_qty = int(qty_match.group(1))
+                        # Get output quantity from last cell
+                        output_qty = 1
+                        if len(cells) >= 5:
+                            output_text = cells[4].get_text(strip=True)
+                            qty_match = re.search(r'(\d+)x', output_text)
+                            if qty_match:
+                                output_qty = int(qty_match.group(1))
 
-                    # Get output quantity from last cell
-                    last_cell = cells[-1].get_text(strip=True)
-                    qty_match = re.search(r'(\d+)x', last_cell)
-                    if qty_match:
-                        output_qty = int(qty_match.group(1))
-
-                    if materials:
-                        ammo_data['crafting'] = {
-                            'materials': materials,
-                            'workshop': workshop,
-                            'output_quantity': output_qty
-                        }
-                        break
-            if ammo_data['crafting']['materials']:
-                break
+                        if materials:
+                            ammo_data['crafting'] = {
+                                'materials': materials,
+                                'workshop': workshop,
+                                'output_quantity': output_qty
+                            }
+                            break
+                if ammo_data['crafting']['materials']:
+                    break
 
     return ammo_data
 
@@ -282,8 +296,11 @@ def main():
         data = extract_material_data(material)
         if data:
             all_materials.append(data)
-            craftable = "craftable" if data['crafting']['materials'] else "loot only"
-            print(f"  ✓ {data['name']}: {craftable}")
+            if data['crafting']['materials']:
+                mats = ', '.join([f"{m['quantity']}x {m['material']}" for m in data['crafting']['materials']])
+                print(f"  ✓ {data['name']}: CRAFTABLE - {mats}")
+            else:
+                print(f"  ✓ {data['name']}: loot only")
 
     # Scrape ammo
     print("\n[2] Scraping ammo types...")
@@ -308,16 +325,22 @@ def main():
 
     print(f"\n[3] Saved {len(all_materials)} materials and {len(all_ammo)} ammo types to {output_file}")
 
-    # Print summary
+    # Print summary of craftable materials
     print("\n" + "=" * 60)
     print("CRAFTABLE MATERIALS (for resource calculator)")
     print("=" * 60)
+
+    craftable_count = 0
     for mat in all_materials:
         if mat['crafting']['materials']:
+            craftable_count += 1
             print(f"\n{mat['name']}:")
             for ingredient in mat['crafting']['materials']:
                 print(f"  - {ingredient['quantity']}x {ingredient['material']}")
             print(f"  Workshop: {mat['crafting']['workshop']}")
+            print(f"  Output: {mat['crafting']['output_quantity']}x")
+
+    print(f"\n{craftable_count} craftable materials found")
 
 if __name__ == '__main__':
     main()

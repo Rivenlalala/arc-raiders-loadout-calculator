@@ -41,10 +41,8 @@ def process_weapons(weapons_data):
             'ammo_type': clean_string(w.get('ammo_type')),
             'modification_slots': w.get('modification_slots', []),
             'crafting': {
-                'tier1': {
-                    'materials': clean_materials(w.get('base_craft', {}).get('materials', [])),
-                    'workshop': clean_string(w.get('base_craft', {}).get('workshop'))
-                },
+                'materials': clean_materials(w.get('base_craft', {}).get('materials', [])),
+                'workshop': clean_string(w.get('base_craft', {}).get('workshop')),
                 'upgrades': []
             }
         }

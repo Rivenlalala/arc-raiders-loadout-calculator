@@ -165,6 +165,11 @@ const App = {
         document.getElementById('clear-btn').addEventListener('click', () => {
             this.clearLoadout();
         });
+
+        // Breakdown toggle
+        document.getElementById('breakdown-toggle').addEventListener('change', () => {
+            this.updateResults();
+        });
     },
 
     updateWeapon(slot, weaponId) {
@@ -344,8 +349,11 @@ const App = {
             return;
         }
 
+        // Check if breakdown to base materials is enabled
+        const breakdownEnabled = document.getElementById('breakdown-toggle').checked;
+
         // Calculate resources
-        const resources = Calculator.calculateLoadout(this.loadout);
+        const resources = Calculator.calculateLoadout(this.loadout, breakdownEnabled);
 
         // Render results
         container.innerHTML = '';

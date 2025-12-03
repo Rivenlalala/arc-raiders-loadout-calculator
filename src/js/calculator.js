@@ -4,10 +4,34 @@
  */
 
 const Calculator = {
+    // Cache for material recipes
+    materialRecipes: null,
+
+    /**
+     * Initialize material recipes cache
+     */
+    initMaterialRecipes() {
+        if (this.materialRecipes) return;
+
+        this.materialRecipes = {};
+        const materials = GameData.getMaterials();
+        for (const mat of materials) {
+            if (mat.crafting?.materials?.length > 0) {
+                this.materialRecipes[mat.name.toLowerCase()] = {
+                    materials: mat.crafting.materials,
+                    output: mat.crafting.output_quantity || 1
+                };
+            }
+        }
+    },
+
     /**
      * Calculate resources for a complete loadout
+     * @param {Object} loadout - The loadout configuration
+     * @param {boolean} breakdownMaterials - If true, break down craftable materials to base components
      */
-    calculateLoadout(loadout) {
+    calculateLoadout(loadout, breakdownMaterials = false) {
+        this.initMaterialRecipes();
         const resources = {};
 
         // Calculate weapon resources
@@ -55,7 +79,76 @@ const Calculator = {
             this.addItemResources(resources, mod);
         }
 
+        // Optionally break down craftable materials to base components
+        if (breakdownMaterials) {
+            return this.groupResources(this.breakdownToBase(resources));
+        }
+
         return this.groupResources(resources);
+    },
+
+    /**
+     * Break down all craftable materials to their base components
+     */
+    breakdownToBase(resources) {
+        const baseResources = {};
+        const maxIterations = 10; // Prevent infinite loops
+
+        // Copy resources and track what needs processing
+        let toProcess = { ...resources };
+
+        for (let iteration = 0; iteration < maxIterations; iteration++) {
+            const nextToProcess = {};
+            let hadBreakdown = false;
+
+            for (const [key, resource] of Object.entries(toProcess)) {
+                const recipe = this.materialRecipes[key];
+
+                if (recipe) {
+                    // This material can be crafted - break it down
+                    hadBreakdown = true;
+                    const craftsNeeded = Math.ceil(resource.quantity / recipe.output);
+
+                    for (const ingredient of recipe.materials) {
+                        const ingKey = ingredient.material.toLowerCase();
+                        const ingQty = ingredient.quantity * craftsNeeded;
+
+                        if (!nextToProcess[ingKey]) {
+                            nextToProcess[ingKey] = {
+                                name: ingredient.material,
+                                quantity: 0,
+                                category: this.getMaterialCategory(ingredient.material)
+                            };
+                        }
+                        nextToProcess[ingKey].quantity += ingQty;
+                    }
+                } else {
+                    // Base material - add to final result
+                    if (!baseResources[key]) {
+                        baseResources[key] = {
+                            name: resource.name,
+                            quantity: 0,
+                            category: resource.category
+                        };
+                    }
+                    baseResources[key].quantity += resource.quantity;
+                }
+            }
+
+            if (!hadBreakdown) break;
+            toProcess = nextToProcess;
+        }
+
+        // Add any remaining items from toProcess to baseResources
+        for (const [key, resource] of Object.entries(toProcess)) {
+            if (!baseResources[key]) {
+                baseResources[key] = resource;
+            } else {
+                baseResources[key].quantity += resource.quantity;
+            }
+        }
+
+        return baseResources;
     },
 
     /**
@@ -66,8 +159,8 @@ const Calculator = {
         if (!weapon) return;
 
         // Add base crafting materials
-        if (weapon.crafting?.tier1?.materials) {
-            for (const mat of weapon.crafting.tier1.materials) {
+        if (weapon.crafting?.materials) {
+            for (const mat of weapon.crafting.materials) {
                 this.addResource(resources, mat.material, mat.quantity);
             }
         }
