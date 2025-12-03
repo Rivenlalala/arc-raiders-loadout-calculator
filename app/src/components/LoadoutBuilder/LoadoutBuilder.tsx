@@ -593,16 +593,22 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     onMouseLeave={handleMouseLeave}
                   >
                     <img
-                      src={item.image ? `/${item.image}` : '/images/placeholder.png'}
+                      src={`/${item.image}`}
                       alt={item.name}
-                      className="w-14 h-14 object-contain"
-                      style={{ borderColor: getRarityColor(item.rarity), borderWidth: '2px', borderStyle: 'solid', borderRadius: '0.5rem' }}
+                      className="w-12 h-12 object-contain"
                     />
                     {qty > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
                         {qty}
                       </span>
                     )}
+                    <HoverTooltip
+                      item={item}
+                      isHovered={hoveredItem?.id === item.id}
+                      triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
+                    >
+                      <ConsumableTooltipContent item={item} />
+                    </HoverTooltip>
                   </div>
                   {qty > 0 && (
                     <div className="flex items-center gap-1">
