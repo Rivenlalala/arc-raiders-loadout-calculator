@@ -251,7 +251,14 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
         <div className="bg-card rounded-lg p-4 border border-border">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {Object.entries(finalMaterials)
-              .sort((a, b) => b[1].quantity - a[1].quantity)
+              .sort((a, b) => {
+                const rarityOrder: Record<string, number> = {
+                  'Common': 1, 'Uncommon': 2, 'Rare': 3, 'Epic': 4, 'Legendary': 5
+                };
+                const aOrder = rarityOrder[a[1].rarity || 'Common'] || 0;
+                const bOrder = rarityOrder[b[1].rarity || 'Common'] || 0;
+                return aOrder - bOrder;
+              })
               .map(([name, data]) => (
                 <div
                   key={name}
