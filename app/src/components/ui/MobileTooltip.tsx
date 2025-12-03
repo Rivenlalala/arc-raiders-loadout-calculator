@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
@@ -22,8 +22,49 @@ export function MobileTooltip({
 }: MobileTooltipProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+
+  // Calculate position for desktop tooltip
+  const calculatePosition = useCallback(() => {
+    if (!triggerRef.current) return null;
+
+    const trigger = triggerRef.current.getBoundingClientRect();
+    const tooltipWidth = 288; // w-72 = 18rem = 288px
+    const tooltipHeight = 200; // estimated
+    const viewport = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+
+    let top = trigger.top;
+    let left = trigger.right + 8; // Default: right of trigger
+
+    // If tooltip would go off right edge, position to the left
+    if (left + tooltipWidth > viewport.width - 16) {
+      left = trigger.left - tooltipWidth - 8;
+    }
+
+    // If tooltip would go off left edge, center below
+    if (left < 16) {
+      left = Math.max(16, trigger.left);
+      top = trigger.bottom + 8;
+    }
+
+    // Adjust vertical position if it would go off bottom
+    if (top + tooltipHeight > viewport.height - 16) {
+      top = Math.max(16, viewport.height - tooltipHeight - 16);
+    }
+
+    // Adjust if it would go off top
+    if (top < 16) {
+      top = 16;
+    }
+
+    return { top, left };
+  }, []);
 
   // Close on escape key
   useEffect(() => {
@@ -45,6 +86,13 @@ export function MobileTooltip({
     }
   }, [isMobile, isOpen]);
 
+  // Calculate position when showing on desktop
+  useEffect(() => {
+    if (!isMobile && isHovered) {
+      setPosition(calculatePosition());
+    }
+  }, [isMobile, isHovered, calculatePosition]);
+
   if (disabled) {
     return <>{children}</>;
   }
@@ -57,8 +105,18 @@ export function MobileTooltip({
     }
   };
 
+  // Handle touch for mobile - more reliable than click
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (isMobile) {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsOpen(true);
+    }
+  };
+
   const handleMouseEnter = () => {
     if (!isMobile) {
+      setPosition(calculatePosition());
       setIsHovered(true);
     }
   };
@@ -66,16 +124,18 @@ export function MobileTooltip({
   const handleMouseLeave = () => {
     if (!isMobile) {
       setIsHovered(false);
+      setPosition(null);
     }
   };
 
-  const showTooltip = isMobile ? isOpen : isHovered;
+  const showTooltip = isMobile ? isOpen : (isHovered && position !== null);
 
   return (
     <>
       <div
         ref={triggerRef}
         onClick={handleClick}
+        onTouchEnd={handleTouchEnd}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className="cursor-pointer"
@@ -127,82 +187,21 @@ export function MobileTooltip({
               </div>
             </div>
           ) : (
-            // Desktop: Floating tooltip near trigger
-            <DesktopTooltip
-              triggerRef={triggerRef}
-              content={content}
-              borderColor={borderColor}
-            />
+            // Desktop: Floating tooltip near trigger (no animation)
+            <div
+              ref={tooltipRef}
+              className="fixed z-[100] w-72 p-3 rounded-lg border bg-card shadow-xl pointer-events-none"
+              style={{
+                top: position?.top ?? 0,
+                left: position?.left ?? 0,
+                borderColor: borderColor || 'var(--border)',
+              }}
+            >
+              {content}
+            </div>
           ),
           document.body
         )}
     </>
-  );
-}
-
-// Desktop floating tooltip component
-function DesktopTooltip({
-  triggerRef,
-  content,
-  borderColor,
-}: {
-  triggerRef: React.RefObject<HTMLDivElement | null>;
-  content: ReactNode;
-  borderColor?: string;
-}) {
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ top: 0, left: 0 });
-
-  useEffect(() => {
-    if (!triggerRef.current || !tooltipRef.current) return;
-
-    const trigger = triggerRef.current.getBoundingClientRect();
-    const tooltip = tooltipRef.current.getBoundingClientRect();
-    const viewport = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-
-    let top = trigger.top;
-    let left = trigger.right + 8; // Default: right of trigger
-
-    // If tooltip would go off right edge, position to the left
-    if (left + tooltip.width > viewport.width - 16) {
-      left = trigger.left - tooltip.width - 8;
-    }
-
-    // If tooltip would go off left edge, center it horizontally
-    if (left < 16) {
-      left = Math.max(16, (viewport.width - tooltip.width) / 2);
-    }
-
-    // Adjust vertical position if it would go off bottom
-    if (top + tooltip.height > viewport.height - 16) {
-      top = Math.max(16, viewport.height - tooltip.height - 16);
-    }
-
-    // Adjust if it would go off top
-    if (top < 16) {
-      top = 16;
-    }
-
-    setPosition({ top, left });
-  }, [triggerRef]);
-
-  return (
-    <div
-      ref={tooltipRef}
-      className={cn(
-        'fixed z-[100] w-72 p-3 rounded-lg border bg-card shadow-xl pointer-events-none',
-        'animate-in fade-in-0 zoom-in-95 duration-150'
-      )}
-      style={{
-        top: position.top,
-        left: position.left,
-        borderColor: borderColor || 'var(--border)',
-      }}
-    >
-      {content}
-    </div>
   );
 }
