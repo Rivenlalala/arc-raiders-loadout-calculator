@@ -3820,7 +3820,7 @@
       "id": "shotgun_choke_i",
       "name": "Shotgun Choke I",
       "image": "images/modifications/shotgun_choke_i.webp",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Common",
       "effects": [
         "Slightly reduces base dispersion."
@@ -4171,7 +4171,7 @@
       "id": "shotgun_choke_ii",
       "name": "Shotgun Choke II",
       "image": "images/modifications/shotgun_choke_ii.png",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Uncommon",
       "effects": [
         "Moderately reduces base dispersion."
@@ -4550,7 +4550,7 @@
       "id": "shotgun_choke_iii",
       "name": "Shotgun Choke III",
       "image": "images/modifications/shotgun_choke_iii.png",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Rare",
       "effects": [
         "Significantly reduces base dispersion."
@@ -4663,7 +4663,7 @@
       "id": "shotgun_silencer",
       "name": "Shotgun Silencer",
       "image": "images/modifications/shotgun_silencer.webp",
-      "slot_type": "Shotgun Muzzle",
+      "slot_type": "Shotgun-Muzzle",
       "rarity": "Epic",
       "effects": [
         "Moderately reduces the amount of noise produced when firing."
