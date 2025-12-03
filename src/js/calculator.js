@@ -159,8 +159,8 @@ const Calculator = {
         if (!weapon) return;
 
         // Add base crafting materials
-        if (weapon.crafting?.tier1?.materials) {
-            for (const mat of weapon.crafting.tier1.materials) {
+        if (weapon.crafting?.materials) {
+            for (const mat of weapon.crafting.materials) {
                 this.addResource(resources, mat.material, mat.quantity);
             }
         }

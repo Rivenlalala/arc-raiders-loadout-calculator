@@ -5,7 +5,7 @@ const GAME_DATA = {
     {
       "id": "kettle",
       "name": "Kettle",
-      "category": "Unknown",
+      "category": "Assault Rifle",
       "rarity": "Common",
       "ammo_type": "Light Ammo",
       "modification_slots": [
@@ -15,19 +15,17 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Metal Parts",
-              "quantity": 6
-            },
-            {
-              "material": "Rubber Parts",
-              "quantity": 8
-            }
-          ],
-          "workshop": "Gunsmith 1orWorkbench 1"
-        },
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Gunsmith 1orWorkbench 1",
         "upgrades": [
           {
             "to_tier": "Kettle II",
@@ -77,7 +75,7 @@ const GAME_DATA = {
     {
       "id": "rattler",
       "name": "Rattler",
-      "category": "Unknown",
+      "category": "Assault Rifle",
       "rarity": "Common",
       "ammo_type": "Medium Ammo",
       "modification_slots": [
@@ -86,19 +84,17 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Metal Parts",
-              "quantity": 16
-            },
-            {
-              "material": "Rubber Parts",
-              "quantity": 12
-            }
-          ],
-          "workshop": "Gunsmith 1"
-        },
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 16
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 12
+          }
+        ],
+        "workshop": "Gunsmith 1",
         "upgrades": [
           {
             "to_tier": "Rattler II",
@@ -144,7 +140,7 @@ const GAME_DATA = {
     {
       "id": "arpeggio",
       "name": "Arpeggio",
-      "category": "Unknown",
+      "category": "Assault Rifle",
       "rarity": "Uncommon",
       "ammo_type": "Medium Ammo",
       "modification_slots": [
@@ -154,19 +150,17 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Mechanical Components",
-              "quantity": 6
-            },
-            {
-              "material": "Simple Gun Parts",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Gunsmith 2"
-        },
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 6
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gunsmith 2",
         "upgrades": [
           {
             "to_tier": "Arpeggio II",
@@ -216,7 +210,7 @@ const GAME_DATA = {
     {
       "id": "tempest",
       "name": "Tempest",
-      "category": "Unknown",
+      "category": "Assault Rifle",
       "rarity": "Epic",
       "ammo_type": "Medium Ammo",
       "modification_slots": [
@@ -225,23 +219,21 @@ const GAME_DATA = {
         "Medium-Mag"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Magnetic Accelerator",
-              "quantity": 1
-            },
-            {
-              "material": "Medium Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Exodus Modules",
-              "quantity": 2
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": [
           {
             "to_tier": "Tempest II",
@@ -291,7 +283,7 @@ const GAME_DATA = {
     {
       "id": "bettina",
       "name": "Bettina",
-      "category": "Unknown",
+      "category": "Assault Rifle",
       "rarity": "Epic",
       "ammo_type": "Heavy Ammo",
       "modification_slots": [
@@ -300,23 +292,21 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Advanced Mechanical Components",
-              "quantity": 3
-            },
-            {
-              "material": "Heavy Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Canister",
-              "quantity": 3
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Canister",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": [
           {
             "to_tier": "Bettina II",
@@ -375,19 +365,17 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Metal Parts",
-              "quantity": 5
-            },
-            {
-              "material": "Rubber Parts",
-              "quantity": 2
-            }
-          ],
-          "workshop": "Gunsmith 1"
-        },
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 5
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 1",
         "upgrades": [
           {
             "to_tier": "Ferro II",
@@ -442,23 +430,21 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Advanced Mechanical Components",
-              "quantity": 2
-            },
-            {
-              "material": "Medium Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Oil",
-              "quantity": 5
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Oil",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": [
           {
             "to_tier": "Renegade II",
@@ -516,30 +502,28 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Magnetic Accelerator",
-              "quantity": 3
-            },
-            {
-              "material": "Complex Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Matriarch Reactor",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 3
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Matriarch Reactor",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": []
       }
     },
     {
       "id": "stitcher",
       "name": "Stitcher",
-      "category": "Unknown",
+      "category": "SMG",
       "rarity": "Common",
       "ammo_type": "Light Ammo",
       "modification_slots": [
@@ -549,19 +533,17 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Metal Parts",
-              "quantity": 8
-            },
-            {
-              "material": "Rubber Parts",
-              "quantity": 4
-            }
-          ],
-          "workshop": "Gunsmith 1orWorkbench 1"
-        },
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 8
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Gunsmith 1orWorkbench 1",
         "upgrades": [
           {
             "to_tier": "Stitcher II",
@@ -611,7 +593,7 @@ const GAME_DATA = {
     {
       "id": "bobcat",
       "name": "Bobcat",
-      "category": "Unknown",
+      "category": "SMG",
       "rarity": "Epic",
       "ammo_type": "Light Ammo",
       "modification_slots": [
@@ -621,23 +603,21 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Magnetic Accelerator",
-              "quantity": 1
-            },
-            {
-              "material": "Light Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Exodus Modules",
-              "quantity": 2
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": [
           {
             "to_tier": "Bobcat II",
@@ -687,7 +667,7 @@ const GAME_DATA = {
     {
       "id": "il_toro",
       "name": "Il Toro",
-      "category": "Unknown",
+      "category": "Shotgun",
       "rarity": "Uncommon",
       "ammo_type": "Shotgun Ammo",
       "modification_slots": [
@@ -697,19 +677,17 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Mechanical Components",
-              "quantity": 5
-            },
-            {
-              "material": "Simple Gun Parts",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Gunsmith 1"
-        },
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gunsmith 1",
         "upgrades": [
           {
             "to_tier": "Il Toro II",
@@ -759,7 +737,7 @@ const GAME_DATA = {
     {
       "id": "vulcano",
       "name": "Vulcano",
-      "category": "Unknown",
+      "category": "Shotgun",
       "rarity": "Epic",
       "ammo_type": "Shotgun Ammo",
       "modification_slots": [
@@ -769,23 +747,21 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Magnetic Accelerator",
-              "quantity": 1
-            },
-            {
-              "material": "Heavy Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Exodus Modules",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": [
           {
             "to_tier": "Vulcano II",
@@ -835,26 +811,24 @@ const GAME_DATA = {
     {
       "id": "hairpin",
       "name": "Hairpin",
-      "category": "Unknown",
+      "category": "Pistol",
       "rarity": "Common",
       "ammo_type": "Light Ammo",
       "modification_slots": [
         "Light-Mag"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Metal Parts",
-              "quantity": 2
-            },
-            {
-              "material": "Plastic Parts",
-              "quantity": 5
-            }
-          ],
-          "workshop": "Gunsmith 1orWorkbench 1"
-        },
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Gunsmith 1orWorkbench 1",
         "upgrades": [
           {
             "to_tier": "Hairpin II",
@@ -900,7 +874,7 @@ const GAME_DATA = {
     {
       "id": "burletta",
       "name": "Burletta",
-      "category": "Unknown",
+      "category": "Pistol",
       "rarity": "Uncommon",
       "ammo_type": "Light Ammo",
       "modification_slots": [
@@ -908,19 +882,17 @@ const GAME_DATA = {
         "Light-Mag"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Mechanical Components",
-              "quantity": 3
-            },
-            {
-              "material": "Simple Gun Parts",
-              "quantity": 3
-            }
-          ],
-          "workshop": "Gunsmith 1"
-        },
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 1",
         "upgrades": [
           {
             "to_tier": "Burletta II",
@@ -970,7 +942,7 @@ const GAME_DATA = {
     {
       "id": "anvil",
       "name": "Anvil",
-      "category": "Unknown",
+      "category": "Pistol",
       "rarity": "Uncommon",
       "ammo_type": "Heavy Ammo",
       "modification_slots": [
@@ -978,19 +950,17 @@ const GAME_DATA = {
         "Tech-Mod"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Mechanical Components",
-              "quantity": 5
-            },
-            {
-              "material": "Simple Gun Parts",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Gunsmith 1"
-        },
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gunsmith 1",
         "upgrades": [
           {
             "to_tier": "Anvil II",
@@ -1040,7 +1010,7 @@ const GAME_DATA = {
     {
       "id": "venator",
       "name": "Venator",
-      "category": "Unknown",
+      "category": "Pistol",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
       "modification_slots": [
@@ -1048,23 +1018,21 @@ const GAME_DATA = {
         "Medium-Mag"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Advanced Mechanical Components",
-              "quantity": 2
-            },
-            {
-              "material": "Medium Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Magnet",
-              "quantity": 5
-            }
-          ],
-          "workshop": "Gunsmith 2"
-        },
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Magnet",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Gunsmith 2",
         "upgrades": [
           {
             "to_tier": "Venator II",
@@ -1123,23 +1091,21 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Advanced Mechanical Components",
-              "quantity": 2
-            },
-            {
-              "material": "Medium Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Steel Spring",
-              "quantity": 6
-            }
-          ],
-          "workshop": "Gunsmith 2"
-        },
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Steel Spring",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gunsmith 2",
         "upgrades": [
           {
             "to_tier": "Torrente II",
@@ -1189,7 +1155,7 @@ const GAME_DATA = {
     {
       "id": "osprey",
       "name": "Osprey",
-      "category": "Unknown",
+      "category": "Sniper Rifle",
       "rarity": "Rare",
       "ammo_type": "Medium Ammo",
       "modification_slots": [
@@ -1199,23 +1165,21 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Advanced Mechanical Components",
-              "quantity": 2
-            },
-            {
-              "material": "Medium Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Wires",
-              "quantity": 7
-            }
-          ],
-          "workshop": "Gunsmith 2"
-        },
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Wires",
+            "quantity": 7
+          }
+        ],
+        "workshop": "Gunsmith 2",
         "upgrades": [
           {
             "to_tier": "Osprey II",
@@ -1265,28 +1229,26 @@ const GAME_DATA = {
     {
       "id": "jupiter",
       "name": "Jupiter",
-      "category": "Unknown",
+      "category": "Sniper Rifle",
       "rarity": "Legendary",
       "ammo_type": "Energy Clip",
       "modification_slots": [],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Magnetic Accelerator",
-              "quantity": 3
-            },
-            {
-              "material": "Complex Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Queen Reactor",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 3
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Queen Reactor",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": []
       }
     },
@@ -1301,23 +1263,21 @@ const GAME_DATA = {
         "Stock"
       ],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Magnetic Accelerator",
-              "quantity": 1
-            },
-            {
-              "material": "Heavy Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Exodus Modules",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": [
           {
             "to_tier": "Hullcracker II",
@@ -1372,23 +1332,21 @@ const GAME_DATA = {
       "ammo_type": "Energy Clip",
       "modification_slots": [],
       "crafting": {
-        "tier1": {
-          "materials": [
-            {
-              "material": "Magnetic Accelerator",
-              "quantity": 3
-            },
-            {
-              "material": "Complex Gun Parts",
-              "quantity": 3
-            },
-            {
-              "material": "Queen Reactor",
-              "quantity": 1
-            }
-          ],
-          "workshop": "Gunsmith 3"
-        },
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 3
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Queen Reactor",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3",
         "upgrades": []
       }
     }
