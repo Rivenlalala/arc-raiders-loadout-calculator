@@ -19,6 +19,10 @@ MATERIALS = [
     "Metal_Parts", "Plastic_Parts", "Rubber_Parts", "Wires", "Duct_Tape",
     "Chemicals", "Oil", "Fabric", "Rope", "Battery",
 
+    # Electrical components
+    "Electrical_Components", "Advanced_Electrical_Components",
+    "Processor", "Sensors", "Speaker_Component",
+
     # Refined materials (craftable)
     "Mechanical_Components", "Advanced_Mechanical_Components", "Mod_Components",
     "Explosive_Compound", "Crude_Explosives",
@@ -32,6 +36,10 @@ MATERIALS = [
     # Special materials
     "Magnetic_Accelerator", "Steel_Spring", "Magnet", "Canister", "Voltage_Converter", "Power_Rod",
     "Exodus_Modules", "Queen_Reactor", "Matriarch_Reactor",
+
+    # Medical/consumable ingredients
+    "Antiseptic", "Syringe", "Durable_Cloth", "Great_Mullein",
+    "Empty_Wine_Bottle", "Air_Freshener",
 ]
 
 AMMO_TYPES = [

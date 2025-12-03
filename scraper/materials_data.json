@@ -141,6 +141,94 @@
       }
     },
     {
+      "id": "Electrical_Components",
+      "name": "Electrical Components",
+      "url": "https://arcraiders.wiki/wiki/Electrical_Components",
+      "rarity": "Uncommon",
+      "weight": "0.5",
+      "stack_size": "10",
+      "description": "Used to craft components, utility items, shields, and shield mods. Can be recycled into crafting materials.",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Plastic Parts",
+            "quantity": 8
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Refiner 1",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Advanced_Electrical_Components",
+      "name": "Advanced Electrical Components",
+      "url": "https://arcraiders.wiki/wiki/Advanced_Electrical_Components",
+      "rarity": "Rare",
+      "weight": "1",
+      "stack_size": "5",
+      "description": "Used to craft utility items and shield mods. Can be recycled into crafting materials.",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Wires",
+            "quantity": 3
+          },
+          {
+            "material": "Electrical Components",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Processor",
+      "name": "Processor",
+      "url": "https://arcraiders.wiki/wiki/Processor",
+      "rarity": "Rare",
+      "weight": "0.2",
+      "stack_size": "5",
+      "description": "Used in crafting.",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Sensors",
+      "name": "Sensors",
+      "url": "https://arcraiders.wiki/wiki/Sensors",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Used to craft utility items and explosives. Can be recycled into scrap metal.",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Speaker_Component",
+      "name": "Speaker Component",
+      "url": "https://arcraiders.wiki/wiki/Speaker_Component",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Used in crafting.",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
       "id": "Mechanical_Components",
       "name": "Mechanical Components",
       "url": "https://arcraiders.wiki/wiki/Mechanical_Components",
@@ -567,6 +655,104 @@
       "weight": "10.0",
       "stack_size": "1",
       "description": "Can be recycled into crafting materials.",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Antiseptic",
+      "name": "Antiseptic",
+      "url": "https://arcraiders.wiki/wiki/Antiseptic",
+      "rarity": "Rare",
+      "weight": "1.0",
+      "stack_size": "5",
+      "description": "Used to craft medical supplies. Can be recycled into chemicals.",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Chemicals",
+            "quantity": 10
+          },
+          {
+            "material": "Great Mullein",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Refiner 2",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Syringe",
+      "name": "Syringe",
+      "url": "https://arcraiders.wiki/wiki/Syringe",
+      "rarity": "Rare",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "Used to craft medical Supplies. Can be recycled into plastic.",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Durable_Cloth",
+      "name": "Durable Cloth",
+      "url": "https://arcraiders.wiki/wiki/Durable_Cloth",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "10",
+      "description": "Used to craft medical supplies.",
+      "crafting": {
+        "materials": [
+          {
+            "material": "Fabric",
+            "quantity": 14
+          }
+        ],
+        "workshop": "Refiner 1",
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Great_Mullein",
+      "name": "Great Mullein",
+      "url": "https://arcraiders.wiki/wiki/Great_Mullein",
+      "rarity": "Uncommon",
+      "weight": "0.25",
+      "stack_size": "15",
+      "description": "Used to craft medical supplies. Can be recycled into assorted seeds.",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Empty_Wine_Bottle",
+      "name": "Empty Wine Bottle",
+      "url": "https://arcraiders.wiki/wiki/Empty_Wine_Bottle",
+      "rarity": "Common",
+      "weight": "0.2",
+      "stack_size": "5",
+      "description": "Yes, it really is empty.",
+      "crafting": {
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
+      }
+    },
+    {
+      "id": "Air_Freshener",
+      "name": "Air Freshener",
+      "url": "https://arcraiders.wiki/wiki/Air_Freshener",
+      "rarity": "Uncommon",
+      "weight": "0.3",
+      "stack_size": "5",
+      "description": "May be worth a few coins.",
       "crafting": {
         "materials": [],
         "workshop": null,
