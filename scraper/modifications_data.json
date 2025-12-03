@@ -8,7 +8,10 @@
       "Slightly reduces per-shot dispersion."
     ],
     "stats": {
-      "effect": "10% Reduced Max Shot Dispersion"
+      "effects": [
+        "20% Reduced Per-Shot Dispersion",
+        "10% Reduced Max Shot Dispersion"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -49,7 +52,10 @@
       "Slightly reduces both vertical recoil & horizontal recoil."
     ],
     "stats": {
-      "effect": "15% Reduced Vertical Recoil"
+      "effects": [
+        "15% Reduced Horizontal Recoil",
+        "15% Reduced Vertical Recoil"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -90,7 +96,9 @@
       "Slightly reduces base dispersion."
     ],
     "stats": {
-      "effect": "10% Reduced Base Dispersion"
+      "effects": [
+        "10% Reduced Base Dispersion"
+      ]
     },
     "compatible_weapons": [
       "Il Toro",
@@ -119,7 +127,9 @@
       "Slightly reduces horizontal recoil."
     ],
     "stats": {
-      "effect": "20% Reduced Horizontal Recoil"
+      "effects": [
+        "20% Reduced Horizontal Recoil"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -157,7 +167,9 @@
       "Slightly reduces vertical recoil."
     ],
     "stats": {
-      "effect": "20% Reduced Vertical Recoil Control"
+      "effects": [
+        "20% Reduced Vertical Recoil Control"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -194,7 +206,11 @@
     "effects": [
       "Slightly extends the ammo capacity of compatible weapons that use light ammo."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+5 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Hairpin",
       "Kettle",
@@ -224,7 +240,11 @@
     "effects": [
       "Slightly extends the ammo capacity of compatible weapons that use medium ammo."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+4 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Arpeggio",
       "Osprey",
@@ -255,7 +275,11 @@
     "effects": [
       "Slightly extends the ammo capacity of shotguns."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+2 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Il Toro",
       "Vulcano"
@@ -283,7 +307,10 @@
       "Slightly improves dispersion & recoil recovery time."
     ],
     "stats": {
-      "effect": "20% Reduced Dispersion Recovery Time"
+      "effects": [
+        "20% Reduced Recoil Recovery Duration",
+        "20% Reduced Dispersion Recovery Time"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -323,7 +350,10 @@
       "Moderately reduces per-shot dispersion."
     ],
     "stats": {
-      "effect": "20% Reduced Max Shot Dispersion"
+      "effects": [
+        "40% Reduced Per-Shot Dispersion",
+        "20% Reduced Max Shot Dispersion"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -364,7 +394,10 @@
       "Moderately reduces both vertical recoil & horizontal recoil."
     ],
     "stats": {
-      "effect": "20% Reduced Vertical Recoil"
+      "effects": [
+        "20% Reduced Horizontal Recoil",
+        "20% Reduced Vertical Recoil"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -405,7 +438,9 @@
       "Moderately reduces base dispersion."
     ],
     "stats": {
-      "effect": "20% Reduced Base Dispersion"
+      "effects": [
+        "20% Reduced Base Dispersion"
+      ]
     },
     "compatible_weapons": [
       "Il Toro",
@@ -425,7 +460,9 @@
       "Slightly reduces the amount of noise produced when firing."
     ],
     "stats": {
-      "effect": "20% Reduced Noise"
+      "effects": [
+        "20% Reduced Noise"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -457,7 +494,9 @@
       "Moderately reduces horizontal recoil."
     ],
     "stats": {
-      "effect": "30% Reduced Horizontal Recoil"
+      "effects": [
+        "30% Reduced Horizontal Recoil"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -495,7 +534,9 @@
       "Moderately reduces vertical recoil."
     ],
     "stats": {
-      "effect": "30% Reduced Vertical Recoil"
+      "effects": [
+        "30% Reduced Vertical Recoil"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -532,7 +573,11 @@
     "effects": [
       "Moderately extends the ammo capacity of the compatible weapons that use light ammo."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+10 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Hairpin",
       "Kettle",
@@ -562,7 +607,11 @@
     "effects": [
       "Moderately extends the ammo capacity of compatible weapons that use medium ammo."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+8 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Arpeggio",
       "Osprey",
@@ -593,7 +642,11 @@
     "effects": [
       "Moderately extends the ammo capacity of compatible weapons that use shotgun ammo."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+4 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Il Toro",
       "Vulcano"
@@ -621,7 +674,10 @@
       "Slightly improves dispersion & recoil recovery time."
     ],
     "stats": {
-      "effect": "35% Reduced Dispersion Recovery Time"
+      "effects": [
+        "35% Reduced Recoil Recovery Duration",
+        "35% Reduced Dispersion Recovery Time"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -661,7 +717,11 @@
       "Significantly reduces per-shot dispersion."
     ],
     "stats": {
-      "effect": "20% Increased Durability Burn Rate"
+      "effects": [
+        "60% Reduced Per-Shot Dispersion",
+        "30% Reduced Max Shot Dispersion",
+        "20% Increased Durability Burn Rate"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -702,7 +762,11 @@
       "Signifcantly reduces both vertical recoil & horizontal recoil."
     ],
     "stats": {
-      "effect": "20% Increased Durability Burn Rate"
+      "effects": [
+        "25% Reduced Horizontal Recoil Control",
+        "25% Reduced Vertical Recoil Control",
+        "20% Increased Durability Burn Rate"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -743,7 +807,10 @@
       "Significantly reduces base dispersion."
     ],
     "stats": {
-      "effect": "20% Increased Durability Burn Rate"
+      "effects": [
+        "30% Reduced Base Dispersion",
+        "20% Increased Durability Burn Rate"
+      ]
     },
     "compatible_weapons": [
       "Il Toro",
@@ -772,7 +839,9 @@
       "Moderately reduces the amount of noise produced when firing."
     ],
     "stats": {
-      "effect": "40% Reduced Noise"
+      "effects": [
+        "40% Reduced Noise"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -813,7 +882,10 @@
       "Significantly reduces the amount of noise produced when firing."
     ],
     "stats": {
-      "effect": "20% Increased Durability Burn Rate"
+      "effects": [
+        "60% Reduced Noise",
+        "20% Increased Durability Burn Rate"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -845,7 +917,9 @@
       "Moderately reduces the amount of noise produced when firing."
     ],
     "stats": {
-      "effect": "50% Reduced Noise"
+      "effects": [
+        "50% Reduced Noise"
+      ]
     },
     "compatible_weapons": [
       "Il Toro",
@@ -874,7 +948,10 @@
       "Moderately increases bullet velocity."
     ],
     "stats": {
-      "effect": "15% Increased Vertical Recoil"
+      "effects": [
+        "25% Increased Bullet Velocity",
+        "15% Increased Vertical Recoil"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -914,7 +991,10 @@
       "Significantly reduces horizontal recoil"
     ],
     "stats": {
-      "effect": "30% Reduced ADS Speed"
+      "effects": [
+        "40% Reduced Horizontal Recoil",
+        "30% Reduced ADS Speed"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -952,7 +1032,10 @@
       "Significantly reduces vertical recoil."
     ],
     "stats": {
-      "effect": "30% Reduced ADS Speed"
+      "effects": [
+        "40% Reduced Vertical Recoil",
+        "30% Reduced ADS Speed"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -990,7 +1073,11 @@
       "Moderately reduces both vertical and horizontal recoil."
     ],
     "stats": {
-      "effect": "30% Reduced ADS Speed"
+      "effects": [
+        "30% Reduced Horizontal Recoil",
+        "30% Reduced Vertical Recoil",
+        "30% Reduced ADS Speed"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -1027,7 +1114,11 @@
     "effects": [
       "Significantly extends the ammo capacity of the compatible weapons that use light ammo."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+15 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Hairpin",
       "Kettle",
@@ -1057,7 +1148,11 @@
     "effects": [
       "Significantly extends the ammo capacity of compatible weapons that use medium ammo."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+12 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Arpeggio",
       "Osprey",
@@ -1088,7 +1183,11 @@
     "effects": [
       "Significantly extends the ammo capacity of shotguns."
     ],
-    "stats": {},
+    "stats": {
+      "effects": [
+        "+6 Magazine Size"
+      ]
+    },
     "compatible_weapons": [
       "Il Toro",
       "Vulcano"
@@ -1116,7 +1215,12 @@
       "Significantly improves dispersion & recoil recovery time"
     ],
     "stats": {
-      "effect": "20% Increased Unequip Time"
+      "effects": [
+        "50% Reduced Recoil Recovery Duration",
+        "50% Reduced Dispersion Recovery Time",
+        "20% Increased Equip Time",
+        "20% Increased Unequip Time"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -1156,7 +1260,13 @@
       "Moderately improves ADS & draw speed."
     ],
     "stats": {
-      "effect": "50% Increased Recoil Recovery Time"
+      "effects": [
+        "200% Increased ADS Speed",
+        "30% Reduced Equip Time",
+        "30% Reduced Unequip Time",
+        "50% Increased Vertical Recoil",
+        "50% Increased Recoil Recovery Time"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -1197,7 +1307,14 @@
       "Significantly improves stability."
     ],
     "stats": {
-      "effect": "30% Reduced ADS Speed"
+      "effects": [
+        "15% Reduced Vertical Recoil",
+        "15% Reduced Horizontal Recoil",
+        "20% Reduced Per-Shot Dispersion",
+        "20% Increased Equip Time",
+        "20% Increased Unequip Time",
+        "30% Reduced ADS Speed"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -1237,7 +1354,11 @@
       "Moderately increases fire rate."
     ],
     "stats": {
-      "effect": "20% Increased Vertical Recoil"
+      "effects": [
+        "15% Increased Fire Rate",
+        "20% Increased Horizontal Recoil",
+        "20% Increased Vertical Recoil"
+      ]
     },
     "compatible_weapons": [
       "Ferro",
@@ -1268,7 +1389,10 @@
       "Tech mod for the Anvil that replaces its bullets with ones that split into 4 weaker projectiles."
     ],
     "stats": {
-      "effect": "70% Reduced Projectile Damage"
+      "effects": [
+        "+3 Projectiles Per Shot",
+        "70% Reduced Projectile Damage"
+      ]
     },
     "compatible_weapons": [
       "Anvil"

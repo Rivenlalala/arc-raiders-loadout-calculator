@@ -59,7 +59,7 @@ function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
       {weapon.crafting.upgrades.length > 0 && (
         <div className="border-t border-border pt-2 mb-2">
           <p className="text-xs font-semibold text-muted-foreground mb-1">Upgrade Tiers</p>
-          <div className="flex gap-1">
+          <div className="flex gap-1 mb-2">
             {Array.from({ length: weapon.crafting.upgrades.length + 1 }, (_, i) => i + 1).map((t) => (
               <span
                 key={t}
@@ -72,6 +72,15 @@ function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
               </span>
             ))}
           </div>
+          {/* Show current tier perks */}
+          {currentTier > 1 && weapon.crafting.upgrades[currentTier - 2]?.perks && (
+            <div className="bg-green-500/10 border border-green-500/30 rounded p-2">
+              <p className="text-xs font-semibold text-green-400 mb-1">Tier {currentTier} Bonuses</p>
+              {weapon.crafting.upgrades[currentTier - 2].perks.map((perk, i) => (
+                <p key={i} className="text-xs text-green-400">{perk}</p>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -85,7 +94,10 @@ function WeaponTooltip({ weapon, tier, mods, position = 'right' }: {
                 <span className="font-medium" style={{ color: getRarityColor(mod.rarity) }}>
                   {mod.name}
                 </span>
-                {mod.stats.effect && (
+                {mod.stats.effects?.map((effect, j) => (
+                  <span key={j} className="text-green-400 ml-1">• {effect}</span>
+                ))}
+                {!mod.stats.effects && mod.stats.effect && (
                   <span className="text-green-400 ml-1">• {mod.stats.effect}</span>
                 )}
               </div>

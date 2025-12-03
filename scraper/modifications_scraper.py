@@ -131,10 +131,13 @@ def extract_mod_data(url, mod_name):
             mod_data['effects'] = [e.strip() for e in effects if e.strip()]
 
         # Get exact stats from data-fun rows (data-fun1, data-fun2, etc.)
+        stat_effects = []
         for row in infobox.find_all('tr', {'class': lambda x: x and 'data-fun' in str(x)}):
             stat_text = row.get_text(strip=True)
-            if stat_text and '%' in stat_text:
-                mod_data['stats']['effect'] = stat_text
+            if stat_text and (('%' in stat_text) or ('+' in stat_text) or ('-' in stat_text) or ('Increased' in stat_text) or ('Reduced' in stat_text)):
+                stat_effects.append(stat_text)
+        if stat_effects:
+            mod_data['stats']['effects'] = stat_effects  # List of all stat effects
 
         # Get compatible weapons from data-warning row
         warning_row = infobox.find('tr', {'class': lambda x: x and 'data-warning' in str(x)})

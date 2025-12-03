@@ -44,6 +44,30 @@ def extract_tier(output_string):
         return roman_to_int(match.group(1))
     return None
 
+def parse_perks(perks_string):
+    """Parse concatenated perks string into individual perks list.
+
+    Example input: "25% Increased Bullet Velocity13% Reduced Reload Time+10 Durability"
+    Example output: ["25% Increased Bullet Velocity", "13% Reduced Reload Time", "+10 Durability"]
+    """
+    if not perks_string:
+        return []
+
+    # Use regex to split on boundaries before numbers that start new perks
+    # Pattern: split before a digit that follows a letter, or before +/- followed by digit
+
+    # First, insert a delimiter before each new perk pattern
+    # Patterns:
+    # - digit after a letter (like "Velocity13" -> "Velocity|13")
+    # - +/- followed by digit after letter/space (like "Time+10" -> "Time|+10")
+    delimited = re.sub(r'([a-zA-Z])(\d)', r'\1|\2', perks_string)
+    delimited = re.sub(r'([a-zA-Z\s])([+-]\d)', r'\1|\2', delimited)
+
+    # Split by delimiter and clean up
+    perks = [p.strip() for p in delimited.split('|') if p.strip()]
+
+    return perks
+
 def clean_string(s):
     """Clean up string values."""
     if not s:
@@ -97,10 +121,12 @@ def process_weapons(weapons_data, image_paths):
         for upg in w.get('upgrades', []):
             output = clean_string(upg.get('output', ''))
             tier = extract_tier(output)
+            perks = parse_perks(upg.get('perks', ''))
             weapon['crafting']['upgrades'].append({
                 'tier': tier,
                 'materials': clean_materials(upg.get('materials', [])),
-                'workshop': clean_string(upg.get('workshop'))
+                'workshop': clean_string(upg.get('workshop')),
+                'perks': perks
             })
 
         weapons.append(weapon)

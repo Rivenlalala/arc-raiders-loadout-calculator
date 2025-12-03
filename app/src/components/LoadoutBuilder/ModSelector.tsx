@@ -38,10 +38,15 @@ function ModTooltip({ mod, position = 'right' }: { mod: Modification; position?:
         </div>
       </div>
 
-      {/* Exact stats */}
-      {mod.stats.effect && (
+      {/* Exact stats - show all effects */}
+      {(mod.stats.effects?.length || mod.stats.effect) && (
         <div className="bg-green-500/10 border border-green-500/30 rounded p-2 mb-2">
-          <p className="text-sm text-green-400 font-medium">{mod.stats.effect}</p>
+          {mod.stats.effects?.map((effect, i) => (
+            <p key={i} className="text-sm text-green-400 font-medium">{effect}</p>
+          ))}
+          {!mod.stats.effects && mod.stats.effect && (
+            <p className="text-sm text-green-400 font-medium">{mod.stats.effect}</p>
+          )}
         </div>
       )}
 
@@ -84,8 +89,9 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
     onSelect(null);
   };
 
-  // Get display stat for a mod
+  // Get display stat for a mod (first effect from stats.effects or stats.effect)
   const getModStat = (mod: Modification): string => {
+    if (mod.stats.effects?.length) return mod.stats.effects[0];
     if (mod.stats.effect) return mod.stats.effect;
     if (mod.effects.length > 0) return mod.effects[0];
     return '';
