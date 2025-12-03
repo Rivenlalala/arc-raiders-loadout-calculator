@@ -358,8 +358,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div className="w-16 h-16 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center">
+                  <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
                       onClick={() => {
@@ -397,35 +397,37 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </HoverTooltip>
                     </div>
                   </div>
-                  <div className={`flex items-center gap-1 ${qty > 0 ? 'visible' : 'invisible'}`}>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newHealing = loadout.healing.map(h =>
-                          h.id === item.id ? { ...h, quantity: Math.max(0, h.quantity - 1) } : h
-                        ).filter(h => h.quantity > 0);
-                        onChange({ ...loadout, healing: newHealing });
-                      }}
-                    >
-                      -
-                    </button>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newHealing = loadout.healing.map(h =>
-                          h.id === item.id ? { ...h, quantity: h.quantity + 1 } : h
-                        );
-                        onChange({ ...loadout, healing: newHealing });
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
                     {item.name}
                   </span>
+                  {qty > 0 && (
+                    <div className="flex items-center gap-1 mt-1">
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newHealing = loadout.healing.map(h =>
+                            h.id === item.id ? { ...h, quantity: Math.max(0, h.quantity - 1) } : h
+                          ).filter(h => h.quantity > 0);
+                          onChange({ ...loadout, healing: newHealing });
+                        }}
+                      >
+                        -
+                      </button>
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newHealing = loadout.healing.map(h =>
+                            h.id === item.id ? { ...h, quantity: h.quantity + 1 } : h
+                          );
+                          onChange({ ...loadout, healing: newHealing });
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -443,8 +445,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div className="w-16 h-16 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center">
+                  <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
                       onClick={() => {
@@ -482,35 +484,37 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </HoverTooltip>
                     </div>
                   </div>
-                  <div className={`flex items-center gap-1 ${qty > 0 ? 'visible' : 'invisible'}`}>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newGrenades = loadout.grenades.map(g =>
-                          g.id === item.id ? { ...g, quantity: Math.max(0, g.quantity - 1) } : g
-                        ).filter(g => g.quantity > 0);
-                        onChange({ ...loadout, grenades: newGrenades });
-                      }}
-                    >
-                      -
-                    </button>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newGrenades = loadout.grenades.map(g =>
-                          g.id === item.id ? { ...g, quantity: g.quantity + 1 } : g
-                        );
-                        onChange({ ...loadout, grenades: newGrenades });
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
                     {item.name}
                   </span>
+                  {qty > 0 && (
+                    <div className="flex items-center gap-1 mt-1">
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newGrenades = loadout.grenades.map(g =>
+                            g.id === item.id ? { ...g, quantity: Math.max(0, g.quantity - 1) } : g
+                          ).filter(g => g.quantity > 0);
+                          onChange({ ...loadout, grenades: newGrenades });
+                        }}
+                      >
+                        -
+                      </button>
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newGrenades = loadout.grenades.map(g =>
+                            g.id === item.id ? { ...g, quantity: g.quantity + 1 } : g
+                          );
+                          onChange({ ...loadout, grenades: newGrenades });
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -528,8 +532,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div className="w-16 h-16 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center">
+                  <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
                       onClick={() => {
@@ -567,35 +571,37 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </HoverTooltip>
                     </div>
                   </div>
-                  <div className={`flex items-center gap-1 ${qty > 0 ? 'visible' : 'invisible'}`}>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newUtilities = loadout.utilities.map(u =>
-                          u.id === item.id ? { ...u, quantity: Math.max(0, u.quantity - 1) } : u
-                        ).filter(u => u.quantity > 0);
-                        onChange({ ...loadout, utilities: newUtilities });
-                      }}
-                    >
-                      -
-                    </button>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newUtilities = loadout.utilities.map(u =>
-                          u.id === item.id ? { ...u, quantity: u.quantity + 1 } : u
-                        );
-                        onChange({ ...loadout, utilities: newUtilities });
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
                     {item.name}
                   </span>
+                  {qty > 0 && (
+                    <div className="flex items-center gap-1 mt-1">
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newUtilities = loadout.utilities.map(u =>
+                            u.id === item.id ? { ...u, quantity: Math.max(0, u.quantity - 1) } : u
+                          ).filter(u => u.quantity > 0);
+                          onChange({ ...loadout, utilities: newUtilities });
+                        }}
+                      >
+                        -
+                      </button>
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newUtilities = loadout.utilities.map(u =>
+                            u.id === item.id ? { ...u, quantity: u.quantity + 1 } : u
+                          );
+                          onChange({ ...loadout, utilities: newUtilities });
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -613,8 +619,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={item.id} className="flex flex-col items-center gap-1">
-                  <div className="w-16 h-16 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center">
+                  <div className="w-14 h-14 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
                       onClick={() => {
@@ -652,35 +658,37 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </HoverTooltip>
                     </div>
                   </div>
-                  <div className={`flex items-center gap-1 ${qty > 0 ? 'visible' : 'invisible'}`}>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newTraps = loadout.traps.map(t =>
-                          t.id === item.id ? { ...t, quantity: Math.max(0, t.quantity - 1) } : t
-                        ).filter(t => t.quantity > 0);
-                        onChange({ ...loadout, traps: newTraps });
-                      }}
-                    >
-                      -
-                    </button>
-                    <button
-                      className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const newTraps = loadout.traps.map(t =>
-                          t.id === item.id ? { ...t, quantity: t.quantity + 1 } : t
-                        );
-                        onChange({ ...loadout, traps: newTraps });
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[60px]" title={item.name}>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
                     {item.name}
                   </span>
+                  {qty > 0 && (
+                    <div className="flex items-center gap-1 mt-1">
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newTraps = loadout.traps.map(t =>
+                            t.id === item.id ? { ...t, quantity: Math.max(0, t.quantity - 1) } : t
+                          ).filter(t => t.quantity > 0);
+                          onChange({ ...loadout, traps: newTraps });
+                        }}
+                      >
+                        -
+                      </button>
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const newTraps = loadout.traps.map(t =>
+                            t.id === item.id ? { ...t, quantity: t.quantity + 1 } : t
+                          );
+                          onChange({ ...loadout, traps: newTraps });
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}
