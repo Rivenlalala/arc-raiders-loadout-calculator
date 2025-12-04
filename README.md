@@ -15,7 +15,7 @@ A web-based tool to plan your loadout and calculate the resources needed in Arc 
 
 ## Live Demo
 
-Deployed on Cloudflare Pages.
+[Cloudflare pages](https://arc-calculator.xyz/)
 
 ## Tech Stack
 
