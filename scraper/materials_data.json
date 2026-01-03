@@ -49,7 +49,7 @@
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
-      "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -151,15 +151,15 @@
       "crafting": {
         "materials": [
           {
-            "material": "Plastic Parts",
-            "quantity": 8
+            "material": "Wires",
+            "quantity": 3
           },
           {
-            "material": "Rubber Parts",
-            "quantity": 4
+            "material": "Electrical Components",
+            "quantity": 2
           }
         ],
-        "workshop": "Refiner 1",
+        "workshop": "Refiner 3",
         "output_quantity": 1
       }
     },
@@ -172,17 +172,8 @@
       "stack_size": "5",
       "description": "Used to craft utility items and shield mods. Can be recycled into crafting materials.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Wires",
-            "quantity": 3
-          },
-          {
-            "material": "Electrical Components",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -207,7 +198,7 @@
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
-      "description": "Used to craft utility items and explosives. Can be recycled into scrap metal.",
+      "description": "Used in crafting.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -239,15 +230,15 @@
       "crafting": {
         "materials": [
           {
-            "material": "Metal Parts",
-            "quantity": 7
+            "material": "Steel Spring",
+            "quantity": 2
           },
           {
-            "material": "Rubber Parts",
-            "quantity": 3
+            "material": "Mechanical Components",
+            "quantity": 2
           }
         ],
-        "workshop": "Refiner 1",
+        "workshop": "Refiner 3",
         "output_quantity": 1
       }
     },
@@ -256,21 +247,12 @@
       "name": "Advanced Mechanical Components",
       "url": "https://arcraiders.wiki/wiki/Advanced_Mechanical_Components",
       "rarity": "Rare",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "5",
-      "description": "Mostly used to craft advanced weapons. Can be recycled into crafting materials.",
+      "description": "Used to craft advanced weapons. Can be recycled into crafting materials.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Steel Spring",
-            "quantity": 2
-          },
-          {
-            "material": "Mechanical Components",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -279,21 +261,12 @@
       "name": "Mod Components",
       "url": "https://arcraiders.wiki/wiki/Mod_Components",
       "rarity": "Rare",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "5",
       "description": "Used to craft weapons mods. Can be recycled into crafting materials.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Steel Spring",
-            "quantity": 2
-          },
-          {
-            "material": "Mechanical Components",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -306,17 +279,8 @@
       "stack_size": "5",
       "description": "Used to craft explosives.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Crude Explosives",
-            "quantity": 2
-          },
-          {
-            "material": "Oil",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -325,17 +289,12 @@
       "name": "Crude Explosives",
       "url": "https://arcraiders.wiki/wiki/Crude_Explosives",
       "rarity": "Uncommon",
-      "weight": "2",
+      "weight": "0.5",
       "stack_size": "10",
       "description": "Used to craft explosives. Can be recycled into crafting materials",
       "crafting": {
-        "materials": [
-          {
-            "material": "Chemicals",
-            "quantity": 6
-          }
-        ],
-        "workshop": "Refiner 1",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -360,15 +319,10 @@
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
-      "description": null,
+      "description": "Assorted spare parts used for pistols and SMGs.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 4
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -381,13 +335,8 @@
       "stack_size": "5",
       "description": "Assorted spare parts used for rifles.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 4
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -400,13 +349,8 @@
       "stack_size": "5",
       "description": "Used directly in crafting items of all tiers.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 4
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -415,25 +359,12 @@
       "name": "Complex Gun Parts",
       "url": "https://arcraiders.wiki/wiki/Complex_Gun_Parts",
       "rarity": "Epic",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "3",
       "description": "Used to craft advanced weapons.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Light Gun Parts",
-            "quantity": 2
-          },
-          {
-            "material": "Medium Gun Parts",
-            "quantity": 2
-          },
-          {
-            "material": "Heavy Gun Parts",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 3",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -526,17 +457,8 @@
       "stack_size": "3",
       "description": "Used to craft advanced weapons.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Advanced Mechanical Components",
-            "quantity": 2
-          },
-          {
-            "material": "ARC Motion Core",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 3",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -601,21 +523,12 @@
       "name": "Power Rod",
       "url": "https://arcraiders.wiki/wiki/Power_Rod",
       "rarity": "Epic",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "3",
       "description": "Used in crafting.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Advanced Electrical Components",
-            "quantity": 2
-          },
-          {
-            "material": "ARC Circuitry",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 3",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -624,7 +537,7 @@
       "name": "Exodus Modules",
       "url": "https://arcraiders.wiki/wiki/Exodus_Modules",
       "rarity": "Epic",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "3",
       "description": "Used to craft a wide range of items.",
       "crafting": {
@@ -670,17 +583,8 @@
       "stack_size": "5",
       "description": "Used to craft medical supplies. Can be recycled into chemicals.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Chemicals",
-            "quantity": 10
-          },
-          {
-            "material": "Great Mullein",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Refiner 2",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -691,7 +595,7 @@
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
-      "description": "Used to craft medical Supplies. Can be recycled into plastic.",
+      "description": "Used to craft medical supplies. Can be recycled into plastic.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -707,13 +611,8 @@
       "stack_size": "10",
       "description": "Used to craft medical supplies.",
       "crafting": {
-        "materials": [
-          {
-            "material": "Fabric",
-            "quantity": 14
-          }
-        ],
-        "workshop": "Refiner 1",
+        "materials": [],
+        "workshop": null,
         "output_quantity": 1
       }
     },
@@ -724,7 +623,7 @@
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
-      "description": "Used to craft medical supplies. Can be recycled into assorted seeds.",
+      "description": "Used to craft medical supplies.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -768,18 +667,9 @@
       "weight": "0.01",
       "stack_size": "100",
       "crafting": {
-        "materials": [
-          {
-            "material": "Metal Parts",
-            "quantity": 3
-          },
-          {
-            "material": "Chemicals",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Workbench 1",
-        "output_quantity": 25
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
       }
     },
     {
@@ -789,18 +679,9 @@
       "weight": "0.025",
       "stack_size": "80",
       "crafting": {
-        "materials": [
-          {
-            "material": "Metal Parts",
-            "quantity": 3
-          },
-          {
-            "material": "Chemicals",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Workbench 1",
-        "output_quantity": 20
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
       }
     },
     {
@@ -810,18 +691,9 @@
       "weight": "0.05",
       "stack_size": "40",
       "crafting": {
-        "materials": [
-          {
-            "material": "Metal Parts",
-            "quantity": 3
-          },
-          {
-            "material": "Chemicals",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Workbench 1",
-        "output_quantity": 10
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
       }
     },
     {
@@ -831,18 +703,9 @@
       "weight": "0.085",
       "stack_size": "20",
       "crafting": {
-        "materials": [
-          {
-            "material": "Metal Parts",
-            "quantity": 3
-          },
-          {
-            "material": "Chemicals",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Workbench 1",
-        "output_quantity": 5
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
       }
     },
     {
@@ -852,18 +715,9 @@
       "weight": "0.3",
       "stack_size": "5",
       "crafting": {
-        "materials": [
-          {
-            "material": "Advanced ARC Powercell",
-            "quantity": 1
-          },
-          {
-            "material": "Battery",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Workbench 1",
-        "output_quantity": 5
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
       }
     },
     {
@@ -873,18 +727,9 @@
       "weight": "0.1",
       "stack_size": "24",
       "crafting": {
-        "materials": [
-          {
-            "material": "ARC Motion Core",
-            "quantity": 1
-          },
-          {
-            "material": "Crude Explosives",
-            "quantity": 2
-          }
-        ],
-        "workshop": "Workbench 1",
-        "output_quantity": 6
+        "materials": [],
+        "workshop": null,
+        "output_quantity": 1
       }
     }
   ]
