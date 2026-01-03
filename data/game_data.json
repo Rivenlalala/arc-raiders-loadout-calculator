@@ -16,9 +16,76 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 6
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 8
+          }
+        ],
+        "workshop": "Workbench, Gunsmith 1",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 8
+              },
+              {
+                "material": "Plastic Parts",
+                "quantity": 10
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "25% Increased Bullet Velocity",
+              "13% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 10
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "50% Increased Bullet Velocity",
+              "26% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "75% Increased Bullet Velocity",
+              "40% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -34,9 +101,73 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 16
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 12
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 10
+              },
+              {
+                "material": "Rubber Parts",
+                "quantity": 10
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "+4 Magazine Size",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "+8 Magazine Size",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "+12 Magazine Size",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -53,9 +184,76 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 6
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gunsmith 2",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 4
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "20% Increased Fire Rate",
+              "12.5% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 5
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "40% Increased Fire Rate",
+              "25% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 5
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "60% Increased Fire Rate",
+              "50% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -71,9 +269,80 @@
         "Medium-Mag"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 3Tempest Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "16.6% Reduced Horizontal Recoil",
+              "13% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 3
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "33.3% Reduced Horizontal Recoil",
+              "26% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 3
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "50% Reduced Horizontal Recoil",
+              "40% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -89,9 +358,80 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Canister",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 3Bettina Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 3",
+            "perks": [
+              "5% Increased Fire Rate",
+              "11.1% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 3",
+            "perks": [
+              "10% Increased Fire Rate",
+              "22.2% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 3",
+            "perks": [
+              "15% Increased Fire Rate",
+              "33.3% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -107,9 +447,69 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 5
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Workbench, Gunsmith 1",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 7
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "13% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 9
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "26% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "39% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -125,9 +525,80 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Oil",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Gunsmith 3",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "16.6% Reduced Dispersion Recovery Time",
+              "25% Increased Fire Rate",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "33.3% Reduced Dispersion Recovery Time",
+              "50% Increased Fire Rate",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "50% Reduced Dispersion Recovery Time",
+              "75% Increased Fire Rate",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -142,8 +613,21 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 3
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Matriarch Reactor",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3Aphelion Blueprintrequired",
         "upgrades": []
       }
     },
@@ -161,9 +645,76 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 8
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 4
+          }
+        ],
+        "workshop": "Workbench, Gunsmith 1",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 8
+              },
+              {
+                "material": "Rubber Parts",
+                "quantity": 12
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "16.6% Reduced Horizontal Recoil",
+              "13% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 10
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "33.3% Reduced Horizontal Recoil",
+              "26% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "50% Reduced Horizontal Recoil",
+              "40% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -180,9 +731,83 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Light Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 2
+          }
+        ],
+        "workshop": "Gunsmith 3Bobcat Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Light Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "15% Reduced Max Shot Dispersion",
+              "15% Reduced Horizontal Recoil",
+              "13% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Light Gun Parts",
+                "quantity": 3
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "30% Reduced Max Shot Dispersion",
+              "30% Reduced Horizontal Recoil",
+              "26% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Light Gun Parts",
+                "quantity": 3
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "50% Reduced Max Shot Dispersion",
+              "45% Reduced Horizontal Recoil",
+              "40% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -199,9 +824,76 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Workbench / Gunsmith 1Il Toro Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "17.5% Increased Fire Rate",
+              "+1 Magazine Size",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 4
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "35% Increased Fire Rate",
+              "+2 Magazine Size",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 4
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "50% Increased Fire Rate",
+              "+3 Magazine Size",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -218,9 +910,80 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3Vulcano Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "10% Increased Fire Rate",
+              "13% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "20% Increased Fire Rate",
+              "26% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 3
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "30% Increased Fire Rate",
+              "40% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -234,9 +997,72 @@
         "Light-Mag"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Metal Parts",
+            "quantity": 2
+          },
+          {
+            "material": "Plastic Parts",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Workbench / Gunsmith I",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 8
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "10% Increased Fire Rate",
+              "13% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Metal Parts",
+                "quantity": 9
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "20% Increased Fire Rate",
+              "26% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "30% Increased Fire Rate",
+              "40% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -251,9 +1077,73 @@
         "Light-Mag"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "workshop": "Gunsmith 1Burletta Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "16.6% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "33.3% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 4
+              },
+              {
+                "material": "Light Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "50% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -268,9 +1158,80 @@
         "Medium-Mag"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Magnet",
+            "quantity": 5
+          }
+        ],
+        "workshop": "Gunsmith 2Venator Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "13% Increased Fire Rate",
+              "16% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "26% Increased Fire Rate",
+              "33% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "40% Increased Fire Rate",
+              "50% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -285,9 +1246,76 @@
         "Tech-Mod"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gunsmith 1Anvil Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 3
+              },
+              {
+                "material": "Simple Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "6.5% Reduced Dispersion Recovery Time",
+              "25% Increased Fire Rate",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 4
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "12.5% Reduced Dispersion Recovery Time",
+              "50% Increased Fire Rate",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Mechanical Components",
+                "quantity": 4
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "18.75% Reduced Dispersion Recovery Time",
+              "75% Increased Fire Rate",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -303,9 +1331,80 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Steel Spring",
+            "quantity": 6
+          }
+        ],
+        "workshop": "Gunsmith 2Torrente Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "+10 Magazine Size",
+              "15% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "+20 Magazine Size",
+              "30% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "+30 Magazine Size",
+              "45% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -322,9 +1421,80 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Advanced Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Medium Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Wires",
+            "quantity": 7
+          }
+        ],
+        "workshop": "Gunsmith 2Osprey Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "20% Reduced Bolt Action Time",
+              "12.5% Reduced Reload Time",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "40% Reduced Bolt Action Time",
+              "25% Reduced Reload Time",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Medium Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 1",
+            "perks": [
+              "60% Reduced Bolt Action Time",
+              "37.5% Reduced Reload Time",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -336,8 +1506,21 @@
       "ammo_type": "Energy Clip",
       "modification_slots": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 3
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Queen Reactor",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3Jupiter Blueprintrequired",
         "upgrades": []
       }
     },
@@ -353,9 +1536,77 @@
         "Stock"
       ],
       "crafting": {
-        "materials": [],
-        "workshop": null,
-        "upgrades": []
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 1
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Exodus Modules",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3Hullcracker Blueprintrequired",
+        "upgrades": [
+          {
+            "tier": 2,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 1
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 2
+              }
+            ],
+            "workshop": "Gunsmith 2",
+            "perks": [
+              "18% Increased Fire Rate",
+              "+10 Durability"
+            ]
+          },
+          {
+            "tier": 3,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 1
+              }
+            ],
+            "workshop": "Gunsmith 2",
+            "perks": [
+              "35% Increased Fire Rate",
+              "+20 Durability"
+            ]
+          },
+          {
+            "tier": 4,
+            "materials": [
+              {
+                "material": "Advanced Mechanical Components",
+                "quantity": 2
+              },
+              {
+                "material": "Heavy Gun Parts",
+                "quantity": 3
+              }
+            ],
+            "workshop": "Gunsmith 2",
+            "perks": [
+              "53% Increased Fire Rate",
+              "+30 Durability"
+            ]
+          }
+        ]
       }
     },
     {
@@ -367,8 +1618,21 @@
       "ammo_type": "Energy Clip",
       "modification_slots": [],
       "crafting": {
-        "materials": [],
-        "workshop": null,
+        "materials": [
+          {
+            "material": "Magnetic Accelerator",
+            "quantity": 3
+          },
+          {
+            "material": "Complex Gun Parts",
+            "quantity": 3
+          },
+          {
+            "material": "Queen Reactor",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 3Equalizer Blueprintrequired",
         "upgrades": []
       }
     }
