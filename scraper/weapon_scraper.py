@@ -166,6 +166,18 @@ def extract_weapon_data(url, weapon_name):
                     return next_section.find('table', {'class': 'wikitable'})
         return None
 
+    def parse_workshop_cell(cell):
+        """Parse workshop cell, extracting workshop level and handling blueprint text."""
+        # Replace <br> with newlines to properly separate lines
+        cell_copy = BeautifulSoup(str(cell), 'html.parser')
+        for br in cell_copy.find_all('br'):
+            br.replace_with('\n')
+        text = cell_copy.get_text()
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        # First line is the workshop, rest might be blueprint requirements
+        workshop = lines[0] if lines else None
+        return workshop
+
     # Parse crafting table
     craft_table = find_section_table('Crafting')
     if craft_table:
@@ -174,7 +186,7 @@ def extract_weapon_data(url, weapon_name):
             cells = row.find_all('td')
             if len(cells) >= 3:
                 materials = parse_recipe_cell(cells[0])
-                workshop = cells[2].get_text(strip=True).replace('\n', ' / ')
+                workshop = parse_workshop_cell(cells[2])
                 output = cells[4].get_text(strip=True) if len(cells) > 4 else None
 
                 weapon_data['base_craft'] = {
@@ -192,7 +204,7 @@ def extract_weapon_data(url, weapon_name):
             if len(cells) >= 5:
                 recipe_cell = cells[0]
                 materials = parse_recipe_cell(recipe_cell)
-                workshop = cells[2].get_text(strip=True)
+                workshop = parse_workshop_cell(cells[2])
                 output = cells[4].get_text(strip=True)
                 perks = cells[5].get_text(strip=True) if len(cells) > 5 else None
 

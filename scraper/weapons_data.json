@@ -426,7 +426,7 @@
           "quantity": 2
         }
       ],
-      "workshop": "Gunsmith 3Tempest Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Tempest I"
     },
     "upgrades": [
@@ -563,7 +563,7 @@
           "quantity": 3
         }
       ],
-      "workshop": "Gunsmith 3Bettina Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Bettina I"
     },
     "upgrades": [
@@ -965,7 +965,7 @@
           "quantity": 1
         }
       ],
-      "workshop": "Gunsmith 3Aphelion Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Aphelion I"
     },
     "upgrades": [],
@@ -1132,7 +1132,7 @@
           "quantity": 2
         }
       ],
-      "workshop": "Gunsmith 3Bobcat Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Bobcat I"
     },
     "upgrades": [
@@ -1266,7 +1266,7 @@
           "quantity": 6
         }
       ],
-      "workshop": "Workbench / Gunsmith 1Il Toro Blueprintrequired",
+      "workshop": "Workbench / Gunsmith 1",
       "output": "1× Il Toro I"
     },
     "upgrades": [
@@ -1404,7 +1404,7 @@
           "quantity": 1
         }
       ],
-      "workshop": "Gunsmith 3Vulcano Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Vulcano I"
     },
     "upgrades": [
@@ -1663,7 +1663,7 @@
           "quantity": 3
         }
       ],
-      "workshop": "Gunsmith 1Burletta Blueprintrequired",
+      "workshop": "Gunsmith 1",
       "output": "1× Burletta I"
     },
     "upgrades": [
@@ -1799,7 +1799,7 @@
           "quantity": 5
         }
       ],
-      "workshop": "Gunsmith 2Venator Blueprintrequired",
+      "workshop": "Gunsmith 2",
       "output": "1× Venator I"
     },
     "upgrades": [
@@ -1931,7 +1931,7 @@
           "quantity": 6
         }
       ],
-      "workshop": "Gunsmith 1Anvil Blueprintrequired",
+      "workshop": "Gunsmith 1",
       "output": "1× Anvil I"
     },
     "upgrades": [
@@ -2068,7 +2068,7 @@
           "quantity": 6
         }
       ],
-      "workshop": "Gunsmith 2Torrente Blueprintrequired",
+      "workshop": "Gunsmith 2",
       "output": "1× Torrente I"
     },
     "upgrades": [
@@ -2206,7 +2206,7 @@
           "quantity": 7
         }
       ],
-      "workshop": "Gunsmith 2Osprey Blueprintrequired",
+      "workshop": "Gunsmith 2",
       "output": "1× Osprey I"
     },
     "upgrades": [
@@ -2339,7 +2339,7 @@
           "quantity": 1
         }
       ],
-      "workshop": "Gunsmith 3Jupiter Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Jupiter"
     },
     "upgrades": [],
@@ -2384,7 +2384,7 @@
           "quantity": 1
         }
       ],
-      "workshop": "Gunsmith 3Hullcracker Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Hullcracker I"
     },
     "upgrades": [
@@ -2517,7 +2517,7 @@
           "quantity": 1
         }
       ],
-      "workshop": "Gunsmith 3Equalizer Blueprintrequired",
+      "workshop": "Gunsmith 3",
       "output": "1× Equalizer"
     },
     "upgrades": [],
