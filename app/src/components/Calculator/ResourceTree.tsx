@@ -21,6 +21,11 @@ interface ResourceNode {
   children?: ResourceNode[];
 }
 
+interface ItemResources {
+  label: string;
+  resources: Record<string, number>;
+}
+
 interface ResourceTreeProps {
   loadout: Loadout;
 }
@@ -28,6 +33,10 @@ interface ResourceTreeProps {
 export function ResourceTree({ loadout }: ResourceTreeProps) {
   // Track which nodes are expanded (crafted down)
   const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set());
+  // Toggle for per-item grouping
+  const [groupByItem, setGroupByItem] = useState(false);
+  // Track which item blocks are collapsed
+  const [collapsedBlocks, setCollapsedBlocks] = useState<Set<string>>(new Set());
 
   // Calculate all resources needed from loadout
   const rawResources = useMemo(() => {
@@ -119,6 +128,127 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
     }
 
     return resources;
+  }, [loadout]);
+
+  // Calculate resources grouped by individual item
+  const perItemResources = useMemo(() => {
+    const items: ItemResources[] = [];
+
+    const addMaterials = (
+      resources: Record<string, number>,
+      materials: CraftingMaterial[],
+      multiplier = 1
+    ) => {
+      for (const mat of materials) {
+        resources[mat.material] = (resources[mat.material] || 0) + mat.quantity * multiplier;
+      }
+    };
+
+    // Weapon 1
+    if (loadout.weapon1) {
+      const weapon = getWeaponById(loadout.weapon1.id);
+      if (weapon) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, weapon.crafting.materials);
+        const targetTier = loadout.weapon1.tier || 1;
+        for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
+          addMaterials(resources, weapon.crafting.upgrades[i].materials);
+        }
+        for (const modId of loadout.weapon1.mods) {
+          if (modId) {
+            const mod = getModificationById(modId);
+            if (mod) {
+              addMaterials(resources, mod.crafting.materials);
+            }
+          }
+        }
+        items.push({ label: `${weapon.name} (Primary)`, resources });
+      }
+    }
+
+    // Weapon 2
+    if (loadout.weapon2) {
+      const weapon = getWeaponById(loadout.weapon2.id);
+      if (weapon) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, weapon.crafting.materials);
+        const targetTier = loadout.weapon2.tier || 1;
+        for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
+          addMaterials(resources, weapon.crafting.upgrades[i].materials);
+        }
+        for (const modId of loadout.weapon2.mods) {
+          if (modId) {
+            const mod = getModificationById(modId);
+            if (mod) {
+              addMaterials(resources, mod.crafting.materials);
+            }
+          }
+        }
+        items.push({ label: `${weapon.name} (Secondary)`, resources });
+      }
+    }
+
+    // Augment
+    if (loadout.augment) {
+      const item = getEquipmentById(loadout.augment);
+      if (item) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, item.crafting.materials);
+        items.push({ label: item.name, resources });
+      }
+    }
+
+    // Shield
+    if (loadout.shield) {
+      const item = getEquipmentById(loadout.shield);
+      if (item) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, item.crafting.materials);
+        items.push({ label: item.name, resources });
+      }
+    }
+
+    // Healing
+    for (const h of loadout.healing) {
+      const item = getEquipmentById(h.id);
+      if (item) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, item.crafting.materials, h.quantity);
+        items.push({ label: `${item.name} x${h.quantity}`, resources });
+      }
+    }
+
+    // Grenades
+    for (const g of loadout.grenades) {
+      const item = getEquipmentById(g.id);
+      if (item) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, item.crafting.materials, g.quantity);
+        items.push({ label: `${item.name} x${g.quantity}`, resources });
+      }
+    }
+
+    // Utilities
+    for (const u of loadout.utilities) {
+      const item = getEquipmentById(u.id);
+      if (item) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, item.crafting.materials, u.quantity);
+        items.push({ label: `${item.name} x${u.quantity}`, resources });
+      }
+    }
+
+    // Traps
+    for (const t of loadout.traps) {
+      const item = getEquipmentById(t.id);
+      if (item) {
+        const resources: Record<string, number> = {};
+        addMaterials(resources, item.crafting.materials, t.quantity);
+        items.push({ label: `${item.name} x${t.quantity}`, resources });
+      }
+    }
+
+    return items;
   }, [loadout]);
 
   // Build tree structure with expanded nodes broken down
@@ -214,6 +344,18 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
     });
   };
 
+  const toggleBlock = (label: string) => {
+    setCollapsedBlocks((prev) => {
+      const next = new Set(prev);
+      if (next.has(label)) {
+        next.delete(label);
+      } else {
+        next.add(label);
+      }
+      return next;
+    });
+  };
+
   const isEmpty = Object.keys(rawResources).length === 0;
 
   if (isEmpty) {
@@ -226,61 +368,128 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold">Required Resources</h2>
-
-      {/* Tree view */}
-      <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
-          Resource Tree (click craftable items to break down)
-        </h3>
-        <div className="bg-card rounded-lg p-4 border border-border">
-          <TreeNodeList
-            nodes={tree}
-            expandedNodes={expandedNodes}
-            onToggle={toggleNode}
-            depth={0}
-          />
-        </div>
+      {/* Header with toggle */}
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-bold">Required Resources</h2>
+        <label className="flex items-center gap-2 cursor-pointer">
+          <span className="text-sm text-muted-foreground">Group by item</span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={groupByItem}
+            onClick={() => setGroupByItem(!groupByItem)}
+            className={cn(
+              'relative inline-flex h-6 w-11 items-center rounded-full transition-colors',
+              groupByItem ? 'bg-primary' : 'bg-secondary'
+            )}
+          >
+            <span
+              className={cn(
+                'inline-block h-4 w-4 transform rounded-full bg-white transition-transform',
+                groupByItem ? 'translate-x-6' : 'translate-x-1'
+              )}
+            />
+          </button>
+        </label>
       </div>
 
-      {/* Summary list */}
-      <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
-          Final Materials Needed
-        </h3>
-        <div className="bg-card rounded-lg p-4 border border-border">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            {Object.entries(finalMaterials)
-              .sort((a, b) => {
-                const rarityOrder: Record<string, number> = {
-                  'Common': 1, 'Uncommon': 2, 'Rare': 3, 'Epic': 4, 'Legendary': 5
-                };
-                const aOrder = rarityOrder[a[1].rarity || 'Common'] || 0;
-                const bOrder = rarityOrder[b[1].rarity || 'Common'] || 0;
-                return aOrder - bOrder;
-              })
-              .map(([name, data]) => (
-                <div
-                  key={name}
-                  className="flex items-center gap-2 p-2 rounded bg-secondary/50"
-                  style={{ borderLeft: `3px solid ${getRarityColor(data.rarity)}` }}
+      {groupByItem ? (
+        /* Per-item view */
+        <div className="space-y-4">
+          <h3 className="text-sm font-medium text-muted-foreground">
+            Resources by Item (click craftable items to break down)
+          </h3>
+          {perItemResources.map((item) => {
+            const isCollapsed = collapsedBlocks.has(item.label);
+            const itemTree = buildTree(item.resources, expandedNodes);
+            return (
+              <div
+                key={item.label}
+                className="bg-card rounded-lg border border-border overflow-hidden"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleBlock(item.label)}
+                  className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
                 >
-                  {data.image && (
-                    <img
-                      src={`/${data.image}`}
-                      alt={name}
-                      className="w-8 h-8 object-contain"
-                    />
+                  <span className="font-semibold text-lg">{item.label}</span>
+                  {isCollapsed ? (
+                    <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-muted-foreground" />
                   )}
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-medium truncate">{name}</p>
-                    <p className="text-lg font-bold text-primary">{data.quantity}</p>
+                </button>
+                {!isCollapsed && (
+                  <div className="px-4 pb-4">
+                    <TreeNodeList
+                      nodes={itemTree}
+                      expandedNodes={expandedNodes}
+                      onToggle={toggleNode}
+                      depth={0}
+                    />
                   </div>
-                </div>
-              ))}
-          </div>
+                )}
+              </div>
+            );
+          })}
         </div>
-      </div>
+      ) : (
+        <>
+          {/* Tree view */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-muted-foreground">
+              Resource Tree (click craftable items to break down)
+            </h3>
+            <div className="bg-card rounded-lg p-4 border border-border">
+              <TreeNodeList
+                nodes={tree}
+                expandedNodes={expandedNodes}
+                onToggle={toggleNode}
+                depth={0}
+              />
+            </div>
+          </div>
+
+          {/* Summary list */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-muted-foreground">
+              Final Materials Needed
+            </h3>
+            <div className="bg-card rounded-lg p-4 border border-border">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                {Object.entries(finalMaterials)
+                  .sort((a, b) => {
+                    const rarityOrder: Record<string, number> = {
+                      'Common': 1, 'Uncommon': 2, 'Rare': 3, 'Epic': 4, 'Legendary': 5
+                    };
+                    const aOrder = rarityOrder[a[1].rarity || 'Common'] || 0;
+                    const bOrder = rarityOrder[b[1].rarity || 'Common'] || 0;
+                    return aOrder - bOrder;
+                  })
+                  .map(([name, data]) => (
+                    <div
+                      key={name}
+                      className="flex items-center gap-2 p-2 rounded bg-secondary/50"
+                      style={{ borderLeft: `3px solid ${getRarityColor(data.rarity)}` }}
+                    >
+                      {data.image && (
+                        <img
+                          src={`/${data.image}`}
+                          alt={name}
+                          className="w-8 h-8 object-contain"
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-medium truncate">{name}</p>
+                        <p className="text-lg font-bold text-primary">{data.quantity}</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
