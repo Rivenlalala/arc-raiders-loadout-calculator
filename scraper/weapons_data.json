@@ -22,8 +22,9 @@
           "quantity": 8
         }
       ],
-      "workshop": "Gunsmith 1orWorkbench 1",
-      "output": "Kettle I"
+      "workshop": "Workbench, Gunsmith 1",
+      "blueprint_required": false,
+      "output": "1× Kettle I"
     },
     "upgrades": [
       {
@@ -156,7 +157,8 @@
         }
       ],
       "workshop": "Gunsmith 1",
-      "output": "Rattler I"
+      "blueprint_required": false,
+      "output": "1× Rattler I"
     },
     "upgrades": [
       {
@@ -165,8 +167,12 @@
         "output": "Rattler II",
         "materials": [
           {
-            "material": "Mechanical Components",
-            "quantity": 2
+            "material": "Metal Parts",
+            "quantity": 10
+          },
+          {
+            "material": "Rubber Parts",
+            "quantity": 10
           }
         ],
         "workshop": "Gunsmith 1",
@@ -179,7 +185,7 @@
         "materials": [
           {
             "material": "Mechanical Components",
-            "quantity": 2
+            "quantity": 3
           },
           {
             "material": "Simple Gun Parts",
@@ -285,8 +291,9 @@
           "quantity": 6
         }
       ],
-      "workshop": "Gunsmith 2",
-      "output": "Arpeggio I"
+      "workshop": "Gunsmith 2",
+      "blueprint_required": false,
+      "output": "1× Arpeggio I"
     },
     "upgrades": [
       {
@@ -303,7 +310,7 @@
             "quantity": 1
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "20% Increased Fire Rate12.5% Reduced Reload Time+10 Durability"
       },
       {
@@ -326,7 +333,7 @@
       {
         "from_tier": "IV",
         "to_tier": "IV",
-        "output": "Arpeggio IV",
+        "output": "Arpeggio IV",
         "materials": [
           {
             "material": "Mechanical Components",
@@ -423,13 +430,14 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Tempest I"
+      "blueprint_required": true,
+      "output": "1× Tempest I"
     },
     "upgrades": [
       {
         "from_tier": "II",
         "to_tier": "II",
-        "output": "Tempest II",
+        "output": "Tempest II",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -440,13 +448,13 @@
             "quantity": 1
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "16.6% Reduced Horizontal Recoil13% Reduced Reload Time+10 Durability"
       },
       {
         "from_tier": "III",
         "to_tier": "III",
-        "output": "Tempest III",
+        "output": "Tempest III",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -457,13 +465,13 @@
             "quantity": 3
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "33.3% Reduced Horizontal Recoil26% Reduced Reload Time+20 Durability"
       },
       {
         "from_tier": "IV",
         "to_tier": "IV",
-        "output": "Tempest IV",
+        "output": "Tempest IV",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -474,7 +482,7 @@
             "quantity": 3
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "50% Reduced Horizontal Recoil40% Reduced Reload Time+30 Durability"
       }
     ],
@@ -560,7 +568,8 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Bettina I"
+      "blueprint_required": true,
+      "output": "1× Bettina I"
     },
     "upgrades": [
       {
@@ -692,8 +701,9 @@
           "quantity": 2
         }
       ],
-      "workshop": "Gunsmith 1",
-      "output": "Ferro I"
+      "workshop": "Workbench, Gunsmith 1",
+      "blueprint_required": false,
+      "output": "1× Ferro I"
     },
     "upgrades": [
       {
@@ -825,14 +835,15 @@
           "quantity": 5
         }
       ],
-      "workshop": "Gunsmith 3",
-      "output": "Renegade I"
+      "workshop": "Gunsmith 3",
+      "blueprint_required": false,
+      "output": "1× Renegade I"
     },
     "upgrades": [
       {
         "from_tier": "II",
         "to_tier": "II",
-        "output": "Renegade II",
+        "output": "Renegade II",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -849,7 +860,7 @@
       {
         "from_tier": "III",
         "to_tier": "III",
-        "output": "Renegade III",
+        "output": "Renegade III",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -877,7 +888,7 @@
             "quantity": 2
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "50% Reduced Dispersion Recovery Time75% Increased Fire Rate+30 Durability"
       }
     ],
@@ -962,7 +973,8 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Aphelion"
+      "blueprint_required": true,
+      "output": "1× Aphelion I"
     },
     "upgrades": [],
     "repair": []
@@ -990,14 +1002,15 @@
           "quantity": 4
         }
       ],
-      "workshop": "Gunsmith 1orWorkbench 1",
-      "output": "Stitcher I"
+      "workshop": "Workbench, Gunsmith 1",
+      "blueprint_required": false,
+      "output": "1× Stitcher I"
     },
     "upgrades": [
       {
         "from_tier": "II",
         "to_tier": "II",
-        "output": "Stitcher II",
+        "output": "Stitcher II",
         "materials": [
           {
             "material": "Metal Parts",
@@ -1008,13 +1021,13 @@
             "quantity": 12
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "16.6% Reduced Horizontal Recoil13% Reduced Reload Time+10 Durability"
       },
       {
         "from_tier": "III",
         "to_tier": "III",
-        "output": "Stitcher III",
+        "output": "Stitcher III",
         "materials": [
           {
             "material": "Metal Parts",
@@ -1025,13 +1038,13 @@
             "quantity": 1
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "33.3% Reduced Horizontal Recoil26% Reduced Reload Time+20 Durability"
       },
       {
         "from_tier": "IV",
         "to_tier": "IV",
-        "output": "Stitcher IV",
+        "output": "Stitcher IV",
         "materials": [
           {
             "material": "Mechanical Components",
@@ -1042,7 +1055,7 @@
             "quantity": 1
           }
         ],
-        "workshop": "Gunsmith 1",
+        "workshop": "Gunsmith 1",
         "perks": "50% Reduced Horizontal Recoil40% Reduced Reload Time+30 Durability"
       }
     ],
@@ -1129,7 +1142,8 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Bobcat I"
+      "blueprint_required": true,
+      "output": "1× Bobcat I"
     },
     "upgrades": [
       {
@@ -1262,8 +1276,9 @@
           "quantity": 6
         }
       ],
-      "workshop": "Gunsmith 1",
-      "output": "Il Toro I"
+      "workshop": "Workbench / Gunsmith 1",
+      "blueprint_required": true,
+      "output": "1× Il Toro I"
     },
     "upgrades": [
       {
@@ -1401,7 +1416,8 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Vulcano I"
+      "blueprint_required": true,
+      "output": "1× Vulcano I"
     },
     "upgrades": [
       {
@@ -1531,8 +1547,9 @@
           "quantity": 5
         }
       ],
-      "workshop": "Gunsmith 1orWorkbench 1",
-      "output": "Hairpin I"
+      "workshop": "Workbench / Gunsmith I",
+      "blueprint_required": false,
+      "output": "1× Hairpin I"
     },
     "upgrades": [
       {
@@ -1545,7 +1562,7 @@
             "quantity": 8
           }
         ],
-        "workshop": "Gunmsith 1",
+        "workshop": "Gunsmith 1",
         "perks": "10% Increased Fire Rate13% Reduced Reload Time+10 Durability"
       },
       {
@@ -1555,7 +1572,7 @@
         "materials": [
           {
             "material": "Metal Parts",
-            "quantity": 6
+            "quantity": 9
           },
           {
             "material": "Simple Gun Parts",
@@ -1613,12 +1630,12 @@
       {
         "materials": [
           {
-            "material": "Mechanical Components",
-            "quantity": 1
-          },
-          {
             "material": "Metal Parts",
             "quantity": 6
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
           }
         ],
         "durability_restored": "+60"
@@ -1660,7 +1677,8 @@
         }
       ],
       "workshop": "Gunsmith 1",
-      "output": "Burletta I"
+      "blueprint_required": true,
+      "output": "1× Burletta I"
     },
     "upgrades": [
       {
@@ -1771,138 +1789,6 @@
     ]
   },
   {
-    "name": "Anvil",
-    "url": "https://arcraiders.wiki/wiki/Anvil",
-    "category": "Pistol",
-    "rarity": "Uncommon",
-    "ammo_type": "Heavy Ammo",
-    "modification_slots": [
-      "Muzzle",
-      "Tech-Mod"
-    ],
-    "base_craft": {
-      "materials": [
-        {
-          "material": "Mechanical Components",
-          "quantity": 5
-        },
-        {
-          "material": "Simple Gun Parts",
-          "quantity": 6
-        }
-      ],
-      "workshop": "Gunsmith 1",
-      "output": "Anvil I"
-    },
-    "upgrades": [
-      {
-        "from_tier": "II",
-        "to_tier": "II",
-        "output": "Anvil II",
-        "materials": [
-          {
-            "material": "Mechanical Components",
-            "quantity": 3
-          },
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 1
-          }
-        ],
-        "workshop": "Gunsmith 1",
-        "perks": "6.5% Reduced Dispersion Recovery Time25% Increased Fire Rate+10 Durability"
-      },
-      {
-        "from_tier": "III",
-        "to_tier": "III",
-        "output": "Anvil III",
-        "materials": [
-          {
-            "material": "Mechanical Components",
-            "quantity": 4
-          },
-          {
-            "material": "Heavy Gun Parts",
-            "quantity": 1
-          }
-        ],
-        "workshop": "Gunsmith 1",
-        "perks": "12.5% Reduced Dispersion Recovery Time50% Increased Fire Rate+20 Durability"
-      },
-      {
-        "from_tier": "IV",
-        "to_tier": "IV",
-        "output": "Anvil IV",
-        "materials": [
-          {
-            "material": "Mechanical Components",
-            "quantity": 4
-          },
-          {
-            "material": "Heavy Gun Parts",
-            "quantity": 1
-          }
-        ],
-        "workshop": "Gunsmith 1",
-        "perks": "18.75% Reduced Dispersion Recovery Time75% Increased Fire Rate+30 Durability"
-      }
-    ],
-    "repair": [
-      {
-        "materials": [
-          {
-            "material": "Mechanical Components",
-            "quantity": 2
-          },
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 2
-          }
-        ],
-        "durability_restored": "+50"
-      },
-      {
-        "materials": [
-          {
-            "material": "Mechanical Components",
-            "quantity": 3
-          },
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 3
-          }
-        ],
-        "durability_restored": "+55"
-      },
-      {
-        "materials": [
-          {
-            "material": "Mechanical Components",
-            "quantity": 4
-          },
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 4
-          }
-        ],
-        "durability_restored": "+60"
-      },
-      {
-        "materials": [
-          {
-            "material": "Mechanical Components",
-            "quantity": 5
-          },
-          {
-            "material": "Simple Gun Parts",
-            "quantity": 5
-          }
-        ],
-        "durability_restored": "+65"
-      }
-    ]
-  },
-  {
     "name": "Venator",
     "url": "https://arcraiders.wiki/wiki/Venator",
     "category": "Pistol",
@@ -1916,7 +1802,7 @@
       "materials": [
         {
           "material": "Advanced Mechanical Components",
-          "quantity": 2
+          "quantity": 3
         },
         {
           "material": "Medium Gun Parts",
@@ -1927,8 +1813,9 @@
           "quantity": 5
         }
       ],
-      "workshop": "Gunsmith 2",
-      "output": "Venator I"
+      "workshop": "Gunsmith 2",
+      "blueprint_required": true,
+      "output": "1× Venator I"
     },
     "upgrades": [
       {
@@ -2039,6 +1926,139 @@
     ]
   },
   {
+    "name": "Anvil",
+    "url": "https://arcraiders.wiki/wiki/Anvil",
+    "category": "Hand Cannon",
+    "rarity": "Uncommon",
+    "ammo_type": "Heavy Ammo",
+    "modification_slots": [
+      "Muzzle",
+      "Tech-Mod"
+    ],
+    "base_craft": {
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 5
+        },
+        {
+          "material": "Simple Gun Parts",
+          "quantity": 6
+        }
+      ],
+      "workshop": "Gunsmith 1",
+      "blueprint_required": true,
+      "output": "1× Anvil I"
+    },
+    "upgrades": [
+      {
+        "from_tier": "II",
+        "to_tier": "II",
+        "output": "Anvil II",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "6.5% Reduced Dispersion Recovery Time25% Increased Fire Rate+10 Durability"
+      },
+      {
+        "from_tier": "III",
+        "to_tier": "III",
+        "output": "Anvil III",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "12.5% Reduced Dispersion Recovery Time50% Increased Fire Rate+20 Durability"
+      },
+      {
+        "from_tier": "IV",
+        "to_tier": "IV",
+        "output": "Anvil IV",
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Heavy Gun Parts",
+            "quantity": 1
+          }
+        ],
+        "workshop": "Gunsmith 1",
+        "perks": "18.75% Reduced Dispersion Recovery Time75% Increased Fire Rate+30 Durability"
+      }
+    ],
+    "repair": [
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 2
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 2
+          }
+        ],
+        "durability_restored": "+50"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 3
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 3
+          }
+        ],
+        "durability_restored": "+55"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 4
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 4
+          }
+        ],
+        "durability_restored": "+60"
+      },
+      {
+        "materials": [
+          {
+            "material": "Mechanical Components",
+            "quantity": 5
+          },
+          {
+            "material": "Simple Gun Parts",
+            "quantity": 5
+          }
+        ],
+        "durability_restored": "+65"
+      }
+    ]
+  },
+  {
     "name": "Torrente",
     "url": "https://arcraiders.wiki/wiki/Torrente",
     "category": "LMG",
@@ -2064,8 +2084,9 @@
           "quantity": 6
         }
       ],
-      "workshop": "Gunsmith 2",
-      "output": "Torrente I"
+      "workshop": "Gunsmith 2",
+      "blueprint_required": true,
+      "output": "1× Torrente I"
     },
     "upgrades": [
       {
@@ -2203,7 +2224,8 @@
         }
       ],
       "workshop": "Gunsmith 2",
-      "output": "Osprey I"
+      "blueprint_required": true,
+      "output": "1× Osprey I"
     },
     "upgrades": [
       {
@@ -2226,7 +2248,7 @@
       {
         "from_tier": "III",
         "to_tier": "III",
-        "output": "Osprey III",
+        "output": "Osprey III",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -2243,7 +2265,7 @@
       {
         "from_tier": "IV",
         "to_tier": "IV",
-        "output": "Osprey IV",
+        "output": "Osprey IV",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -2336,7 +2358,8 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Jupiter"
+      "blueprint_required": true,
+      "output": "1× Jupiter"
     },
     "upgrades": [],
     "repair": [
@@ -2360,7 +2383,7 @@
     "url": "https://arcraiders.wiki/wiki/Hullcracker",
     "category": "Special",
     "rarity": "Epic",
-    "ammo_type": null,
+    "ammo_type": "Launcher Ammo",
     "modification_slots": [
       "Underbarrel",
       "Stock"
@@ -2381,13 +2404,14 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Hullcracker I"
+      "blueprint_required": true,
+      "output": "1× Hullcracker I"
     },
     "upgrades": [
       {
         "from_tier": "II",
         "to_tier": "II",
-        "output": "Hullcracker II",
+        "output": "Hullcracker II",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -2398,13 +2422,13 @@
             "quantity": 2
           }
         ],
-        "workshop": "Gunsmith 2",
+        "workshop": "Gunsmith 2",
         "perks": "18% Increased Fire Rate+10 Durability"
       },
       {
         "from_tier": "III",
         "to_tier": "III",
-        "output": "Hullcracker III",
+        "output": "Hullcracker III",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -2415,13 +2439,13 @@
             "quantity": 1
           }
         ],
-        "workshop": "Gunsmith 2",
+        "workshop": "Gunsmith 2",
         "perks": "35% Increased Fire Rate+20 Durability"
       },
       {
         "from_tier": "IV",
         "to_tier": "IV",
-        "output": "Hullcracker IV",
+        "output": "Hullcracker IV",
         "materials": [
           {
             "material": "Advanced Mechanical Components",
@@ -2432,7 +2456,7 @@
             "quantity": 3
           }
         ],
-        "workshop": "Gunsmith 2",
+        "workshop": "Gunsmith 2",
         "perks": "53% Increased Fire Rate+30 Durability"
       }
     ],
@@ -2514,7 +2538,8 @@
         }
       ],
       "workshop": "Gunsmith 3",
-      "output": "Equalizer"
+      "blueprint_required": true,
+      "output": "1× Equalizer"
     },
     "upgrades": [],
     "repair": [

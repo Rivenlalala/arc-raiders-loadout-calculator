@@ -76,7 +76,7 @@ def parse_recipe_cell(cell):
 
     for line in lines:
         line = line.strip()
-        match = re.match(r'(\d+)x\s*(.+)', line)
+        match = re.match(r'(\d+)[x×]\s*(.+)', line)
         if match:
             quantity = int(match.group(1))
             material = match.group(2).strip()
@@ -86,6 +86,29 @@ def parse_recipe_cell(cell):
             })
 
     return materials
+
+
+def parse_workshop_cell(cell):
+    """Parse workshop cell, extracting just the workshop name."""
+    if not cell:
+        return None
+
+    # Workshop is the text before the <br> or <a> tag
+    cell_text = ''
+    for child in cell.children:
+        if child.name == 'br' or child.name == 'a':
+            break
+        if hasattr(child, 'get_text'):
+            cell_text += child.get_text(strip=True)
+        else:
+            cell_text += str(child).strip()
+
+    workshop = cell_text.strip() if cell_text.strip() else None
+    if not workshop:
+        full_text = cell.get_text(strip=True)
+        workshop = re.sub(r'[\w\s\.]+Blueprint\s*required', '', full_text).strip()
+
+    return workshop
 
 def extract_mod_data(url, mod_name):
     """Extract modification data from detail page."""
@@ -186,38 +209,57 @@ def extract_mod_data(url, mod_name):
                                 mod_data['compatible_weapons'].append(weapon_name)
 
     # Find crafting section
-    craft_section = content.find('h3', {'id': 'Required_Materials_to_Craft'})
-    if not craft_section:
-        for h3 in content.find_all('h3'):
-            if 'craft' in h3.get_text().lower():
-                craft_section = h3
+    def find_table_after_heading(heading):
+        if not heading:
+            return None
+        parent_div = heading.find_parent('div', {'class': 'mw-heading'})
+        if parent_div:
+            next_section = parent_div.find_next_sibling('section')
+            if next_section:
+                return next_section.find('table', {'class': 'wikitable'})
+        return heading.find_next('table', {'class': 'wikitable'})
+
+    # Try multiple heading patterns
+    craft_heading = content.find('h3', {'id': 'Required_Materials_to_Craft'})
+    if not craft_heading:
+        craft_heading = content.find('h2', {'id': 'Crafting'})
+    if not craft_heading:
+        for heading in content.find_all(['h2', 'h3']):
+            if 'craft' in heading.get_text().lower():
+                craft_heading = heading
                 break
 
-    if craft_section:
-        parent = craft_section.find_parent('div')
-        if parent:
-            next_element = parent.find_next_sibling()
-            if next_element:
-                craft_table = next_element.find('table', {'class': 'wikitable'})
-                if craft_table:
-                    rows = craft_table.find_all('tr')
-                    for row in rows[1:]:
-                        cells = row.find_all('td')
-                        if cells:
-                            materials = parse_recipe_cell(cells[0])
-                            workshop = None
-                            for cell in cells:
-                                text = cell.get_text()
-                                if 'Gunsmith' in text:
-                                    workshop = text.strip()
-                                    break
+    craft_table = find_table_after_heading(craft_heading)
 
-                            if materials:
-                                mod_data['crafting'] = {
-                                    'materials': materials,
-                                    'workshop': workshop
-                                }
-                                break
+    # Fallback: search for crafting table by headers
+    if not craft_table:
+        for table in content.find_all('table', {'class': 'wikitable'}):
+            first_row = table.find('tr')
+            if first_row:
+                row_text = first_row.get_text().lower()
+                if 'recipe' in row_text or 'ingredients' in row_text:
+                    craft_table = table
+                    break
+
+    if craft_table:
+        rows = craft_table.find_all('tr')
+        for row in rows[1:]:
+            cells = row.find_all('td')
+            if cells:
+                materials = parse_recipe_cell(cells[0])
+                workshop = None
+                for cell in cells:
+                    text = cell.get_text()
+                    if 'Gunsmith' in text or 'Workbench' in text:
+                        workshop = parse_workshop_cell(cell)
+                        break
+
+                if materials:
+                    mod_data['crafting'] = {
+                        'materials': materials,
+                        'workshop': workshop
+                    }
+                    break
 
     return mod_data
 

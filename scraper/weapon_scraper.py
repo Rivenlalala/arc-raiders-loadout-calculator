@@ -63,6 +63,39 @@ def extract_weapon_links(soup):
 
     return unique_weapons
 
+def parse_requirements_cell(cell):
+    """Parse requirements cell, extracting workshop and blueprint_required flag."""
+    if not cell:
+        return None, False
+
+    # Check if blueprint is required (look for Blueprint link or text)
+    blueprint_required = False
+    blueprint_link = cell.find('a')
+    if blueprint_link:
+        link_text = blueprint_link.get_text(strip=True)
+        if 'Blueprint' in link_text:
+            blueprint_required = True
+
+    # Workshop is the text before the <br> or <a> tag
+    cell_text = ''
+    for child in cell.children:
+        if child.name == 'br' or child.name == 'a':
+            break
+        if hasattr(child, 'get_text'):
+            cell_text += child.get_text(strip=True)
+        else:
+            cell_text += str(child).strip()
+
+    workshop = cell_text.strip() if cell_text.strip() else None
+    if not workshop:
+        # Fallback: get full text and clean it
+        full_text = cell.get_text(strip=True)
+        # Remove blueprint-related text
+        workshop = re.sub(r'[\w\s]+Blueprint\s*required', '', full_text).strip()
+
+    return workshop, blueprint_required
+
+
 def parse_recipe_cell(cell):
     """Parse a recipe cell and extract materials with quantities."""
     materials = []
@@ -77,8 +110,8 @@ def parse_recipe_cell(cell):
 
     for line in lines:
         line = line.strip()
-        # Pattern: quantity followed by 'x' and material name
-        match = re.match(r'(\d+)x\s*(.+)', line)
+        # Pattern: quantity followed by 'x' or '×' and material name
+        match = re.match(r'(\d+)[x×]\s*(.+)', line)
         if match:
             quantity = int(match.group(1))
             material = match.group(2).strip()
@@ -107,6 +140,7 @@ def extract_weapon_data(url, weapon_name):
         'base_craft': {
             'materials': [],
             'workshop': None,
+            'blueprint_required': None,
             'output': None
         },
         'upgrades': [],
@@ -151,86 +185,94 @@ def extract_weapon_data(url, weapon_name):
                 if alt:
                     weapon_data['modification_slots'].append(alt)
 
-    # Find crafting tables by looking for section headings
-    all_tables = content.find_all('table', {'class': 'wikitable'})
+    # Find sections by h2 headings (new wiki structure)
+    craft_heading = content.find('h2', {'id': 'Crafting'})
+    upgrade_heading = content.find('h2', {'id': 'Upgrading'})
+    repair_heading = content.find('h2', {'id': 'Repairing'})
 
-    # Find the sections
-    craft_section = content.find('h3', {'id': 'Required_Materials_to_Craft'})
-    upgrade_section = content.find('h3', {'id': 'Required_Materials_to_Upgrade'})
-    repair_section = content.find('h3', {'id': 'Required_Materials_to_Repair'})
+    def find_table_after_heading(heading):
+        """Find the wikitable in the section following a heading."""
+        if not heading:
+            return None
+        # The h2 is inside a div.mw-heading, and the table is in the next section sibling
+        parent_div = heading.find_parent('div', {'class': 'mw-heading'})
+        if parent_div:
+            next_section = parent_div.find_next_sibling('section')
+            if next_section:
+                return next_section.find('table', {'class': 'wikitable'})
+        # Fallback: find next wikitable sibling
+        return heading.find_next('table', {'class': 'wikitable'})
 
     # Parse crafting table
-    if craft_section:
-        # Find the next wikitable after this section
-        next_element = craft_section.find_parent('div').find_next_sibling()
-        if next_element:
-            craft_table = next_element.find('table', {'class': 'wikitable'})
-            if craft_table:
-                rows = craft_table.find_all('tr')
-                for row in rows[1:]:  # Skip header
-                    cells = row.find_all('td')
-                    if len(cells) >= 3:
-                        materials = parse_recipe_cell(cells[0])
-                        workshop = cells[2].get_text(strip=True).replace('\n', ' / ')
-                        output = cells[4].get_text(strip=True) if len(cells) > 4 else None
+    craft_table = find_table_after_heading(craft_heading)
+    if craft_table:
+        rows = craft_table.find_all('tr')
+        for row in rows[1:]:  # Skip header
+            cells = row.find_all('td')
+            if len(cells) >= 3:
+                materials = parse_recipe_cell(cells[0])
+                workshop, blueprint = parse_requirements_cell(cells[2])
+                output = cells[4].get_text(strip=True) if len(cells) > 4 else None
 
-                        weapon_data['base_craft'] = {
-                            'materials': materials,
-                            'workshop': workshop,
-                            'output': output
-                        }
+                weapon_data['base_craft'] = {
+                    'materials': materials,
+                    'workshop': workshop,
+                    'blueprint_required': blueprint,
+                    'output': output
+                }
 
     # Parse upgrade table
-    if upgrade_section:
-        next_element = upgrade_section.find_parent('div').find_next_sibling()
-        if next_element:
-            upgrade_table = next_element.find('table', {'class': 'wikitable'})
-            if upgrade_table:
-                rows = upgrade_table.find_all('tr')
-                for row in rows[1:]:  # Skip header
-                    cells = row.find_all('td')
-                    if len(cells) >= 5:
-                        recipe_cell = cells[0]
-                        materials = parse_recipe_cell(recipe_cell)
-                        workshop = cells[2].get_text(strip=True)
-                        output = cells[4].get_text(strip=True)
-                        perks = cells[5].get_text(strip=True) if len(cells) > 5 else None
+    upgrade_table = find_table_after_heading(upgrade_heading)
+    if upgrade_table:
+        rows = upgrade_table.find_all('tr')
+        for row in rows[1:]:  # Skip header
+            cells = row.find_all('td')
+            if len(cells) >= 5:
+                recipe_cell = cells[0]
+                materials = parse_recipe_cell(recipe_cell)
+                workshop = cells[2].get_text(strip=True)
+                output = cells[4].get_text(strip=True)
+                perks = cells[5].get_text(strip=True) if len(cells) > 5 else None
 
-                        # Determine tier from output
-                        tier_match = re.search(r'(I+|IV|V)$', output)
-                        tier = tier_match.group(1) if tier_match else None
+                # Filter out the weapon itself from materials (e.g., "Kettle I" for upgrading Kettle)
+                # Only keep actual crafting materials, not the weapon being upgraded
+                filtered_materials = [
+                    m for m in materials
+                    if not re.match(rf'^{re.escape(weapon_name)}\s*(I+|IV|V)?$', m['material'])
+                ]
 
-                        weapon_data['upgrades'].append({
-                            'from_tier': output.replace(weapon_name, '').strip() if weapon_name in output else None,
-                            'to_tier': tier,
-                            'output': output,
-                            'materials': materials,
-                            'workshop': workshop,
-                            'perks': perks
-                        })
+                # Determine tier from output
+                tier_match = re.search(r'(I+|IV|V)$', output)
+                tier = tier_match.group(1) if tier_match else None
+
+                weapon_data['upgrades'].append({
+                    'from_tier': output.replace(weapon_name, '').strip() if weapon_name in output else None,
+                    'to_tier': tier,
+                    'output': output,
+                    'materials': filtered_materials,
+                    'workshop': workshop,
+                    'perks': perks
+                })
 
     # Parse repair table
-    if repair_section:
-        next_element = repair_section.find_parent('div').find_next_sibling()
-        if next_element:
-            repair_table = next_element.find('table', {'class': 'wikitable'})
-            if repair_table:
-                rows = repair_table.find_all('tr')
-                for row in rows[1:]:  # Skip header
-                    cells = row.find_all('td')
-                    if len(cells) >= 2:
-                        # First cell might be tier indicator
-                        repair_cost_cell = cells[1] if len(cells) > 2 else cells[0]
-                        durability_cell = cells[2] if len(cells) > 2 else cells[1]
+    repair_table = find_table_after_heading(repair_heading)
+    if repair_table:
+        rows = repair_table.find_all('tr')
+        for row in rows[1:]:  # Skip header
+            cells = row.find_all('td')
+            if len(cells) >= 2:
+                # First cell might be tier indicator
+                repair_cost_cell = cells[1] if len(cells) > 2 else cells[0]
+                durability_cell = cells[2] if len(cells) > 2 else cells[1]
 
-                        materials = parse_recipe_cell(repair_cost_cell)
-                        durability = durability_cell.get_text(strip=True)
+                materials = parse_recipe_cell(repair_cost_cell)
+                durability = durability_cell.get_text(strip=True)
 
-                        if materials:
-                            weapon_data['repair'].append({
-                                'materials': materials,
-                                'durability_restored': durability
-                            })
+                if materials:
+                    weapon_data['repair'].append({
+                        'materials': materials,
+                        'durability_restored': durability
+                    })
 
     return weapon_data
 

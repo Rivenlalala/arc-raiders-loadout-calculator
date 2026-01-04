@@ -49,7 +49,7 @@
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
-      "description": "Used to craft a wide range of items. Can be recycled into scrap metal.",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -147,7 +147,7 @@
       "rarity": "Uncommon",
       "weight": "0.5",
       "stack_size": "10",
-      "description": "Used to craft components, utility items, shields, and shield mods. Can be recycled into crafting materials.",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
       "crafting": {
         "materials": [
           {
@@ -168,9 +168,9 @@
       "name": "Advanced Electrical Components",
       "url": "https://arcraiders.wiki/wiki/Advanced_Electrical_Components",
       "rarity": "Rare",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "5",
-      "description": "Used to craft utility items and shield mods. Can be recycled into crafting materials.",
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
       "crafting": {
         "materials": [
           {
@@ -207,7 +207,7 @@
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
-      "description": "Used to craft utility items and explosives. Can be recycled into scrap metal.",
+      "description": "Used in crafting.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -256,9 +256,9 @@
       "name": "Advanced Mechanical Components",
       "url": "https://arcraiders.wiki/wiki/Advanced_Mechanical_Components",
       "rarity": "Rare",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "5",
-      "description": "Mostly used to craft advanced weapons. Can be recycled into crafting materials.",
+      "description": "Used to craft advanced weapons. Can be recycled into crafting materials.",
       "crafting": {
         "materials": [
           {
@@ -279,7 +279,7 @@
       "name": "Mod Components",
       "url": "https://arcraiders.wiki/wiki/Mod_Components",
       "rarity": "Rare",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "5",
       "description": "Used to craft weapons mods. Can be recycled into crafting materials.",
       "crafting": {
@@ -325,7 +325,7 @@
       "name": "Crude Explosives",
       "url": "https://arcraiders.wiki/wiki/Crude_Explosives",
       "rarity": "Uncommon",
-      "weight": "2",
+      "weight": "0.5",
       "stack_size": "10",
       "description": "Used to craft explosives. Can be recycled into crafting materials",
       "crafting": {
@@ -360,7 +360,7 @@
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
-      "description": null,
+      "description": "Assorted spare parts used for pistols and SMGs.",
       "crafting": {
         "materials": [
           {
@@ -415,7 +415,7 @@
       "name": "Complex Gun Parts",
       "url": "https://arcraiders.wiki/wiki/Complex_Gun_Parts",
       "rarity": "Epic",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "3",
       "description": "Used to craft advanced weapons.",
       "crafting": {
@@ -561,7 +561,7 @@
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
-      "description": null,
+      "description": "Used to craft a wide range of items. Can be recycled into crafting materials.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -601,7 +601,7 @@
       "name": "Power Rod",
       "url": "https://arcraiders.wiki/wiki/Power_Rod",
       "rarity": "Epic",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "3",
       "description": "Used in crafting.",
       "crafting": {
@@ -624,7 +624,7 @@
       "name": "Exodus Modules",
       "url": "https://arcraiders.wiki/wiki/Exodus_Modules",
       "rarity": "Epic",
-      "weight": "1",
+      "weight": "1.0",
       "stack_size": "3",
       "description": "Used to craft a wide range of items.",
       "crafting": {
@@ -691,7 +691,7 @@
       "rarity": "Rare",
       "weight": "0.3",
       "stack_size": "5",
-      "description": "Used to craft medical Supplies. Can be recycled into plastic.",
+      "description": "Used to craft medical supplies. Can be recycled into plastic.",
       "crafting": {
         "materials": [],
         "workshop": null,
@@ -724,7 +724,7 @@
       "rarity": "Uncommon",
       "weight": "0.25",
       "stack_size": "15",
-      "description": "Used to craft medical supplies. Can be recycled into assorted seeds.",
+      "description": "Used to craft medical supplies.",
       "crafting": {
         "materials": [],
         "workshop": null,

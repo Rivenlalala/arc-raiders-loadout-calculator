@@ -61,6 +61,30 @@ def get_soup(url):
         print(f"  Error: {e}")
         return None
 
+def parse_workshop_cell(cell):
+    """Parse workshop/requirements cell, extracting just the workshop name."""
+    if not cell:
+        return None
+
+    # Workshop is the text before the <br> or <a> tag
+    cell_text = ''
+    for child in cell.children:
+        if child.name == 'br' or child.name == 'a':
+            break
+        if hasattr(child, 'get_text'):
+            cell_text += child.get_text(strip=True)
+        else:
+            cell_text += str(child).strip()
+
+    workshop = cell_text.strip() if cell_text.strip() else None
+    if not workshop:
+        # Fallback: get full text and clean it
+        full_text = cell.get_text(strip=True)
+        workshop = re.sub(r'[\w\s]+Blueprint\s*required', '', full_text).strip()
+
+    return workshop
+
+
 def parse_recipe_cell(cell):
     """Parse a recipe cell and extract materials with quantities."""
     materials = []
@@ -75,8 +99,8 @@ def parse_recipe_cell(cell):
 
     for line in lines:
         line = line.strip()
-        # Pattern: quantity followed by 'x' and material name
-        match = re.match(r'(\d+)x\s*(.+)', line)
+        # Pattern: quantity followed by 'x' or '×' and material name
+        match = re.match(r'(\d+)[x×]\s*(.+)', line)
         if match:
             quantity = int(match.group(1))
             material = match.group(2).strip()
@@ -142,54 +166,74 @@ def extract_material_data(material_name):
         if quote_row:
             material_data['description'] = quote_row.get_text(strip=True)
 
-    # Find crafting recipe - look for h2 or h3 with "Required Materials to Craft"
-    craft_heading = None
-    for heading in content.find_all(['h2', 'h3']):
-        heading_text = heading.get_text().lower()
-        if 'required materials to craft' in heading_text:
-            craft_heading = heading
-            break
-
-    if craft_heading:
-        # Find the next wikitable after this heading
-        # The table might be in the next section element
-        parent_div = craft_heading.find_parent('div', {'class': 'mw-heading'})
+    def find_table_after_heading(heading):
+        """Find the wikitable in the section following a heading."""
+        if not heading:
+            return None
+        parent_div = heading.find_parent('div', {'class': 'mw-heading'})
         if parent_div:
             next_section = parent_div.find_next_sibling('section')
             if next_section:
-                craft_table = next_section.find('table', {'class': 'wikitable'})
-                if craft_table:
-                    rows = craft_table.find_all('tr')
-                    for row in rows[1:]:  # Skip header
-                        cells = row.find_all('td')
-                        if len(cells) >= 3:
-                            materials = parse_recipe_cell(cells[0])
-                            workshop = cells[2].get_text(strip=True) if len(cells) > 2 else None
+                return next_section.find('table', {'class': 'wikitable'})
+        return heading.find_next('table', {'class': 'wikitable'})
 
-                            # Get output quantity from last cell
-                            output_qty = 1
-                            if len(cells) >= 5:
-                                output_text = cells[4].get_text(strip=True)
-                                qty_match = re.search(r'(\d+)x', output_text)
-                                if qty_match:
-                                    output_qty = int(qty_match.group(1))
+    # Find crafting recipe - prioritize "Required Materials to Craft" over "Crafting"
+    craft_heading = None
+    # Try h2#Required_Materials_to_Craft first (actual craft recipe)
+    craft_heading = content.find('h2', {'id': 'Required_Materials_to_Craft'})
+    if not craft_heading:
+        craft_heading = content.find('h3', {'id': 'Required_Materials_to_Craft'})
+    # Then try h2#Crafting (but this might be "uses" table)
+    if not craft_heading:
+        craft_heading = content.find('h2', {'id': 'Crafting'})
+    # Fallback: search for heading text, prioritize "required materials"
+    if not craft_heading:
+        for heading in content.find_all(['h2', 'h3']):
+            heading_text = heading.get_text().lower()
+            if 'required materials to craft' in heading_text:
+                craft_heading = heading
+                break
+        if not craft_heading:
+            for heading in content.find_all(['h2', 'h3']):
+                if heading.get_text().strip().lower() == 'crafting':
+                    craft_heading = heading
+                    break
 
-                            if materials:
-                                material_data['crafting'] = {
-                                    'materials': materials,
-                                    'workshop': workshop,
-                                    'output_quantity': output_qty
-                                }
-                                break
+    craft_table = find_table_after_heading(craft_heading)
+    if craft_table:
+        rows = craft_table.find_all('tr')
+        for row in rows[1:]:  # Skip header
+            cells = row.find_all('td')
+            if len(cells) >= 5:
+                # Check if output column contains this material's name
+                output_text = cells[4].get_text(strip=True)
+                if display_name.lower() not in output_text.lower():
+                    continue  # This is a "uses" recipe, not a "craft" recipe
+
+                materials = parse_recipe_cell(cells[0])
+                workshop = parse_workshop_cell(cells[2]) if len(cells) > 2 else None
+
+                output_qty = 1
+                qty_match = re.search(r'(\d+)[x×]', output_text)
+                if qty_match:
+                    output_qty = int(qty_match.group(1))
+
+                if materials:
+                    material_data['crafting'] = {
+                        'materials': materials,
+                        'workshop': workshop,
+                        'output_quantity': output_qty
+                    }
+                    break
 
     # Alternative: search all wikitables if heading approach didn't work
     if not material_data['crafting']['materials']:
         for table in content.find_all('table', {'class': 'wikitable'}):
-            # Check if this table has Recipe/Workshop headers
+            # Check if this table has Recipe/Workshop or Ingredients/Requirements headers
             first_row = table.find('tr')
             if first_row:
                 row_text = first_row.get_text().lower()
-                if 'recipe' in row_text and 'workshop' in row_text:
+                if ('recipe' in row_text and 'workshop' in row_text) or ('ingredients' in row_text and 'result' in row_text):
                     rows = table.find_all('tr')
                     for row in rows[1:]:
                         cells = row.find_all('td')
@@ -259,35 +303,55 @@ def extract_ammo_data(ammo_name):
                 elif 'stack' in header_text:
                     ammo_data['stack_size'] = value_text
 
-    # Find crafting recipe
-    for table in content.find_all('table', {'class': 'wikitable'}):
-        first_row = table.find('tr')
-        if first_row:
-            row_text = first_row.get_text().lower()
-            if 'recipe' in row_text or 'workshop' in row_text:
-                rows = table.find_all('tr')
-                for row in rows[1:]:
-                    cells = row.find_all('td')
-                    if len(cells) >= 3:
-                        materials = parse_recipe_cell(cells[0])
-                        workshop = cells[2].get_text(strip=True) if len(cells) > 2 else None
+    # Find crafting recipe - try heading approach first
+    def find_table_after_heading(heading):
+        if not heading:
+            return None
+        parent_div = heading.find_parent('div', {'class': 'mw-heading'})
+        if parent_div:
+            next_section = parent_div.find_next_sibling('section')
+            if next_section:
+                return next_section.find('table', {'class': 'wikitable'})
+        return heading.find_next('table', {'class': 'wikitable'})
 
-                        # Get output quantity from last cell
-                        output_qty = 1
-                        if len(cells) >= 5:
-                            output_text = cells[4].get_text(strip=True)
-                            qty_match = re.search(r'(\d+)x', output_text)
-                            if qty_match:
-                                output_qty = int(qty_match.group(1))
+    craft_heading = content.find('h2', {'id': 'Crafting'})
+    if not craft_heading:
+        craft_heading = content.find('h3', {'id': 'Required_Materials_to_Craft'})
 
-                        if materials:
-                            ammo_data['crafting'] = {
-                                'materials': materials,
-                                'workshop': workshop,
-                                'output_quantity': output_qty
-                            }
-                            break
-                if ammo_data['crafting']['materials']:
+    craft_table = find_table_after_heading(craft_heading)
+
+    # Fallback: search all wikitables
+    if not craft_table:
+        for table in content.find_all('table', {'class': 'wikitable'}):
+            first_row = table.find('tr')
+            if first_row:
+                row_text = first_row.get_text().lower()
+                if 'recipe' in row_text or 'ingredients' in row_text:
+                    craft_table = table
+                    break
+
+    if craft_table:
+        rows = craft_table.find_all('tr')
+        for row in rows[1:]:
+            cells = row.find_all('td')
+            if len(cells) >= 3:
+                materials = parse_recipe_cell(cells[0])
+                workshop = parse_workshop_cell(cells[2]) if len(cells) > 2 else None
+
+                # Get output quantity from last cell
+                output_qty = 1
+                if len(cells) >= 5:
+                    output_text = cells[4].get_text(strip=True)
+                    qty_match = re.search(r'(\d+)[x×]', output_text)
+                    if qty_match:
+                        output_qty = int(qty_match.group(1))
+
+                if materials:
+                    ammo_data['crafting'] = {
+                        'materials': materials,
+                        'workshop': workshop,
+                        'output_quantity': output_qty
+                    }
                     break
 
     return ammo_data

@@ -2,7 +2,7 @@
   {
     "name": "Compensator I",
     "url": "https://arcraiders.wiki/wiki/Compensator_I",
-    "slot_type": "Muzzle",
+    "slot_type": null,
     "rarity": "Common",
     "effects": [
       "Slightly reduces per-shot dispersion."
@@ -90,7 +90,7 @@
   {
     "name": "Shotgun Choke I",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_I",
-    "slot_type": "Shotgun Muzzle",
+    "slot_type": null,
     "rarity": "Common",
     "effects": [
       "Slightly reduces base dispersion."
@@ -121,7 +121,7 @@
   {
     "name": "Angled Grip I",
     "url": "https://arcraiders.wiki/wiki/Angled_Grip_I",
-    "slot_type": "Underbarrel",
+    "slot_type": null,
     "rarity": "Common",
     "effects": [
       "Slightly reduces horizontal recoil."
@@ -142,7 +142,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -161,7 +162,7 @@
   {
     "name": "Vertical Grip I",
     "url": "https://arcraiders.wiki/wiki/Vertical_Grip_I",
-    "slot_type": "Underbarrel",
+    "slot_type": null,
     "rarity": "Common",
     "effects": [
       "Slightly reduces vertical recoil."
@@ -182,7 +183,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -201,7 +203,7 @@
   {
     "name": "Extended Light Mag I",
     "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_I",
-    "slot_type": "Light-Mag",
+    "slot_type": null,
     "rarity": "Common",
     "effects": [
       "Slightly extends the ammo capacity of compatible weapons that use light ammo."
@@ -235,7 +237,7 @@
   {
     "name": "Extended Medium Mag I",
     "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_I",
-    "slot_type": "Medium-Mag",
+    "slot_type": null,
     "rarity": "Common",
     "effects": [
       "Slightly extends the ammo capacity of compatible weapons that use medium ammo."
@@ -264,13 +266,13 @@
           "quantity": 1
         }
       ],
-      "workshop": "Gunsmith 1"
+      "workshop": "Gunsmith 1"
     }
   },
   {
     "name": "Extended Shotgun Mag I",
     "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_I",
-    "slot_type": "Shotgun-Mag",
+    "slot_type": null,
     "rarity": "Common",
     "effects": [
       "Slightly extends the ammo capacity of shotguns."
@@ -325,7 +327,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -344,7 +347,7 @@
   {
     "name": "Compensator II",
     "url": "https://arcraiders.wiki/wiki/Compensator_II",
-    "slot_type": "Muzzle",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces per-shot dispersion."
@@ -432,7 +435,7 @@
   {
     "name": "Shotgun Choke II",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_II",
-    "slot_type": "Shotgun Muzzle",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces base dispersion."
@@ -447,14 +450,23 @@
       "Vulcano"
     ],
     "crafting": {
-      "materials": [],
-      "workshop": null
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 4
+        }
+      ],
+      "workshop": "Gunsmith 2"
     }
   },
   {
     "name": "Silencer I",
     "url": "https://arcraiders.wiki/wiki/Silencer_I",
-    "slot_type": "Muzzle",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Slightly reduces the amount of noise produced when firing."
@@ -481,14 +493,23 @@
       "Tempest"
     ],
     "crafting": {
-      "materials": [],
-      "workshop": null
+      "materials": [
+        {
+          "material": "Mechanical Components",
+          "quantity": 2
+        },
+        {
+          "material": "Wires",
+          "quantity": 4
+        }
+      ],
+      "workshop": "Gunsmith 2"
     }
   },
   {
     "name": "Angled Grip II",
     "url": "https://arcraiders.wiki/wiki/Angled_Grip_II",
-    "slot_type": "Underbarrel",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces horizontal recoil."
@@ -509,7 +530,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -528,7 +550,7 @@
   {
     "name": "Vertical Grip II",
     "url": "https://arcraiders.wiki/wiki/Vertical_Grip_II",
-    "slot_type": "Underbarrel",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Moderately reduces vertical recoil."
@@ -549,7 +571,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -568,7 +591,7 @@
   {
     "name": "Extended Light Mag II",
     "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_II",
-    "slot_type": "Light-Mag",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Moderately extends the ammo capacity of the compatible weapons that use light ammo."
@@ -596,13 +619,13 @@
           "quantity": 3
         }
       ],
-      "workshop": "Gunsmith 2"
+      "workshop": "Gunsmith 2"
     }
   },
   {
     "name": "Extended Medium Mag II",
     "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_II",
-    "slot_type": "Medium-Mag",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Moderately extends the ammo capacity of compatible weapons that use medium ammo."
@@ -631,13 +654,13 @@
           "quantity": 3
         }
       ],
-      "workshop": "Gunsmith 2"
+      "workshop": "Gunsmith 2"
     }
   },
   {
     "name": "Extended Shotgun Mag II",
     "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_II",
-    "slot_type": "Shotgun-Mag",
+    "slot_type": null,
     "rarity": "Uncommon",
     "effects": [
       "Moderately extends the ammo capacity of compatible weapons that use shotgun ammo."
@@ -662,7 +685,7 @@
           "quantity": 3
         }
       ],
-      "workshop": "Gunsmith 2"
+      "workshop": "Gunsmith 2"
     }
   },
   {
@@ -692,7 +715,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -711,7 +735,7 @@
   {
     "name": "Compensator III",
     "url": "https://arcraiders.wiki/wiki/Compensator_III",
-    "slot_type": "Muzzle",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Significantly reduces per-shot dispersion."
@@ -759,7 +783,7 @@
     "slot_type": "Muzzle",
     "rarity": "Rare",
     "effects": [
-      "Signifcantly reduces both vertical recoil & horizontal recoil."
+      "Significantly reduces both vertical recoil & horizontal recoil."
     ],
     "stats": {
       "effects": [
@@ -801,7 +825,7 @@
   {
     "name": "Shotgun Choke III",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Choke_III",
-    "slot_type": "Shotgun Muzzle",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Significantly reduces base dispersion."
@@ -833,7 +857,7 @@
   {
     "name": "Silencer II",
     "url": "https://arcraiders.wiki/wiki/Silencer_II",
-    "slot_type": "Muzzle",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Moderately reduces the amount of noise produced when firing."
@@ -876,7 +900,7 @@
   {
     "name": "Silencer III",
     "url": "https://arcraiders.wiki/wiki/Silencer_III",
-    "slot_type": "Muzzle",
+    "slot_type": null,
     "rarity": "Epic",
     "effects": [
       "Significantly reduces the amount of noise produced when firing."
@@ -911,7 +935,7 @@
   {
     "name": "Shotgun Silencer",
     "url": "https://arcraiders.wiki/wiki/Shotgun_Silencer",
-    "slot_type": "Shotgun Muzzle",
+    "slot_type": null,
     "rarity": "Epic",
     "effects": [
       "Moderately reduces the amount of noise produced when firing."
@@ -942,7 +966,7 @@
   {
     "name": "Extended Barrel",
     "url": "https://arcraiders.wiki/wiki/Extended_Barrel",
-    "slot_type": "Muzzle",
+    "slot_type": null,
     "rarity": "Epic",
     "effects": [
       "Moderately increases bullet velocity."
@@ -985,7 +1009,7 @@
   {
     "name": "Angled Grip III",
     "url": "https://arcraiders.wiki/wiki/Angled_Grip_III",
-    "slot_type": "Underbarrel",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Significantly reduces horizontal recoil"
@@ -1007,7 +1031,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -1026,7 +1051,7 @@
   {
     "name": "Vertical Grip III",
     "url": "https://arcraiders.wiki/wiki/Vertical_Grip_III",
-    "slot_type": "Underbarrel",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Significantly reduces vertical recoil."
@@ -1048,7 +1073,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -1067,10 +1093,10 @@
   {
     "name": "Horizontal Grip",
     "url": "https://arcraiders.wiki/wiki/Horizontal_Grip",
-    "slot_type": "Underbarrel",
+    "slot_type": null,
     "rarity": "Epic",
     "effects": [
-      "Moderately reduces both vertical and horizontal recoil."
+      "Moderately reduces both vertical recoil and horizontal recoil."
     ],
     "stats": {
       "effects": [
@@ -1090,26 +1116,18 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
-      "materials": [
-        {
-          "material": "Mod Components",
-          "quantity": 2
-        },
-        {
-          "material": "Duct Tape",
-          "quantity": 5
-        }
-      ],
-      "workshop": "Gunsmith 3"
+      "materials": [],
+      "workshop": null
     }
   },
   {
     "name": "Extended Light Mag III",
     "url": "https://arcraiders.wiki/wiki/Extended_Light_Mag_III",
-    "slot_type": "Light-Mag",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Significantly extends the ammo capacity of the compatible weapons that use light ammo."
@@ -1137,13 +1155,13 @@
           "quantity": 5
         }
       ],
-      "workshop": "Gunsmith 3"
+      "workshop": "Gunsmith 3"
     }
   },
   {
     "name": "Extended Medium Mag III",
     "url": "https://arcraiders.wiki/wiki/Extended_Medium_Mag_III",
-    "slot_type": "Medium-Mag",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Significantly extends the ammo capacity of compatible weapons that use medium ammo."
@@ -1172,13 +1190,13 @@
           "quantity": 5
         }
       ],
-      "workshop": "Gunsmith 3"
+      "workshop": "Gunsmith 3"
     }
   },
   {
     "name": "Extended Shotgun Mag III",
     "url": "https://arcraiders.wiki/wiki/Extended_Shotgun_Mag_III",
-    "slot_type": "Shotgun-Mag",
+    "slot_type": null,
     "rarity": "Rare",
     "effects": [
       "Significantly extends the ammo capacity of shotguns."
@@ -1203,7 +1221,7 @@
           "quantity": 5
         }
       ],
-      "workshop": "Gunsmith 3"
+      "workshop": "Gunsmith 3"
     }
   },
   {
@@ -1235,7 +1253,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -1282,7 +1301,8 @@
       "Bobcat",
       "Hullcracker",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -1329,7 +1349,8 @@
       "Bettina",
       "Bobcat",
       "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [
@@ -1348,7 +1369,7 @@
   {
     "name": "Kinetic Converter",
     "url": "https://arcraiders.wiki/wiki/Kinetic_Converter",
-    "slot_type": "Stock",
+    "slot_type": null,
     "rarity": "Legendary",
     "effects": [
       "Moderately increases fire rate."
@@ -1372,8 +1393,8 @@
       "Torrente",
       "Bettina",
       "Bobcat",
-      "Tempest",
-      "Vulcano"
+      "Vulcano",
+      "Aphelion"
     ],
     "crafting": {
       "materials": [],
