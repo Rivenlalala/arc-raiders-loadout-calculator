@@ -292,7 +292,7 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
             Modifications
           </p>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="space-y-2">
             {selectedWeapon.modification_slots.map((slot, index) => (
               <ModSelector
                 key={`${selectedWeapon.id}-${slot}-${index}`}

@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { ChevronDown, X, Info } from 'lucide-react';
+import { ChevronRight, X, ChevronDown, ChevronUp, Info } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { getModificationsForWeaponSlot, getModificationById, getRarityColor } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
 import { MobileTooltip } from '../ui/MobileTooltip';
-import { useIsMobile } from '../../hooks/useIsMobile';
+import { SlideOutPanel } from '../ui/SlideOutPanel';
 import type { Modification } from '../../types';
 
 interface ModSelectorProps {
@@ -58,42 +58,36 @@ function ModTooltipContent({ mod }: { mod: Modification }) {
   );
 }
 
-// Desktop-only hover tooltip for dropdown
-function DesktopModTooltip({ mod }: { mod: Modification }) {
-  return (
-    <div
-      className="absolute z-[100] w-56 p-3 rounded-lg border bg-card shadow-xl pointer-events-none left-full top-0 ml-2"
-      style={{ borderColor: getRarityColor(mod.rarity) }}
-    >
-      <p className="font-semibold text-sm mb-1" style={{ color: getRarityColor(mod.rarity) }}>
-        {mod.name}
-      </p>
-      <p className="text-xs text-muted-foreground mb-2">{mod.rarity} • {mod.slot_type}</p>
-      {(mod.stats.effects?.length || mod.stats.effect) && (
-        <div className="text-xs text-green-400 space-y-1">
-          {mod.stats.effects?.map((effect, i) => (
-            <p key={i}>{effect}</p>
-          ))}
-          {!mod.stats.effects && mod.stats.effect && <p>{mod.stats.effect}</p>}
-        </div>
-      )}
-    </div>
-  );
+// Get all stats for a mod
+function getModStats(mod: Modification): string[] {
+  const stats: string[] = [];
+  if (mod.stats.effects?.length) {
+    stats.push(...mod.stats.effects);
+  } else if (mod.stats.effect) {
+    stats.push(mod.stats.effect);
+  }
+  if (mod.effects.length > 0) {
+    stats.push(...mod.effects);
+  }
+  return stats;
 }
 
 export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hoveredModId, setHoveredModId] = useState<string | null>(null);
-  const isMobile = useIsMobile();
+  const [expandedModId, setExpandedModId] = useState<string | null>(null);
 
   const availableMods = getModificationsForWeaponSlot(weaponName, slot);
   const selectedMod = selectedModId ? getModificationById(selectedModId) : null;
-  const hoveredMod = hoveredModId ? getModificationById(hoveredModId) : null;
 
   const handleModSelect = (mod: Modification) => {
     onSelect(mod.id);
     setIsOpen(false);
-    setHoveredModId(null);
+    setExpandedModId(null);
+  };
+
+  const toggleExpanded = (e: React.MouseEvent, modId: string) => {
+    e.stopPropagation();
+    setExpandedModId(expandedModId === modId ? null : modId);
   };
 
   const handleClear = (e: React.MouseEvent) => {
@@ -101,23 +95,15 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
     onSelect(null);
   };
 
-  // Get display stat for a mod (first effect from stats.effects or stats.effect)
-  const getModStat = (mod: Modification): string => {
-    if (mod.stats.effects?.length) return mod.stats.effects[0];
-    if (mod.stats.effect) return mod.stats.effect;
-    if (mod.effects.length > 0) return mod.effects[0];
-    return '';
-  };
-
   return (
-    <div className="relative">
+    <>
+      {/* Selected Mod Card */}
       <div
         className={cn(
-          'flex items-center gap-2 p-2 rounded-lg border border-border bg-card/50',
-          'hover:bg-secondary/50 cursor-pointer transition-colors',
-          isOpen && 'ring-2 ring-primary'
+          'flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50',
+          'hover:bg-secondary/50 cursor-pointer transition-colors min-h-[60px]'
         )}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen(true)}
       >
         {selectedMod ? (
           <>
@@ -125,11 +111,11 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
               name={selectedMod.name}
               image={selectedMod.image}
               rarity={selectedMod.rarity}
-              size="xs"
+              size="sm"
             />
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">{selectedMod.name}</p>
-              <p className="text-xs text-green-400 truncate">{getModStat(selectedMod)}</p>
+              <p className="font-medium">{selectedMod.name}</p>
+              <p className="text-sm text-muted-foreground">{slot}</p>
             </div>
             <MobileTooltip
               title={selectedMod.name}
@@ -137,103 +123,103 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
               content={<ModTooltipContent mod={selectedMod} />}
             >
               <button
-                className="p-1 hover:bg-secondary rounded"
+                className="p-2 hover:bg-secondary rounded-lg"
                 onClick={(e) => e.stopPropagation()}
               >
-                <Info className="w-3 h-3 text-muted-foreground" />
+                <Info className="w-4 h-4 text-muted-foreground" />
               </button>
             </MobileTooltip>
             <button
-              className="p-1 hover:bg-secondary rounded"
+              className="p-2 hover:bg-secondary rounded-lg"
               onClick={handleClear}
             >
-              <X className="w-3 h-3" />
+              <X className="w-4 h-4" />
             </button>
           </>
         ) : (
           <>
-            <div className="w-8 h-8 rounded bg-secondary/50 flex items-center justify-center">
-              <span className="text-xs text-muted-foreground">+</span>
+            <div className="w-16 h-16 rounded-lg bg-secondary/50 border-2 border-dashed border-muted-foreground/30 flex items-center justify-center">
+              <span className="text-xl text-muted-foreground">+</span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm text-muted-foreground">{slot}</p>
+              <p className="font-medium text-muted-foreground">{slot}</p>
+              <p className="text-sm text-muted-foreground">Click to select</p>
             </div>
-            <ChevronDown className="w-4 h-4 text-muted-foreground" />
+            <ChevronRight className="w-5 h-5 text-muted-foreground" />
           </>
         )}
       </div>
 
-      {/* Dropdown */}
-      {isOpen && (
-        <>
-          <div className="fixed inset-0 z-40" onClick={() => { setIsOpen(false); setHoveredModId(null); }} />
-          <div className={cn(
-            'z-50 overflow-y-auto rounded-lg border border-border bg-card shadow-xl',
-            isMobile
-              ? 'fixed inset-x-4 top-32 bottom-32'
-              : 'absolute mt-1 left-0 right-0 max-h-64'
-          )}>
-            <div className="p-2">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
-                {slot} Mods ({availableMods.length})
-              </p>
-              {availableMods.length === 0 ? (
-                <p className="text-sm text-muted-foreground py-2">No mods available for this slot</p>
-              ) : (
-                <div className="space-y-1">
-                  {availableMods.map((mod) => (
-                    <div
-                      key={mod.id}
-                      className={cn(
-                        'relative flex items-center gap-2 p-2 rounded-lg cursor-pointer transition-colors',
-                        selectedModId === mod.id
-                          ? 'bg-primary/20 ring-1 ring-primary'
-                          : 'hover:bg-secondary/50'
-                      )}
-                      onClick={() => handleModSelect(mod)}
-                      onMouseEnter={() => !isMobile && setHoveredModId(mod.id)}
-                      onMouseLeave={() => !isMobile && setHoveredModId(null)}
-                    >
-                      <ItemCard
-                        name={mod.name}
-                        image={mod.image}
-                        rarity={mod.rarity}
-                        size="xs"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium truncate">{mod.name}</p>
-                        <p className="text-xs text-green-400 truncate">
-                          {getModStat(mod)}
-                        </p>
-                      </div>
-                      {/* Info button for mobile */}
-                      {isMobile && (
-                        <MobileTooltip
-                          title={mod.name}
-                          borderColor={getRarityColor(mod.rarity)}
-                          content={<ModTooltipContent mod={mod} />}
-                        >
-                          <button
-                            className="p-1.5 hover:bg-secondary rounded"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <Info className="w-4 h-4 text-muted-foreground" />
-                          </button>
-                        </MobileTooltip>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+      {/* Selection Modal */}
+      <SlideOutPanel
+        isOpen={isOpen}
+        onClose={() => { setIsOpen(false); setExpandedModId(null); }}
+        title={`Select ${slot} Mod`}
+      >
+        <div className="p-3 space-y-2">
+          {availableMods.length === 0 ? (
+            <p className="text-muted-foreground py-4 text-center">No mods available for this slot</p>
+          ) : (
+            availableMods.map((mod) => {
+              const isExpanded = expandedModId === mod.id;
+              const stats = getModStats(mod);
 
-            {/* Tooltip for hovered mod in dropdown (desktop only) */}
-            {!isMobile && hoveredMod && (
-              <DesktopModTooltip mod={hoveredMod} />
-            )}
-          </div>
-        </>
-      )}
-    </div>
+              return (
+                <div
+                  key={mod.id}
+                  className={cn(
+                    'relative rounded-lg cursor-pointer transition-colors',
+                    selectedModId === mod.id
+                      ? 'bg-primary/20 ring-2 ring-primary'
+                      : 'hover:bg-secondary/50'
+                  )}
+                >
+                  {/* Main row */}
+                  <div
+                    className="flex items-center gap-3 p-3"
+                    onClick={() => handleModSelect(mod)}
+                  >
+                    <ItemCard
+                      name={mod.name}
+                      image={mod.image}
+                      rarity={mod.rarity}
+                      size="sm"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium">{mod.name}</p>
+                      <p className="text-xs text-muted-foreground">{mod.rarity}</p>
+                    </div>
+                    {/* Expand/collapse button */}
+                    {stats.length > 0 && (
+                      <button
+                        className="p-2 hover:bg-secondary rounded-lg"
+                        onClick={(e) => toggleExpanded(e, mod.id)}
+                      >
+                        {isExpanded ? (
+                          <ChevronUp className="w-4 h-4 text-muted-foreground" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                        )}
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Expanded stats */}
+                  {isExpanded && stats.length > 0 && (
+                    <div className="px-3 pb-3 pt-0">
+                      <div className="bg-green-500/10 border border-green-500/30 rounded p-2 space-y-1">
+                        {stats.map((stat, i) => (
+                          <p key={i} className="text-sm text-green-400">{stat}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          )}
+        </div>
+      </SlideOutPanel>
+    </>
   );
 }
