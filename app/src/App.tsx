@@ -120,6 +120,17 @@ function App() {
               arcraiders.wiki
             </a>
           </p>
+          <p className="mt-2">
+            Found a bug?{' '}
+            <a
+              href="https://github.com/Rivenlalala/arc-raiders-loadout-calculator"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Contribute on GitHub
+            </a>
+          </p>
         </div>
       </footer>
     </div>
