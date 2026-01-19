@@ -689,16 +689,19 @@ function TreeNode({
       <div
         className={cn(
           'flex items-center gap-2 p-2 rounded-lg transition-all',
-          'hover:bg-secondary/50',
-          node.canCraft && 'cursor-pointer',
           isExpanded && 'bg-secondary/30',
           isBottleneck && 'bg-red-500/10'
         )}
         style={{ borderLeft: `3px solid ${rarityColor}` }}
-        onClick={() => node.canCraft && onToggle(node.name)}
       >
-        {/* Chevron - fixed width */}
-        <span className="w-5 h-5 flex-shrink-0 flex items-center justify-center text-muted-foreground">
+        {/* Chevron - fixed width, clickable */}
+        <span
+          className={cn(
+            'w-5 h-5 flex-shrink-0 flex items-center justify-center text-muted-foreground',
+            node.canCraft && 'cursor-pointer hover:text-foreground'
+          )}
+          onClick={() => node.canCraft && onToggle(node.name)}
+        >
           {node.canCraft ? (
             isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />
           ) : null}
@@ -754,7 +757,10 @@ function TreeNode({
           </div>
 
           {/* Progress bar - fixed width, always reserve space */}
-          <div className="w-16 h-2 flex-shrink-0 bg-secondary rounded-full overflow-hidden">
+          <div
+            className="w-16 h-2 flex-shrink-0 bg-secondary rounded-full overflow-hidden"
+            title={isLeaf && roundsProvided !== null ? `${roundsProvided} rounds with this resource` : undefined}
+          >
             {isLeaf && roundsProvided !== null && roundsCalculation.rounds !== null && roundsCalculation.rounds > 0 && (
               <div
                 className={cn(
@@ -780,12 +786,13 @@ function TreeNode({
             {node.canCraft && (
               <div
                 className={cn(
-                  'flex items-center justify-center w-8 h-8 rounded-lg transition-all',
+                  'flex items-center justify-center w-8 h-8 rounded-lg transition-all cursor-pointer',
                   isExpanded
                     ? 'bg-primary text-primary-foreground shadow-md'
                     : 'border-2 border-dashed border-primary/50 text-primary hover:border-primary hover:bg-primary/10'
                 )}
                 title={isExpanded ? "Click to collapse" : "Click to break down into components"}
+                onClick={() => onToggle(node.name)}
               >
                 <Hammer className={cn('w-5 h-5', !isExpanded && 'animate-pulse')} />
               </div>
