@@ -37,6 +37,8 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
   const [groupByItem, setGroupByItem] = useState(false);
   // Track which item blocks are collapsed
   const [collapsedBlocks, setCollapsedBlocks] = useState<Set<string>>(new Set());
+  // Track inventory amounts for rounds calculation
+  const [inventory, setInventory] = useState<Record<string, string>>({});
 
   // Calculate all resources needed from loadout
   const rawResources = useMemo(() => {
@@ -332,6 +334,53 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
     return result;
   }, [tree]);
 
+  // Calculate rounds possible based on inventory
+  const roundsCalculation = useMemo(() => {
+    const leafMaterials = new Map<string, number>();
+
+    // Collect leaf materials from tree (follows expansion state)
+    const collectLeaves = (nodes: ResourceNode[]) => {
+      for (const node of nodes) {
+        if (node.children && node.children.length > 0) {
+          collectLeaves(node.children);
+        } else {
+          const current = leafMaterials.get(node.name) || 0;
+          leafMaterials.set(node.name, current + node.quantity);
+        }
+      }
+    };
+    collectLeaves(tree);
+
+    let minRounds = Infinity;
+    let bottleneckResource: string | null = null;
+    const resourceRounds: Map<string, number> = new Map();
+
+    for (const [name, needed] of leafMaterials) {
+      const invStr = inventory[name];
+      // Empty or missing = infinite, skip
+      if (!invStr || invStr === '') continue;
+
+      const invAmount = parseInt(invStr, 10);
+      if (isNaN(invAmount)) continue;
+
+      const rounds = Math.floor(invAmount / needed);
+      resourceRounds.set(name, rounds);
+
+      if (rounds < minRounds) {
+        minRounds = rounds;
+        bottleneckResource = name;
+      }
+    }
+
+    return {
+      rounds: minRounds === Infinity ? null : minRounds,
+      bottleneck: bottleneckResource,
+      resourceRounds,
+      leafMaterials,
+      hasAnyInput: resourceRounds.size > 0
+    };
+  }, [tree, inventory]);
+
   const toggleNode = (name: string) => {
     setExpandedNodes((prev) => {
       const next = new Set(prev);
@@ -356,6 +405,14 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
     });
   };
 
+  const handleInventoryChange = (name: string, value: string) => {
+    // Only allow non-negative integers
+    if (value !== '' && !/^\d*$/.test(value)) return;
+    setInventory(prev => ({ ...prev, [name]: value }));
+  };
+
+  const clearInventory = () => setInventory({});
+
   const isEmpty = Object.keys(rawResources).length === 0;
 
   if (isEmpty) {
@@ -368,6 +425,14 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
   return (
     <div className="space-y-6">
+      {/* Rounds Calculator Section */}
+      <RoundsCalculatorDisplay
+        rounds={roundsCalculation.rounds}
+        bottleneck={roundsCalculation.bottleneck}
+        hasAnyInput={roundsCalculation.hasAnyInput}
+        onClear={clearInventory}
+      />
+
       {/* Header with toggle */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold">Required Resources</h2>
@@ -426,6 +491,9 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                       expandedNodes={expandedNodes}
                       onToggle={toggleNode}
                       depth={0}
+                      inventory={inventory}
+                      onInventoryChange={handleInventoryChange}
+                      roundsCalculation={roundsCalculation}
                     />
                   </div>
                 )}
@@ -446,6 +514,9 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                 expandedNodes={expandedNodes}
                 onToggle={toggleNode}
                 depth={0}
+                inventory={inventory}
+                onInventoryChange={handleInventoryChange}
+                roundsCalculation={roundsCalculation}
               />
             </div>
           </div>
@@ -494,17 +565,81 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
   );
 }
 
+// Rounds calculator display component
+function RoundsCalculatorDisplay({
+  rounds,
+  bottleneck,
+  hasAnyInput,
+  onClear,
+}: {
+  rounds: number | null;
+  bottleneck: string | null;
+  hasAnyInput: boolean;
+  onClear: () => void;
+}) {
+  return (
+    <div className="bg-card rounded-lg border border-border p-4">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold">Rounds Calculator</h3>
+        <button
+          onClick={onClear}
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Clear all
+        </button>
+      </div>
+
+      <div className="text-center py-4">
+        {!hasAnyInput ? (
+          <p className="text-muted-foreground">
+            Enter inventory amounts below to calculate how many rounds you can craft
+          </p>
+        ) : (
+          <>
+            <div className="text-5xl font-bold text-primary mb-2">
+              {rounds === null ? '∞' : rounds}
+            </div>
+            <p className="text-lg text-muted-foreground">
+              rounds possible
+            </p>
+            {bottleneck && (
+              <p className="text-sm text-red-400 mt-2">
+                Limited by: {bottleneck}
+              </p>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Type for rounds calculation result
+interface RoundsCalculationResult {
+  rounds: number | null;
+  bottleneck: string | null;
+  resourceRounds: Map<string, number>;
+  leafMaterials: Map<string, number>;
+  hasAnyInput: boolean;
+}
+
 // Recursive tree node list component
 function TreeNodeList({
   nodes,
   expandedNodes,
   onToggle,
   depth,
+  inventory,
+  onInventoryChange,
+  roundsCalculation,
 }: {
   nodes: ResourceNode[];
   expandedNodes: Set<string>;
   onToggle: (name: string) => void;
   depth: number;
+  inventory: Record<string, string>;
+  onInventoryChange: (name: string, value: string) => void;
+  roundsCalculation: RoundsCalculationResult;
 }) {
   return (
     <div className={cn(depth > 0 && 'ml-6 pl-4 border-l-2 border-border')}>
@@ -515,6 +650,9 @@ function TreeNodeList({
           expandedNodes={expandedNodes}
           onToggle={onToggle}
           depth={depth}
+          inventory={inventory}
+          onInventoryChange={onInventoryChange}
+          roundsCalculation={roundsCalculation}
         />
       ))}
     </div>
@@ -526,14 +664,25 @@ function TreeNode({
   expandedNodes,
   onToggle,
   depth,
+  inventory,
+  onInventoryChange,
+  roundsCalculation,
 }: {
   node: ResourceNode;
   expandedNodes: Set<string>;
   onToggle: (name: string) => void;
   depth: number;
+  inventory: Record<string, string>;
+  onInventoryChange: (name: string, value: string) => void;
+  roundsCalculation: RoundsCalculationResult;
 }) {
   const isExpanded = expandedNodes.has(node.name);
   const rarityColor = getRarityColor(node.rarity);
+
+  // Show input only on leaf nodes (not expanded with children)
+  const isLeaf = !node.children || node.children.length === 0;
+  const isBottleneck = roundsCalculation.bottleneck === node.name;
+  const roundsProvided = roundsCalculation.resourceRounds.get(node.name) ?? null;
 
   return (
     <div className="py-1">
@@ -542,50 +691,107 @@ function TreeNode({
           'flex items-center gap-2 p-2 rounded-lg transition-all',
           'hover:bg-secondary/50',
           node.canCraft && 'cursor-pointer',
-          isExpanded && 'bg-secondary/30'
+          isExpanded && 'bg-secondary/30',
+          isBottleneck && 'bg-red-500/10'
         )}
         style={{ borderLeft: `3px solid ${rarityColor}` }}
         onClick={() => node.canCraft && onToggle(node.name)}
       >
-        {node.canCraft ? (
-          <span className="w-5 h-5 flex items-center justify-center text-muted-foreground">
-            {isExpanded ? (
-              <ChevronDown className="w-4 h-4" />
-            ) : (
-              <ChevronRight className="w-4 h-4" />
-            )}
-          </span>
-        ) : (
-          <span className="w-5 h-5" />
-        )}
-
-        {node.image && (
-          <img
-            src={`/${node.image}`}
-            alt={node.name}
-            className="w-8 h-8 object-contain"
-          />
-        )}
-
-        <span className="flex-1 font-medium">{node.name}</span>
-
-        <span className="font-bold text-lg" style={{ color: rarityColor }}>
-          {node.quantity}
+        {/* Chevron - fixed width */}
+        <span className="w-5 h-5 flex-shrink-0 flex items-center justify-center text-muted-foreground">
+          {node.canCraft ? (
+            isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />
+          ) : null}
         </span>
 
-        {node.canCraft && (
-          <div
-            className={cn(
-              'flex items-center justify-center w-8 h-8 rounded-lg transition-all',
-              isExpanded
-                ? 'bg-primary text-primary-foreground shadow-md'
-                : 'border-2 border-dashed border-primary/50 text-primary hover:border-primary hover:bg-primary/10'
+        {/* Image - fixed width */}
+        <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+          {node.image && (
+            <img
+              src={`/${node.image}`}
+              alt={node.name}
+              className="w-8 h-8 object-contain"
+            />
+          )}
+        </div>
+
+        {/* Name - flexible */}
+        <span className="flex-1 font-medium min-w-0 truncate">{node.name}</span>
+
+        {/* Right-side controls with fixed widths */}
+        <div className="flex items-center gap-2 flex-shrink-0">
+          {/* Quantity needed - fixed width */}
+          <span className="w-10 text-right font-bold text-lg" style={{ color: rarityColor }}>
+            {node.quantity}
+          </span>
+
+          {/* Inventory input - fixed width, always reserve space */}
+          <div className="w-16 flex-shrink-0">
+            {isLeaf ? (
+              <input
+                type="text"
+                inputMode="numeric"
+                value={inventory[node.name] || ''}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '' || /^\d*$/.test(value)) {
+                    onInventoryChange(node.name, value);
+                  }
+                }}
+                placeholder="∞"
+                className={cn(
+                  'w-full px-2 py-1 text-right text-sm rounded border bg-background',
+                  isBottleneck
+                    ? 'border-red-500 ring-1 ring-red-500/50'
+                    : 'border-border'
+                )}
+                aria-label={`Inventory amount for ${node.name}`}
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : (
+              <div className="w-full h-7" />
             )}
-            title={isExpanded ? "Click to collapse" : "Click to break down into components"}
-          >
-            <Hammer className={cn('w-5 h-5', !isExpanded && 'animate-pulse')} />
           </div>
-        )}
+
+          {/* Progress bar - fixed width, always reserve space */}
+          <div className="w-16 h-2 flex-shrink-0 bg-secondary rounded-full overflow-hidden">
+            {isLeaf && roundsProvided !== null && roundsCalculation.rounds !== null && roundsCalculation.rounds > 0 && (
+              <div
+                className={cn(
+                  'h-full transition-all',
+                  roundsProvided === 0
+                    ? 'bg-red-500'
+                    : isBottleneck
+                      ? 'bg-red-500'
+                      : (() => {
+                          const headroom = ((roundsProvided - roundsCalculation.rounds) / roundsCalculation.rounds) * 100;
+                          return headroom <= 25 ? 'bg-yellow-500' : 'bg-green-500';
+                        })()
+                )}
+                style={{
+                  width: `${isBottleneck ? 100 : Math.min(Math.max(((roundsProvided - roundsCalculation.rounds) / roundsCalculation.rounds) * 100, 10), 100)}%`
+                }}
+              />
+            )}
+          </div>
+
+          {/* Hammer icon - fixed width, always reserve space */}
+          <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+            {node.canCraft && (
+              <div
+                className={cn(
+                  'flex items-center justify-center w-8 h-8 rounded-lg transition-all',
+                  isExpanded
+                    ? 'bg-primary text-primary-foreground shadow-md'
+                    : 'border-2 border-dashed border-primary/50 text-primary hover:border-primary hover:bg-primary/10'
+                )}
+                title={isExpanded ? "Click to collapse" : "Click to break down into components"}
+              >
+                <Hammer className={cn('w-5 h-5', !isExpanded && 'animate-pulse')} />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       {isExpanded && node.children && (
@@ -594,6 +800,9 @@ function TreeNode({
           expandedNodes={expandedNodes}
           onToggle={onToggle}
           depth={depth + 1}
+          inventory={inventory}
+          onInventoryChange={onInventoryChange}
+          roundsCalculation={roundsCalculation}
         />
       )}
     </div>
