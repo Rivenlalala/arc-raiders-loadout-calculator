@@ -6,6 +6,7 @@ import {
   getEquipmentById,
   getModificationById,
   getMaterialByName,
+  getAmmoByName,
   getRarityColor,
   isCraftable,
   getMaterialRecipe,
@@ -129,6 +130,17 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
       if (item) addMaterials(item.crafting.materials, t.quantity);
     }
 
+    // Ammo
+    for (const a of loadout.ammo) {
+      const ammo = getAmmoByName(a.type);
+      if (ammo) {
+        // Calculate how many crafts needed based on output_quantity
+        const outputQty = ammo.crafting.output_quantity || 1;
+        const craftsNeeded = Math.ceil(a.quantity / outputQty);
+        addMaterials(ammo.crafting.materials, craftsNeeded);
+      }
+    }
+
     return resources;
   }, [loadout]);
 
@@ -247,6 +259,18 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
         const resources: Record<string, number> = {};
         addMaterials(resources, item.crafting.materials, t.quantity);
         items.push({ label: `${item.name} x${t.quantity}`, resources });
+      }
+    }
+
+    // Ammo
+    for (const a of loadout.ammo) {
+      const ammo = getAmmoByName(a.type);
+      if (ammo) {
+        const resources: Record<string, number> = {};
+        const outputQty = ammo.crafting.output_quantity || 1;
+        const craftsNeeded = Math.ceil(a.quantity / outputQty);
+        addMaterials(resources, ammo.crafting.materials, craftsNeeded);
+        items.push({ label: `${ammo.name} x${a.quantity}`, resources });
       }
     }
 

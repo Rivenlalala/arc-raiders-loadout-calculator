@@ -2185,6 +2185,36 @@
         }
       },
       {
+        "id": "herbal_bandage",
+        "name": "Herbal Bandage",
+        "image": "images/healing/herbal_bandage.webp",
+        "category": "healing",
+        "rarity": "Uncommon",
+        "description": "An improvised medical item that gradually restores health over time.",
+        "special_effect": null,
+        "stats": {
+          "Weight": "0.15",
+          "Stack Size": "5",
+          "Sell Price": "900",
+          "Healing": "3.5/s",
+          "Use Time": "1.5s",
+          "Duration": "10s"
+        },
+        "crafting": {
+          "materials": [
+            {
+              "material": "Durable Cloth",
+              "quantity": 1
+            },
+            {
+              "material": "Great Mullein",
+              "quantity": 1
+            }
+          ],
+          "workshop": "Medical Lab 1"
+        }
+      },
+      {
         "id": "defibrillator",
         "name": "Defibrillator",
         "image": "images/healing/defibrillator.webp",
@@ -2348,7 +2378,7 @@
           "materials": [
             {
               "material": "Antiseptic",
-              "quantity": 1
+              "quantity": 2
             },
             {
               "material": "Syringe",

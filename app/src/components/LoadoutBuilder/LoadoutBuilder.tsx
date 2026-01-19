@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { WeaponSelector } from './WeaponSelector';
 import { ItemCard } from '../ui/ItemCard';
-import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getTraps, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
+import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getTraps, getAmmo, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import type { Loadout, EquipmentItem } from '../../types';
 
@@ -210,6 +210,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
   const grenades = sortByRarity(getGrenades().filter(g => g.crafting.materials.length > 0));
   const utilities = sortByRarity(getQuickUse().filter(u => u.crafting.materials.length > 0));
   const traps = sortByRarity(getTraps().filter(t => t.crafting.materials.length > 0));
+  const ammoTypes = getAmmo().filter(a => a.crafting.materials.length > 0);
 
   const handleMouseEnter = (id: string, e: React.MouseEvent) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -683,6 +684,86 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                             t.id === item.id ? { ...t, quantity: t.quantity + 1 } : t
                           );
                           onChange({ ...loadout, traps: newTraps });
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Ammo */}
+        <div>
+          <label className="block text-sm font-medium text-muted-foreground mb-2">
+            Ammo
+          </label>
+          <div className="flex flex-wrap gap-3">
+            {ammoTypes.map((ammo) => {
+              const current = loadout.ammo.find(a => a.type === ammo.name);
+              const qty = current?.quantity ?? 0;
+
+              return (
+                <div key={ammo.id} className="flex flex-col items-center h-[100px]">
+                  <div className="w-14 h-14 flex items-center justify-center">
+                    <div
+                      className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
+                      onClick={() => {
+                        const newAmmo = loadout.ammo.filter(a => a.type !== ammo.name);
+                        if (qty === 0) {
+                          newAmmo.push({ type: ammo.name, quantity: ammo.crafting.output_quantity || 1 });
+                        }
+                        onChange({ ...loadout, ammo: newAmmo });
+                      }}
+                    >
+                      <img
+                        src={`/${ammo.image}`}
+                        alt={ammo.name}
+                        className="w-12 h-12 object-contain rounded-lg"
+                        style={{
+                          borderColor: '#9ca3af',
+                          borderWidth: '2px',
+                          borderStyle: 'solid',
+                          boxShadow: qty > 0 ? '0 0 16px 4px rgba(59, 130, 246, 0.6)' : undefined
+                        }}
+                      />
+                      {qty > 0 && (
+                        <span className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded px-1">
+                          {qty}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={ammo.name}>
+                    {ammo.name.replace(' Ammo', '').replace(' Clip', '')}
+                  </span>
+                  {qty > 0 && (
+                    <div className="flex items-center gap-1 mt-1">
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const outputQty = ammo.crafting.output_quantity || 1;
+                          const newAmmo = loadout.ammo.map(a =>
+                            a.type === ammo.name ? { ...a, quantity: Math.max(0, a.quantity - outputQty) } : a
+                          ).filter(a => a.quantity > 0);
+                          onChange({ ...loadout, ammo: newAmmo });
+                        }}
+                      >
+                        -
+                      </button>
+                      <button
+                        className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const outputQty = ammo.crafting.output_quantity || 1;
+                          const newAmmo = loadout.ammo.map(a =>
+                            a.type === ammo.name ? { ...a, quantity: a.quantity + outputQty } : a
+                          );
+                          onChange({ ...loadout, ammo: newAmmo });
                         }}
                       >
                         +
