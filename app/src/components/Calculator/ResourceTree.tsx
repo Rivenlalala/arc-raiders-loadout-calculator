@@ -697,7 +697,7 @@ function TreeNode({
         {/* Chevron - fixed width, clickable */}
         <span
           className={cn(
-            'w-5 h-5 flex-shrink-0 flex items-center justify-center text-muted-foreground',
+            'w-5 h-5 flex-shrink-0 flex items-center justify-center text-muted-foreground select-none',
             node.canCraft && 'cursor-pointer hover:text-foreground'
           )}
           onClick={() => node.canCraft && onToggle(node.name)}
@@ -786,7 +786,7 @@ function TreeNode({
             {node.canCraft && (
               <div
                 className={cn(
-                  'flex items-center justify-center w-8 h-8 rounded-lg transition-all cursor-pointer',
+                  'flex items-center justify-center w-8 h-8 rounded-lg transition-all cursor-pointer select-none',
                   isExpanded
                     ? 'bg-primary text-primary-foreground shadow-md'
                     : 'border-2 border-dashed border-primary/50 text-primary hover:border-primary hover:bg-primary/10'
