@@ -40,6 +40,10 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
   const [collapsedBlocks, setCollapsedBlocks] = useState<Set<string>>(new Set());
   // Track inventory amounts for rounds calculation
   const [inventory, setInventory] = useState<Record<string, string>>({});
+  // Tab state: 'stash' for Stash Check, 'raid' for Raid Prep
+  const [activeTab, setActiveTab] = useState<'stash' | 'raid'>('stash');
+  // Target rounds for Raid Prep tab
+  const [targetRounds, setTargetRounds] = useState<number>(1);
 
   // Calculate all resources needed from loadout
   const rawResources = useMemo(() => {
@@ -437,6 +441,16 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
   const clearInventory = () => setInventory({});
 
+  const handleTabSwitch = (tab: 'stash' | 'raid') => {
+    if (tab === 'raid' && activeTab === 'stash') {
+      // Switching to Raid Prep: carry over calculated rounds
+      if (roundsCalculation.rounds !== null) {
+        setTargetRounds(roundsCalculation.rounds);
+      }
+    }
+    setActiveTab(tab);
+  };
+
   const isEmpty = Object.keys(rawResources).length === 0;
 
   if (isEmpty) {
@@ -449,13 +463,46 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
   return (
     <div className="space-y-6">
-      {/* Rounds Calculator Section */}
-      <RoundsCalculatorDisplay
-        rounds={roundsCalculation.rounds}
-        bottleneck={roundsCalculation.bottleneck}
-        hasAnyInput={roundsCalculation.hasAnyInput}
-        onClear={clearInventory}
-      />
+      {/* Tab Switcher */}
+      <div className="flex gap-2 mb-4">
+        <button
+          onClick={() => handleTabSwitch('stash')}
+          className={cn(
+            'px-4 py-2 rounded-lg font-medium transition-colors',
+            activeTab === 'stash'
+              ? 'bg-primary text-primary-foreground'
+              : 'bg-secondary text-muted-foreground hover:text-foreground'
+          )}
+        >
+          Stash Check
+        </button>
+        <button
+          onClick={() => handleTabSwitch('raid')}
+          className={cn(
+            'px-4 py-2 rounded-lg font-medium transition-colors',
+            activeTab === 'raid'
+              ? 'bg-primary text-primary-foreground'
+              : 'bg-secondary text-muted-foreground hover:text-foreground'
+          )}
+        >
+          Raid Prep
+        </button>
+      </div>
+
+      {/* Tab Content */}
+      {activeTab === 'stash' ? (
+        <RoundsCalculatorDisplay
+          rounds={roundsCalculation.rounds}
+          bottleneck={roundsCalculation.bottleneck}
+          hasAnyInput={roundsCalculation.hasAnyInput}
+          onClear={clearInventory}
+        />
+      ) : (
+        <RaidPrepDisplay
+          targetRounds={targetRounds}
+          onTargetChange={setTargetRounds}
+        />
+      )}
 
       {/* Header with toggle */}
       <div className="flex items-center justify-between">
@@ -633,6 +680,34 @@ function RoundsCalculatorDisplay({
             )}
           </>
         )}
+      </div>
+    </div>
+  );
+}
+
+// Temporary placeholder for Raid Prep display (will be implemented in Task 2)
+function RaidPrepDisplay({
+  targetRounds,
+  onTargetChange,
+}: {
+  targetRounds: number;
+  onTargetChange: (rounds: number) => void;
+}) {
+  return (
+    <div className="bg-card rounded-lg border border-border p-4">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold">Raid Prep</h3>
+      </div>
+      <div className="text-center py-4">
+        <p className="text-muted-foreground">
+          Raid Prep feature coming soon. Target rounds: {targetRounds}
+        </p>
+        <button
+          onClick={() => onTargetChange(targetRounds + 1)}
+          className="mt-2 px-3 py-1 bg-secondary rounded text-sm"
+        >
+          Test: Increment target
+        </button>
       </div>
     </div>
   );
