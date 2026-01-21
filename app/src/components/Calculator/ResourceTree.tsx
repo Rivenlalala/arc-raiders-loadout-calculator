@@ -565,6 +565,8 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                       inventory={inventory}
                       onInventoryChange={handleInventoryChange}
                       roundsCalculation={roundsCalculation}
+                      activeTab={activeTab}
+                      targetRounds={targetRounds}
                     />
                   </div>
                 )}
@@ -588,6 +590,8 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                 inventory={inventory}
                 onInventoryChange={handleInventoryChange}
                 roundsCalculation={roundsCalculation}
+                activeTab={activeTab}
+                targetRounds={targetRounds}
               />
             </div>
           </div>
@@ -736,6 +740,8 @@ function TreeNodeList({
   inventory,
   onInventoryChange,
   roundsCalculation,
+  activeTab,
+  targetRounds,
 }: {
   nodes: ResourceNode[];
   expandedNodes: Set<string>;
@@ -744,6 +750,8 @@ function TreeNodeList({
   inventory: Record<string, string>;
   onInventoryChange: (name: string, value: string) => void;
   roundsCalculation: RoundsCalculationResult;
+  activeTab: 'stash' | 'raid';
+  targetRounds: number;
 }) {
   return (
     <div className={cn(depth > 0 && 'ml-6 pl-4 border-l-2 border-border')}>
@@ -757,6 +765,8 @@ function TreeNodeList({
           inventory={inventory}
           onInventoryChange={onInventoryChange}
           roundsCalculation={roundsCalculation}
+          activeTab={activeTab}
+          targetRounds={targetRounds}
         />
       ))}
     </div>
@@ -771,6 +781,8 @@ function TreeNode({
   inventory,
   onInventoryChange,
   roundsCalculation,
+  activeTab,
+  targetRounds,
 }: {
   node: ResourceNode;
   expandedNodes: Set<string>;
@@ -779,6 +791,8 @@ function TreeNode({
   inventory: Record<string, string>;
   onInventoryChange: (name: string, value: string) => void;
   roundsCalculation: RoundsCalculationResult;
+  activeTab: 'stash' | 'raid';
+  targetRounds: number;
 }) {
   const isExpanded = expandedNodes.has(node.name);
   const rarityColor = getRarityColor(node.rarity);
@@ -914,6 +928,8 @@ function TreeNode({
           inventory={inventory}
           onInventoryChange={onInventoryChange}
           roundsCalculation={roundsCalculation}
+          activeTab={activeTab}
+          targetRounds={targetRounds}
         />
       )}
     </div>
