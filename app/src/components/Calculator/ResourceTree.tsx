@@ -627,7 +627,9 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                       )}
                       <div className="min-w-0 flex-1">
                         <p className="text-sm font-medium truncate">{name}</p>
-                        <p className="text-lg font-bold text-primary">{data.quantity}</p>
+                        <p className="text-lg font-bold text-primary">
+                          {activeTab === 'raid' ? data.quantity * targetRounds : data.quantity}
+                        </p>
                       </div>
                     </div>
                   ))}
