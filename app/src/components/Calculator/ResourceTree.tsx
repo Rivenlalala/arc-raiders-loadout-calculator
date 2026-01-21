@@ -802,13 +802,16 @@ function TreeNode({
   const isBottleneck = roundsCalculation.bottleneck === node.name;
   const roundsProvided = roundsCalculation.resourceRounds.get(node.name) ?? null;
 
+  // Calculate display quantity based on active tab
+  const displayQuantity = activeTab === 'raid' ? node.quantity * targetRounds : node.quantity;
+
   return (
     <div className="py-1">
       <div
         className={cn(
           'flex items-center gap-2 p-2 rounded-lg transition-all',
           isExpanded && 'bg-secondary/30',
-          isBottleneck && 'bg-red-500/10'
+          activeTab === 'stash' && isBottleneck && 'bg-red-500/10'
         )}
         style={{ borderLeft: `3px solid ${rarityColor}` }}
       >
@@ -843,61 +846,65 @@ function TreeNode({
         <div className="flex items-center gap-2 flex-shrink-0">
           {/* Quantity needed - fixed width */}
           <span className="w-10 text-right font-bold text-lg" style={{ color: rarityColor }}>
-            {node.quantity}
+            {displayQuantity}
           </span>
 
-          {/* Inventory input - fixed width, always reserve space */}
-          <div className="w-16 flex-shrink-0">
-            {isLeaf ? (
-              <input
-                type="text"
-                inputMode="numeric"
-                value={inventory[node.name] || ''}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (value === '' || /^\d*$/.test(value)) {
-                    onInventoryChange(node.name, value);
-                  }
-                }}
-                placeholder="∞"
-                className={cn(
-                  'w-full px-2 py-1 text-right text-sm rounded border bg-background',
-                  isBottleneck
-                    ? 'border-red-500 ring-1 ring-red-500/50'
-                    : 'border-border'
-                )}
-                aria-label={`Inventory amount for ${node.name}`}
-                onClick={(e) => e.stopPropagation()}
-              />
-            ) : (
-              <div className="w-full h-7" />
-            )}
-          </div>
+          {/* Inventory input - fixed width, only show in Stash Check */}
+          {activeTab === 'stash' && (
+            <div className="w-16 flex-shrink-0">
+              {isLeaf ? (
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  value={inventory[node.name] || ''}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value === '' || /^\d*$/.test(value)) {
+                      onInventoryChange(node.name, value);
+                    }
+                  }}
+                  placeholder="∞"
+                  className={cn(
+                    'w-full px-2 py-1 text-right text-sm rounded border bg-background',
+                    isBottleneck
+                      ? 'border-red-500 ring-1 ring-red-500/50'
+                      : 'border-border'
+                  )}
+                  aria-label={`Inventory amount for ${node.name}`}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              ) : (
+                <div className="w-full h-7" />
+              )}
+            </div>
+          )}
 
-          {/* Progress bar - fixed width, always reserve space */}
-          <div
-            className="w-16 h-2 flex-shrink-0 bg-secondary rounded-full overflow-hidden"
-            title={isLeaf && roundsProvided !== null ? `${roundsProvided} rounds with this resource` : undefined}
-          >
-            {isLeaf && roundsProvided !== null && roundsCalculation.rounds !== null && roundsCalculation.rounds > 0 && (
-              <div
-                className={cn(
-                  'h-full transition-all',
-                  roundsProvided === 0
-                    ? 'bg-red-500'
-                    : isBottleneck
+          {/* Progress bar - fixed width, only show in Stash Check */}
+          {activeTab === 'stash' && (
+            <div
+              className="w-16 h-2 flex-shrink-0 bg-secondary rounded-full overflow-hidden"
+              title={isLeaf && roundsProvided !== null ? `${roundsProvided} rounds with this resource` : undefined}
+            >
+              {isLeaf && roundsProvided !== null && roundsCalculation.rounds !== null && roundsCalculation.rounds > 0 && (
+                <div
+                  className={cn(
+                    'h-full transition-all',
+                    roundsProvided === 0
                       ? 'bg-red-500'
-                      : (() => {
-                          const headroom = ((roundsProvided - roundsCalculation.rounds) / roundsCalculation.rounds) * 100;
-                          return headroom <= 25 ? 'bg-yellow-500' : 'bg-green-500';
-                        })()
-                )}
-                style={{
-                  width: `${isBottleneck ? 100 : Math.min(Math.max(((roundsProvided - roundsCalculation.rounds) / roundsCalculation.rounds) * 100, 10), 100)}%`
-                }}
-              />
-            )}
-          </div>
+                      : isBottleneck
+                        ? 'bg-red-500'
+                        : (() => {
+                            const headroom = ((roundsProvided - roundsCalculation.rounds) / roundsCalculation.rounds) * 100;
+                            return headroom <= 25 ? 'bg-yellow-500' : 'bg-green-500';
+                          })()
+                  )}
+                  style={{
+                    width: `${isBottleneck ? 100 : Math.min(Math.max(((roundsProvided - roundsCalculation.rounds) / roundsCalculation.rounds) * 100, 10), 100)}%`
+                  }}
+                />
+              )}
+            </div>
+          )}
 
           {/* Hammer icon - fixed width, always reserve space */}
           <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
