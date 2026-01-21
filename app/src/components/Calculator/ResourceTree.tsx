@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { ChevronDown, ChevronRight, Hammer } from 'lucide-react';
+import { ChevronDown, ChevronRight, Hammer, HelpCircle } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import {
   getWeaponById,
@@ -506,8 +506,12 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
       {/* Header with toggle */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold">Required Resources</h2>
-        <label className="flex items-center gap-2 cursor-pointer">
+        <div className="flex items-center gap-2">
+          <h2 className="text-xl font-bold">Required Resources</h2>
+          <HelpTooltip content="Click the hammer icon on any craftable material to break it down into its base components." />
+        </div>
+        <div className="flex items-center gap-2">
+          <HelpTooltip content="Toggle to see resources grouped by each item in your loadout, or combined into a single list." />
           <span className="text-sm text-muted-foreground">Group by item</span>
           <button
             type="button"
@@ -526,15 +530,12 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
               )}
             />
           </button>
-        </label>
+        </div>
       </div>
 
       {groupByItem ? (
         /* Per-item view */
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-muted-foreground">
-            Resources by Item (click craftable items to break down)
-          </h3>
           {perItemResources.map((item) => {
             const isCollapsed = collapsedBlocks.has(item.label);
             const itemTree = buildTree(item.resources, expandedNodes);
@@ -577,12 +578,8 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
       ) : (
         <>
           {/* Tree view */}
-          <div className="space-y-2">
-            <h3 className="text-sm font-medium text-muted-foreground">
-              Resource Tree (click craftable items to break down)
-            </h3>
-            <div className="bg-card rounded-lg p-4 border border-border">
-              <TreeNodeList
+          <div className="bg-card rounded-lg p-4 border border-border">
+            <TreeNodeList
                 nodes={tree}
                 expandedNodes={expandedNodes}
                 onToggle={toggleNode}
@@ -592,8 +589,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                 roundsCalculation={roundsCalculation}
                 activeTab={activeTab}
                 targetRounds={targetRounds}
-              />
-            </div>
+            />
           </div>
 
           {/* Summary list */}
@@ -642,6 +638,21 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
   );
 }
 
+// Help tooltip component
+function HelpTooltip({ content }: { content: string }) {
+  return (
+    <div className="relative inline-flex group">
+      <HelpCircle className="w-4 h-4 text-muted-foreground hover:text-foreground cursor-help transition-colors" />
+      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block z-50">
+        <div className="bg-gray-900 text-gray-100 text-sm rounded-lg py-2 px-3 w-[320px] shadow-lg">
+          {content}
+        </div>
+        <div className="absolute left-2 top-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-gray-900" />
+      </div>
+    </div>
+  );
+}
+
 // Rounds calculator display component
 function RoundsCalculatorDisplay({
   rounds,
@@ -657,7 +668,10 @@ function RoundsCalculatorDisplay({
   return (
     <div className="bg-card rounded-lg border border-border p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Rounds Calculator</h3>
+        <div className="flex items-center gap-2">
+          <h3 className="text-lg font-semibold">Rounds Calculator</h3>
+          <HelpTooltip content="Enter your current inventory amounts in the input boxes below. Leave empty for unlimited (won't limit your rounds). The calculator shows how many complete loadouts you can craft. Resources highlighted in red are your bottleneck. Progress bars show how much surplus you have of each material." />
+        </div>
         <button
           onClick={onClear}
           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -701,7 +715,10 @@ function RaidPrepDisplay({
 }) {
   return (
     <div className="bg-card rounded-lg border border-border p-4">
-      <h3 className="text-lg font-semibold mb-4">Raid Prep</h3>
+      <div className="flex items-center gap-2 mb-4">
+        <h3 className="text-lg font-semibold">Raid Prep</h3>
+        <HelpTooltip content="Enter how many loadouts you want to prepare. All material quantities will scale automatically so you know exactly what to gather." />
+      </div>
       <div className="text-center py-4">
         <label className="block text-muted-foreground mb-2">
           Plan for how many loadouts?
