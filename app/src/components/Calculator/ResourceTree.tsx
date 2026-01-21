@@ -685,29 +685,34 @@ function RoundsCalculatorDisplay({
   );
 }
 
-// Temporary placeholder for Raid Prep display (will be implemented in Task 2)
+// Raid Prep display component
 function RaidPrepDisplay({
   targetRounds,
   onTargetChange,
 }: {
   targetRounds: number;
-  onTargetChange: (rounds: number) => void;
+  onTargetChange: (value: number) => void;
 }) {
   return (
     <div className="bg-card rounded-lg border border-border p-4">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Raid Prep</h3>
-      </div>
+      <h3 className="text-lg font-semibold mb-4">Raid Prep</h3>
       <div className="text-center py-4">
-        <p className="text-muted-foreground">
-          Raid Prep feature coming soon. Target rounds: {targetRounds}
+        <label className="block text-muted-foreground mb-2">
+          Plan for how many loadouts?
+        </label>
+        <input
+          type="number"
+          min="0"
+          value={targetRounds}
+          onChange={(e) => {
+            const val = parseInt(e.target.value, 10);
+            onTargetChange(isNaN(val) || val < 0 ? 1 : val);
+          }}
+          className="w-24 px-3 py-2 text-center text-2xl font-bold rounded border border-border bg-background"
+        />
+        <p className="text-sm text-muted-foreground mt-2">
+          {targetRounds === 1 ? 'loadout' : 'loadouts'}
         </p>
-        <button
-          onClick={() => onTargetChange(targetRounds + 1)}
-          className="mt-2 px-3 py-1 bg-secondary rounded text-sm"
-        >
-          Test: Increment target
-        </button>
       </div>
     </div>
   );
