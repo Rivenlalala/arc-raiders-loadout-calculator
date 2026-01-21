@@ -601,12 +601,14 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {Object.entries(finalMaterials)
                   .sort((a, b) => {
+                    // Match resource tree order: Legendary first, then alphabetical
                     const rarityOrder: Record<string, number> = {
-                      'Common': 1, 'Uncommon': 2, 'Rare': 3, 'Epic': 4, 'Legendary': 5
+                      'Legendary': 0, 'Epic': 1, 'Rare': 2, 'Uncommon': 3, 'Common': 4
                     };
-                    const aOrder = rarityOrder[a[1].rarity || 'Common'] || 0;
-                    const bOrder = rarityOrder[b[1].rarity || 'Common'] || 0;
-                    return aOrder - bOrder;
+                    const aOrder = rarityOrder[a[1].rarity || 'Common'] ?? 5;
+                    const bOrder = rarityOrder[b[1].rarity || 'Common'] ?? 5;
+                    if (aOrder !== bOrder) return aOrder - bOrder;
+                    return a[0].localeCompare(b[0]);
                   })
                   .map(([name, data]) => (
                     <div
@@ -669,7 +671,7 @@ function RoundsCalculatorDisplay({
     <div className="bg-card rounded-lg border border-border p-4">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <h3 className="text-lg font-semibold">Rounds Calculator</h3>
+          <h3 className="text-lg font-semibold">Stash Check</h3>
           <HelpTooltip content="Enter your current inventory amounts in the input boxes below. Leave empty for unlimited (won't limit your rounds). The calculator shows how many complete loadouts you can craft. Resources highlighted in red are your bottleneck. Progress bars show how much surplus you have of each material." />
         </div>
         <button
