@@ -61,5 +61,31 @@
 
   "selector.search": "Search...",
   "selector.select": "Select {{title}}...",
-  "selector.noResults": "No items found"
+  "selector.noResults": "No items found",
+
+  "obtain.title": "How to Obtain — {{item}}",
+  "obtain.traders": "Traders",
+  "obtain.recycleSources": "Recycle Sources",
+  "obtain.salvageSources": "Salvage Sources",
+  "obtain.foundIn": "Found In",
+  "obtain.recycleItem": "Recycle {{item}}",
+  "obtain.salvageItem": "Salvage {{item}}",
+  "obtain.trader.Celeste": "Celeste",
+  "obtain.trader.Shani": "Shani",
+  "obtain.trader.Tian Wen": "Tian Wen",
+  "obtain.trader.Apollo": "Apollo",
+  "obtain.trader.Lance": "Lance",
+  "obtain.location.ARC": "ARC",
+  "obtain.location.Commercial": "Commercial",
+  "obtain.location.Electrical": "Electrical",
+  "obtain.location.Exodus": "Exodus",
+  "obtain.location.Industrial": "Industrial",
+  "obtain.location.Mechanical": "Mechanical",
+  "obtain.location.Medical": "Medical",
+  "obtain.location.Nature": "Nature",
+  "obtain.location.Old World": "Old World",
+  "obtain.location.Raider": "Raider",
+  "obtain.location.Residential": "Residential",
+  "obtain.location.Security": "Security",
+  "obtain.location.Technological": "Technological"
 }
