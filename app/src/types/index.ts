@@ -1,126 +1,80 @@
-// Rarity types
+// Locale types
+export type Locale = 'en' | 'zh-CN';
+export type LocalizedString = Record<Locale, string>;
+
+// Rarity
 export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
 
-// Material in a recipe
-export interface CraftingMaterial {
-  material: string;
-  quantity: number;
+// Item categories (derived via heuristics at load time)
+export type ItemCategory =
+  | 'weapon'
+  | 'augment'
+  | 'shield'
+  | 'modification'
+  | 'healing'
+  | 'grenade'
+  | 'trap'
+  | 'utility'
+  | 'ammunition'
+  | 'material';
+
+// Effect with localized label
+export interface ItemEffect {
+  value: string | number;
+  label: LocalizedString;
 }
 
-// Base crafting info
-export interface CraftingInfo {
-  materials: CraftingMaterial[];
-  workshop: string | null;
+// Vendor entry
+export interface Vendor {
+  trader: string;
+  cost: Record<string, number>;
+  limit?: number;
+  refreshSeconds?: number;
 }
 
-// Weapon upgrade
-export interface WeaponUpgrade {
-  tier: number;
-  materials: CraftingMaterial[];
-  workshop: string | null;
-  perks: string[];  // Upgrade benefits like "25% Increased Bullet Velocity"
-}
-
-// Weapon crafting with upgrades
-export interface WeaponCrafting extends CraftingInfo {
-  upgrades: WeaponUpgrade[];
-}
-
-// Weapon
-export interface Weapon {
+// Single unified game item type — mirrors RaidTheory schema 1:1 + derived category
+export interface GameItem {
   id: string;
-  name: string;
-  image: string | null;
-  category: string;
-  rarity: Rarity;
-  ammo_type: string | null;
-  modification_slots: string[];
-  crafting: WeaponCrafting;
-}
-
-// Equipment item (augment, shield, healing, etc.)
-export interface EquipmentItem {
-  id: string;
-  name: string;
-  image: string | null;
-  category: string;
+  name: LocalizedString;
+  description: LocalizedString;
+  type: string;
+  category: ItemCategory;
   rarity: Rarity | null;
-  description: string | null;
-  special_effect: string | null;  // Passive abilities for augments
-  stats: Record<string, string>;
-  crafting: CraftingInfo;
+  value: number;
+  weightKg: number;
+  stackSize: number;
+  imageUrl: string | null;
+  effects: Record<string, ItemEffect>;
+  recipe: Record<string, number> | null;
+  craftBench: string | string[] | null;
+  stationLevelRequired: number | null;
+  craftQuantity: number;
+  isWeapon: boolean;
+  modSlots: Record<string, string[]> | null;
+  upgradeCost: Record<string, number> | null;
+  upgradesTo: string | null;
+  repairCost: Record<string, number> | null;
+  repairDurability: number | null;
+  compatibleWith: string[] | null;
+  blueprintLocked: boolean;
+  recyclesInto: Record<string, number> | null;
+  salvagesInto: Record<string, number> | null;
+  vendors: Vendor[] | null;
+  updatedAt: string | null;
+  addedIn: string | null;
 }
 
-// Modification stats
-export interface ModificationStats {
-  effects?: string[];  // List of exact stat effects like ["15% Increased Fire Rate", "20% Increased Recoil"]
-  effect?: string;     // Legacy single effect (for backwards compatibility)
-  [key: string]: string | string[] | undefined;
+// Weapon family — groups weapon tiers for UI display
+export interface WeaponFamily {
+  baseId: string;
+  name: LocalizedString;
+  weaponType: string;
+  tiers: GameItem[];
 }
 
-// Modification
-export interface Modification {
-  id: string;
-  name: string;
-  image: string | null;
-  slot_type: string;
-  rarity: Rarity | null;
-  effects: string[];  // Descriptive effects like "Moderately increases fire rate"
-  stats: ModificationStats;  // Exact stat percentages
-  compatible_weapons: string[];
-  crafting: CraftingInfo;
-}
-
-// Material (crafting component)
-export interface Material {
-  id: string;
-  name: string;
-  image: string | null;
-  rarity: Rarity | null;
-  weight: number | null;
-  stack_size: number | null;
-  crafting: CraftingInfo & {
-    output_quantity: number;
-  };
-}
-
-// Ammo type
-export interface Ammo {
-  id: string;
-  name: string;
-  image: string | null;
-  weight: number | null;
-  stack_size: number | null;
-  crafting: CraftingInfo & {
-    output_quantity: number;
-  };
-}
-
-// Equipment categories
-export interface Equipment {
-  augments: EquipmentItem[];
-  shields: EquipmentItem[];
-  healing: EquipmentItem[];
-  quick_use: EquipmentItem[];
-  grenades: EquipmentItem[];
-  traps: EquipmentItem[];
-}
-
-// Full game data structure
-export interface GameData {
-  version: string;
-  last_updated: string;
-  weapons: Weapon[];
-  equipment: Equipment;
-  modifications: Modification[];
-  materials: Material[];
-  ammo: Ammo[];
-}
-
-// Loadout configuration
+// Loadout types — simplified, tier encoded in item ID
 export interface LoadoutWeapon {
   id: string;
-  tier: number;
   mods: string[];
 }
 
@@ -141,13 +95,13 @@ export interface Loadout {
   ammo: { type: string; quantity: number }[];
 }
 
-// Resource calculation result
+// Resource calculation (updated for localized names)
 export interface ResourceNode {
   id: string;
-  name: string;
+  name: LocalizedString;
   quantity: number;
   rarity: Rarity | null;
-  image: string | null;
+  imageUrl: string | null;
   canCraft: boolean;
   isExpanded: boolean;
   children: ResourceNode[];
@@ -155,5 +109,41 @@ export interface ResourceNode {
 
 export interface CalculatedResources {
   tree: ResourceNode[];
-  flatList: { name: string; quantity: number; rarity: Rarity | null }[];
+  flatList: { id: string; name: LocalizedString; quantity: number; rarity: Rarity | null }[];
+}
+
+// Raw RaidTheory item shape (for type-safe import processing)
+export interface RawGameItem {
+  id: string;
+  name: Record<string, string>;
+  description: Record<string, string>;
+  type: string;
+  rarity?: string;
+  value?: number;
+  weightKg?: number;
+  stackSize?: number;
+  isWeapon?: boolean;
+  blueprintLocked?: boolean;
+  effects?: Record<string, Record<string, string | number>>;
+  craftBench?: string | string[];
+  stationLevelRequired?: number;
+  recipe?: Record<string, number>;
+  craftQuantity?: number;
+  recyclesInto?: Record<string, number>;
+  salvagesInto?: Record<string, number>;
+  upgradeCost?: Record<string, number>;
+  upgradesTo?: string;
+  repairCost?: Record<string, number>;
+  repairDurability?: number;
+  modSlots?: Record<string, string[]>;
+  compatibleWith?: string[];
+  vendors?: Array<{ cost: Record<string, number>; trader: string; limit?: number; refreshSeconds?: number }>;
+  imageFilename?: string;
+  updatedAt?: string;
+  addedIn?: string;
+  foundIn?: string;
+  damageMitigation?: number;
+  durability?: number;
+  movementSpeedModifier?: number;
+  shieldCharge?: number;
 }
