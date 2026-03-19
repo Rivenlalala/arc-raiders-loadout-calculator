@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { ShoppingCart, Recycle, Trash2, MapPin, ScrollText } from 'lucide-react';
+import { Recycle, Trash2, MapPin } from 'lucide-react';
 import { getItemById, getItemVendors, getRecycleSources, getSalvageSources, getFoundIn } from '../../data/gameData';
 import type { ObtainSource } from '../../data/gameData';
 import type { Locale } from '../../types';
+import { BlueprintBadge, TraderSection } from '../ui/TraderSection';
 
 /** Extract tier suffix (e.g., "III" from "Anvil III") */
 function extractTier(name: string): { baseName: string; tier: string } {
@@ -42,45 +43,10 @@ export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) 
   return (
     <div className="space-y-3">
       {/* Blueprint Required */}
-      {blueprintLocked && (
-        <div className="flex items-center gap-2">
-          <ScrollText className="w-4 h-4 text-amber-400" />
-          <span className="text-sm font-semibold text-amber-400">
-            {t('obtain.blueprintRequired')}
-          </span>
-        </div>
-      )}
+      {blueprintLocked && <BlueprintBadge />}
 
       {/* Traders */}
-      {vendors.length > 0 && (
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <ShoppingCart className="w-4 h-4 text-primary" />
-            <span className="text-sm font-semibold text-muted-foreground">
-              {t('obtain.traders')}
-            </span>
-          </div>
-          <div className="space-y-1 ml-6">
-            {vendors.map((vendor, i) => {
-              const traderName = t(`obtain.trader.${vendor.trader}`, { defaultValue: vendor.trader });
-              const costEntries = Object.entries(vendor.cost);
-              const costStr = costEntries.map(([costItemId, qty]) => {
-                if (costItemId === 'coins') return `${qty} Coins`;
-                const costItem = getItemById(costItemId);
-                const costName = costItem ? costItem.name[locale] : costItemId;
-                return `${qty} ${costName}`;
-              }).join(', ');
-
-              return (
-                <p key={i} className="text-sm">
-                  <span className="text-primary font-medium">{traderName}</span>
-                  <span className="text-muted-foreground"> — {costStr}</span>
-                </p>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      {vendors.length > 0 && <TraderSection vendors={vendors} locale={locale} />}
 
       {/* Recycle Sources */}
       {recycleSources.length > 0 && (
