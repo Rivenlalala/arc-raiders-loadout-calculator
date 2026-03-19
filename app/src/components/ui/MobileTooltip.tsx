@@ -11,6 +11,8 @@ interface MobileTooltipProps {
   title?: string;
   borderColor?: string;
   disabled?: boolean;
+  className?: string;
+  scrollable?: boolean;
 }
 
 export function MobileTooltip({
@@ -19,6 +21,8 @@ export function MobileTooltip({
   title,
   borderColor,
   disabled = false,
+  className,
+  scrollable = false,
 }: MobileTooltipProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -32,7 +36,7 @@ export function MobileTooltip({
     if (!triggerRef.current) return null;
 
     const trigger = triggerRef.current.getBoundingClientRect();
-    const tooltipWidth = 350;
+    const tooltipWidth = 420;
     const tooltipHeight = 200; // estimated
     const viewport = {
       width: window.innerWidth,
@@ -131,7 +135,7 @@ export function MobileTooltip({
         onTouchEnd={handleTouchEnd}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="cursor-pointer"
+        className={cn('cursor-pointer', className)}
       >
         {children}
       </div>
@@ -183,7 +187,10 @@ export function MobileTooltip({
             // Desktop: Floating tooltip near trigger
             <div
               ref={tooltipRef}
-              className="fixed z-[100] w-[350px] px-5 py-3 rounded-lg border bg-card shadow-xl pointer-events-none"
+              className={cn(
+                'fixed z-[100] w-[420px] px-5 py-3 rounded-lg border bg-card shadow-xl',
+                scrollable ? 'max-h-[600px] overflow-y-auto' : 'pointer-events-none'
+              )}
               style={{
                 top: position?.top ?? 0,
                 left: position?.left ?? 0,
