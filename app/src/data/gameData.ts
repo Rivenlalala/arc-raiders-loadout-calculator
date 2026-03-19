@@ -36,8 +36,9 @@ function classifyCategory(raw: RawGameItem): ItemCategory {
   if (raw.type === 'Modification') return 'modification';
   if (raw.type === 'Ammunition') return 'ammunition';
   if (raw.type === 'Quick Use') {
-    if (raw.effects && 'Healing' in raw.effects) return 'healing';
-    if (raw.id.includes('_trap') || raw.id.includes('_mine')) return 'trap';
+    if (raw.effects && ('Healing' in raw.effects || 'Recharge' in raw.effects)) return 'healing';
+    if (raw.id.includes('_trap') || raw.id.includes('_mine') || raw.id === 'deadline') return 'trap';
+    if (raw.id.includes('grenade') || raw.id.includes('showstopper')) return 'grenade';
     if (raw.effects && 'Damage' in raw.effects) return 'grenade';
     return 'utility';
   }
