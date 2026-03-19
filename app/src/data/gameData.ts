@@ -3,7 +3,8 @@ import rawItems from 'virtual:arcraiders-items';
 
 // --- Processing helpers ---
 
-function extractLocalizedString(raw: Record<string, string>): LocalizedString {
+function extractLocalizedString(raw: Record<string, string> | undefined): LocalizedString {
+  if (!raw) return { en: '', 'zh-CN': '' };
   return {
     en: raw['en'] ?? '',
     'zh-CN': raw['zh-CN'] ?? raw['en'] ?? '',
@@ -16,6 +17,7 @@ function extractEffects(
   if (!raw) return {};
   const result: Record<string, ItemEffect> = {};
   for (const [key, effectData] of Object.entries(raw)) {
+    if (!effectData) continue;
     result[key] = {
       value: effectData['value'] ?? '',
       label: {
