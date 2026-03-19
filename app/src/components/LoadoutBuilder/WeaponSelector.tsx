@@ -285,16 +285,20 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
     ? selectedFamily.tiers.findIndex(tier => tier.id === value?.id)
     : 0;
 
+  const modEntries = selectedWeapon?.modSlots ? Object.entries(selectedWeapon.modSlots) : [];
+
   return (
     <div className="space-y-2">
       <label className="block text-sm font-medium text-muted-foreground">
         {label}
       </label>
 
+      {/* Weapon trigger + dropdown wrapper */}
+      <div className="relative">
       {/* Selected weapon display */}
       <div
         className={cn(
-          'relative p-3 rounded-lg border border-border bg-card',
+          'p-3 rounded-lg border border-border bg-card h-[130px]',
           'hover:bg-secondary/50 cursor-pointer transition-colors',
           isOpen && 'ring-2 ring-primary'
         )}
@@ -378,32 +382,12 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-between py-2">
+          <div className="flex items-center justify-between h-full">
             <span className="text-muted-foreground">{t('weapon.select')}</span>
             <ChevronDown className="w-4 h-4" />
           </div>
         )}
       </div>
-
-      {/* Mod slots */}
-      {selectedWeapon && selectedWeapon.modSlots && Object.keys(selectedWeapon.modSlots).length > 0 && (
-        <div className="mt-3 space-y-2">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-            {t('weapon.modifications')}
-          </p>
-          <div className="space-y-2">
-            {Object.entries(selectedWeapon.modSlots).map(([slotKey, modIds], index) => (
-              <ModSelector
-                key={`${selectedWeapon.id}-${slotKey}`}
-                slotName={slotKey}
-                modIds={modIds}
-                selectedModId={value?.mods[index] || null}
-                onSelect={(modId) => handleModChange(index, modId)}
-              />
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Dropdown */}
       {isOpen && (
@@ -488,6 +472,39 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
           </div>
         </>
       )}
+      </div>
+
+      {/* Mod slots - always show 4 slots */}
+      <div className="mt-3 space-y-2">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+          {t('weapon.modifications')}
+        </p>
+        <div className="space-y-2">
+          {Array.from({ length: 4 }).map((_, i) =>
+            i < modEntries.length ? (
+              <ModSelector
+                key={`${selectedWeapon!.id}-${modEntries[i][0]}`}
+                slotName={modEntries[i][0]}
+                modIds={modEntries[i][1]}
+                selectedModId={value?.mods[i] || null}
+                onSelect={(modId) => handleModChange(i, modId)}
+              />
+            ) : (
+              <div
+                key={`empty-${i}`}
+                className="flex items-center gap-3 p-3 rounded-lg border border-border/30 bg-card/20 min-h-[60px] opacity-25"
+              >
+                <div className="w-16 h-16 rounded-lg bg-secondary/50 border-2 border-dashed border-muted-foreground/30 flex items-center justify-center">
+                  <span className="text-xl text-muted-foreground">+</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-muted-foreground">{t('mod.emptySlot', { defaultValue: `Slot ${i + 1}` })}</p>
+                </div>
+              </div>
+            )
+          )}
+        </div>
+      </div>
     </div>
   );
 }

@@ -708,7 +708,7 @@ function RoundsCalculatorDisplay({
         ) : (
           <>
             <div className="text-5xl font-bold text-primary mb-2">
-              {rounds === null ? '\u221E' : rounds}
+              {rounds === null ? '∞' : rounds}
             </div>
             <p className="text-lg text-muted-foreground">
               {t('resource.roundsPossible')}
@@ -911,7 +911,7 @@ function TreeNode({
                       onInventoryChange(node.id, value);
                     }
                   }}
-                  placeholder="\u221E"
+                  placeholder="∞"
                   className={cn(
                     'w-full px-2 py-1 text-right text-sm rounded border bg-background',
                     isBottleneck

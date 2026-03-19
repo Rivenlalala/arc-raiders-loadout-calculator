@@ -93,7 +93,7 @@ export function ModSelector({ slotName, modIds, selectedModId, onSelect }: ModSe
       {/* Selected Mod Card */}
       <div
         className={cn(
-          'flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50',
+          'flex items-center gap-3 p-3 rounded-lg border border-border bg-card',
           'hover:bg-secondary/50 cursor-pointer transition-colors min-h-[60px]'
         )}
         onClick={() => setIsOpen(true)}
