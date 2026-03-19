@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { X, Search } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { ItemCard } from './ItemCard';
@@ -28,6 +29,7 @@ export function ItemSelector({
   showSearch = true,
   className,
 }: ItemSelectorProps) {
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
@@ -77,7 +79,7 @@ export function ItemSelector({
             </button>
           </>
         ) : (
-          <span className="text-muted-foreground">Select {title.toLowerCase()}...</span>
+          <span className="text-muted-foreground">{t('selector.select', { title: title.toLowerCase() })}</span>
         )}
       </div>
 
@@ -90,7 +92,7 @@ export function ItemSelector({
                 <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
                   type="text"
-                  placeholder="Search..."
+                  placeholder={t('selector.search')}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full pl-8 pr-3 py-2 bg-secondary rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
@@ -120,7 +122,7 @@ export function ItemSelector({
             </div>
 
             {filteredItems.length === 0 && (
-              <p className="text-center text-muted-foreground py-4">No items found</p>
+              <p className="text-center text-muted-foreground py-4">{t('selector.noResults')}</p>
             )}
           </div>
         </div>
