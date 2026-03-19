@@ -64,6 +64,7 @@
   "selector.noResults": "No items found",
 
   "obtain.title": "How to Obtain — {{item}}",
+  "obtain.blueprintRequired": "Blueprint Required",
   "obtain.traders": "Traders",
   "obtain.recycleSources": "Recycle Sources",
   "obtain.salvageSources": "Salvage Sources",
