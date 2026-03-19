@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, X, Search, Info } from 'lucide-react';
+import { ChevronDown, X, Search } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { getWeaponFamilies, getItemById, getRarityColor } from '../../data/gameData';
+import { getWeaponFamilies, getItemById, getRarityColor, getItemVendors } from '../../data/gameData';
+import { BlueprintBadge, TraderSection } from '../ui/TraderSection';
 import { ItemCard } from '../ui/ItemCard';
 import { ModSelector } from './ModSelector';
 import { MobileTooltip } from '../ui/MobileTooltip';
@@ -149,6 +150,21 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
           </p>
         </div>
       )}
+
+      {weapon.blueprintLocked && (
+        <div className="border-t border-border pt-3">
+          <BlueprintBadge />
+        </div>
+      )}
+      {(() => {
+        const vendors = getItemVendors(weapon.id);
+        if (vendors.length === 0) return null;
+        return (
+          <div className="border-t border-border pt-3">
+            <TraderSection vendors={vendors} locale={locale} />
+          </div>
+        );
+      })()}
     </>
   );
 }
@@ -306,47 +322,38 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
       >
         {selectedWeapon && selectedFamily ? (
           <div className="flex items-start gap-3">
-            <ItemCard
-              name={selectedWeapon.name[locale]}
-              image={selectedWeapon.imageUrl}
-              rarity={selectedWeapon.rarity}
-              size="md"
-            />
+            <MobileTooltip
+              title={selectedFamily.name[locale]}
+              borderColor={getRarityColor(selectedWeapon.rarity)}
+              content={
+                <WeaponTooltipContent
+                  weapon={selectedWeapon}
+                  family={selectedFamily}
+                  mods={value?.mods ?? []}
+                  locale={locale}
+                  t={t}
+                />
+              }
+            >
+              <ItemCard
+                name={selectedWeapon.name[locale]}
+                image={selectedWeapon.imageUrl}
+                rarity={selectedWeapon.rarity}
+                size="md"
+              />
+            </MobileTooltip>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
                 <h4 className="font-semibold">{selectedFamily.name[locale]}</h4>
-                <div className="flex items-center gap-1">
-                  {/* Info button for tooltip */}
-                  <MobileTooltip
-                    title={selectedFamily.name[locale]}
-                    borderColor={getRarityColor(selectedWeapon.rarity)}
-                    content={
-                      <WeaponTooltipContent
-                        weapon={selectedWeapon}
-                        family={selectedFamily}
-                        mods={value?.mods ?? []}
-                        locale={locale}
-                        t={t}
-                      />
-                    }
-                  >
-                    <button
-                      className="p-1 hover:bg-secondary rounded"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Info className="w-4 h-4 text-muted-foreground" />
-                    </button>
-                  </MobileTooltip>
-                  <button
-                    className="p-1 hover:bg-secondary rounded"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onChange(null);
-                    }}
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
+                <button
+                  className="p-1 hover:bg-secondary rounded"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onChange(null);
+                  }}
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
               <p className="text-sm text-muted-foreground">{selectedFamily.weaponType}</p>
               <p className="text-sm text-muted-foreground">
