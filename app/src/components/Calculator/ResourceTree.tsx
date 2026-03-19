@@ -1,23 +1,22 @@
 import { useState, useMemo } from 'react';
 import { ChevronDown, ChevronRight, Hammer, HelpCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '../../lib/utils';
 import {
-  getWeaponById,
-  getEquipmentById,
-  getModificationById,
-  getMaterialByName,
-  getAmmoByName,
+  getItemById,
   getRarityColor,
   isCraftable,
-  getMaterialRecipe,
+  getItemRecipe,
+  getWeapons,
 } from '../../data/gameData';
-import type { Loadout, CraftingMaterial } from '../../types';
+import type { Loadout, GameItem, Locale, LocalizedString } from '../../types';
 
 interface ResourceNode {
-  name: string;
+  id: string;
+  name: LocalizedString;
   quantity: number;
   rarity: string | null;
-  image: string | null;
+  imageUrl: string | null;
   canCraft: boolean;
   children?: ResourceNode[];
 }
@@ -31,7 +30,47 @@ interface ResourceTreeProps {
   loadout: Loadout;
 }
 
+/**
+ * Walk backwards from the selected weapon through the upgrade chain to find
+ * the tier 1 (base) weapon, then sum up: base weapon recipe + upgrade costs
+ * for each intermediate tier up to the selected one.
+ */
+function getWeaponTotalCost(weaponId: string): Record<string, number> {
+  const costs: Record<string, number> = {};
+
+  // Build chain from tier 1 to selected tier
+  const chain: GameItem[] = [];
+  let current = getItemById(weaponId);
+  while (current) {
+    chain.unshift(current);
+    // Find the weapon that upgrades TO this one
+    const prev = getWeapons().find(w => w.upgradesTo === current!.id);
+    current = prev;
+  }
+
+  // Base weapon recipe (tier 1)
+  if (chain[0]?.recipe) {
+    for (const [id, qty] of Object.entries(chain[0].recipe)) {
+      costs[id] = (costs[id] ?? 0) + qty;
+    }
+  }
+
+  // Add upgrade costs for each subsequent tier
+  for (let i = 1; i < chain.length; i++) {
+    if (chain[i].upgradeCost) {
+      for (const [id, qty] of Object.entries(chain[i].upgradeCost!)) {
+        costs[id] = (costs[id] ?? 0) + qty;
+      }
+    }
+  }
+
+  return costs;
+}
+
 export function ResourceTree({ loadout }: ResourceTreeProps) {
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language as Locale;
+
   // Track which nodes are expanded (crafted down)
   const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set());
   // Toggle for per-item grouping
@@ -45,33 +84,31 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
   // Target rounds for Raid Prep tab
   const [targetRounds, setTargetRounds] = useState<number>(1);
 
+  // Helper: add recipe ingredients to a resources map
+  const addRecipe = (
+    resources: Record<string, number>,
+    recipe: Record<string, number>,
+    multiplier = 1
+  ) => {
+    for (const [ingredientId, quantity] of Object.entries(recipe)) {
+      resources[ingredientId] = (resources[ingredientId] ?? 0) + quantity * multiplier;
+    }
+  };
+
   // Calculate all resources needed from loadout
   const rawResources = useMemo(() => {
     const resources: Record<string, number> = {};
 
-    const addMaterials = (materials: CraftingMaterial[], multiplier = 1) => {
-      for (const mat of materials) {
-        resources[mat.material] = (resources[mat.material] || 0) + mat.quantity * multiplier;
-      }
-    };
-
     // Weapon 1
     if (loadout.weapon1) {
-      const weapon = getWeaponById(loadout.weapon1.id);
-      if (weapon) {
-        addMaterials(weapon.crafting.materials);
-        // Add upgrade materials
-        const targetTier = loadout.weapon1.tier || 1;
-        for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
-          addMaterials(weapon.crafting.upgrades[i].materials);
-        }
-        // Add mod materials
-        for (const modId of loadout.weapon1.mods) {
-          if (modId) {
-            const mod = getModificationById(modId);
-            if (mod) {
-              addMaterials(mod.crafting.materials);
-            }
+      const weaponCost = getWeaponTotalCost(loadout.weapon1.id);
+      addRecipe(resources, weaponCost);
+      // Add mod materials
+      for (const modId of loadout.weapon1.mods) {
+        if (modId) {
+          const mod = getItemById(modId);
+          if (mod?.recipe) {
+            addRecipe(resources, mod.recipe);
           }
         }
       }
@@ -79,20 +116,14 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
     // Weapon 2
     if (loadout.weapon2) {
-      const weapon = getWeaponById(loadout.weapon2.id);
-      if (weapon) {
-        addMaterials(weapon.crafting.materials);
-        const targetTier = loadout.weapon2.tier || 1;
-        for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
-          addMaterials(weapon.crafting.upgrades[i].materials);
-        }
-        // Add mod materials
-        for (const modId of loadout.weapon2.mods) {
-          if (modId) {
-            const mod = getModificationById(modId);
-            if (mod) {
-              addMaterials(mod.crafting.materials);
-            }
+      const weaponCost = getWeaponTotalCost(loadout.weapon2.id);
+      addRecipe(resources, weaponCost);
+      // Add mod materials
+      for (const modId of loadout.weapon2.mods) {
+        if (modId) {
+          const mod = getItemById(modId);
+          if (mod?.recipe) {
+            addRecipe(resources, mod.recipe);
           }
         }
       }
@@ -100,48 +131,48 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
     // Augment
     if (loadout.augment) {
-      const item = getEquipmentById(loadout.augment);
-      if (item) addMaterials(item.crafting.materials);
+      const item = getItemById(loadout.augment);
+      if (item?.recipe) addRecipe(resources, item.recipe);
     }
 
     // Shield
     if (loadout.shield) {
-      const item = getEquipmentById(loadout.shield);
-      if (item) addMaterials(item.crafting.materials);
+      const item = getItemById(loadout.shield);
+      if (item?.recipe) addRecipe(resources, item.recipe);
     }
 
     // Healing
     for (const h of loadout.healing) {
-      const item = getEquipmentById(h.id);
-      if (item) addMaterials(item.crafting.materials, h.quantity);
+      const item = getItemById(h.id);
+      if (item?.recipe) addRecipe(resources, item.recipe, h.quantity);
     }
 
     // Grenades
     for (const g of loadout.grenades) {
-      const item = getEquipmentById(g.id);
-      if (item) addMaterials(item.crafting.materials, g.quantity);
+      const item = getItemById(g.id);
+      if (item?.recipe) addRecipe(resources, item.recipe, g.quantity);
     }
 
     // Utilities
     for (const u of loadout.utilities) {
-      const item = getEquipmentById(u.id);
-      if (item) addMaterials(item.crafting.materials, u.quantity);
+      const item = getItemById(u.id);
+      if (item?.recipe) addRecipe(resources, item.recipe, u.quantity);
     }
 
     // Traps
-    for (const t of loadout.traps) {
-      const item = getEquipmentById(t.id);
-      if (item) addMaterials(item.crafting.materials, t.quantity);
+    for (const tr of loadout.traps) {
+      const item = getItemById(tr.id);
+      if (item?.recipe) addRecipe(resources, item.recipe, tr.quantity);
     }
 
     // Ammo
     for (const a of loadout.ammo) {
-      const ammo = getAmmoByName(a.type);
-      if (ammo) {
-        // Calculate how many crafts needed based on output_quantity
-        const outputQty = ammo.crafting.output_quantity || 1;
+      const ammo = getItemById(a.type);
+      if (ammo?.recipe) {
+        // Calculate how many crafts needed based on craftQuantity
+        const outputQty = ammo.craftQuantity || 1;
         const craftsNeeded = Math.ceil(a.quantity / outputQty);
-        addMaterials(ammo.crafting.materials, craftsNeeded);
+        addRecipe(resources, ammo.recipe, craftsNeeded);
       }
     }
 
@@ -152,167 +183,144 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
   const perItemResources = useMemo(() => {
     const items: ItemResources[] = [];
 
-    const addMaterials = (
-      resources: Record<string, number>,
-      materials: CraftingMaterial[],
-      multiplier = 1
-    ) => {
-      for (const mat of materials) {
-        resources[mat.material] = (resources[mat.material] || 0) + mat.quantity * multiplier;
-      }
-    };
-
     // Weapon 1
     if (loadout.weapon1) {
-      const weapon = getWeaponById(loadout.weapon1.id);
+      const weapon = getItemById(loadout.weapon1.id);
       if (weapon) {
-        const resources: Record<string, number> = {};
-        addMaterials(resources, weapon.crafting.materials);
-        const targetTier = loadout.weapon1.tier || 1;
-        for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
-          addMaterials(resources, weapon.crafting.upgrades[i].materials);
-        }
+        const resources = getWeaponTotalCost(loadout.weapon1.id);
         for (const modId of loadout.weapon1.mods) {
           if (modId) {
-            const mod = getModificationById(modId);
-            if (mod) {
-              addMaterials(resources, mod.crafting.materials);
-            }
+            const mod = getItemById(modId);
+            if (mod?.recipe) addRecipe(resources, mod.recipe);
           }
         }
-        items.push({ label: `${weapon.name} (Primary)`, resources });
+        items.push({ label: `${weapon.name[locale]} (${t('loadout.primaryWeapon')})`, resources });
       }
     }
 
     // Weapon 2
     if (loadout.weapon2) {
-      const weapon = getWeaponById(loadout.weapon2.id);
+      const weapon = getItemById(loadout.weapon2.id);
       if (weapon) {
-        const resources: Record<string, number> = {};
-        addMaterials(resources, weapon.crafting.materials);
-        const targetTier = loadout.weapon2.tier || 1;
-        for (let i = 0; i < targetTier - 1 && i < weapon.crafting.upgrades.length; i++) {
-          addMaterials(resources, weapon.crafting.upgrades[i].materials);
-        }
+        const resources = getWeaponTotalCost(loadout.weapon2.id);
         for (const modId of loadout.weapon2.mods) {
           if (modId) {
-            const mod = getModificationById(modId);
-            if (mod) {
-              addMaterials(resources, mod.crafting.materials);
-            }
+            const mod = getItemById(modId);
+            if (mod?.recipe) addRecipe(resources, mod.recipe);
           }
         }
-        items.push({ label: `${weapon.name} (Secondary)`, resources });
+        items.push({ label: `${weapon.name[locale]} (${t('loadout.secondaryWeapon')})`, resources });
       }
     }
 
     // Augment
     if (loadout.augment) {
-      const item = getEquipmentById(loadout.augment);
-      if (item) {
+      const item = getItemById(loadout.augment);
+      if (item?.recipe) {
         const resources: Record<string, number> = {};
-        addMaterials(resources, item.crafting.materials);
-        items.push({ label: item.name, resources });
+        addRecipe(resources, item.recipe);
+        items.push({ label: item.name[locale], resources });
       }
     }
 
     // Shield
     if (loadout.shield) {
-      const item = getEquipmentById(loadout.shield);
-      if (item) {
+      const item = getItemById(loadout.shield);
+      if (item?.recipe) {
         const resources: Record<string, number> = {};
-        addMaterials(resources, item.crafting.materials);
-        items.push({ label: item.name, resources });
+        addRecipe(resources, item.recipe);
+        items.push({ label: item.name[locale], resources });
       }
     }
 
     // Healing
     for (const h of loadout.healing) {
-      const item = getEquipmentById(h.id);
-      if (item) {
+      const item = getItemById(h.id);
+      if (item?.recipe) {
         const resources: Record<string, number> = {};
-        addMaterials(resources, item.crafting.materials, h.quantity);
-        items.push({ label: `${item.name} x${h.quantity}`, resources });
+        addRecipe(resources, item.recipe, h.quantity);
+        items.push({ label: `${item.name[locale]} x${h.quantity}`, resources });
       }
     }
 
     // Grenades
     for (const g of loadout.grenades) {
-      const item = getEquipmentById(g.id);
-      if (item) {
+      const item = getItemById(g.id);
+      if (item?.recipe) {
         const resources: Record<string, number> = {};
-        addMaterials(resources, item.crafting.materials, g.quantity);
-        items.push({ label: `${item.name} x${g.quantity}`, resources });
+        addRecipe(resources, item.recipe, g.quantity);
+        items.push({ label: `${item.name[locale]} x${g.quantity}`, resources });
       }
     }
 
     // Utilities
     for (const u of loadout.utilities) {
-      const item = getEquipmentById(u.id);
-      if (item) {
+      const item = getItemById(u.id);
+      if (item?.recipe) {
         const resources: Record<string, number> = {};
-        addMaterials(resources, item.crafting.materials, u.quantity);
-        items.push({ label: `${item.name} x${u.quantity}`, resources });
+        addRecipe(resources, item.recipe, u.quantity);
+        items.push({ label: `${item.name[locale]} x${u.quantity}`, resources });
       }
     }
 
     // Traps
-    for (const t of loadout.traps) {
-      const item = getEquipmentById(t.id);
-      if (item) {
+    for (const tr of loadout.traps) {
+      const item = getItemById(tr.id);
+      if (item?.recipe) {
         const resources: Record<string, number> = {};
-        addMaterials(resources, item.crafting.materials, t.quantity);
-        items.push({ label: `${item.name} x${t.quantity}`, resources });
+        addRecipe(resources, item.recipe, tr.quantity);
+        items.push({ label: `${item.name[locale]} x${tr.quantity}`, resources });
       }
     }
 
     // Ammo
     for (const a of loadout.ammo) {
-      const ammo = getAmmoByName(a.type);
-      if (ammo) {
+      const ammo = getItemById(a.type);
+      if (ammo?.recipe) {
         const resources: Record<string, number> = {};
-        const outputQty = ammo.crafting.output_quantity || 1;
+        const outputQty = ammo.craftQuantity || 1;
         const craftsNeeded = Math.ceil(a.quantity / outputQty);
-        addMaterials(resources, ammo.crafting.materials, craftsNeeded);
-        items.push({ label: `${ammo.name} x${a.quantity}`, resources });
+        addRecipe(resources, ammo.recipe, craftsNeeded);
+        items.push({ label: `${ammo.name[locale]} x${a.quantity}`, resources });
       }
     }
 
     return items;
-  }, [loadout]);
+  }, [loadout, locale, t]);
 
   // Build tree structure with expanded nodes broken down
   const buildTree = (
     resources: Record<string, number>,
     expanded: Set<string>,
-    depth = 0
+    _depth = 0
   ): ResourceNode[] => {
     const nodes: ResourceNode[] = [];
 
-    for (const [name, quantity] of Object.entries(resources)) {
-      const material = getMaterialByName(name);
-      const canCraft = isCraftable(name);
-      const isExpanded = expanded.has(name);
+    for (const [ingredientId, quantity] of Object.entries(resources)) {
+      const item = getItemById(ingredientId);
+      const canCraft = isCraftable(ingredientId);
+      const isExpanded = expanded.has(ingredientId);
 
       const node: ResourceNode = {
-        name,
+        id: ingredientId,
+        name: item?.name ?? { en: ingredientId, 'zh-CN': ingredientId },
         quantity,
-        rarity: material?.rarity ?? null,
-        image: material?.image ?? null,
+        rarity: item?.rarity ?? null,
+        imageUrl: item?.imageUrl ?? null,
         canCraft,
       };
 
       if (canCraft && isExpanded) {
-        const recipe = getMaterialRecipe(name);
+        const recipe = getItemRecipe(ingredientId);
         if (recipe) {
           const craftsNeeded = Math.ceil(quantity / recipe.outputQuantity);
           const childResources: Record<string, number> = {};
 
-          for (const mat of recipe.materials) {
-            childResources[mat.material] = mat.quantity * craftsNeeded;
+          for (const [childId, childQty] of Object.entries(recipe.ingredients)) {
+            childResources[childId] = childQty * craftsNeeded;
           }
 
-          node.children = buildTree(childResources, expanded, depth + 1);
+          node.children = buildTree(childResources, expanded, _depth + 1);
         }
       }
 
@@ -332,28 +340,29 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
       const aOrder = rarityOrder[(a.rarity ?? 'common').toLowerCase()] ?? 5;
       const bOrder = rarityOrder[(b.rarity ?? 'common').toLowerCase()] ?? 5;
       if (aOrder !== bOrder) return aOrder - bOrder;
-      return a.name.localeCompare(b.name);
+      return a.name[locale].localeCompare(b.name[locale]);
     });
   };
 
   const tree = useMemo(
     () => buildTree(rawResources, expandedNodes),
-    [rawResources, expandedNodes]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [rawResources, expandedNodes, locale]
   );
 
   // Calculate flat list of final materials (leaf nodes)
   const finalMaterials = useMemo(() => {
-    const result: Record<string, { quantity: number; rarity: string | null; image: string | null }> = {};
+    const result: Record<string, { name: LocalizedString; quantity: number; rarity: string | null; imageUrl: string | null }> = {};
 
     const collectLeaves = (nodes: ResourceNode[]) => {
       for (const node of nodes) {
         if (node.children && node.children.length > 0) {
           collectLeaves(node.children);
         } else {
-          if (!result[node.name]) {
-            result[node.name] = { quantity: 0, rarity: node.rarity, image: node.image };
+          if (!result[node.id]) {
+            result[node.id] = { name: node.name, quantity: 0, rarity: node.rarity, imageUrl: node.imageUrl };
           }
-          result[node.name].quantity += node.quantity;
+          result[node.id].quantity += node.quantity;
         }
       }
     };
@@ -372,8 +381,8 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
         if (node.children && node.children.length > 0) {
           collectLeaves(node.children);
         } else {
-          const current = leafMaterials.get(node.name) || 0;
-          leafMaterials.set(node.name, current + node.quantity);
+          const current = leafMaterials.get(node.id) || 0;
+          leafMaterials.set(node.id, current + node.quantity);
         }
       }
     };
@@ -383,8 +392,8 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
     let bottleneckResource: string | null = null;
     const resourceRounds: Map<string, number> = new Map();
 
-    for (const [name, needed] of leafMaterials) {
-      const invStr = inventory[name];
+    for (const [id, needed] of leafMaterials) {
+      const invStr = inventory[id];
       // Empty or missing = infinite, skip
       if (!invStr || invStr === '') continue;
 
@@ -392,11 +401,11 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
       if (isNaN(invAmount)) continue;
 
       const rounds = Math.floor(invAmount / needed);
-      resourceRounds.set(name, rounds);
+      resourceRounds.set(id, rounds);
 
       if (rounds < minRounds) {
         minRounds = rounds;
-        bottleneckResource = name;
+        bottleneckResource = id;
       }
     }
 
@@ -409,13 +418,13 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
     };
   }, [tree, inventory]);
 
-  const toggleNode = (name: string) => {
+  const toggleNode = (id: string) => {
     setExpandedNodes((prev) => {
       const next = new Set(prev);
-      if (next.has(name)) {
-        next.delete(name);
+      if (next.has(id)) {
+        next.delete(id);
       } else {
-        next.add(name);
+        next.add(id);
       }
       return next;
     });
@@ -433,10 +442,10 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
     });
   };
 
-  const handleInventoryChange = (name: string, value: string) => {
+  const handleInventoryChange = (id: string, value: string) => {
     // Only allow non-negative integers
     if (value !== '' && !/^\d*$/.test(value)) return;
-    setInventory(prev => ({ ...prev, [name]: value }));
+    setInventory(prev => ({ ...prev, [id]: value }));
   };
 
   const clearInventory = () => setInventory({});
@@ -456,7 +465,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
   if (isEmpty) {
     return (
       <div className="p-8 text-center text-muted-foreground">
-        <p>Select items in your loadout to see required resources</p>
+        <p>{t('resource.emptyState')}</p>
       </div>
     );
   }
@@ -474,7 +483,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
               : 'bg-secondary text-muted-foreground hover:text-foreground'
           )}
         >
-          Stash Check
+          {t('resource.stashCheck')}
         </button>
         <button
           onClick={() => handleTabSwitch('raid')}
@@ -485,7 +494,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
               : 'bg-secondary text-muted-foreground hover:text-foreground'
           )}
         >
-          Raid Prep
+          {t('resource.raidPrep')}
         </button>
       </div>
 
@@ -496,6 +505,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
           bottleneck={roundsCalculation.bottleneck}
           hasAnyInput={roundsCalculation.hasAnyInput}
           onClear={clearInventory}
+          locale={locale}
         />
       ) : (
         <RaidPrepDisplay
@@ -507,12 +517,12 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
       {/* Header with toggle */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h2 className="text-xl font-bold">Required Resources</h2>
-          <HelpTooltip content="Click the hammer icon on any craftable material to break it down into its base components." />
+          <h2 className="text-xl font-bold">{t('resource.title')}</h2>
+          <HelpTooltip content={t('resource.helpCrafting')} />
         </div>
         <div className="flex items-center gap-2">
-          <HelpTooltip content="Toggle to see resources grouped by each item in your loadout, or combined into a single list." />
-          <span className="text-sm text-muted-foreground">Group by item</span>
+          <HelpTooltip content={t('resource.helpGroupBy')} />
+          <span className="text-sm text-muted-foreground">{t('resource.groupByItem')}</span>
           <button
             type="button"
             role="switch"
@@ -568,6 +578,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                       roundsCalculation={roundsCalculation}
                       activeTab={activeTab}
                       targetRounds={targetRounds}
+                      locale={locale}
                     />
                   </div>
                 )}
@@ -589,13 +600,14 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                 roundsCalculation={roundsCalculation}
                 activeTab={activeTab}
                 targetRounds={targetRounds}
+                locale={locale}
             />
           </div>
 
           {/* Summary list */}
           <div className="space-y-2">
             <h3 className="text-sm font-medium text-muted-foreground">
-              Final Materials Needed
+              {t('resource.finalMaterials')}
             </h3>
             <div className="bg-card rounded-lg p-4 border border-border">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
@@ -608,23 +620,23 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                     const aOrder = rarityOrder[a[1].rarity || 'Common'] ?? 5;
                     const bOrder = rarityOrder[b[1].rarity || 'Common'] ?? 5;
                     if (aOrder !== bOrder) return aOrder - bOrder;
-                    return a[0].localeCompare(b[0]);
+                    return a[1].name[locale].localeCompare(b[1].name[locale]);
                   })
-                  .map(([name, data]) => (
+                  .map(([id, data]) => (
                     <div
-                      key={name}
+                      key={id}
                       className="flex items-center gap-2 p-2 rounded bg-secondary/50"
                       style={{ borderLeft: `3px solid ${getRarityColor(data.rarity)}` }}
                     >
-                      {data.image && (
+                      {data.imageUrl && (
                         <img
-                          src={`/${data.image}`}
-                          alt={name}
+                          src={`/${data.imageUrl}`}
+                          alt={data.name[locale]}
                           className="w-8 h-8 object-contain"
                         />
                       )}
                       <div className="min-w-0 flex-1">
-                        <p className="text-sm font-medium truncate">{name}</p>
+                        <p className="text-sm font-medium truncate">{data.name[locale]}</p>
                         <p className="text-lg font-bold text-primary">
                           {activeTab === 'raid' ? data.quantity * targetRounds : data.quantity}
                         </p>
@@ -661,43 +673,49 @@ function RoundsCalculatorDisplay({
   bottleneck,
   hasAnyInput,
   onClear,
+  locale,
 }: {
   rounds: number | null;
   bottleneck: string | null;
   hasAnyInput: boolean;
   onClear: () => void;
+  locale: Locale;
 }) {
+  const { t } = useTranslation();
+  // Resolve bottleneck name for display
+  const bottleneckName = bottleneck ? (getItemById(bottleneck)?.name[locale] ?? bottleneck) : null;
+
   return (
     <div className="bg-card rounded-lg border border-border p-4">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <h3 className="text-lg font-semibold">Stash Check</h3>
-          <HelpTooltip content="Enter your current inventory amounts in the input boxes below. Leave empty for unlimited (won't limit your rounds). The calculator shows how many complete loadouts you can craft. Resources highlighted in red are your bottleneck. Progress bars show how much surplus you have of each material." />
+          <h3 className="text-lg font-semibold">{t('resource.stashCheck')}</h3>
+          <HelpTooltip content={t('resource.helpStash')} />
         </div>
         <button
           onClick={onClear}
           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
-          Clear all
+          {t('resource.clearAll')}
         </button>
       </div>
 
       <div className="text-center py-4">
         {!hasAnyInput ? (
           <p className="text-muted-foreground">
-            Enter inventory amounts below to calculate how many rounds you can craft
+            {t('resource.stashPlaceholder')}
           </p>
         ) : (
           <>
             <div className="text-5xl font-bold text-primary mb-2">
-              {rounds === null ? '∞' : rounds}
+              {rounds === null ? '\u221E' : rounds}
             </div>
             <p className="text-lg text-muted-foreground">
-              rounds possible
+              {t('resource.roundsPossible')}
             </p>
-            {bottleneck && (
+            {bottleneckName && (
               <p className="text-sm text-red-400 mt-2">
-                Limited by: {bottleneck}
+                {t('resource.limitedBy', { bottleneck: bottleneckName })}
               </p>
             )}
           </>
@@ -715,15 +733,17 @@ function RaidPrepDisplay({
   targetRounds: number;
   onTargetChange: (value: number) => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-card rounded-lg border border-border p-4">
       <div className="flex items-center gap-2 mb-4">
-        <h3 className="text-lg font-semibold">Raid Prep</h3>
-        <HelpTooltip content="Enter how many loadouts you want to prepare. All material quantities will scale automatically so you know exactly what to gather." />
+        <h3 className="text-lg font-semibold">{t('resource.raidPrep')}</h3>
+        <HelpTooltip content={t('resource.helpRaidPrep')} />
       </div>
       <div className="text-center py-4">
         <label className="block text-muted-foreground mb-2">
-          Plan for how many loadouts?
+          {t('resource.planLoadouts')}
         </label>
         <input
           type="number"
@@ -736,7 +756,7 @@ function RaidPrepDisplay({
           className="w-24 px-3 py-2 text-center text-2xl font-bold rounded border border-border bg-background"
         />
         <p className="text-sm text-muted-foreground mt-2">
-          {targetRounds === 1 ? 'loadout' : 'loadouts'}
+          {t('resource.loadout', { count: targetRounds })}
         </p>
       </div>
     </div>
@@ -763,22 +783,24 @@ function TreeNodeList({
   roundsCalculation,
   activeTab,
   targetRounds,
+  locale,
 }: {
   nodes: ResourceNode[];
   expandedNodes: Set<string>;
-  onToggle: (name: string) => void;
+  onToggle: (id: string) => void;
   depth: number;
   inventory: Record<string, string>;
-  onInventoryChange: (name: string, value: string) => void;
+  onInventoryChange: (id: string, value: string) => void;
   roundsCalculation: RoundsCalculationResult;
   activeTab: 'stash' | 'raid';
   targetRounds: number;
+  locale: Locale;
 }) {
   return (
     <div className={cn(depth > 0 && 'ml-6 pl-4 border-l-2 border-border')}>
       {nodes.map((node) => (
         <TreeNode
-          key={node.name}
+          key={node.id}
           node={node}
           expandedNodes={expandedNodes}
           onToggle={onToggle}
@@ -788,6 +810,7 @@ function TreeNodeList({
           roundsCalculation={roundsCalculation}
           activeTab={activeTab}
           targetRounds={targetRounds}
+          locale={locale}
         />
       ))}
     </div>
@@ -804,24 +827,28 @@ function TreeNode({
   roundsCalculation,
   activeTab,
   targetRounds,
+  locale,
 }: {
   node: ResourceNode;
   expandedNodes: Set<string>;
-  onToggle: (name: string) => void;
+  onToggle: (id: string) => void;
   depth: number;
   inventory: Record<string, string>;
-  onInventoryChange: (name: string, value: string) => void;
+  onInventoryChange: (id: string, value: string) => void;
   roundsCalculation: RoundsCalculationResult;
   activeTab: 'stash' | 'raid';
   targetRounds: number;
+  locale: Locale;
 }) {
-  const isExpanded = expandedNodes.has(node.name);
+  const { t } = useTranslation();
+  const isExpanded = expandedNodes.has(node.id);
   const rarityColor = getRarityColor(node.rarity);
+  const displayName = node.name[locale];
 
   // Show input only on leaf nodes (not expanded with children)
   const isLeaf = !node.children || node.children.length === 0;
-  const isBottleneck = roundsCalculation.bottleneck === node.name;
-  const roundsProvided = roundsCalculation.resourceRounds.get(node.name) ?? null;
+  const isBottleneck = roundsCalculation.bottleneck === node.id;
+  const roundsProvided = roundsCalculation.resourceRounds.get(node.id) ?? null;
 
   // Calculate display quantity based on active tab
   const displayQuantity = activeTab === 'raid' ? node.quantity * targetRounds : node.quantity;
@@ -842,7 +869,7 @@ function TreeNode({
             'w-5 h-5 flex-shrink-0 flex items-center justify-center text-muted-foreground select-none',
             node.canCraft && 'cursor-pointer hover:text-foreground'
           )}
-          onClick={() => node.canCraft && onToggle(node.name)}
+          onClick={() => node.canCraft && onToggle(node.id)}
         >
           {node.canCraft ? (
             isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />
@@ -851,17 +878,17 @@ function TreeNode({
 
         {/* Image - fixed width */}
         <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
-          {node.image && (
+          {node.imageUrl && (
             <img
-              src={`/${node.image}`}
-              alt={node.name}
+              src={`/${node.imageUrl}`}
+              alt={displayName}
               className="w-8 h-8 object-contain"
             />
           )}
         </div>
 
         {/* Name - flexible */}
-        <span className="flex-1 font-medium min-w-0 truncate">{node.name}</span>
+        <span className="flex-1 font-medium min-w-0 truncate">{displayName}</span>
 
         {/* Right-side controls with fixed widths */}
         <div className="flex items-center gap-2 flex-shrink-0">
@@ -877,21 +904,21 @@ function TreeNode({
                 <input
                   type="text"
                   inputMode="numeric"
-                  value={inventory[node.name] || ''}
+                  value={inventory[node.id] || ''}
                   onChange={(e) => {
                     const value = e.target.value;
                     if (value === '' || /^\d*$/.test(value)) {
-                      onInventoryChange(node.name, value);
+                      onInventoryChange(node.id, value);
                     }
                   }}
-                  placeholder="∞"
+                  placeholder="\u221E"
                   className={cn(
                     'w-full px-2 py-1 text-right text-sm rounded border bg-background',
                     isBottleneck
                       ? 'border-red-500 ring-1 ring-red-500/50'
                       : 'border-border'
                   )}
-                  aria-label={`Inventory amount for ${node.name}`}
+                  aria-label={`Inventory amount for ${displayName}`}
                   onClick={(e) => e.stopPropagation()}
                 />
               ) : (
@@ -937,8 +964,8 @@ function TreeNode({
                     ? 'bg-primary text-primary-foreground shadow-md'
                     : 'border-2 border-dashed border-primary/50 text-primary hover:border-primary hover:bg-primary/10'
                 )}
-                title={isExpanded ? "Click to collapse" : "Click to break down into components"}
-                onClick={() => onToggle(node.name)}
+                title={isExpanded ? t('resource.collapse') : t('resource.breakDown')}
+                onClick={() => onToggle(node.id)}
               >
                 <Hammer className={cn('w-5 h-5', !isExpanded && 'animate-pulse')} />
               </div>
@@ -958,6 +985,7 @@ function TreeNode({
           roundsCalculation={roundsCalculation}
           activeTab={activeTab}
           targetRounds={targetRounds}
+          locale={locale}
         />
       )}
     </div>
