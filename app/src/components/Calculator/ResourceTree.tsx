@@ -10,6 +10,8 @@ import {
   getWeapons,
 } from '../../data/gameData';
 import type { Loadout, GameItem, Locale, LocalizedString } from '../../types';
+import { HowToObtainContent, hasObtainInfo } from './HowToObtainContent';
+import { MobileTooltip } from '../ui/MobileTooltip';
 
 interface ResourceNode {
   id: string;
@@ -876,19 +878,33 @@ function TreeNode({
           ) : null}
         </span>
 
-        {/* Image - fixed width */}
-        <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
-          {node.imageUrl && (
-            <img
-              src={node.imageUrl}
-              alt={displayName}
-              className="w-8 h-8 object-contain"
+        {/* Image + Name — wrapped in obtain tooltip */}
+        <MobileTooltip
+          title={t('obtain.title', { item: displayName })}
+          borderColor={rarityColor}
+          disabled={!hasObtainInfo(node.id)}
+          className="flex-1 min-w-0"
+          scrollable
+          content={
+            <HowToObtainContent
+              itemId={node.id}
+              locale={locale}
             />
-          )}
-        </div>
-
-        {/* Name - flexible */}
-        <span className="flex-1 font-medium min-w-0 truncate">{displayName}</span>
+          }
+        >
+          <div className="flex items-center gap-2 min-w-0 flex-1 cursor-help">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+              {node.imageUrl && (
+                <img
+                  src={node.imageUrl}
+                  alt={displayName}
+                  className="w-8 h-8 object-contain"
+                />
+              )}
+            </div>
+            <span className="flex-1 font-medium min-w-0 truncate">{displayName}</span>
+          </div>
+        </MobileTooltip>
 
         {/* Right-side controls with fixed widths */}
         <div className="flex items-center gap-2 flex-shrink-0">

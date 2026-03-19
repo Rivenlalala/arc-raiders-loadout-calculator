@@ -11,6 +11,8 @@ interface MobileTooltipProps {
   title?: string;
   borderColor?: string;
   disabled?: boolean;
+  className?: string;
+  scrollable?: boolean;
 }
 
 export function MobileTooltip({
@@ -19,6 +21,8 @@ export function MobileTooltip({
   title,
   borderColor,
   disabled = false,
+  className,
+  scrollable = false,
 }: MobileTooltipProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -32,7 +36,7 @@ export function MobileTooltip({
     if (!triggerRef.current) return null;
 
     const trigger = triggerRef.current.getBoundingClientRect();
-    const tooltipWidth = 288; // w-72 = 18rem = 288px
+    const tooltipWidth = 420;
     const tooltipHeight = 200; // estimated
     const viewport = {
       width: window.innerWidth,
@@ -91,17 +95,7 @@ export function MobileTooltip({
   }
 
   const handleClick = (e: React.MouseEvent) => {
-    if (isMobile) {
-      e.preventDefault();
-      e.stopPropagation();
-      setIsOpen(true);
-    }
-  };
-
-  // Handle touch for mobile - more reliable than click
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (isMobile) {
-      e.preventDefault();
+    if (isMobile && scrollable) {
       e.stopPropagation();
       setIsOpen(true);
     }
@@ -128,10 +122,9 @@ export function MobileTooltip({
       <div
         ref={triggerRef}
         onClick={handleClick}
-        onTouchEnd={handleTouchEnd}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="cursor-pointer"
+        className={cn('cursor-pointer', className)}
       >
         {children}
       </div>
@@ -180,15 +173,20 @@ export function MobileTooltip({
               </div>
             </div>
           ) : (
-            // Desktop: Floating tooltip near trigger (no animation)
+            // Desktop: Floating tooltip near trigger
             <div
               ref={tooltipRef}
-              className="fixed z-[100] w-72 p-3 rounded-lg border bg-card shadow-xl pointer-events-none"
+              className={cn(
+                'fixed z-[100] w-[420px] px-5 py-3 rounded-lg border bg-card shadow-xl',
+                scrollable ? 'max-h-[600px] overflow-y-auto' : 'pointer-events-none'
+              )}
               style={{
                 top: position?.top ?? 0,
                 left: position?.left ?? 0,
                 borderColor: borderColor || 'var(--border)',
               }}
+
+
             >
               {content}
             </div>
