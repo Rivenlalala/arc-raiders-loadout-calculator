@@ -62,7 +62,6 @@ export interface GameItem {
   vendors: Vendor[] | null;
   updatedAt: string | null;
   addedIn: string | null;
-  foundIn: string | undefined;
 }
 
 // Weapon family — groups weapon tiers for UI display

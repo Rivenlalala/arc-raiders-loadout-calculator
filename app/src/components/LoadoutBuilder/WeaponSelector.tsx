@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, X, Search, Crosshair, Layers, Wrench } from 'lucide-react';
+import { ChevronDown, X, Search, Info } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { getWeaponFamilies, getItemById, getRarityColor, getItemVendors } from '../../data/gameData';
-import { BlueprintBadge, TraderSection } from '../ui/TraderSection';
+import { getWeaponFamilies, getItemById, getRarityColor } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
 import { ModSelector } from './ModSelector';
 import { MobileTooltip } from '../ui/MobileTooltip';
@@ -54,60 +53,62 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
     }
   }
 
-  const vendors = getItemVendors(weapon.id);
-
-  // All stats to show: ammo type + mod slots + other effects
-  const statRows: { label: string; value: string | number }[] = [];
-  if (ammoType) statRows.push({ label: t('weapon.ammo'), value: String(ammoType) });
-  statRows.push({ label: t('weapon.modSlots'), value: modSlotCount });
-  for (const [, effect] of effectEntries) {
-    statRows.push({ label: effect.label[locale], value: String(effect.value) });
-  }
-
   return (
-    <div className="space-y-3">
-      {/* Stats */}
-      {statRows.length > 0 && (
+    <>
+      <div className="flex items-center gap-3 mb-3">
+        {weapon.imageUrl && (
+          <img src={weapon.imageUrl} alt={weapon.name[locale]} className="w-14 h-14 object-contain" />
+        )}
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Crosshair className="w-4 h-4 text-primary" />
-            <span className="text-sm font-semibold text-muted-foreground">Stats</span>
-          </div>
-          <div className="space-y-1 ml-6">
-            {statRows.map((row, i) => (
-              <div key={i} className="flex justify-between gap-4 text-sm">
-                <span className="text-muted-foreground flex-shrink-0">{row.label}</span>
-                <span className="text-primary font-medium max-w-[55%] text-left ml-auto">{row.value}</span>
+          <p className="text-sm text-muted-foreground">
+            {weapon.rarity} {weapon.type}
+          </p>
+          {currentTierNum > 1 && (
+            <p className="text-primary font-medium">{t('weapon.tier')} {currentTierNum}</p>
+          )}
+        </div>
+      </div>
+
+      {/* Basic stats */}
+      <div className="grid grid-cols-2 gap-2 text-sm mb-3">
+        {ammoType && <div>{t('weapon.ammo')} <span className="text-primary">{ammoType}</span></div>}
+        <div>{t('weapon.modSlots')} <span className="text-primary">{modSlotCount}</span></div>
+      </div>
+
+      {/* All effects */}
+      {effectEntries.length > 0 && (
+        <div className="border-t border-border pt-3 mb-3">
+          <div className="space-y-1">
+            {effectEntries.map(([key, effect]) => (
+              <div key={key} className="text-sm">
+                <span className="text-muted-foreground">{effect.label[locale]}:</span>{' '}
+                <span className="text-primary">{effect.value}</span>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* Upgrade Tiers */}
+      {/* Upgrade tiers info */}
       {family && family.tiers.length > 1 && (
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Layers className="w-4 h-4 text-amber-400" />
-            <span className="text-sm font-semibold text-muted-foreground">{t('weapon.upgradeTiers')}</span>
-          </div>
-          <div className="flex gap-1 ml-6 mb-2">
+        <div className="border-t border-border pt-3 mb-3">
+          <p className="text-sm font-semibold text-muted-foreground mb-2">{t('weapon.upgradeTiers')}</p>
+          <div className="flex gap-1 mb-2">
             {family.tiers.map((tier, idx) => (
               <span
                 key={tier.id}
                 className={cn(
-                  'w-6 h-6 flex items-center justify-center rounded text-xs',
-                  tierIndex === idx
-                    ? 'bg-primary text-primary-foreground font-semibold'
-                    : 'bg-secondary'
+                  'w-8 h-8 flex items-center justify-center rounded text-sm',
+                  tierIndex === idx ? 'bg-primary text-primary-foreground' : 'bg-secondary'
                 )}
               >
                 {idx + 1}
               </span>
             ))}
           </div>
+          {/* Show current tier bonuses */}
           {tierBonuses.length > 0 && (
-            <div className="bg-green-500/10 border border-green-500/30 rounded p-2 ml-6">
+            <div className="bg-green-500/10 border border-green-500/30 rounded p-2">
               <p className="text-sm font-semibold text-green-400 mb-1">
                 {t('weapon.tierBonuses', { tier: currentTierNum })}
               </p>
@@ -119,14 +120,11 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
         </div>
       )}
 
-      {/* Equipped Mods */}
+      {/* Equipped mods effects */}
       {equippedMods.length > 0 && (
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Wrench className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-semibold text-muted-foreground">{t('weapon.equippedMods')}</span>
-          </div>
-          <div className="space-y-2 ml-6">
+        <div className="border-t border-border pt-3">
+          <p className="text-sm font-semibold text-muted-foreground mb-2">{t('weapon.equippedMods')}</p>
+          <div className="space-y-2">
             {equippedMods.map((mod) => (
               <div key={mod.id} className="text-sm">
                 <span className="font-medium" style={{ color: getRarityColor(mod.rarity) }}>
@@ -143,12 +141,15 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
         </div>
       )}
 
-      {/* Blueprint Required */}
-      {weapon.blueprintLocked && <BlueprintBadge />}
-
-      {/* Traders */}
-      {vendors.length > 0 && <TraderSection vendors={vendors} locale={locale} />}
-    </div>
+      {/* Available mod slots (when no mods equipped) */}
+      {modSlotCount > 0 && equippedMods.length === 0 && (
+        <div className="border-t border-border pt-3">
+          <p className="text-sm text-muted-foreground">
+            {t('weapon.availableSlots', { count: modSlotCount })}
+          </p>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -305,38 +306,47 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
       >
         {selectedWeapon && selectedFamily ? (
           <div className="flex items-start gap-3">
-            <MobileTooltip
-              title={selectedFamily.name[locale]}
-              borderColor={getRarityColor(selectedWeapon.rarity)}
-              content={
-                <WeaponTooltipContent
-                  weapon={selectedWeapon}
-                  family={selectedFamily}
-                  mods={value?.mods ?? []}
-                  locale={locale}
-                  t={t}
-/>
-              }
-            >
-              <ItemCard
-                name={selectedWeapon.name[locale]}
-                image={selectedWeapon.imageUrl}
-                rarity={selectedWeapon.rarity}
-                size="md"
-              />
-            </MobileTooltip>
+            <ItemCard
+              name={selectedWeapon.name[locale]}
+              image={selectedWeapon.imageUrl}
+              rarity={selectedWeapon.rarity}
+              size="md"
+            />
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
                 <h4 className="font-semibold">{selectedFamily.name[locale]}</h4>
-                <button
-                  className="p-1 hover:bg-secondary rounded"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onChange(null);
-                  }}
-                >
-                  <X className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-1">
+                  {/* Info button for tooltip */}
+                  <MobileTooltip
+                    title={selectedFamily.name[locale]}
+                    borderColor={getRarityColor(selectedWeapon.rarity)}
+                    content={
+                      <WeaponTooltipContent
+                        weapon={selectedWeapon}
+                        family={selectedFamily}
+                        mods={value?.mods ?? []}
+                        locale={locale}
+                        t={t}
+                      />
+                    }
+                  >
+                    <button
+                      className="p-1 hover:bg-secondary rounded"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Info className="w-4 h-4 text-muted-foreground" />
+                    </button>
+                  </MobileTooltip>
+                  <button
+                    className="p-1 hover:bg-secondary rounded"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onChange(null);
+                    }}
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
               <p className="text-sm text-muted-foreground">{selectedFamily.weaponType}</p>
               <p className="text-sm text-muted-foreground">

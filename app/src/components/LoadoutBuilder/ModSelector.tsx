@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronRight, X, ChevronDown, ChevronUp, Wrench } from 'lucide-react';
+import { ChevronRight, X, ChevronDown, ChevronUp, Info } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { getItemById, getRarityColor, getItemVendors } from '../../data/gameData';
-import { BlueprintBadge, TraderSection } from '../ui/TraderSection';
+import { getItemById, getRarityColor } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
 import { MobileTooltip } from '../ui/MobileTooltip';
 import { SlideOutPanel } from '../ui/SlideOutPanel';
@@ -18,35 +17,38 @@ interface ModSelectorProps {
 
 // Tooltip content for mods
 function ModTooltipContent({ mod, locale }: { mod: GameItem; locale: Locale }) {
+  const { t } = useTranslation();
   const effectEntries = Object.entries(mod.effects);
-  const vendors = getItemVendors(mod.id);
 
   return (
-    <div className="space-y-3">
+    <>
+      <div className="flex items-center gap-3 mb-3">
+        {mod.imageUrl && (
+          <img src={mod.imageUrl} alt={mod.name[locale]} className="w-12 h-12 object-contain" />
+        )}
+        <div>
+          <p className="text-sm text-muted-foreground">{mod.rarity} • {mod.type}</p>
+        </div>
+      </div>
+
       {/* Effects */}
       {effectEntries.length > 0 && (
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Wrench className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-semibold text-muted-foreground">Effects</span>
-          </div>
-          <div className="space-y-1 ml-6">
-            {effectEntries.map(([key, effect]) => (
-              <div key={key} className="flex justify-between gap-4 text-sm">
-                <span className="text-muted-foreground flex-shrink-0">{effect.label[locale]}</span>
-                <span className="text-green-400 font-medium max-w-[55%] text-left ml-auto">{effect.value}</span>
-              </div>
-            ))}
-          </div>
+        <div className="bg-green-500/10 border border-green-500/30 rounded p-2 mb-3">
+          {effectEntries.map(([key, effect]) => (
+            <p key={key} className="text-sm text-green-400 font-medium">
+              {effect.label[locale]}: {effect.value}
+            </p>
+          ))}
         </div>
       )}
 
-      {/* Blueprint Required */}
-      {mod.blueprintLocked && <BlueprintBadge />}
-
-      {/* Traders */}
-      {vendors.length > 0 && <TraderSection vendors={vendors} locale={locale} />}
-    </div>
+      {/* Compatible weapons hint */}
+      {mod.compatibleWith && mod.compatibleWith.length > 0 && (
+        <p className="text-sm text-muted-foreground border-t border-border pt-3">
+          {t('mod.compatible', { weapons: mod.compatibleWith.join(', ') })}
+        </p>
+      )}
+    </>
   );
 }
 
@@ -98,22 +100,28 @@ export function ModSelector({ slotName, modIds, selectedModId, onSelect }: ModSe
       >
         {selectedMod ? (
           <>
+            <ItemCard
+              name={selectedMod.name[locale]}
+              image={selectedMod.imageUrl}
+              rarity={selectedMod.rarity}
+              size="sm"
+            />
+            <div className="flex-1 min-w-0">
+              <p className="font-medium">{selectedMod.name[locale]}</p>
+              <p className="text-sm text-muted-foreground">{slotName}</p>
+            </div>
             <MobileTooltip
               title={selectedMod.name[locale]}
               borderColor={getRarityColor(selectedMod.rarity)}
               content={<ModTooltipContent mod={selectedMod} locale={locale} />}
             >
-              <ItemCard
-                name={selectedMod.name[locale]}
-                image={selectedMod.imageUrl}
-                rarity={selectedMod.rarity}
-                size="sm"
-              />
+              <button
+                className="p-2 hover:bg-secondary rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Info className="w-4 h-4 text-muted-foreground" />
+              </button>
             </MobileTooltip>
-            <div className="flex-1 min-w-0">
-              <p className="font-medium">{selectedMod.name[locale]}</p>
-              <p className="text-sm text-muted-foreground">{slotName}</p>
-            </div>
             <button
               className="p-2 hover:bg-secondary rounded-lg"
               onClick={handleClear}
