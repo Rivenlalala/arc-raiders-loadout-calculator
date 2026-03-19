@@ -32,7 +32,7 @@ export function MobileTooltip({
     if (!triggerRef.current) return null;
 
     const trigger = triggerRef.current.getBoundingClientRect();
-    const tooltipWidth = 288; // w-72 = 18rem = 288px
+    const tooltipWidth = 480; // max-w estimate for positioning
     const tooltipHeight = 200; // estimated
     const viewport = {
       width: window.innerWidth,
@@ -107,8 +107,14 @@ export function MobileTooltip({
     }
   };
 
+  const leaveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const handleMouseEnter = () => {
     if (!isMobile) {
+      if (leaveTimeout.current) {
+        clearTimeout(leaveTimeout.current);
+        leaveTimeout.current = null;
+      }
       setPosition(calculatePosition());
       setIsHovered(true);
     }
@@ -116,8 +122,10 @@ export function MobileTooltip({
 
   const handleMouseLeave = () => {
     if (!isMobile) {
-      setIsHovered(false);
-      setPosition(null);
+      leaveTimeout.current = setTimeout(() => {
+        setIsHovered(false);
+        setPosition(null);
+      }, 100);
     }
   };
 
@@ -180,15 +188,17 @@ export function MobileTooltip({
               </div>
             </div>
           ) : (
-            // Desktop: Floating tooltip near trigger (no animation)
+            // Desktop: Floating tooltip near trigger
             <div
               ref={tooltipRef}
-              className="fixed z-[100] w-72 p-3 rounded-lg border bg-card shadow-xl pointer-events-none"
+              className="fixed z-[100] w-max max-w-[480px] max-h-80 overflow-y-auto p-3 rounded-lg border bg-card shadow-xl"
               style={{
                 top: position?.top ?? 0,
                 left: position?.left ?? 0,
                 borderColor: borderColor || 'var(--border)',
               }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               {content}
             </div>

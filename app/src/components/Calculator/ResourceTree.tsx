@@ -886,7 +886,6 @@ function TreeNode({
           content={
             <HowToObtainContent
               itemId={node.id}
-              itemName={displayName}
               locale={locale}
             />
           }
