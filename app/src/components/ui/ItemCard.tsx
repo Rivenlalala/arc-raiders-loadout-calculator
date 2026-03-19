@@ -3,7 +3,7 @@ import { getRarityColor } from '../../data/gameData';
 
 interface ItemCardProps {
   name: string;
-  image: string | null;
+  image?: string;
   rarity?: string | null;
   selected?: boolean;
   onClick?: () => void;

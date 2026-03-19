@@ -293,12 +293,12 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
         {label}
       </label>
 
-      {/* Weapon trigger + dropdown wrapper */}
-      <div className="relative">
+      {/* Weapon trigger + dropdown wrapper — fixed height keeps mods aligned */}
+      <div className="relative h-[130px]">
       {/* Selected weapon display */}
       <div
         className={cn(
-          'p-3 rounded-lg border border-border bg-card h-[130px]',
+          'p-3 rounded-lg border border-border bg-card',
           'hover:bg-secondary/50 cursor-pointer transition-colors',
           isOpen && 'ring-2 ring-primary'
         )}
@@ -382,7 +382,7 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-between h-full">
+          <div className="flex items-center justify-between py-2">
             <span className="text-muted-foreground">{t('weapon.select')}</span>
             <ChevronDown className="w-4 h-4" />
           </div>

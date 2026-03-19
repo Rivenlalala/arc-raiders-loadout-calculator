@@ -63,7 +63,7 @@ function processRawItem(raw: RawGameItem): GameItem {
     value: raw.value ?? 0,
     weightKg: raw.weightKg ?? 0,
     stackSize: raw.stackSize ?? 1,
-    imageUrl: raw.imageFilename ?? null,
+    imageUrl: raw.imageFilename ?? undefined,
     effects: extractEffects(raw.effects),
     recipe: raw.recipe ?? null,
     craftBench: raw.craftBench ?? null,
@@ -192,7 +192,7 @@ export function getItemRecipe(itemId: string): { ingredients: Record<string, num
   };
 }
 
-export function getRarityColor(rarity: string | null): string {
+export function getRarityColor(rarity: string | null | undefined): string {
   switch (rarity?.toLowerCase()) {
     case 'common': return '#9ca3af';
     case 'uncommon': return '#22c55e';

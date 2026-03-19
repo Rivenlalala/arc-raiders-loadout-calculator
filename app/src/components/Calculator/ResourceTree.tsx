@@ -15,8 +15,8 @@ interface ResourceNode {
   id: string;
   name: LocalizedString;
   quantity: number;
-  rarity: string | null;
-  imageUrl: string | null;
+  rarity?: string | null;
+  imageUrl?: string;
   canCraft: boolean;
   children?: ResourceNode[];
 }
@@ -306,7 +306,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
         name: item?.name ?? { en: ingredientId, 'zh-CN': ingredientId },
         quantity,
         rarity: item?.rarity ?? null,
-        imageUrl: item?.imageUrl ?? null,
+        imageUrl: item?.imageUrl,
         canCraft,
       };
 
@@ -352,7 +352,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
 
   // Calculate flat list of final materials (leaf nodes)
   const finalMaterials = useMemo(() => {
-    const result: Record<string, { name: LocalizedString; quantity: number; rarity: string | null; imageUrl: string | null }> = {};
+    const result: Record<string, { name: LocalizedString; quantity: number; rarity?: string | null; imageUrl?: string }> = {};
 
     const collectLeaves = (nodes: ResourceNode[]) => {
       for (const node of nodes) {

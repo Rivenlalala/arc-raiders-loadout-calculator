@@ -7,7 +7,7 @@ import { ItemCard } from './ItemCard';
 interface Item {
   id: string;
   name: string;
-  image: string | null;
+  image?: string;
   rarity?: string | null;
   category?: string;
 }

@@ -43,7 +43,7 @@ export interface GameItem {
   value: number;
   weightKg: number;
   stackSize: number;
-  imageUrl: string | null;
+  imageUrl: string | undefined;
   effects: Record<string, ItemEffect>;
   recipe: Record<string, number> | null;
   craftBench: string | string[] | null;
@@ -101,7 +101,7 @@ export interface ResourceNode {
   name: LocalizedString;
   quantity: number;
   rarity: Rarity | null;
-  imageUrl: string | null;
+  imageUrl: string | undefined;
   canCraft: boolean;
   isExpanded: boolean;
   children: ResourceNode[];
