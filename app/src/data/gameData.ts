@@ -1,8 +1,5 @@
-import type { GameItem, RawGameItem, WeaponFamily, Rarity, ItemCategory, Locale, LocalizedString, ItemEffect } from '../types';
+import type { GameItem, RawGameItem, WeaponFamily, Rarity, ItemCategory, LocalizedString, ItemEffect } from '../types';
 import rawItems from 'virtual:arcraiders-items';
-
-// --- Supported locales ---
-const SUPPORTED_LOCALES: Locale[] = ['en', 'zh-CN'];
 
 // --- Processing helpers ---
 

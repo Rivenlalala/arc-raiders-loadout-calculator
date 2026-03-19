@@ -86,13 +86,6 @@ export function MobileTooltip({
     }
   }, [isMobile, isOpen]);
 
-  // Calculate position when showing on desktop
-  useEffect(() => {
-    if (!isMobile && isHovered) {
-      setPosition(calculatePosition());
-    }
-  }, [isMobile, isHovered, calculatePosition]);
-
   if (disabled) {
     return <>{children}</>;
   }
