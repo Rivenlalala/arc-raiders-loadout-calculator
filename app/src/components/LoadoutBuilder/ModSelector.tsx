@@ -1,85 +1,78 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ChevronRight, X, ChevronDown, ChevronUp, Info } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { getModificationsForWeaponSlot, getModificationById, getRarityColor } from '../../data/gameData';
+import { getItemById, getRarityColor } from '../../data/gameData';
 import { ItemCard } from '../ui/ItemCard';
 import { MobileTooltip } from '../ui/MobileTooltip';
 import { SlideOutPanel } from '../ui/SlideOutPanel';
-import type { Modification } from '../../types';
+import type { GameItem, Locale } from '../../types';
 
 interface ModSelectorProps {
-  slot: string;
-  weaponName: string;
+  slotName: string;       // Display name like "Muzzle", "Stock"
+  modIds: string[];       // Compatible mod IDs from weapon.modSlots[slot]
   selectedModId: string | null;
   onSelect: (modId: string | null) => void;
 }
 
 // Tooltip content for mods
-function ModTooltipContent({ mod }: { mod: Modification }) {
+function ModTooltipContent({ mod, locale }: { mod: GameItem; locale: Locale }) {
+  const { t } = useTranslation();
+  const effectEntries = Object.entries(mod.effects);
+
   return (
     <>
       <div className="flex items-center gap-3 mb-3">
-        {mod.image && (
-          <img src={`/${mod.image}`} alt={mod.name} className="w-12 h-12 object-contain" />
+        {mod.imageUrl && (
+          <img src={mod.imageUrl} alt={mod.name[locale]} className="w-12 h-12 object-contain" />
         )}
         <div>
-          <p className="text-sm text-muted-foreground">{mod.rarity} • {mod.slot_type}</p>
+          <p className="text-sm text-muted-foreground">{mod.rarity} • {mod.type}</p>
         </div>
       </div>
 
-      {/* Exact stats - show all effects */}
-      {(mod.stats.effects?.length || mod.stats.effect) && (
+      {/* Effects */}
+      {effectEntries.length > 0 && (
         <div className="bg-green-500/10 border border-green-500/30 rounded p-2 mb-3">
-          {mod.stats.effects?.map((effect, i) => (
-            <p key={i} className="text-sm text-green-400 font-medium">{effect}</p>
-          ))}
-          {!mod.stats.effects && mod.stats.effect && (
-            <p className="text-sm text-green-400 font-medium">{mod.stats.effect}</p>
-          )}
-        </div>
-      )}
-
-      {/* Effects description */}
-      {mod.effects.length > 0 && (
-        <div className="text-sm text-muted-foreground mb-3">
-          {mod.effects.map((effect, i) => (
-            <p key={i}>{effect}</p>
+          {effectEntries.map(([key, effect]) => (
+            <p key={key} className="text-sm text-green-400 font-medium">
+              {effect.label[locale]}: {effect.value}
+            </p>
           ))}
         </div>
       )}
 
       {/* Compatible weapons hint */}
-      {mod.compatible_weapons.length > 0 && (
+      {mod.compatibleWith && mod.compatibleWith.length > 0 && (
         <p className="text-sm text-muted-foreground border-t border-border pt-3">
-          Compatible: {mod.compatible_weapons.join(', ')}
+          {t('mod.compatible', { weapons: mod.compatibleWith.join(', ') })}
         </p>
       )}
     </>
   );
 }
 
-// Get all stats for a mod
-function getModStats(mod: Modification): string[] {
-  const stats: string[] = [];
-  if (mod.stats.effects?.length) {
-    stats.push(...mod.stats.effects);
-  } else if (mod.stats.effect) {
-    stats.push(mod.stats.effect);
-  }
-  if (mod.effects.length > 0) {
-    stats.push(...mod.effects);
-  }
-  return stats;
+// Get display strings for mod effects
+function getModEffects(mod: GameItem, locale: Locale): string[] {
+  return Object.entries(mod.effects).map(
+    ([, effect]) => `${effect.label[locale]}: ${effect.value}`
+  );
 }
 
-export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSelectorProps) {
+export function ModSelector({ slotName, modIds, selectedModId, onSelect }: ModSelectorProps) {
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language as Locale;
   const [isOpen, setIsOpen] = useState(false);
   const [expandedModId, setExpandedModId] = useState<string | null>(null);
 
-  const availableMods = getModificationsForWeaponSlot(weaponName, slot);
-  const selectedMod = selectedModId ? getModificationById(selectedModId) : null;
+  // Resolve mod IDs to GameItem objects, filtering out any that don't exist
+  const availableMods = modIds
+    .map(id => getItemById(id))
+    .filter((item): item is GameItem => item !== undefined);
 
-  const handleModSelect = (mod: Modification) => {
+  const selectedMod = selectedModId ? getItemById(selectedModId) ?? null : null;
+
+  const handleModSelect = (mod: GameItem) => {
     onSelect(mod.id);
     setIsOpen(false);
     setExpandedModId(null);
@@ -100,7 +93,7 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
       {/* Selected Mod Card */}
       <div
         className={cn(
-          'flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50',
+          'flex items-center gap-3 p-3 rounded-lg border border-border bg-card',
           'hover:bg-secondary/50 cursor-pointer transition-colors min-h-[60px]'
         )}
         onClick={() => setIsOpen(true)}
@@ -108,19 +101,19 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
         {selectedMod ? (
           <>
             <ItemCard
-              name={selectedMod.name}
-              image={selectedMod.image}
+              name={selectedMod.name[locale]}
+              image={selectedMod.imageUrl}
               rarity={selectedMod.rarity}
               size="sm"
             />
             <div className="flex-1 min-w-0">
-              <p className="font-medium">{selectedMod.name}</p>
-              <p className="text-sm text-muted-foreground">{slot}</p>
+              <p className="font-medium">{selectedMod.name[locale]}</p>
+              <p className="text-sm text-muted-foreground">{slotName}</p>
             </div>
             <MobileTooltip
-              title={selectedMod.name}
+              title={selectedMod.name[locale]}
               borderColor={getRarityColor(selectedMod.rarity)}
-              content={<ModTooltipContent mod={selectedMod} />}
+              content={<ModTooltipContent mod={selectedMod} locale={locale} />}
             >
               <button
                 className="p-2 hover:bg-secondary rounded-lg"
@@ -142,8 +135,8 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
               <span className="text-xl text-muted-foreground">+</span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-medium text-muted-foreground">{slot}</p>
-              <p className="text-sm text-muted-foreground">Click to select</p>
+              <p className="font-medium text-muted-foreground">{slotName}</p>
+              <p className="text-sm text-muted-foreground">{t('mod.clickToSelect')}</p>
             </div>
             <ChevronRight className="w-5 h-5 text-muted-foreground" />
           </>
@@ -154,15 +147,15 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
       <SlideOutPanel
         isOpen={isOpen}
         onClose={() => { setIsOpen(false); setExpandedModId(null); }}
-        title={`Select ${slot} Mod`}
+        title={t('mod.select', { slot: slotName })}
       >
         <div className="p-3 space-y-2">
           {availableMods.length === 0 ? (
-            <p className="text-muted-foreground py-4 text-center">No mods available for this slot</p>
+            <p className="text-muted-foreground py-4 text-center">{t('mod.noMods')}</p>
           ) : (
             availableMods.map((mod) => {
               const isExpanded = expandedModId === mod.id;
-              const stats = getModStats(mod);
+              const effects = getModEffects(mod, locale);
 
               return (
                 <div
@@ -180,17 +173,17 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
                     onClick={() => handleModSelect(mod)}
                   >
                     <ItemCard
-                      name={mod.name}
-                      image={mod.image}
+                      name={mod.name[locale]}
+                      image={mod.imageUrl}
                       rarity={mod.rarity}
                       size="sm"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium">{mod.name}</p>
+                      <p className="font-medium">{mod.name[locale]}</p>
                       <p className="text-xs text-muted-foreground">{mod.rarity}</p>
                     </div>
                     {/* Expand/collapse button */}
-                    {stats.length > 0 && (
+                    {effects.length > 0 && (
                       <button
                         className="p-2 hover:bg-secondary rounded-lg"
                         onClick={(e) => toggleExpanded(e, mod.id)}
@@ -204,12 +197,12 @@ export function ModSelector({ slot, weaponName, selectedModId, onSelect }: ModSe
                     )}
                   </div>
 
-                  {/* Expanded stats */}
-                  {isExpanded && stats.length > 0 && (
+                  {/* Expanded effects */}
+                  {isExpanded && effects.length > 0 && (
                     <div className="px-3 pb-3 pt-0">
                       <div className="bg-green-500/10 border border-green-500/30 rounded p-2 space-y-1">
-                        {stats.map((stat, i) => (
-                          <p key={i} className="text-sm text-green-400">{stat}</p>
+                        {effects.map((effect, i) => (
+                          <p key={i} className="text-sm text-green-400">{effect}</p>
                         ))}
                       </div>
                     </div>

@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "arcraiders-data": "github:RaidTheory/arcraiders-data",
     "clsx": "^2.1.1",
+    "i18next": "^25.8.18",
     "lucide-react": "^0.555.0",
     "lz-string": "^1.5.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-i18next": "^16.5.8",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {

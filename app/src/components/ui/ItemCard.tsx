@@ -3,7 +3,7 @@ import { getRarityColor } from '../../data/gameData';
 
 interface ItemCardProps {
   name: string;
-  image: string | null;
+  image?: string;
   rarity?: string | null;
   selected?: boolean;
   onClick?: () => void;
@@ -59,7 +59,7 @@ export function ItemCard({
     >
       {image ? (
         <img
-          src={`/${image}`}
+          src={image}
           alt={name}
           className={cn('object-contain', imageSizeClasses[size])}
           loading="lazy"

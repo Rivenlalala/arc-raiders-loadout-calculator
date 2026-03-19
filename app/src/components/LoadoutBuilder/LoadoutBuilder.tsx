@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import { WeaponSelector } from './WeaponSelector';
 import { ItemCard } from '../ui/ItemCard';
-import { getAugments, getShieldsForAugment, getHealing, getGrenades, getQuickUse, getTraps, getAmmo, getAugmentById, getEquipmentById, getRarityColor } from '../../data/gameData';
+import { getAugments, getShieldsForAugment, getItemById, getRarityColor, getCraftableItems } from '../../data/gameData';
 import { useIsMobile } from '../../hooks/useIsMobile';
-import type { Loadout, EquipmentItem } from '../../types';
+import type { Loadout, GameItem, Locale } from '../../types';
 
 // Simple hover-only tooltip (desktop only, no mobile interaction)
 function HoverTooltip({
   item,
+  locale,
   isHovered,
   triggerRect,
   children,
 }: {
-  item: EquipmentItem;
+  item: GameItem;
+  locale: Locale;
   isHovered: boolean;
   triggerRect: DOMRect | null;
   children: React.ReactNode;
@@ -54,7 +57,7 @@ function HoverTooltip({
       }}
     >
       <p className="font-semibold mb-1" style={{ color: getRarityColor(item.rarity) }}>
-        {item.name}
+        {item.name[locale]}
       </p>
       {children}
     </div>,
@@ -68,116 +71,74 @@ interface LoadoutBuilderProps {
 }
 
 // Tooltip content for augments
-function AugmentTooltipContent({ augment }: { augment: EquipmentItem }) {
+function AugmentTooltipContent({ augment, locale }: { augment: GameItem; locale: Locale }) {
   return (
     <>
       <p className="text-xs text-muted-foreground mb-2">{augment.rarity} Augment</p>
 
-      {augment.special_effect && (
-        <p className="text-sm text-green-400 mb-3 p-2 bg-green-400/10 rounded">{augment.special_effect}</p>
-      )}
-
       <div className="grid grid-cols-2 gap-2 text-sm">
-        {augment.stats['Backpack Slots'] && (
-          <div>Backpack: <span className="text-primary">{augment.stats['Backpack Slots']}</span></div>
-        )}
-        {augment.stats['Safe Pocket Slots'] && (
-          <div>Safe Pocket: <span className="text-primary">{augment.stats['Safe Pocket Slots']}</span></div>
-        )}
-        {augment.stats['Quick Use Slots'] && (
-          <div>Quick Use: <span className="text-primary">{augment.stats['Quick Use Slots']}</span></div>
-        )}
-        {augment.stats['Weapon Slots'] && (
-          <div>Weapons: <span className="text-primary">{augment.stats['Weapon Slots']}</span></div>
-        )}
-        {augment.stats['Weight Limit'] && (
-          <div>Weight: <span className="text-primary">{augment.stats['Weight Limit']}</span></div>
-        )}
-        {augment.stats['Shield Compatibility'] && (
-          <div className="col-span-2">Shield: <span className="text-primary">{augment.stats['Shield Compatibility']}</span></div>
-        )}
+        {Object.entries(augment.effects).map(([key, effect]) => (
+          <div key={key} className={key === 'Shield Compatibility' ? 'col-span-2' : ''}>
+            {effect.label[locale]}: <span className="text-primary">{effect.value}</span>
+          </div>
+        ))}
       </div>
     </>
   );
 }
 
 // Tooltip content for shields
-function ShieldTooltipContent({ shield }: { shield: EquipmentItem }) {
+function ShieldTooltipContent({ shield, locale }: { shield: GameItem; locale: Locale }) {
   return (
     <>
       <p className="text-xs text-muted-foreground mb-2">{shield.rarity} Shield</p>
 
       <div className="space-y-2 text-sm">
-        {shield.stats['Shield Charge'] && (
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Shield Charge</span>
-            <span className="text-primary">{shield.stats['Shield Charge']}</span>
+        {Object.entries(shield.effects).map(([key, effect]) => (
+          <div key={key} className="flex justify-between">
+            <span className="text-muted-foreground">{effect.label[locale]}</span>
+            <span className="text-primary">{effect.value}</span>
           </div>
-        )}
-        {shield.stats['Damage Mitigation'] && (
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Damage Mitigation</span>
-            <span className="text-green-400">{shield.stats['Damage Mitigation']}</span>
-          </div>
-        )}
-        {shield.stats['Movement Penalty'] && (
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Movement Penalty</span>
-            <span className="text-red-400">{shield.stats['Movement Penalty']}</span>
-          </div>
-        )}
+        ))}
       </div>
     </>
   );
 }
 
 // Tooltip content for consumables (healing, grenades, utilities, traps)
-function ConsumableTooltipContent({ item }: { item: EquipmentItem }) {
-  const healingStats = ['Healing', 'Use Time', 'Duration'];
-  const grenadeStats = ['Damage', 'Radius', 'Duration', 'Effect'];
-  const utilityStats = ['Duration', 'Effect', 'Radius'];
-  const trapStats = ['Damage', 'Radius', 'Duration', 'Stamina', 'ARC Stun', 'Raider Stun'];
-
-  const statsToShow = item.category === 'healing' ? healingStats :
-    item.category === 'grenades' ? grenadeStats :
-    item.category === 'traps' ? trapStats : utilityStats;
-
+function ConsumableTooltipContent({ item, locale }: { item: GameItem; locale: Locale }) {
   return (
     <>
       <div className="flex items-center gap-3 mb-3">
-        {item.image && (
-          <img src={`/${item.image}`} alt={item.name} className="w-12 h-12 object-contain" />
+        {item.imageUrl && (
+          <img src={item.imageUrl} alt={item.name[locale]} className="w-12 h-12 object-contain" />
         )}
         <div>
           <p className="text-xs text-muted-foreground">{item.rarity} {item.category}</p>
         </div>
       </div>
 
-      {item.description && (
-        <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{item.description}</p>
+      {item.description[locale] && (
+        <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{item.description[locale]}</p>
       )}
 
       <div className="space-y-2 text-sm border-t border-border pt-3">
-        {statsToShow.map(stat => {
-          const value = item.stats[stat];
-          if (!value) return null;
-          return (
-            <div key={stat} className="flex justify-between">
-              <span className="text-muted-foreground">{stat}</span>
-              <span className="text-primary">{value}</span>
-            </div>
-          );
-        })}
-        {item.stats['Weight'] && (
+        {Object.entries(item.effects).map(([key, effect]) => (
+          <div key={key} className="flex justify-between">
+            <span className="text-muted-foreground">{effect.label[locale]}</span>
+            <span className="text-primary">{effect.value}</span>
+          </div>
+        ))}
+        {item.weightKg > 0 && (
           <div className="flex justify-between">
             <span className="text-muted-foreground">Weight</span>
-            <span className="text-muted-foreground">{item.stats['Weight']}</span>
+            <span className="text-muted-foreground">{item.weightKg} kg</span>
           </div>
         )}
-        {item.stats['Stack Size'] && (
+        {item.stackSize > 1 && (
           <div className="flex justify-between">
             <span className="text-muted-foreground">Stack Size</span>
-            <span className="text-muted-foreground">{item.stats['Stack Size']}</span>
+            <span className="text-muted-foreground">{item.stackSize}</span>
           </div>
         )}
       </div>
@@ -202,15 +163,17 @@ function sortByRarity<T extends { rarity: string | null }>(items: T[]): T[] {
 }
 
 export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language as Locale;
   const [hoveredItem, setHoveredItem] = useState<{ id: string; rect: DOMRect } | null>(null);
 
   const augments = getAugments();
   const compatibleShields = getShieldsForAugment(loadout.augment);
-  const healing = sortByRarity(getHealing().filter(h => h.crafting.materials.length > 0));
-  const grenades = sortByRarity(getGrenades().filter(g => g.crafting.materials.length > 0));
-  const utilities = sortByRarity(getQuickUse().filter(u => u.crafting.materials.length > 0));
-  const traps = sortByRarity(getTraps().filter(t => t.crafting.materials.length > 0));
-  const ammoTypes = getAmmo().filter(a => a.crafting.materials.length > 0);
+  const healing = sortByRarity(getCraftableItems('healing'));
+  const grenades = sortByRarity(getCraftableItems('grenade'));
+  const utilities = sortByRarity(getCraftableItems('utility'));
+  const traps = sortByRarity(getCraftableItems('trap'));
+  const ammoTypes = getCraftableItems('ammunition');
 
   const handleMouseEnter = (id: string, e: React.MouseEvent) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -235,25 +198,25 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
     onChange({ ...loadout, augment: augmentId, shield: newShield });
   };
 
-  const selectedAugment = loadout.augment ? getAugmentById(loadout.augment) : null;
-  const selectedShield = loadout.shield ? getEquipmentById(loadout.shield) : null;
+  const selectedAugment = loadout.augment ? getItemById(loadout.augment) : null;
+  const selectedShield = loadout.shield ? getItemById(loadout.shield) : null;
 
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold">Loadout Builder</h2>
+      <h2 className="text-xl font-bold">{t('loadout.title')}</h2>
 
       {/* Weapons */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="relative">
           <WeaponSelector
-            label="Primary Weapon"
+            label={t('loadout.primaryWeapon')}
             value={loadout.weapon1}
             onChange={(weapon) => onChange({ ...loadout, weapon1: weapon })}
           />
         </div>
         <div className="relative">
           <WeaponSelector
-            label="Secondary Weapon"
+            label={t('loadout.secondaryWeapon')}
             value={loadout.weapon2}
             onChange={(weapon) => onChange({ ...loadout, weapon2: weapon })}
           />
@@ -264,7 +227,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Augment Selector */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-muted-foreground">Augment</label>
+          <label className="block text-sm font-medium text-muted-foreground">{t('loadout.augment')}</label>
           <div className="flex flex-wrap gap-2">
             {augments.map((augment) => (
               <div
@@ -273,8 +236,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 onMouseLeave={handleMouseLeave}
               >
                 <ItemCard
-                  name={augment.name}
-                  image={augment.image}
+                  name={augment.name[locale]}
+                  image={augment.imageUrl}
                   rarity={augment.rarity}
                   selected={loadout.augment === augment.id}
                   onClick={() => handleAugmentChange(loadout.augment === augment.id ? null : augment.id)}
@@ -282,20 +245,18 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 />
                 <HoverTooltip
                   item={augment}
+                  locale={locale}
                   isHovered={hoveredItem?.id === augment.id}
                   triggerRect={hoveredItem?.id === augment.id ? hoveredItem.rect : null}
                 >
-                  <AugmentTooltipContent augment={augment} />
+                  <AugmentTooltipContent augment={augment} locale={locale} />
                 </HoverTooltip>
               </div>
             ))}
           </div>
           {selectedAugment && (
             <p className="text-xs text-muted-foreground">
-              Shield: {selectedAugment.stats['Shield Compatibility'] || 'None'}
-              {selectedAugment.special_effect && (
-                <span className="text-green-400 ml-2">• {selectedAugment.special_effect}</span>
-              )}
+              {t('loadout.shield')}: {selectedAugment.effects['Shield Compatibility']?.value || 'None'}
             </p>
           )}
         </div>
@@ -303,11 +264,11 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
         {/* Shield Selector */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-muted-foreground">
-            Shield {!loadout.augment && <span className="text-red-400">(select augment first)</span>}
+            {loadout.augment ? t('loadout.shield') : t('loadout.shieldSelectAugment')}
           </label>
           <div className="flex flex-wrap gap-2">
             {compatibleShields.length === 0 && loadout.augment && (
-              <p className="text-sm text-muted-foreground">No compatible shields</p>
+              <p className="text-sm text-muted-foreground">{t('loadout.noCompatibleShields')}</p>
             )}
             {compatibleShields.map((shield) => (
               <div
@@ -316,8 +277,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 onMouseLeave={handleMouseLeave}
               >
                 <ItemCard
-                  name={shield.name}
-                  image={shield.image}
+                  name={shield.name[locale]}
+                  image={shield.imageUrl}
                   rarity={shield.rarity}
                   selected={loadout.shield === shield.id}
                   onClick={() => onChange({ ...loadout, shield: loadout.shield === shield.id ? null : shield.id })}
@@ -325,20 +286,19 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 />
                 <HoverTooltip
                   item={shield}
+                  locale={locale}
                   isHovered={hoveredItem?.id === shield.id}
                   triggerRect={hoveredItem?.id === shield.id ? hoveredItem.rect : null}
                 >
-                  <ShieldTooltipContent shield={shield} />
+                  <ShieldTooltipContent shield={shield} locale={locale} />
                 </HoverTooltip>
               </div>
             ))}
           </div>
           {selectedShield && (
             <p className="text-xs text-muted-foreground">
-              {selectedShield.stats['Shield Charge']} HP • {selectedShield.stats['Damage Mitigation']} mitigation
-              {selectedShield.stats['Movement Penalty'] && selectedShield.stats['Movement Penalty'] !== '0%' && (
-                <span className="text-red-400"> • -{selectedShield.stats['Movement Penalty']} speed</span>
-              )}
+              {selectedShield.effects['Charge']?.value ?? selectedShield.effects['Shield Charge']?.value ?? ''} HP
+              {selectedShield.effects['Damage Reduction']?.value ? ` • ${selectedShield.effects['Damage Reduction'].value} mitigation` : ''}
             </p>
           )}
         </div>
@@ -346,17 +306,18 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
 
       {/* Consumables */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Consumables</h3>
+        <h3 className="text-lg font-semibold">{t('loadout.consumables')}</h3>
 
         {/* Healing */}
         <div>
           <label className="block text-sm font-medium text-muted-foreground mb-2">
-            Healing Items
+            {t('loadout.healing')}
           </label>
           <div className="flex flex-wrap gap-3">
             {healing.map((item) => {
               const current = loadout.healing.find(h => h.id === item.id);
               const qty = current?.quantity ?? 0;
+              const itemName = item.name[locale];
 
               return (
                 <div key={item.id} className="flex flex-col items-center h-[100px]">
@@ -374,8 +335,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.image}`}
-                        alt={item.name}
+                        src={item.imageUrl}
+                        alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
                           borderColor: getRarityColor(item.rarity),
@@ -391,15 +352,16 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       )}
                       <HoverTooltip
                         item={item}
+                        locale={locale}
                         isHovered={hoveredItem?.id === item.id}
                         triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
                       >
-                        <ConsumableTooltipContent item={item} />
+                        <ConsumableTooltipContent item={item} locale={locale} />
                       </HoverTooltip>
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
-                    {item.name}
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
+                    {itemName}
                   </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
@@ -438,12 +400,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
         {/* Grenades */}
         <div>
           <label className="block text-sm font-medium text-muted-foreground mb-2">
-            Grenades
+            {t('loadout.grenades')}
           </label>
           <div className="flex flex-wrap gap-3">
             {grenades.map((item) => {
               const current = loadout.grenades.find(g => g.id === item.id);
               const qty = current?.quantity ?? 0;
+              const itemName = item.name[locale];
 
               return (
                 <div key={item.id} className="flex flex-col items-center h-[100px]">
@@ -461,8 +424,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.image}`}
-                        alt={item.name}
+                        src={item.imageUrl}
+                        alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
                           borderColor: getRarityColor(item.rarity),
@@ -478,15 +441,16 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       )}
                       <HoverTooltip
                         item={item}
+                        locale={locale}
                         isHovered={hoveredItem?.id === item.id}
                         triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
                       >
-                        <ConsumableTooltipContent item={item} />
+                        <ConsumableTooltipContent item={item} locale={locale} />
                       </HoverTooltip>
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
-                    {item.name}
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
+                    {itemName}
                   </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
@@ -525,12 +489,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
         {/* Utilities */}
         <div>
           <label className="block text-sm font-medium text-muted-foreground mb-2">
-            Utilities
+            {t('loadout.utilities')}
           </label>
           <div className="flex flex-wrap gap-3">
             {utilities.map((item) => {
               const current = loadout.utilities.find(u => u.id === item.id);
               const qty = current?.quantity ?? 0;
+              const itemName = item.name[locale];
 
               return (
                 <div key={item.id} className="flex flex-col items-center h-[100px]">
@@ -548,8 +513,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.image}`}
-                        alt={item.name}
+                        src={item.imageUrl}
+                        alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
                           borderColor: getRarityColor(item.rarity),
@@ -565,15 +530,16 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       )}
                       <HoverTooltip
                         item={item}
+                        locale={locale}
                         isHovered={hoveredItem?.id === item.id}
                         triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
                       >
-                        <ConsumableTooltipContent item={item} />
+                        <ConsumableTooltipContent item={item} locale={locale} />
                       </HoverTooltip>
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
-                    {item.name}
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
+                    {itemName}
                   </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
@@ -612,12 +578,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
         {/* Traps */}
         <div>
           <label className="block text-sm font-medium text-muted-foreground mb-2">
-            Traps
+            {t('loadout.traps')}
           </label>
           <div className="flex flex-wrap gap-3">
             {traps.map((item) => {
               const current = loadout.traps.find(t => t.id === item.id);
               const qty = current?.quantity ?? 0;
+              const itemName = item.name[locale];
 
               return (
                 <div key={item.id} className="flex flex-col items-center h-[100px]">
@@ -635,8 +602,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.image}`}
-                        alt={item.name}
+                        src={item.imageUrl}
+                        alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
                           borderColor: getRarityColor(item.rarity),
@@ -652,15 +619,16 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       )}
                       <HoverTooltip
                         item={item}
+                        locale={locale}
                         isHovered={hoveredItem?.id === item.id}
                         triggerRect={hoveredItem?.id === item.id ? hoveredItem.rect : null}
                       >
-                        <ConsumableTooltipContent item={item} />
+                        <ConsumableTooltipContent item={item} locale={locale} />
                       </HoverTooltip>
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={item.name}>
-                    {item.name}
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
+                    {itemName}
                   </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
@@ -699,11 +667,12 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
         {/* Ammo */}
         <div>
           <label className="block text-sm font-medium text-muted-foreground mb-2">
-            Ammo
+            {t('loadout.ammo')}
           </label>
           <div className="flex flex-wrap gap-3">
             {ammoTypes.map((ammo) => {
-              const current = loadout.ammo.find(a => a.type === ammo.name);
+              const ammoName = ammo.name[locale];
+              const current = loadout.ammo.find(a => a.type === ammo.id);
               const qty = current?.quantity ?? 0;
 
               return (
@@ -712,16 +681,16 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
                       onClick={() => {
-                        const newAmmo = loadout.ammo.filter(a => a.type !== ammo.name);
+                        const newAmmo = loadout.ammo.filter(a => a.type !== ammo.id);
                         if (qty === 0) {
-                          newAmmo.push({ type: ammo.name, quantity: ammo.crafting.output_quantity || 1 });
+                          newAmmo.push({ type: ammo.id, quantity: ammo.craftQuantity || 1 });
                         }
                         onChange({ ...loadout, ammo: newAmmo });
                       }}
                     >
                       <img
-                        src={`/${ammo.image}`}
-                        alt={ammo.name}
+                        src={ammo.imageUrl}
+                        alt={ammoName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
                           borderColor: '#9ca3af',
@@ -737,8 +706,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       )}
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={ammo.name}>
-                    {ammo.name.replace(' Ammo', '').replace(' Clip', '')}
+                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={ammoName}>
+                    {ammoName.replace(' Ammo', '').replace(' Clip', '')}
                   </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
@@ -746,9 +715,9 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
                         onClick={(e) => {
                           e.stopPropagation();
-                          const outputQty = ammo.crafting.output_quantity || 1;
+                          const outputQty = ammo.craftQuantity || 1;
                           const newAmmo = loadout.ammo.map(a =>
-                            a.type === ammo.name ? { ...a, quantity: Math.max(0, a.quantity - outputQty) } : a
+                            a.type === ammo.id ? { ...a, quantity: Math.max(0, a.quantity - outputQty) } : a
                           ).filter(a => a.quantity > 0);
                           onChange({ ...loadout, ammo: newAmmo });
                         }}
@@ -759,9 +728,9 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         className="w-5 h-5 bg-secondary rounded text-xs hover:bg-secondary/80"
                         onClick={(e) => {
                           e.stopPropagation();
-                          const outputQty = ammo.crafting.output_quantity || 1;
+                          const outputQty = ammo.craftQuantity || 1;
                           const newAmmo = loadout.ammo.map(a =>
-                            a.type === ammo.name ? { ...a, quantity: a.quantity + outputQty } : a
+                            a.type === ammo.id ? { ...a, quantity: a.quantity + outputQty } : a
                           );
                           onChange({ ...loadout, ammo: newAmmo });
                         }}
