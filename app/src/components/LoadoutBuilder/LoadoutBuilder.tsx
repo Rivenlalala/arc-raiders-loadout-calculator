@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
+import { Shield, Activity } from 'lucide-react';
 import { WeaponSelector } from './WeaponSelector';
 import { ItemCard } from '../ui/ItemCard';
-import { getAugments, getShieldsForAugment, getItemById, getRarityColor, getCraftableItems } from '../../data/gameData';
+import { getAugments, getShieldsForAugment, getItemById, getRarityColor, getCraftableItems, getItemVendors } from '../../data/gameData';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import { BlueprintBadge, TraderSection } from '../ui/TraderSection';
 import type { Loadout, GameItem, Locale } from '../../types';
 
 // Simple hover-only tooltip (desktop only, no mobile interaction)
@@ -72,77 +74,90 @@ interface LoadoutBuilderProps {
 
 // Tooltip content for augments
 function AugmentTooltipContent({ augment, locale }: { augment: GameItem; locale: Locale }) {
-  return (
-    <>
-      <p className="text-xs text-muted-foreground mb-2">{augment.rarity} Augment</p>
+  const vendors = getItemVendors(augment.id);
+  const effectEntries = Object.entries(augment.effects);
 
-      <div className="grid grid-cols-2 gap-2 text-sm">
-        {Object.entries(augment.effects).map(([key, effect]) => (
-          <div key={key} className={key === 'Shield Compatibility' ? 'col-span-2' : ''}>
-            {effect.label[locale]}: <span className="text-primary">{effect.value}</span>
+  return (
+    <div className="space-y-3">
+      {effectEntries.length > 0 && (
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <Shield className="w-4 h-4 text-purple-400" />
+            <span className="text-sm font-semibold text-muted-foreground">Properties</span>
           </div>
-        ))}
-      </div>
-    </>
+          <div className="space-y-1 ml-6">
+            {effectEntries.map(([key, effect]) => (
+              <div key={key} className="flex justify-between text-sm">
+                <span className="text-muted-foreground">{effect.label[locale]}</span>
+                <span className="text-primary font-medium">{effect.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {augment.blueprintLocked && <BlueprintBadge />}
+      {vendors.length > 0 && <TraderSection vendors={vendors} locale={locale} />}
+    </div>
   );
 }
 
 // Tooltip content for shields
 function ShieldTooltipContent({ shield, locale }: { shield: GameItem; locale: Locale }) {
-  return (
-    <>
-      <p className="text-xs text-muted-foreground mb-2">{shield.rarity} Shield</p>
+  const vendors = getItemVendors(shield.id);
+  const effectEntries = Object.entries(shield.effects);
 
-      <div className="space-y-2 text-sm">
-        {Object.entries(shield.effects).map(([key, effect]) => (
-          <div key={key} className="flex justify-between">
-            <span className="text-muted-foreground">{effect.label[locale]}</span>
-            <span className="text-primary">{effect.value}</span>
+  return (
+    <div className="space-y-3">
+      {effectEntries.length > 0 && (
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <Shield className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-semibold text-muted-foreground">Properties</span>
           </div>
-        ))}
-      </div>
-    </>
+          <div className="space-y-1 ml-6">
+            {effectEntries.map(([key, effect]) => (
+              <div key={key} className="flex justify-between text-sm">
+                <span className="text-muted-foreground">{effect.label[locale]}</span>
+                <span className="text-primary font-medium">{effect.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {vendors.length > 0 && <TraderSection vendors={vendors} locale={locale} />}
+    </div>
   );
 }
 
 // Tooltip content for consumables (healing, grenades, utilities, traps)
 function ConsumableTooltipContent({ item, locale }: { item: GameItem; locale: Locale }) {
+  const vendors = getItemVendors(item.id);
+  const effectEntries = Object.entries(item.effects);
+
   return (
-    <>
-      <div className="flex items-center gap-3 mb-3">
-        {item.imageUrl && (
-          <img src={item.imageUrl} alt={item.name[locale]} className="w-12 h-12 object-contain" />
-        )}
-        <div>
-          <p className="text-xs text-muted-foreground">{item.rarity} {item.category}</p>
-        </div>
-      </div>
-
+    <div className="space-y-3">
       {item.description[locale] && (
-        <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{item.description[locale]}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{item.description[locale]}</p>
       )}
-
-      <div className="space-y-2 text-sm border-t border-border pt-3">
-        {Object.entries(item.effects).map(([key, effect]) => (
-          <div key={key} className="flex justify-between">
-            <span className="text-muted-foreground">{effect.label[locale]}</span>
-            <span className="text-primary">{effect.value}</span>
+      {effectEntries.length > 0 && (
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <Activity className="w-4 h-4 text-green-400" />
+            <span className="text-sm font-semibold text-muted-foreground">Effects</span>
           </div>
-        ))}
-        {item.weightKg > 0 && (
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Weight</span>
-            <span className="text-muted-foreground">{item.weightKg} kg</span>
+          <div className="space-y-1 ml-6">
+            {effectEntries.map(([key, effect]) => (
+              <div key={key} className="flex justify-between text-sm">
+                <span className="text-muted-foreground">{effect.label[locale]}</span>
+                <span className="text-primary font-medium">{effect.value}</span>
+              </div>
+            ))}
           </div>
-        )}
-        {item.stackSize > 1 && (
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Stack Size</span>
-            <span className="text-muted-foreground">{item.stackSize}</span>
-          </div>
-        )}
-      </div>
-    </>
+        </div>
+      )}
+      {item.blueprintLocked && <BlueprintBadge />}
+      {vendors.length > 0 && <TraderSection vendors={vendors} locale={locale} />}
+    </div>
   );
 }
 
