@@ -59,7 +59,7 @@ export function ItemCard({
     >
       {image ? (
         <img
-          src={`/${image}`}
+          src={image}
           alt={name}
           className={cn('object-contain', imageSizeClasses[size])}
           loading="lazy"

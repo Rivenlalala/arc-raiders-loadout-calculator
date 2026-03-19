@@ -630,7 +630,7 @@ export function ResourceTree({ loadout }: ResourceTreeProps) {
                     >
                       {data.imageUrl && (
                         <img
-                          src={`/${data.imageUrl}`}
+                          src={data.imageUrl}
                           alt={data.name[locale]}
                           className="w-8 h-8 object-contain"
                         />
@@ -880,7 +880,7 @@ function TreeNode({
         <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
           {node.imageUrl && (
             <img
-              src={`/${node.imageUrl}`}
+              src={node.imageUrl}
               alt={displayName}
               className="w-8 h-8 object-contain"
             />

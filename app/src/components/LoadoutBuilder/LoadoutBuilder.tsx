@@ -111,7 +111,7 @@ function ConsumableTooltipContent({ item, locale }: { item: GameItem; locale: Lo
     <>
       <div className="flex items-center gap-3 mb-3">
         {item.imageUrl && (
-          <img src={`/${item.imageUrl}`} alt={item.name[locale]} className="w-12 h-12 object-contain" />
+          <img src={item.imageUrl} alt={item.name[locale]} className="w-12 h-12 object-contain" />
         )}
         <div>
           <p className="text-xs text-muted-foreground">{item.rarity} {item.category}</p>
@@ -335,7 +335,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.imageUrl}`}
+                        src={item.imageUrl}
                         alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
@@ -424,7 +424,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.imageUrl}`}
+                        src={item.imageUrl}
                         alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
@@ -513,7 +513,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.imageUrl}`}
+                        src={item.imageUrl}
                         alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
@@ -602,7 +602,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={`/${item.imageUrl}`}
+                        src={item.imageUrl}
                         alt={itemName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{
@@ -689,7 +689,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       }}
                     >
                       <img
-                        src={`/${ammo.imageUrl}`}
+                        src={ammo.imageUrl}
                         alt={ammoName}
                         className="w-12 h-12 object-contain rounded-lg"
                         style={{

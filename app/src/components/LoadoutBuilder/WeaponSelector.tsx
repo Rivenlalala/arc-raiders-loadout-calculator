@@ -57,7 +57,7 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
     <>
       <div className="flex items-center gap-3 mb-3">
         {weapon.imageUrl && (
-          <img src={`/${weapon.imageUrl}`} alt={weapon.name[locale]} className="w-14 h-14 object-contain" />
+          <img src={weapon.imageUrl} alt={weapon.name[locale]} className="w-14 h-14 object-contain" />
         )}
         <div>
           <p className="text-sm text-muted-foreground">
@@ -170,7 +170,7 @@ function DesktopWeaponTooltip({ family, locale, t }: {
     >
       <div className="flex items-center gap-2 mb-2">
         {firstTier.imageUrl && (
-          <img src={`/${firstTier.imageUrl}`} alt={family.name[locale]} className="w-10 h-10 object-contain" />
+          <img src={firstTier.imageUrl} alt={family.name[locale]} className="w-10 h-10 object-contain" />
         )}
         <div>
           <p className="font-semibold text-sm" style={{ color: getRarityColor(firstTier.rarity) }}>

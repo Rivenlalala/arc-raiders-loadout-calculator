@@ -24,7 +24,7 @@ function ModTooltipContent({ mod, locale }: { mod: GameItem; locale: Locale }) {
     <>
       <div className="flex items-center gap-3 mb-3">
         {mod.imageUrl && (
-          <img src={`/${mod.imageUrl}`} alt={mod.name[locale]} className="w-12 h-12 object-contain" />
+          <img src={mod.imageUrl} alt={mod.name[locale]} className="w-12 h-12 object-contain" />
         )}
         <div>
           <p className="text-sm text-muted-foreground">{mod.rarity} • {mod.type}</p>
