@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { ShoppingCart, Recycle, Trash2, MapPin } from 'lucide-react';
+import { ShoppingCart, Recycle, Trash2, MapPin, ScrollText } from 'lucide-react';
 import { getItemById, getItemVendors, getRecycleSources, getSalvageSources, getFoundIn } from '../../data/gameData';
 import type { ObtainSource } from '../../data/gameData';
 import type { Locale } from '../../types';
@@ -32,6 +32,8 @@ interface HowToObtainContentProps {
 export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) {
   const { t } = useTranslation();
 
+  const item = getItemById(itemId);
+  const blueprintLocked = item?.blueprintLocked ?? false;
   const vendors = getItemVendors(itemId);
   const recycleSources = getRecycleSources(itemId);
   const salvageSources = getSalvageSources(itemId);
@@ -39,6 +41,16 @@ export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) 
 
   return (
     <div className="space-y-3">
+      {/* Blueprint Required */}
+      {blueprintLocked && (
+        <div className="flex items-center gap-2">
+          <ScrollText className="w-4 h-4 text-amber-400" />
+          <span className="text-sm font-semibold text-amber-400">
+            {t('obtain.blueprintRequired')}
+          </span>
+        </div>
+      )}
+
       {/* Traders */}
       {vendors.length > 0 && (
         <div>
@@ -166,7 +178,9 @@ export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) 
 }
 
 export function hasObtainInfo(itemId: string): boolean {
+  const item = getItemById(itemId);
   return (
+    (item?.blueprintLocked ?? false) ||
     getItemVendors(itemId).length > 0 ||
     getRecycleSources(itemId).length > 0 ||
     getSalvageSources(itemId).length > 0 ||
