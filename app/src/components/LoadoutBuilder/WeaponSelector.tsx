@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, X, Search } from 'lucide-react';
+import { ChevronDown, X, Search, Crosshair, Layers, Wrench } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { getWeaponFamilies, getItemById, getRarityColor, getItemVendors } from '../../data/gameData';
 import { BlueprintBadge, TraderSection } from '../ui/TraderSection';
@@ -54,62 +54,60 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
     }
   }
 
+  const vendors = getItemVendors(weapon.id);
+
+  // All stats to show: ammo type + mod slots + other effects
+  const statRows: { label: string; value: string | number }[] = [];
+  if (ammoType) statRows.push({ label: t('weapon.ammo'), value: String(ammoType) });
+  statRows.push({ label: t('weapon.modSlots'), value: modSlotCount });
+  for (const [, effect] of effectEntries) {
+    statRows.push({ label: effect.label[locale], value: String(effect.value) });
+  }
+
   return (
-    <>
-      <div className="flex items-center gap-3 mb-3">
-        {weapon.imageUrl && (
-          <img src={weapon.imageUrl} alt={weapon.name[locale]} className="w-14 h-14 object-contain" />
-        )}
+    <div className="space-y-3">
+      {/* Stats */}
+      {statRows.length > 0 && (
         <div>
-          <p className="text-sm text-muted-foreground">
-            {weapon.rarity} {weapon.type}
-          </p>
-          {currentTierNum > 1 && (
-            <p className="text-primary font-medium">{t('weapon.tier')} {currentTierNum}</p>
-          )}
-        </div>
-      </div>
-
-      {/* Basic stats */}
-      <div className="grid grid-cols-2 gap-2 text-sm mb-3">
-        {ammoType && <div>{t('weapon.ammo')} <span className="text-primary">{ammoType}</span></div>}
-        <div>{t('weapon.modSlots')} <span className="text-primary">{modSlotCount}</span></div>
-      </div>
-
-      {/* All effects */}
-      {effectEntries.length > 0 && (
-        <div className="border-t border-border pt-3 mb-3">
-          <div className="space-y-1">
-            {effectEntries.map(([key, effect]) => (
-              <div key={key} className="text-sm">
-                <span className="text-muted-foreground">{effect.label[locale]}:</span>{' '}
-                <span className="text-primary">{effect.value}</span>
+          <div className="flex items-center gap-2 mb-2">
+            <Crosshair className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold text-muted-foreground">Stats</span>
+          </div>
+          <div className="space-y-1 ml-6">
+            {statRows.map((row, i) => (
+              <div key={i} className="flex justify-between gap-4 text-sm">
+                <span className="text-muted-foreground flex-shrink-0">{row.label}</span>
+                <span className="text-primary font-medium max-w-[55%] text-left ml-auto">{row.value}</span>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* Upgrade tiers info */}
+      {/* Upgrade Tiers */}
       {family && family.tiers.length > 1 && (
-        <div className="border-t border-border pt-3 mb-3">
-          <p className="text-sm font-semibold text-muted-foreground mb-2">{t('weapon.upgradeTiers')}</p>
-          <div className="flex gap-1 mb-2">
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <Layers className="w-4 h-4 text-amber-400" />
+            <span className="text-sm font-semibold text-muted-foreground">{t('weapon.upgradeTiers')}</span>
+          </div>
+          <div className="flex gap-1 ml-6 mb-2">
             {family.tiers.map((tier, idx) => (
               <span
                 key={tier.id}
                 className={cn(
-                  'w-8 h-8 flex items-center justify-center rounded text-sm',
-                  tierIndex === idx ? 'bg-primary text-primary-foreground' : 'bg-secondary'
+                  'w-6 h-6 flex items-center justify-center rounded text-xs',
+                  tierIndex === idx
+                    ? 'bg-primary text-primary-foreground font-semibold'
+                    : 'bg-secondary'
                 )}
               >
                 {idx + 1}
               </span>
             ))}
           </div>
-          {/* Show current tier bonuses */}
           {tierBonuses.length > 0 && (
-            <div className="bg-green-500/10 border border-green-500/30 rounded p-2">
+            <div className="bg-green-500/10 border border-green-500/30 rounded p-2 ml-6">
               <p className="text-sm font-semibold text-green-400 mb-1">
                 {t('weapon.tierBonuses', { tier: currentTierNum })}
               </p>
@@ -121,11 +119,14 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
         </div>
       )}
 
-      {/* Equipped mods effects */}
+      {/* Equipped Mods */}
       {equippedMods.length > 0 && (
-        <div className="border-t border-border pt-3">
-          <p className="text-sm font-semibold text-muted-foreground mb-2">{t('weapon.equippedMods')}</p>
-          <div className="space-y-2">
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <Wrench className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-semibold text-muted-foreground">{t('weapon.equippedMods')}</span>
+          </div>
+          <div className="space-y-2 ml-6">
             {equippedMods.map((mod) => (
               <div key={mod.id} className="text-sm">
                 <span className="font-medium" style={{ color: getRarityColor(mod.rarity) }}>
@@ -142,30 +143,12 @@ function WeaponTooltipContent({ weapon, family, mods, locale, t }: {
         </div>
       )}
 
-      {/* Available mod slots (when no mods equipped) */}
-      {modSlotCount > 0 && equippedMods.length === 0 && (
-        <div className="border-t border-border pt-3">
-          <p className="text-sm text-muted-foreground">
-            {t('weapon.availableSlots', { count: modSlotCount })}
-          </p>
-        </div>
-      )}
+      {/* Blueprint Required */}
+      {weapon.blueprintLocked && <BlueprintBadge />}
 
-      {weapon.blueprintLocked && (
-        <div className="border-t border-border pt-3">
-          <BlueprintBadge />
-        </div>
-      )}
-      {(() => {
-        const vendors = getItemVendors(weapon.id);
-        if (vendors.length === 0) return null;
-        return (
-          <div className="border-t border-border pt-3">
-            <TraderSection vendors={vendors} locale={locale} />
-          </div>
-        );
-      })()}
-    </>
+      {/* Traders */}
+      {vendors.length > 0 && <TraderSection vendors={vendors} locale={locale} />}
+    </div>
   );
 }
 
@@ -332,7 +315,7 @@ export function WeaponSelector({ label, value, onChange }: WeaponSelectorProps) 
                   mods={value?.mods ?? []}
                   locale={locale}
                   t={t}
-                />
+/>
               }
             >
               <ItemCard

@@ -27,9 +27,9 @@ function AugmentTooltipContent({ augment, locale }: { augment: GameItem; locale:
           </div>
           <div className="space-y-1 ml-6">
             {effectEntries.map(([key, effect]) => (
-              <div key={key} className="flex justify-between text-sm">
-                <span className="text-muted-foreground">{effect.label[locale]}</span>
-                <span className="text-primary font-medium">{effect.value}</span>
+              <div key={key} className="flex justify-between gap-4 text-sm">
+                <span className="text-muted-foreground flex-shrink-0">{effect.label[locale]}</span>
+                <span className="text-primary font-medium max-w-[55%] text-left ml-auto">{effect.value}</span>
               </div>
             ))}
           </div>
@@ -56,9 +56,9 @@ function ShieldTooltipContent({ shield, locale }: { shield: GameItem; locale: Lo
           </div>
           <div className="space-y-1 ml-6">
             {effectEntries.map(([key, effect]) => (
-              <div key={key} className="flex justify-between text-sm">
-                <span className="text-muted-foreground">{effect.label[locale]}</span>
-                <span className="text-primary font-medium">{effect.value}</span>
+              <div key={key} className="flex justify-between gap-4 text-sm">
+                <span className="text-muted-foreground flex-shrink-0">{effect.label[locale]}</span>
+                <span className="text-primary font-medium max-w-[55%] text-left ml-auto">{effect.value}</span>
               </div>
             ))}
           </div>
@@ -87,9 +87,9 @@ function ConsumableTooltipContent({ item, locale }: { item: GameItem; locale: Lo
           </div>
           <div className="space-y-1 ml-6">
             {effectEntries.map(([key, effect]) => (
-              <div key={key} className="flex justify-between text-sm">
-                <span className="text-muted-foreground">{effect.label[locale]}</span>
-                <span className="text-primary font-medium">{effect.value}</span>
+              <div key={key} className="flex justify-between gap-4 text-sm">
+                <span className="text-muted-foreground flex-shrink-0">{effect.label[locale]}</span>
+                <span className="text-primary font-medium max-w-[55%] text-left ml-auto">{effect.value}</span>
               </div>
             ))}
           </div>
