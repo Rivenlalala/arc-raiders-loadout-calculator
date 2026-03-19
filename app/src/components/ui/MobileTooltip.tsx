@@ -94,8 +94,9 @@ export function MobileTooltip({
     return <>{children}</>;
   }
 
-  const handleClick = () => {
-    if (isMobile) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (isMobile && scrollable) {
+      e.stopPropagation();
       setIsOpen(true);
     }
   };
