@@ -40,10 +40,11 @@ export function TraderSection({ vendors, locale }: { vendors: Vendor[]; locale: 
           const limitStr = vendor.limit ? ` (${vendor.limit}/day)` : '';
 
           return (
-            <p key={i} className="text-sm">
-              <span className="text-primary font-medium">{traderName}</span>
-              <span className="text-muted-foreground"> — {costStr}{limitStr}</span>
-            </p>
+            <div key={i} className="flex items-baseline text-sm">
+              <span className="text-primary font-medium flex-1 min-w-0 truncate">{traderName}</span>
+              <span className="text-muted-foreground mx-2 flex-shrink-0">—</span>
+              <span className="text-muted-foreground text-right flex-shrink-0">{costStr}{limitStr}</span>
+            </div>
           );
         })}
       </div>

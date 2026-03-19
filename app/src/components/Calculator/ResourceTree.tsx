@@ -883,6 +883,8 @@ function TreeNode({
           title={t('obtain.title', { item: displayName })}
           borderColor={rarityColor}
           disabled={!hasObtainInfo(node.id)}
+          className="flex-1 min-w-0"
+          scrollable
           content={
             <HowToObtainContent
               itemId={node.id}

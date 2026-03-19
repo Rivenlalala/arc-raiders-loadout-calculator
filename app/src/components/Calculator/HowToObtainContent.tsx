@@ -59,25 +59,18 @@ export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) 
           </div>
           <div className="space-y-1 ml-6">
             {groupSourcesByName(recycleSources, locale).map(({ baseName, entries }) => (
-              <p key={baseName} className="text-sm">
-                <span className="text-muted-foreground">
+              <div key={baseName} className="flex items-baseline text-sm">
+                <span className="text-muted-foreground flex-1 min-w-0 truncate">
                   {t('obtain.recycleItem', { item: baseName })}
+                  {entries.length > 1 || entries[0].tier !== '' ? (
+                    <span className="opacity-50"> {entries.map(e => e.tier).join(' / ')}</span>
+                  ) : null}
                 </span>
-                {entries.length === 1 && entries[0].tier === '' ? (
-                  <span className="text-green-400 font-medium">
-                    {' → '}{entries[0].quantity}
-                  </span>
-                ) : (
-                  <>
-                    <span className="text-muted-foreground/60">
-                      {' '}{entries.map(e => e.tier).join(' / ')}
-                    </span>
-                    <span className="text-green-400 font-medium">
-                      {' → '}{entries.map(e => e.quantity).join(' / ')}
-                    </span>
-                  </>
-                )}
-              </p>
+                <span className="text-muted-foreground mx-2 flex-shrink-0">→</span>
+                <span className="text-green-400 font-medium w-24 text-right flex-shrink-0">
+                  {entries.map(e => e.quantity).join(' / ')}
+                </span>
+              </div>
             ))}
           </div>
         </div>
@@ -94,25 +87,18 @@ export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) 
           </div>
           <div className="space-y-1 ml-6">
             {groupSourcesByName(salvageSources, locale).map(({ baseName, entries }) => (
-              <p key={baseName} className="text-sm">
-                <span className="text-muted-foreground">
+              <div key={baseName} className="flex items-baseline text-sm">
+                <span className="text-muted-foreground flex-1 min-w-0 truncate">
                   {t('obtain.salvageItem', { item: baseName })}
+                  {entries.length > 1 || entries[0].tier !== '' ? (
+                    <span className="opacity-50"> {entries.map(e => e.tier).join(' / ')}</span>
+                  ) : null}
                 </span>
-                {entries.length === 1 && entries[0].tier === '' ? (
-                  <span className="text-yellow-400 font-medium">
-                    {' → '}{entries[0].quantity}
-                  </span>
-                ) : (
-                  <>
-                    <span className="text-muted-foreground/60">
-                      {' '}{entries.map(e => e.tier).join(' / ')}
-                    </span>
-                    <span className="text-yellow-400 font-medium">
-                      {' → '}{entries.map(e => e.quantity).join(' / ')}
-                    </span>
-                  </>
-                )}
-              </p>
+                <span className="text-muted-foreground mx-2 flex-shrink-0">→</span>
+                <span className="text-yellow-400 font-medium w-24 text-right flex-shrink-0">
+                  {entries.map(e => e.quantity).join(' / ')}
+                </span>
+              </div>
             ))}
           </div>
         </div>
