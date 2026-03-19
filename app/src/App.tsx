@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { LoadoutBuilder } from './components/LoadoutBuilder/LoadoutBuilder';
 import { ResourceTree } from './components/Calculator/ResourceTree';
 import { getSharedLoadout, getShareUrl } from './utils/shareLoadout';
@@ -17,12 +18,19 @@ const emptyLoadout: Loadout = {
 };
 
 function App() {
+  const { t, i18n } = useTranslation();
   const [loadout, setLoadout] = useState<Loadout>(() => {
     // Check for shared loadout in URL on initial load
     const shared = getSharedLoadout();
     return shared || emptyLoadout;
   });
   const [copied, setCopied] = useState(false);
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'zh-CN' : 'en';
+    i18n.changeLanguage(newLang);
+    localStorage.setItem('locale', newLang);
+  };
 
   // Clear URL after loading shared loadout
   useEffect(() => {
@@ -51,13 +59,19 @@ function App() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-              Arc Raiders Loadout Calculator
+              {t('app.title')}
             </h1>
             <p className="text-sm text-muted-foreground">
-              Plan your loadout and calculate required resources
+              {t('app.subtitle')}
             </p>
           </div>
           <div className="flex items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className="text-sm px-2 py-1 rounded border border-zinc-600 hover:bg-zinc-700 text-zinc-300"
+            >
+              {i18n.language === 'en' ? '中文' : 'EN'}
+            </button>
             <button
               onClick={() => setLoadout(emptyLoadout)}
               className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors flex items-center gap-2"
@@ -65,7 +79,7 @@ function App() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              Reset
+              {t('app.reset')}
             </button>
             <button
               onClick={handleShare}
@@ -76,14 +90,14 @@ function App() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Copied!
+                  {t('app.copied')}
                 </>
               ) : (
                 <>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                   </svg>
-                  Share
+                  {t('app.share')}
                 </>
               )}
             </button>
@@ -110,25 +124,20 @@ function App() {
       <footer className="border-t border-border mt-8 py-4">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>
-            Data scraped from{' '}
-            <a
-              href="https://arcraiders.wiki"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              arcraiders.wiki
-            </a>
+            {t('app.footer.dataSource')}{' '}
+            <a href="https://github.com/RaidTheory/arcraiders-data" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">RaidTheory/arcraiders-data</a>
+            {' & '}
+            <a href="https://arctracker.io" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">arctracker.io</a>
           </p>
           <p className="mt-2">
-            Found a bug?{' '}
+            {t('app.footer.bug')}{' '}
             <a
               href="https://github.com/Rivenlalala/arc-raiders-loadout-calculator"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
-              Contribute on GitHub
+              {t('app.footer.contribute')}
             </a>
           </p>
         </div>
