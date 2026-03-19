@@ -1,15 +1,35 @@
 import { useTranslation } from 'react-i18next';
 import { ShoppingCart, Recycle, Trash2, MapPin } from 'lucide-react';
 import { getItemById, getItemVendors, getRecycleSources, getSalvageSources, getFoundIn } from '../../data/gameData';
+import type { ObtainSource } from '../../data/gameData';
 import type { Locale } from '../../types';
+
+/** Extract tier suffix (e.g., "III" from "Anvil III") */
+function extractTier(name: string): { baseName: string; tier: string } {
+  const match = name.match(/^(.+?)\s+([IVX]+)$/i) || name.match(/^(.+?)\s+(Mk\.\s*\d+.*)$/i);
+  if (match) return { baseName: match[1], tier: match[2] };
+  return { baseName: name, tier: '' };
+}
+
+/** Group sources by base name, preserving tier labels and quantities */
+function groupSourcesByName(sources: ObtainSource[], locale: Locale): { baseName: string; entries: { tier: string; quantity: number }[] }[] {
+  const groups = new Map<string, { tier: string; quantity: number }[]>();
+  for (const source of sources) {
+    const item = getItemById(source.itemId);
+    const fullName = item ? item.name[locale] : source.itemId;
+    const { baseName, tier } = extractTier(fullName);
+    if (!groups.has(baseName)) groups.set(baseName, []);
+    groups.get(baseName)!.push({ tier, quantity: source.quantity });
+  }
+  return Array.from(groups.entries()).map(([baseName, entries]) => ({ baseName, entries }));
+}
 
 interface HowToObtainContentProps {
   itemId: string;
-  itemName: string;
   locale: Locale;
 }
 
-export function HowToObtainContent({ itemId, itemName, locale }: HowToObtainContentProps) {
+export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) {
   const { t } = useTranslation();
 
   const vendors = getItemVendors(itemId);
@@ -60,20 +80,27 @@ export function HowToObtainContent({ itemId, itemName, locale }: HowToObtainCont
             </span>
           </div>
           <div className="space-y-1 ml-6">
-            {recycleSources.map((source, i) => {
-              const sourceItem = getItemById(source.itemId);
-              const sourceName = sourceItem ? sourceItem.name[locale] : source.itemId;
-              return (
-                <p key={i} className="text-sm">
-                  <span className="text-muted-foreground">
-                    {t('obtain.recycleItem', { item: sourceName })}
-                  </span>
+            {groupSourcesByName(recycleSources, locale).map(({ baseName, entries }) => (
+              <p key={baseName} className="text-sm">
+                <span className="text-muted-foreground">
+                  {t('obtain.recycleItem', { item: baseName })}
+                </span>
+                {entries.length === 1 && entries[0].tier === '' ? (
                   <span className="text-green-400 font-medium">
-                    {' → '}{source.quantity} {itemName}
+                    {' → '}{entries[0].quantity}
                   </span>
-                </p>
-              );
-            })}
+                ) : (
+                  <>
+                    <span className="text-muted-foreground/60">
+                      {' '}{entries.map(e => e.tier).join(' / ')}
+                    </span>
+                    <span className="text-green-400 font-medium">
+                      {' → '}{entries.map(e => e.quantity).join(' / ')}
+                    </span>
+                  </>
+                )}
+              </p>
+            ))}
           </div>
         </div>
       )}
@@ -88,20 +115,27 @@ export function HowToObtainContent({ itemId, itemName, locale }: HowToObtainCont
             </span>
           </div>
           <div className="space-y-1 ml-6">
-            {salvageSources.map((source, i) => {
-              const sourceItem = getItemById(source.itemId);
-              const sourceName = sourceItem ? sourceItem.name[locale] : source.itemId;
-              return (
-                <p key={i} className="text-sm">
-                  <span className="text-muted-foreground">
-                    {t('obtain.salvageItem', { item: sourceName })}
-                  </span>
+            {groupSourcesByName(salvageSources, locale).map(({ baseName, entries }) => (
+              <p key={baseName} className="text-sm">
+                <span className="text-muted-foreground">
+                  {t('obtain.salvageItem', { item: baseName })}
+                </span>
+                {entries.length === 1 && entries[0].tier === '' ? (
                   <span className="text-yellow-400 font-medium">
-                    {' → '}{source.quantity} {itemName}
+                    {' → '}{entries[0].quantity}
                   </span>
-                </p>
-              );
-            })}
+                ) : (
+                  <>
+                    <span className="text-muted-foreground/60">
+                      {' '}{entries.map(e => e.tier).join(' / ')}
+                    </span>
+                    <span className="text-yellow-400 font-medium">
+                      {' → '}{entries.map(e => e.quantity).join(' / ')}
+                    </span>
+                  </>
+                )}
+              </p>
+            ))}
           </div>
         </div>
       )}
