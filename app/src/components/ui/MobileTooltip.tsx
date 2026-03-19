@@ -94,19 +94,8 @@ export function MobileTooltip({
     return <>{children}</>;
   }
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = () => {
     if (isMobile) {
-      e.preventDefault();
-      e.stopPropagation();
-      setIsOpen(true);
-    }
-  };
-
-  // Handle touch for mobile - more reliable than click
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (isMobile) {
-      e.preventDefault();
-      e.stopPropagation();
       setIsOpen(true);
     }
   };
@@ -132,7 +121,6 @@ export function MobileTooltip({
       <div
         ref={triggerRef}
         onClick={handleClick}
-        onTouchEnd={handleTouchEnd}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={cn('cursor-pointer', className)}

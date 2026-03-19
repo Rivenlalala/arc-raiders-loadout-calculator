@@ -179,6 +179,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 key={augment.id}
                 title={augment.name[locale]}
                 borderColor={getRarityColor(augment.rarity)}
+                disabled={loadout.augment === augment.id}
                 content={<AugmentTooltipContent augment={augment} locale={locale} />}
               >
                 <div>
@@ -215,6 +216,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                 key={shield.id}
                 title={shield.name[locale]}
                 borderColor={getRarityColor(shield.rarity)}
+                disabled={loadout.shield === shield.id}
                 content={<ShieldTooltipContent shield={shield} locale={locale} />}
               >
                 <div>
@@ -260,6 +262,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
+                      disabled={qty > 0}
                       content={<ConsumableTooltipContent item={item} locale={locale} />}
                     >
                       <div
@@ -345,6 +348,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
+                      disabled={qty > 0}
                       content={<ConsumableTooltipContent item={item} locale={locale} />}
                     >
                       <div
@@ -430,6 +434,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
+                      disabled={qty > 0}
                       content={<ConsumableTooltipContent item={item} locale={locale} />}
                     >
                       <div
@@ -515,6 +520,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
+                      disabled={qty > 0}
                       content={<ConsumableTooltipContent item={item} locale={locale} />}
                     >
                       <div
