@@ -203,16 +203,24 @@ export function getShieldsForAugment(augmentId: string | null): GameItem[] {
   });
 }
 
+/** Skip in-raid recipes — they're field disassembly/crafting, not loadout prep. */
+function getValidRecipe(item: GameItem): Record<string, number> | null {
+  if (!item.recipe || item.craftBench === 'in_raid') return null;
+  return Object.keys(item.recipe).length > 0 ? item.recipe : null;
+}
+
 export function isCraftable(itemId: string): boolean {
   const item = itemIndex.get(itemId);
-  return item !== undefined && item.recipe !== null && Object.keys(item.recipe).length > 0;
+  return item !== undefined && getValidRecipe(item) !== null;
 }
 
 export function getItemRecipe(itemId: string): { ingredients: Record<string, number>; outputQuantity: number } | null {
   const item = itemIndex.get(itemId);
-  if (!item || !item.recipe || Object.keys(item.recipe).length === 0) return null;
+  if (!item) return null;
+  const recipe = getValidRecipe(item);
+  if (!recipe) return null;
   return {
-    ingredients: item.recipe,
+    ingredients: recipe,
     outputQuantity: item.craftQuantity,
   };
 }
@@ -229,7 +237,7 @@ export function getRarityColor(rarity: string | null | undefined): string {
 }
 
 export function getCraftableItems(category: ItemCategory): GameItem[] {
-  return allItems.filter(i => i.category === category && i.recipe && Object.keys(i.recipe).length > 0);
+  return allItems.filter(i => i.category === category && isCraftable(i.id));
 }
 
 export type { ObtainSource };
