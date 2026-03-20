@@ -90,9 +90,7 @@ export function MobileTooltip({
     }
   }, [isMobile, isOpen]);
 
-  if (disabled) {
-    return <>{children}</>;
-  }
+  const leaveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleClick = (e: React.MouseEvent) => {
     if (isMobile && scrollable) {
@@ -103,6 +101,10 @@ export function MobileTooltip({
 
   const handleMouseEnter = () => {
     if (!isMobile) {
+      if (leaveTimeout.current) {
+        clearTimeout(leaveTimeout.current);
+        leaveTimeout.current = null;
+      }
       setPosition(calculatePosition());
       setIsHovered(true);
     }
@@ -110,10 +112,21 @@ export function MobileTooltip({
 
   const handleMouseLeave = () => {
     if (!isMobile) {
-      setIsHovered(false);
-      setPosition(null);
+      if (scrollable) {
+        leaveTimeout.current = setTimeout(() => {
+          setIsHovered(false);
+          setPosition(null);
+        }, 150);
+      } else {
+        setIsHovered(false);
+        setPosition(null);
+      }
     }
   };
+
+  if (disabled) {
+    return <>{children}</>;
+  }
 
   const showTooltip = isMobile ? isOpen : (isHovered && position !== null);
 
@@ -185,8 +198,8 @@ export function MobileTooltip({
                 left: position?.left ?? 0,
                 borderColor: borderColor || 'var(--border)',
               }}
-
-
+              onMouseEnter={scrollable ? handleMouseEnter : undefined}
+              onMouseLeave={scrollable ? handleMouseLeave : undefined}
             >
               {content}
             </div>
