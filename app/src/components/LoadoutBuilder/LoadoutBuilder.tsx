@@ -3,7 +3,7 @@ import { Shield, Activity } from 'lucide-react';
 import { WeaponSelector } from './WeaponSelector';
 import { ItemCard } from '../ui/ItemCard';
 import { MobileTooltip } from '../ui/MobileTooltip';
-import { getAugments, getShieldsForAugment, getItemById, getRarityColor, getCraftableItems, getItemVendors } from '../../data/gameData';
+import { getAugments, getShieldsForAugment, getRarityColor, getCraftableItems, getItemVendors } from '../../data/gameData';
 import { BlueprintBadge, TraderSection } from '../ui/TraderSection';
 import type { Loadout, GameItem, Locale } from '../../types';
 
@@ -19,6 +19,13 @@ function AugmentTooltipContent({ augment, locale }: { augment: GameItem; locale:
 
   return (
     <div className="space-y-3">
+      <div className="flex items-center gap-3">
+        {augment.imageUrl && <img src={augment.imageUrl} alt={augment.name[locale]} className="w-10 h-10 object-contain" />}
+        <div>
+          <p className="font-semibold" style={{ color: getRarityColor(augment.rarity) }}>{augment.name[locale]}</p>
+          <p className="text-xs text-muted-foreground">{augment.rarity} Augment</p>
+        </div>
+      </div>
       {effectEntries.length > 0 && (
         <div>
           <div className="flex items-center gap-2 mb-2">
@@ -48,6 +55,13 @@ function ShieldTooltipContent({ shield, locale }: { shield: GameItem; locale: Lo
 
   return (
     <div className="space-y-3">
+      <div className="flex items-center gap-3">
+        {shield.imageUrl && <img src={shield.imageUrl} alt={shield.name[locale]} className="w-10 h-10 object-contain" />}
+        <div>
+          <p className="font-semibold" style={{ color: getRarityColor(shield.rarity) }}>{shield.name[locale]}</p>
+          <p className="text-xs text-muted-foreground">{shield.rarity} Shield</p>
+        </div>
+      </div>
       {effectEntries.length > 0 && (
         <div>
           <div className="flex items-center gap-2 mb-2">
@@ -76,6 +90,13 @@ function ConsumableTooltipContent({ item, locale }: { item: GameItem; locale: Lo
 
   return (
     <div className="space-y-3">
+      <div className="flex items-center gap-3">
+        {item.imageUrl && <img src={item.imageUrl} alt={item.name[locale]} className="w-10 h-10 object-contain" />}
+        <div>
+          <p className="font-semibold" style={{ color: getRarityColor(item.rarity) }}>{item.name[locale]}</p>
+          <p className="text-xs text-muted-foreground">{item.rarity} {item.category}</p>
+        </div>
+      </div>
       {item.description[locale] && (
         <p className="text-sm text-muted-foreground leading-relaxed">{item.description[locale]}</p>
       )}
@@ -101,7 +122,7 @@ function ConsumableTooltipContent({ item, locale }: { item: GameItem; locale: Lo
   );
 }
 
-// Sort by rarity (Common -> Legendary)
+// Sort by rarity (Legendary -> Common)
 function sortByRarity<T extends { rarity: string | null }>(items: T[]): T[] {
   const rarityOrder: Record<string, number> = {
     'Common': 1,
@@ -113,7 +134,7 @@ function sortByRarity<T extends { rarity: string | null }>(items: T[]): T[] {
   return [...items].sort((a, b) => {
     const aOrder = rarityOrder[a.rarity || 'Common'] || 0;
     const bOrder = rarityOrder[b.rarity || 'Common'] || 0;
-    return aOrder - bOrder;
+    return bOrder - aOrder;
   });
 }
 
@@ -121,8 +142,13 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
   const { t, i18n } = useTranslation();
   const locale = i18n.language as Locale;
 
-  const augments = getAugments();
-  const compatibleShields = getShieldsForAugment(loadout.augment);
+  const allAugments = getAugments().filter(a => a.id !== 'free_loadout_augment');
+  const augmentGroups = [
+    { label: 'Combat', items: sortByRarity(allAugments.filter(a => a.id.startsWith('combat_'))) },
+    { label: 'Looting', items: sortByRarity(allAugments.filter(a => a.id.startsWith('looting_'))) },
+    { label: 'Tactical', items: sortByRarity(allAugments.filter(a => a.id.startsWith('tactical_'))) },
+  ];
+  const compatibleShields = sortByRarity(getShieldsForAugment(loadout.augment));
   const healing = sortByRarity(getCraftableItems('healing'));
   const grenades = sortByRarity(getCraftableItems('grenade'));
   const utilities = sortByRarity(getCraftableItems('utility'));
@@ -143,8 +169,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
     onChange({ ...loadout, augment: augmentId, shield: newShield });
   };
 
-  const selectedAugment = loadout.augment ? getItemById(loadout.augment) : null;
-  const selectedShield = loadout.shield ? getItemById(loadout.shield) : null;
 
   return (
     <div className="space-y-6">
@@ -169,43 +193,42 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
       </div>
 
       {/* Augment & Shield */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         {/* Augment Selector */}
-        <div className="space-y-2">
+        <div className="space-y-2 flex-1">
           <label className="block text-sm font-medium text-muted-foreground">{t('loadout.augment')}</label>
-          <div className="flex flex-wrap gap-2">
-            {augments.map((augment) => (
-              <MobileTooltip
-                key={augment.id}
-                title={augment.name[locale]}
-                borderColor={getRarityColor(augment.rarity)}
-                disabled={loadout.augment === augment.id}
-                content={<AugmentTooltipContent augment={augment} locale={locale} />}
-              >
-                <div>
-                  <ItemCard
-                    name={augment.name[locale]}
-                    image={augment.imageUrl}
-                    rarity={augment.rarity}
-                    selected={loadout.augment === augment.id}
-                    onClick={() => handleAugmentChange(loadout.augment === augment.id ? null : augment.id)}
-                    size="sm"
-                  />
-                </div>
-              </MobileTooltip>
+          <div className="space-y-1">
+            {augmentGroups.map((group) => (
+              <div key={group.label} className="flex flex-wrap gap-2">
+                {group.items.map((augment) => (
+                  <MobileTooltip
+                    key={augment.id}
+                    title={augment.name[locale]}
+                    borderColor={getRarityColor(augment.rarity)}
+                    disabled={loadout.augment === augment.id}
+                    content={<AugmentTooltipContent augment={augment} locale={locale} />}
+                  >
+                    <div>
+                      <ItemCard
+                        name={augment.name[locale]}
+                        image={augment.imageUrl}
+                        rarity={augment.rarity}
+                        selected={loadout.augment === augment.id}
+                        onClick={() => handleAugmentChange(loadout.augment === augment.id ? null : augment.id)}
+                        size="sm"
+                      />
+                    </div>
+                  </MobileTooltip>
+                ))}
+              </div>
             ))}
           </div>
-          {selectedAugment && (
-            <p className="text-xs text-muted-foreground">
-              {t('loadout.shield')}: {selectedAugment.effects['Shield Compatibility']?.value || 'None'}
-            </p>
-          )}
         </div>
 
         {/* Shield Selector */}
-        <div className="space-y-2">
+        <div className="space-y-2 w-[210px] flex-shrink-0">
           <label className="block text-sm font-medium text-muted-foreground">
-            {loadout.augment ? t('loadout.shield') : t('loadout.shieldSelectAugment')}
+            {t('loadout.shield')}
           </label>
           <div className="flex flex-wrap gap-2">
             {compatibleShields.length === 0 && loadout.augment && (
@@ -232,12 +255,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               </MobileTooltip>
             ))}
           </div>
-          {selectedShield && (
-            <p className="text-xs text-muted-foreground">
-              {selectedShield.effects['Charge']?.value ?? selectedShield.effects['Shield Charge']?.value ?? ''} HP
-              {selectedShield.effects['Damage Reduction']?.value ? ` • ${selectedShield.effects['Damage Reduction'].value} mitigation` : ''}
-            </p>
-          )}
         </div>
       </div>
 
@@ -257,8 +274,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const itemName = item.name[locale];
 
               return (
-                <div key={item.id} className="flex flex-col items-center h-[100px]">
-                  <div className="w-14 h-14 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center h-[85px]">
+                  <div className="w-16 h-16 flex items-center justify-center">
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
@@ -278,7 +295,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         <img
                           src={item.imageUrl}
                           alt={itemName}
-                          className="w-12 h-12 object-contain rounded-lg"
+                          className="w-14 h-14 object-contain rounded-lg"
                           style={{
                             borderColor: getRarityColor(item.rarity),
                             borderWidth: '2px',
@@ -294,9 +311,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </div>
                     </MobileTooltip>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
-                    {itemName}
-                  </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
                       <button
@@ -343,8 +357,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const itemName = item.name[locale];
 
               return (
-                <div key={item.id} className="flex flex-col items-center h-[100px]">
-                  <div className="w-14 h-14 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center h-[85px]">
+                  <div className="w-16 h-16 flex items-center justify-center">
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
@@ -364,7 +378,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         <img
                           src={item.imageUrl}
                           alt={itemName}
-                          className="w-12 h-12 object-contain rounded-lg"
+                          className="w-14 h-14 object-contain rounded-lg"
                           style={{
                             borderColor: getRarityColor(item.rarity),
                             borderWidth: '2px',
@@ -380,9 +394,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </div>
                     </MobileTooltip>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
-                    {itemName}
-                  </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
                       <button
@@ -429,8 +440,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const itemName = item.name[locale];
 
               return (
-                <div key={item.id} className="flex flex-col items-center h-[100px]">
-                  <div className="w-14 h-14 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center h-[85px]">
+                  <div className="w-16 h-16 flex items-center justify-center">
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
@@ -450,7 +461,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         <img
                           src={item.imageUrl}
                           alt={itemName}
-                          className="w-12 h-12 object-contain rounded-lg"
+                          className="w-14 h-14 object-contain rounded-lg"
                           style={{
                             borderColor: getRarityColor(item.rarity),
                             borderWidth: '2px',
@@ -466,9 +477,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </div>
                     </MobileTooltip>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
-                    {itemName}
-                  </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
                       <button
@@ -515,8 +523,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const itemName = item.name[locale];
 
               return (
-                <div key={item.id} className="flex flex-col items-center h-[100px]">
-                  <div className="w-14 h-14 flex items-center justify-center">
+                <div key={item.id} className="flex flex-col items-center h-[85px]">
+                  <div className="w-16 h-16 flex items-center justify-center">
                     <MobileTooltip
                       title={itemName}
                       borderColor={getRarityColor(item.rarity)}
@@ -536,7 +544,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                         <img
                           src={item.imageUrl}
                           alt={itemName}
-                          className="w-12 h-12 object-contain rounded-lg"
+                          className="w-14 h-14 object-contain rounded-lg"
                           style={{
                             borderColor: getRarityColor(item.rarity),
                             borderWidth: '2px',
@@ -552,9 +560,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       </div>
                     </MobileTooltip>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={itemName}>
-                    {itemName}
-                  </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
                       <button
@@ -601,8 +606,8 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
               const qty = current?.quantity ?? 0;
 
               return (
-                <div key={ammo.id} className="flex flex-col items-center h-[100px]">
-                  <div className="w-14 h-14 flex items-center justify-center">
+                <div key={ammo.id} className="flex flex-col items-center h-[85px]">
+                  <div className="w-16 h-16 flex items-center justify-center">
                     <div
                       className={`relative cursor-pointer transition-transform duration-200 ${qty > 0 ? 'scale-110' : 'hover:scale-105'}`}
                       onClick={() => {
@@ -616,7 +621,7 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       <img
                         src={ammo.imageUrl}
                         alt={ammoName}
-                        className="w-12 h-12 object-contain rounded-lg"
+                        className="w-14 h-14 object-contain rounded-lg"
                         style={{
                           borderColor: '#9ca3af',
                           borderWidth: '2px',
@@ -631,9 +636,6 @@ export function LoadoutBuilder({ loadout, onChange }: LoadoutBuilderProps) {
                       )}
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground truncate max-w-[56px] mt-0.5" title={ammoName}>
-                    {ammoName.replace(' Ammo', '').replace(' Clip', '')}
-                  </span>
                   {qty > 0 && (
                     <div className="flex items-center gap-1 mt-1">
                       <button

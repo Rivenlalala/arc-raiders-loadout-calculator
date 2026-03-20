@@ -1,5 +1,8 @@
+import { useState } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Recycle, Trash2, MapPin } from 'lucide-react';
+import { Recycle, Trash2, MapPin, ChevronRight, ChevronDown } from 'lucide-react';
+import { cn } from '../../lib/utils';
 import { getItemById, getItemVendors, getRecycleSources, getSalvageSources, getFoundIn } from '../../data/gameData';
 import type { ObtainSource } from '../../data/gameData';
 import type { Locale } from '../../types';
@@ -22,7 +25,64 @@ function groupSourcesByName(sources: ObtainSource[], locale: Locale): { baseName
     if (!groups.has(baseName)) groups.set(baseName, []);
     groups.get(baseName)!.push({ tier, quantity: source.quantity });
   }
-  return Array.from(groups.entries()).map(([baseName, entries]) => ({ baseName, entries }));
+  return Array.from(groups.entries())
+    .map(([baseName, entries]) => ({ baseName, entries }))
+    .sort((a, b) => {
+      const aMax = Math.max(...a.entries.map(e => e.quantity));
+      const bMax = Math.max(...b.entries.map(e => e.quantity));
+      return bMax - aMax;
+    });
+}
+
+function ExpandableSourceSection({ icon, label, sources, locale, colorClass, translationKey }: {
+  icon: ReactNode;
+  label: string;
+  sources: ObtainSource[];
+  locale: Locale;
+  colorClass: string;
+  translationKey: string;
+}) {
+  const { t } = useTranslation();
+  const [expanded, setExpanded] = useState(false);
+  const grouped = groupSourcesByName(sources, locale);
+  const count = grouped.length;
+
+  return (
+    <div>
+      <div
+        className="flex items-center gap-2 mb-2 cursor-pointer select-none"
+        onClick={() => setExpanded(!expanded)}
+      >
+        {icon}
+        <span className="text-sm font-semibold text-muted-foreground">
+          {label}
+        </span>
+        <span className="text-xs text-muted-foreground/60">({count})</span>
+        {expanded
+          ? <ChevronDown className="w-3 h-3 text-muted-foreground" />
+          : <ChevronRight className="w-3 h-3 text-muted-foreground" />
+        }
+      </div>
+      {expanded && (
+        <div className="space-y-1 ml-6">
+          {grouped.map(({ baseName, entries }) => (
+            <div key={baseName} className="flex items-baseline text-sm">
+              <span className="text-muted-foreground flex-1 min-w-0 truncate">
+                {t(translationKey, { item: baseName })}
+                {entries.length > 1 || entries[0].tier !== '' ? (
+                  <span className="opacity-50"> {entries.map(e => e.tier).join(' / ')}</span>
+                ) : null}
+              </span>
+              <span className="text-muted-foreground mx-2 flex-shrink-0">→</span>
+              <span className={cn(colorClass, 'font-medium w-24 text-right flex-shrink-0')}>
+                {entries.map(e => e.quantity).join(' / ')}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 interface HowToObtainContentProps {
@@ -50,58 +110,26 @@ export function HowToObtainContent({ itemId, locale }: HowToObtainContentProps) 
 
       {/* Recycle Sources */}
       {recycleSources.length > 0 && (
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Recycle className="w-4 h-4 text-green-400" />
-            <span className="text-sm font-semibold text-muted-foreground">
-              {t('obtain.recycleSources')}
-            </span>
-          </div>
-          <div className="space-y-1 ml-6">
-            {groupSourcesByName(recycleSources, locale).map(({ baseName, entries }) => (
-              <div key={baseName} className="flex items-baseline text-sm">
-                <span className="text-muted-foreground flex-1 min-w-0 truncate">
-                  {t('obtain.recycleItem', { item: baseName })}
-                  {entries.length > 1 || entries[0].tier !== '' ? (
-                    <span className="opacity-50"> {entries.map(e => e.tier).join(' / ')}</span>
-                  ) : null}
-                </span>
-                <span className="text-muted-foreground mx-2 flex-shrink-0">→</span>
-                <span className="text-green-400 font-medium w-24 text-right flex-shrink-0">
-                  {entries.map(e => e.quantity).join(' / ')}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ExpandableSourceSection
+          icon={<Recycle className="w-4 h-4 text-green-400" />}
+          label={t('obtain.recycleSources')}
+          sources={recycleSources}
+          locale={locale}
+          colorClass="text-green-400"
+          translationKey="obtain.recycleItem"
+        />
       )}
 
       {/* Salvage Sources */}
       {salvageSources.length > 0 && (
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Trash2 className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm font-semibold text-muted-foreground">
-              {t('obtain.salvageSources')}
-            </span>
-          </div>
-          <div className="space-y-1 ml-6">
-            {groupSourcesByName(salvageSources, locale).map(({ baseName, entries }) => (
-              <div key={baseName} className="flex items-baseline text-sm">
-                <span className="text-muted-foreground flex-1 min-w-0 truncate">
-                  {t('obtain.salvageItem', { item: baseName })}
-                  {entries.length > 1 || entries[0].tier !== '' ? (
-                    <span className="opacity-50"> {entries.map(e => e.tier).join(' / ')}</span>
-                  ) : null}
-                </span>
-                <span className="text-muted-foreground mx-2 flex-shrink-0">→</span>
-                <span className="text-yellow-400 font-medium w-24 text-right flex-shrink-0">
-                  {entries.map(e => e.quantity).join(' / ')}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ExpandableSourceSection
+          icon={<Trash2 className="w-4 h-4 text-yellow-400" />}
+          label={t('obtain.salvageSources')}
+          sources={salvageSources}
+          locale={locale}
+          colorClass="text-yellow-400"
+          translationKey="obtain.salvageItem"
+        />
       )}
 
       {/* Found In */}

@@ -5,6 +5,10 @@ import { X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useIsMobile } from '../../hooks/useIsMobile';
 
+// Global event to close all tooltips when a new one opens
+const CLOSE_ALL_EVENT = 'mobile-tooltip-close-all';
+let tooltipCounter = 0;
+
 interface MobileTooltipProps {
   children: ReactNode;
   content: ReactNode;
@@ -29,6 +33,8 @@ export function MobileTooltip({
   const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const leaveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const instanceId = useRef(++tooltipCounter);
   const isMobile = useIsMobile();
 
   // Calculate position for desktop tooltip
@@ -37,32 +43,28 @@ export function MobileTooltip({
 
     const trigger = triggerRef.current.getBoundingClientRect();
     const tooltipWidth = 420;
-    const tooltipHeight = 200; // estimated
+    const tooltipHeight = 200;
     const viewport = {
       width: window.innerWidth,
       height: window.innerHeight,
     };
 
     let top = trigger.top;
-    let left = trigger.right + 8; // Default: right of trigger
+    let left = trigger.right + 8;
 
-    // If tooltip would go off right edge, position to the left
     if (left + tooltipWidth > viewport.width - 16) {
       left = trigger.left - tooltipWidth - 8;
     }
 
-    // If tooltip would go off left edge, center below
     if (left < 16) {
       left = Math.max(16, trigger.left);
       top = trigger.bottom + 8;
     }
 
-    // Adjust vertical position if it would go off bottom
     if (top + tooltipHeight > viewport.height - 16) {
       top = Math.max(16, viewport.height - tooltipHeight - 16);
     }
 
-    // Adjust if it would go off top
     if (top < 16) {
       top = 16;
     }
@@ -70,15 +72,33 @@ export function MobileTooltip({
     return { top, left };
   }, []);
 
+  // Listen for global close event — close if another tooltip opened
+  useEffect(() => {
+    const handleCloseAll = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail !== instanceId.current) {
+        setIsHovered(false);
+        setPosition(null);
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener(CLOSE_ALL_EVENT, handleCloseAll);
+    return () => window.removeEventListener(CLOSE_ALL_EVENT, handleCloseAll);
+  }, []);
+
   // Close on escape key
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen && !isHovered) return;
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsOpen(false);
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+        setIsHovered(false);
+        setPosition(null);
+      }
     };
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
-  }, [isOpen]);
+  }, [isOpen, isHovered]);
 
   // Prevent body scroll when modal is open on mobile
   useEffect(() => {
@@ -90,27 +110,41 @@ export function MobileTooltip({
     }
   }, [isMobile, isOpen]);
 
-  const leaveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (leaveTimeout.current) {
+        clearTimeout(leaveTimeout.current);
+      }
+    };
+  }, []);
 
-  const handleClick = (e: React.MouseEvent) => {
+  // Broadcast close-all when this tooltip opens
+  const broadcastOpen = useCallback(() => {
+    window.dispatchEvent(new CustomEvent(CLOSE_ALL_EVENT, { detail: instanceId.current }));
+  }, []);
+
+  const handleClick = useCallback((e: React.MouseEvent) => {
     if (isMobile && scrollable) {
       e.stopPropagation();
+      broadcastOpen();
       setIsOpen(true);
     }
-  };
+  }, [isMobile, scrollable, broadcastOpen]);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = useCallback(() => {
     if (!isMobile) {
       if (leaveTimeout.current) {
         clearTimeout(leaveTimeout.current);
         leaveTimeout.current = null;
       }
+      broadcastOpen();
       setPosition(calculatePosition());
       setIsHovered(true);
     }
-  };
+  }, [isMobile, broadcastOpen, calculatePosition]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     if (!isMobile) {
       if (scrollable) {
         leaveTimeout.current = setTimeout(() => {
@@ -122,7 +156,7 @@ export function MobileTooltip({
         setPosition(null);
       }
     }
-  };
+  }, [isMobile, scrollable]);
 
   if (disabled) {
     return <>{children}</>;
@@ -150,7 +184,7 @@ export function MobileTooltip({
               {/* Backdrop */}
               <div
                 className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}
               />
               {/* Content */}
               <div
