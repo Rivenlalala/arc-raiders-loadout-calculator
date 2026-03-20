@@ -1,4 +1,4 @@
-import type { GameItem, RawGameItem, WeaponFamily, Rarity, ItemCategory, LocalizedString, ItemEffect } from '../types';
+import type { GameItem, RawGameItem, WeaponFamily, Rarity, ItemCategory, LocalizedString, ItemEffect, Vendor } from '../types';
 import rawItems from 'virtual:arcraiders-items';
 
 // --- Processing helpers ---
@@ -82,12 +82,37 @@ function processRawItem(raw: RawGameItem): GameItem {
     vendors: raw.vendors ?? null,
     updatedAt: raw.updatedAt ?? null,
     addedIn: raw.addedIn ?? null,
+    foundIn: raw.foundIn ?? undefined,
   };
 }
 
 // --- Process all items ---
 const allItems: GameItem[] = rawItems.map(processRawItem);
 const itemIndex = new Map<string, GameItem>(allItems.map(item => [item.id, item]));
+
+// --- Reverse recycle/salvage indexes ---
+interface ObtainSource {
+  itemId: string;
+  quantity: number;
+}
+
+const recycleSourcesMap = new Map<string, ObtainSource[]>();
+const salvageSourcesMap = new Map<string, ObtainSource[]>();
+
+for (const item of allItems) {
+  if (item.recyclesInto) {
+    for (const [materialId, qty] of Object.entries(item.recyclesInto)) {
+      if (!recycleSourcesMap.has(materialId)) recycleSourcesMap.set(materialId, []);
+      recycleSourcesMap.get(materialId)!.push({ itemId: item.id, quantity: qty });
+    }
+  }
+  if (item.salvagesInto) {
+    for (const [materialId, qty] of Object.entries(item.salvagesInto)) {
+      if (!salvageSourcesMap.has(materialId)) salvageSourcesMap.set(materialId, []);
+      salvageSourcesMap.get(materialId)!.push({ itemId: item.id, quantity: qty });
+    }
+  }
+}
 
 // --- Category-filtered lists (computed once) ---
 const weapons = allItems.filter(i => i.category === 'weapon');
@@ -178,16 +203,24 @@ export function getShieldsForAugment(augmentId: string | null): GameItem[] {
   });
 }
 
+/** Skip in-raid recipes — they're field disassembly/crafting, not loadout prep. */
+function getValidRecipe(item: GameItem): Record<string, number> | null {
+  if (!item.recipe || item.craftBench === 'in_raid') return null;
+  return Object.keys(item.recipe).length > 0 ? item.recipe : null;
+}
+
 export function isCraftable(itemId: string): boolean {
   const item = itemIndex.get(itemId);
-  return item !== undefined && item.recipe !== null && Object.keys(item.recipe).length > 0;
+  return item !== undefined && getValidRecipe(item) !== null;
 }
 
 export function getItemRecipe(itemId: string): { ingredients: Record<string, number>; outputQuantity: number } | null {
   const item = itemIndex.get(itemId);
-  if (!item || !item.recipe || Object.keys(item.recipe).length === 0) return null;
+  if (!item) return null;
+  const recipe = getValidRecipe(item);
+  if (!recipe) return null;
   return {
-    ingredients: item.recipe,
+    ingredients: recipe,
     outputQuantity: item.craftQuantity,
   };
 }
@@ -204,5 +237,26 @@ export function getRarityColor(rarity: string | null | undefined): string {
 }
 
 export function getCraftableItems(category: ItemCategory): GameItem[] {
-  return allItems.filter(i => i.category === category && i.recipe && Object.keys(i.recipe).length > 0);
+  return allItems.filter(i => i.category === category && isCraftable(i.id));
+}
+
+export type { ObtainSource };
+
+export function getItemVendors(itemId: string): Vendor[] {
+  const item = itemIndex.get(itemId);
+  return item?.vendors ?? [];
+}
+
+export function getRecycleSources(materialId: string): ObtainSource[] {
+  return recycleSourcesMap.get(materialId) ?? [];
+}
+
+export function getSalvageSources(materialId: string): ObtainSource[] {
+  return salvageSourcesMap.get(materialId) ?? [];
+}
+
+export function getFoundIn(itemId: string): string[] {
+  const item = itemIndex.get(itemId);
+  if (!item?.foundIn) return [];
+  return item.foundIn.split(',').map(s => s.trim()).filter(Boolean);
 }
