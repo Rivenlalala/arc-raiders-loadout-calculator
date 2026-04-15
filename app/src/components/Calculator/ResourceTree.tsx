@@ -7,9 +7,9 @@ import {
   getRarityColor,
   isCraftable,
   getItemRecipe,
-  getWeapons,
+  getWeaponFamilyByBaseId,
 } from '../../data/gameData';
-import type { Loadout, GameItem, Locale, LocalizedString } from '../../types';
+import type { Loadout, Locale, LocalizedString } from '../../types';
 import { HowToObtainContent, hasObtainInfo } from './HowToObtainContent';
 import { MobileTooltip } from '../ui/MobileTooltip';
 
@@ -33,37 +33,29 @@ interface ResourceTreeProps {
 }
 
 /**
- * Walk backwards from the selected weapon through the upgrade chain to find
- * the tier 1 (base) weapon, then sum up: base weapon recipe + upgrade costs
- * for each intermediate tier up to the selected one.
+ * Compute total weapon cost as:
+ * tier 1 recipe + each upgrade cost up to selected tier.
  */
 function getWeaponTotalCost(weaponId: string): Record<string, number> {
   const costs: Record<string, number> = {};
 
-  // Build chain from tier 1 to selected tier
-  const chain: GameItem[] = [];
-  let current = getItemById(weaponId);
-  while (current) {
-    chain.unshift(current);
-    // Find the weapon that upgrades TO this one
-    const prev = getWeapons().find(w => w.upgradesTo === current!.id);
-    current = prev;
-  }
-
-  // Base weapon recipe (tier 1)
-  if (chain[0]?.recipe) {
-    for (const [id, qty] of Object.entries(chain[0].recipe)) {
+  const addCost = (costMap: Record<string, number> | null | undefined) => {
+    if (!costMap) return;
+    for (const [id, qty] of Object.entries(costMap)) {
       costs[id] = (costs[id] ?? 0) + qty;
     }
-  }
+  };
 
-  // Add upgrade costs for each subsequent tier
-  for (let i = 1; i < chain.length; i++) {
-    if (chain[i].upgradeCost) {
-      for (const [id, qty] of Object.entries(chain[i].upgradeCost!)) {
-        costs[id] = (costs[id] ?? 0) + qty;
-      }
-    }
+  const baseId = weaponId.replace(/_[ivx]+$/i, '');
+  const family = getWeaponFamilyByBaseId(baseId);
+  if (!family) return costs;
+
+  const selectedTierIndex = family.tiers.findIndex(tier => tier.id === weaponId);
+  if (selectedTierIndex === -1) return costs;
+
+  addCost(family.tiers[0]?.recipe);
+  for (let i = 1; i <= selectedTierIndex; i++) {
+    addCost(family.tiers[i]?.upgradeCost);
   }
 
   return costs;

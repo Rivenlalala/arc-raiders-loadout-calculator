@@ -29,8 +29,26 @@ function extractEffects(
   return result;
 }
 
+const WEAPON_TYPE_FALLBACK = new Set([
+  'Assault Rifle',
+  'Battle Rifle',
+  'SMG',
+  'Pistol',
+  'Hand Cannon',
+  'Shotgun',
+  'Sniper Rifle',
+  'LMG',
+  'Special',
+]);
+
+function isLikelyWeapon(raw: RawGameItem): boolean {
+  if (raw.isWeapon) return true;
+  // Some source records can miss isWeapon for newly added guns.
+  return WEAPON_TYPE_FALLBACK.has(raw.type);
+}
+
 function classifyCategory(raw: RawGameItem): ItemCategory {
-  if (raw.isWeapon) return 'weapon';
+  if (isLikelyWeapon(raw)) return 'weapon';
   if (raw.type === 'Augment') return 'augment';
   if (raw.type === 'Shield') return 'shield';
   if (raw.type === 'Modification') return 'modification';
@@ -86,6 +104,10 @@ function processRawItem(raw: RawGameItem): GameItem {
   };
 }
 
+function getWeaponBaseId(itemId: string): string {
+  return itemId.replace(/_[ivx]+$/i, '');
+}
+
 // --- Process all items ---
 const allItems: GameItem[] = rawItems.map(processRawItem);
 const itemIndex = new Map<string, GameItem>(allItems.map(item => [item.id, item]));
@@ -127,31 +149,74 @@ const ammunition = allItems.filter(i => i.category === 'ammunition');
 const materials = allItems.filter(i => i.category === 'material');
 
 // --- Weapon families ---
-function buildWeaponFamilies(): WeaponFamily[] {
-  const upgradeTargets = new Set(weapons.filter(w => w.upgradesTo).map(w => w.upgradesTo!));
-  const roots = weapons.filter(w => !upgradeTargets.has(w.id));
+const ROMAN_TIER_ORDER: Record<string, number> = {
+  i: 1,
+  ii: 2,
+  iii: 3,
+  iv: 4,
+  v: 5,
+  vi: 6,
+  vii: 7,
+  viii: 8,
+  ix: 9,
+  x: 10,
+};
 
-  return roots.map(root => {
-    const tiers: GameItem[] = [root];
-    let current = root;
-    while (current.upgradesTo) {
-      const next = itemIndex.get(current.upgradesTo);
-      if (!next) break;
-      tiers.push(next);
-      current = next;
+function getTierOrderFromId(id: string): number {
+  const match = id.match(/_([ivx]+)$/i);
+  if (!match) return Number.MAX_SAFE_INTEGER;
+  return ROMAN_TIER_ORDER[match[1].toLowerCase()] ?? Number.MAX_SAFE_INTEGER;
+}
+
+function sortByTierOrder(a: GameItem, b: GameItem): number {
+  const aTier = getTierOrderFromId(a.id);
+  const bTier = getTierOrderFromId(b.id);
+  if (aTier !== bTier) return aTier - bTier;
+  return a.id.localeCompare(b.id);
+}
+
+function buildWeaponFamilies(): WeaponFamily[] {
+  const groups = new Map<string, GameItem[]>();
+  for (const weapon of weapons) {
+    const baseId = getWeaponBaseId(weapon.id);
+    if (!groups.has(baseId)) groups.set(baseId, []);
+    groups.get(baseId)!.push(weapon);
+  }
+
+  return Array.from(groups.entries()).map(([baseId, group]) => {
+    const groupIndex = new Map(group.map(item => [item.id, item]));
+    const upgradeTargets = new Set(
+      group
+        .map(item => item.upgradesTo)
+        .filter((id): id is string => Boolean(id && groupIndex.has(id)))
+    );
+
+    const roots = group.filter(item => !upgradeTargets.has(item.id)).sort(sortByTierOrder);
+    const start = roots[0] ?? [...group].sort(sortByTierOrder)[0];
+
+    const chain: GameItem[] = [];
+    const visited = new Set<string>();
+    let current: GameItem | undefined = start;
+    while (current && !visited.has(current.id)) {
+      chain.push(current);
+      visited.add(current.id);
+      current = current.upgradesTo ? groupIndex.get(current.upgradesTo) : undefined;
     }
 
-    const baseId = root.id.replace(/_[ivx]+$/i, '');
+    const tiers = visited.size === group.length
+      ? chain
+      : [...group].sort(sortByTierOrder);
 
+    const baseItem = tiers[0];
     const baseName: LocalizedString = {
-      en: root.name.en.replace(/\s+[IVX]+$/i, ''),
-      'zh-CN': root.name['zh-CN'].replace(/\s+[IVX]+$/i, ''),
+      en: baseItem.name.en.replace(/\s+[IVX]+$/i, ''),
+      'zh-CN': baseItem.name['zh-CN'].replace(/\s+[IVX]+$/i, ''),
     };
 
     return {
       baseId,
       name: baseName,
-      weaponType: root.type,
+      weaponType: baseItem.type,
       tiers,
     };
   });
